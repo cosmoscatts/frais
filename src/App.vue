@@ -16,7 +16,7 @@ const toggle = useToggle(isDark)
     :theme-overrides="themeOverrides"
     :locale="zhCN"
     :date-locale="dateZhCN"
-    class="h-full"
+    h-full w-full
   >
     <naive-provider>
       <router-view />
