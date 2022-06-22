@@ -1,23 +1,32 @@
 <script setup lang="ts">
+import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 
+const theme = computed(() => {
+  return unref(isDark)
+    ? darkTheme
+    : null
+})
+const themeOverrides = ref()
+const toggle = useToggle(isDark)
 </script>
 
 <template>
-  <h1>Hello, World!</h1>
-  <n-layout has-sider>
-    <n-layout-sider
-      collapse-mode="transform"
-      :collapsed-width="120"
-      :width="240"
-      show-trigger="bar"
-      content-style="padding: 24px;"
-      bordered
-    >
-      <n-h2>海淀桥</n-h2>
-    </n-layout-sider>
-    <n-layout-content content-style="padding: 24px;">
-      平山道
-    </n-layout-content>
-  </n-layout>
+  <n-config-provider
+    :theme="theme"
+    :theme-overrides="themeOverrides"
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+    class="h-full"
+  >
+    <naive-provider>
+      <router-view />
+      <n-card h-400px>
+        1111
+        <button @click="toggle()">
+          切换
+        </button>
+      </n-card>
+    </naive-provider>
+  </n-config-provider>
 </template>
 
