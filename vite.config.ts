@@ -4,7 +4,7 @@ import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'vite-plugin-md'
-import { ArcoResolver } from 'unplugin-vue-components/resolvers'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Unocss from 'unocss/vite'
 import { presetAttributify, presetIcons, presetUno, presetWind } from 'unocss'
 import Prism from 'markdown-it-prism'
@@ -48,7 +48,7 @@ export default defineConfig({
     // your plugin installation
     Components({
       resolvers: [
-        ArcoResolver(),
+        NaiveUiResolver (),
       ],
       dts: 'src/components.d.ts',
     }),

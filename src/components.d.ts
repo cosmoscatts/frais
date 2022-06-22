@@ -5,6 +5,10 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    NH2: typeof import('naive-ui')['NH2']
+    NLayout: typeof import('naive-ui')['NLayout']
+    NLayoutContent: typeof import('naive-ui')['NLayoutContent']
+    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Undefined: typeof import('./components/index.vue')['default']
