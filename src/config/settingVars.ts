@@ -1,3 +1,10 @@
+/**
+ * whether cache the app settings
+ *
+ * @default true
+ */
+export const cacheSettings = true
+
 export default {
   /**
    * theme mode - 'dark' | 'light' | 'system'
@@ -5,5 +12,4 @@ export default {
    * @default 'dark'
    */
   themeMode: 'dark',
-
 }
