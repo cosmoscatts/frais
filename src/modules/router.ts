@@ -1,3 +1,5 @@
-export function install(app: any) {
+import type { UserModule } from '~/types'
+
+export const install: UserModule = ({ use }) => {
 
 }

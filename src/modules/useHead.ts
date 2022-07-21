@@ -1,5 +1,6 @@
 import { createHead } from '@vueuse/head'
+import type { UserModule } from '~/types'
 
-export function install(app: any) {
-  app.use(createHead())
+export const install: UserModule = ({ use }) => {
+  use(createHead())
 }
