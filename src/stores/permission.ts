@@ -1,5 +1,5 @@
-export const userStore = defineStore(
-  'userStore',
+export const permissionStore = defineStore(
+  'permissionStore',
   () => {
 
   },
@@ -8,5 +8,4 @@ export const userStore = defineStore(
       enabled: true,
     },
   },
-
 )
