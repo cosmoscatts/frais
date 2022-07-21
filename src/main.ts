@@ -5,9 +5,8 @@ import './styles/main.css'
 import 'uno.css'
 
 function init(app: any) {
-  Object.values(import.meta.globEager('./modules/*.ts'))
-    .map(i => i.default)
-    .forEach(i => i?.install?.(app))
+  Object.values(import.meta.glob<{ install: any }>('./modules/*.ts', { eager: true }))
+    .forEach(i => i.install?.(app))
   app.mount('#app')
 }
 

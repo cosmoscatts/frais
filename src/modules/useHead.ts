@@ -1,7 +1,5 @@
 import { createHead } from '@vueuse/head'
 
-export default {
-  install(app: any) {
-    app.use(createHead())
-  },
+export function install(app: any) {
+  app.use(createHead())
 }
