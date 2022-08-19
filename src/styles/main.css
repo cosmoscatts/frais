@@ -1,4 +1,6 @@
 @import './transition.css';
+@import './styles/prose.css';
+@import './styles/markdown.css';
 
 html,
 body,
