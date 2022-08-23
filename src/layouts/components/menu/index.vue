@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
-import { NEllipsis, NIcon, useMessage } from 'naive-ui'
+import { NEllipsis, NIcon } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import {
   BookOutline as BookIcon,

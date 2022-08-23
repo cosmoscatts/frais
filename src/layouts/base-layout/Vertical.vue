@@ -11,7 +11,7 @@ import {
 
 <template>
   <n-layout has-sider h-screen w-screen>
-    <n-layout-sider border="1 red">
+    <n-layout-sider>
       <TheSide />
     </n-layout-sider>
     <n-layout>
