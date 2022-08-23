@@ -1,11 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import NProgress from 'nprogress'
 import { BLANK_LAYOUT } from './constants'
 import appRoutes from './routes'
 import createRouterGuard from './guards'
-import 'nprogress/nprogress.css'
-
-NProgress.configure({ showSpinner: false, easing: 'ease', speed: 500 })
 
 const router = createRouter({
   history: createWebHashHistory('/'),
