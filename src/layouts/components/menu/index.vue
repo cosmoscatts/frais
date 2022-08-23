@@ -93,11 +93,6 @@ const menuOptions: MenuOption[] = [
     ],
   },
 ]
-
-const defaultExpandedKeys = ['dance-dance-dance', 'food']
-function handleUpdateExpandedKeys(keys: string[]) {
-  // useMessage().info(`[onUpdate:expandedKeys]: ${JSON.stringify(keys)}`)
-}
 </script>
 
 <template>
@@ -107,7 +102,6 @@ function handleUpdateExpandedKeys(keys: string[]) {
     :collapsed-width="64"
     :collapsed-icon-size="22"
     :options="menuOptions"
-    :default-expanded-keys="defaultExpandedKeys"
-    @update:expanded-keys="handleUpdateExpandedKeys"
+    default-expand-all
   />
 </template>
