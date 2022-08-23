@@ -1,5 +1,8 @@
 import { BASE_LAYOUT } from '~/router/constants'
 
+/**
+ * 系统管理路由
+ */
 export default {
   path: '/system',
   redirect: '/system/user',

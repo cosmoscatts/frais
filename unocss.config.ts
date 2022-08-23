@@ -1,4 +1,11 @@
-import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts, presetWind } from 'unocss'
+import {
+  defineConfig,
+  presetAttributify,
+  presetIcons,
+  presetUno,
+  presetWebFonts,
+  presetWind,
+} from 'unocss'
 
 // https://github.com/antfu/unocss
 // see unocss.config.ts for config
