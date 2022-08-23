@@ -3,10 +3,11 @@ import axios from 'axios'
 import { ERROR_PAGE } from '~/router/constants'
 import router from '~/router'
 
+const AXIOS_TIMEOUT = 5000
 function createAxios() {
   const service = axios.create({
     baseURL: import.meta.env.VITE_BASE_API_URL as string,
-    timeout: 5000,
+    timeout: AXIOS_TIMEOUT,
   })
 
   service.interceptors.request.use(

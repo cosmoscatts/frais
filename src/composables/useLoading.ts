@@ -4,13 +4,15 @@
 export function useLoading(initValue = false) {
   const {
     bool: loading,
-    setBool: setLoading,
+    setTrue: startLoading,
+    setFalse: endLoading,
     toggleBool: toggleLoading,
   } = useBoolean(initValue)
 
   return {
     loading,
-    setLoading,
+    startLoading,
+    endLoading,
     toggleLoading,
   }
 }

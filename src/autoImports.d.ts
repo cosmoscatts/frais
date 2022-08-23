@@ -178,6 +178,7 @@ declare global {
   const useFullscreen: typeof import('@vueuse/core')['useFullscreen']
   const useGamepad: typeof import('@vueuse/core')['useGamepad']
   const useGeolocation: typeof import('@vueuse/core')['useGeolocation']
+  const useGlobalNaiveApi: typeof import('./composables/useNaiveUiGlobalApi')['useGlobalNaiveApi']
   const useHead: typeof import('@vueuse/head')['useHead']
   const useIdle: typeof import('@vueuse/core')['useIdle']
   const useImage: typeof import('@vueuse/core')['useImage']
@@ -206,6 +207,7 @@ declare global {
   const useObjectUrl: typeof import('@vueuse/core')['useObjectUrl']
   const useOffsetPagination: typeof import('@vueuse/core')['useOffsetPagination']
   const useOnline: typeof import('@vueuse/core')['useOnline']
+  const useOpenWindow: typeof import('./composables/useOpenWindow')['useOpenWindow']
   const usePageLeave: typeof import('@vueuse/core')['usePageLeave']
   const useParallax: typeof import('@vueuse/core')['useParallax']
   const usePermission: typeof import('@vueuse/core')['usePermission']
@@ -217,6 +219,7 @@ declare global {
   const usePreferredReducedMotion: typeof import('@vueuse/core')['usePreferredReducedMotion']
   const useRafFn: typeof import('@vueuse/core')['useRafFn']
   const useRefHistory: typeof import('@vueuse/core')['useRefHistory']
+  const useRequest: typeof import('./composables/useRequest')['useRequest']
   const useResizeObserver: typeof import('@vueuse/core')['useResizeObserver']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
@@ -466,6 +469,7 @@ declare module '@vue/runtime-core' {
     readonly useFullscreen: UnwrapRef<typeof import('@vueuse/core')['useFullscreen']>
     readonly useGamepad: UnwrapRef<typeof import('@vueuse/core')['useGamepad']>
     readonly useGeolocation: UnwrapRef<typeof import('@vueuse/core')['useGeolocation']>
+    readonly useGlobalNaiveApi: UnwrapRef<typeof import('./composables/useNaiveUiGlobalApi')['useGlobalNaiveApi']>
     readonly useHead: UnwrapRef<typeof import('@vueuse/head')['useHead']>
     readonly useIdle: UnwrapRef<typeof import('@vueuse/core')['useIdle']>
     readonly useImage: UnwrapRef<typeof import('@vueuse/core')['useImage']>
@@ -494,6 +498,7 @@ declare module '@vue/runtime-core' {
     readonly useObjectUrl: UnwrapRef<typeof import('@vueuse/core')['useObjectUrl']>
     readonly useOffsetPagination: UnwrapRef<typeof import('@vueuse/core')['useOffsetPagination']>
     readonly useOnline: UnwrapRef<typeof import('@vueuse/core')['useOnline']>
+    readonly useOpenWindow: UnwrapRef<typeof import('./composables/useOpenWindow')['useOpenWindow']>
     readonly usePageLeave: UnwrapRef<typeof import('@vueuse/core')['usePageLeave']>
     readonly useParallax: UnwrapRef<typeof import('@vueuse/core')['useParallax']>
     readonly usePermission: UnwrapRef<typeof import('@vueuse/core')['usePermission']>
@@ -505,6 +510,7 @@ declare module '@vue/runtime-core' {
     readonly usePreferredReducedMotion: UnwrapRef<typeof import('@vueuse/core')['usePreferredReducedMotion']>
     readonly useRafFn: UnwrapRef<typeof import('@vueuse/core')['useRafFn']>
     readonly useRefHistory: UnwrapRef<typeof import('@vueuse/core')['useRefHistory']>
+    readonly useRequest: UnwrapRef<typeof import('./composables/useRequest')['useRequest']>
     readonly useResizeObserver: UnwrapRef<typeof import('@vueuse/core')['useResizeObserver']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>

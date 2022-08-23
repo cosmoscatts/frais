@@ -1,5 +1,7 @@
-export const BASE_LAYOUT = () => import('~/layouts/BaseLayout.vue')
-export const BLANK_LAYOUT = () => import('~/layouts/BlankLayout.vue')
+import { BaseLayout, BlankLayout } from '~/layouts'
+
+export const BASE_LAYOUT = BaseLayout
+export const BLANK_LAYOUT = BlankLayout
 
 /**
  * 路由白名单
