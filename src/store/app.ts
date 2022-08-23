@@ -16,11 +16,12 @@ export const useAppStore = defineStore(
       stage?: ConfigSettingObject
       data?: ConfigSettingObject
     }>({
-      stage: undefined,
-      data: undefined,
+      stage: { ...configSettings },
+      data: { ...configSettings },
     })
 
     const init = () => {
+      // 如果开启了缓存配置, 则从 storage 更新配置
       if (cacheAppSettings) {
         initStorage()
         settings.data = updateSettingsFromStorage(reactive({
