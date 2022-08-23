@@ -1,8 +1,8 @@
-import settingVars from './settingVars'
+import settings from './appSettings'
 
 function makeReactiveSettingVars() {
   return reactive({
-    ...settingVars,
+    ...settings,
   })
 }
 
