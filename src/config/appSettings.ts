@@ -1,4 +1,8 @@
 /**
+ * 是否开启 debug 模式
+ */
+export const debug = true
+/**
  * 是否显示 app 设置抽屉
  *
  * @default true
