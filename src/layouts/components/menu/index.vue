@@ -1,6 +1,5 @@
 <script lang="ts">
 import type { Component } from 'vue'
-import { defineComponent, h } from 'vue'
 import { NIcon, useMessage } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import {

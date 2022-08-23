@@ -1,5 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Logo } from './logo'
+import { Menu } from './menu'
+</script>
 
 <template>
-  Side
+  <div flex="~ col" justify-center of-hidden>
+    <Logo />
+    <Menu />
+  </div>
 </template>
