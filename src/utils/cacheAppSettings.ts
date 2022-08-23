@@ -1,4 +1,4 @@
-import type { Reactive } from 'vue'
+import type { UnwrapNestedRefs } from 'vue'
 import { appStorageKeyEnum } from '~/enum'
 import type { ConfigSettingObject } from '~/config'
 
@@ -16,8 +16,16 @@ export function initAppSettings() {
     appSettingsStorage.value = settings
   }
 
-  const updateSettingsFromStorage = (target: Reactive<ConfigSettingObject>) => {
+  const updateSettingsFromStorage = (target: UnwrapNestedRefs<ConfigSettingObject>) => {
+    const source = appSettingsStorage.value
 
+    if (!source || !Object.keys(source).length)
+      return { ...target }
+
+    return {
+      ...target,
+      ...source,
+    }
   }
 
   return {

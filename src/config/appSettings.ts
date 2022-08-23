@@ -30,13 +30,13 @@ export interface ConfigSettingObject {
   showTransitionAnimation: boolean
   fixNav: boolean
   themePrimaryColor: string
-  TransitionAnimation: boolean
+  transitionAnimation: string
   cacheTabs: boolean
   tabShapeStyle: 'default' | 'chrome'
   invertMenu: boolean
 }
 
-export const configSettings = {
+export const configSettings: ConfigSettingObject = {
   /**
    * 布局
    *  - 'vertical': '垂直布局'
