@@ -9,7 +9,7 @@ import {
 } from '@vicons/ionicons5'
 
 const appStore = useAppStore()
-const { menuCollapsed } = storeToRefs(appStore)
+const { menuCollapsed, baseSettings } = storeToRefs(appStore)
 
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
@@ -102,6 +102,7 @@ function handleUpdateExpandedKeys(keys: string[]) {
 
 <template>
   <n-menu
+    :inverted="baseSettings.invertMenu"
     :collapsed="menuCollapsed"
     :collapsed-width="64"
     :collapsed-icon-size="22"

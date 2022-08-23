@@ -117,5 +117,5 @@ export const configSettings: ConfigSettingObject = {
    *
    * @default false
    */
-  invertMenu: false,
+  invertMenu: true,
 }
