@@ -1,6 +1,8 @@
+import type { Menu } from '~/types'
+
 /**
  * 默认菜单集合
  */
-export const defaultMenus = [
+export const defaultMenus: Menu[] = [
 
 ]
