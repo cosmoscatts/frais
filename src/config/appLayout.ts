@@ -20,7 +20,7 @@ export const appLayoutParams = {
   },
   footHeight: {
     value: 50,
-    class: 'h-50px',
+    class: '!h-50px',
   },
 }
 

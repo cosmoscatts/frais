@@ -18,7 +18,7 @@ const {
 } = appLayoutParams
 
 const appStore = useAppStore()
-const { menuCollapsed } = storeToRefs(appStore)
+const { menuCollapsed, baseSettings } = storeToRefs(appStore)
 const { toggleMenuCollapsed } = appStore
 </script>
 
@@ -37,13 +37,13 @@ const { toggleMenuCollapsed } = appStore
     </n-layout-sider>
     <n-layout>
       <n-layout-header>
-        <TheNav w-full bg-transparent :class="{ navHeightClass }" />
+        <TheNav w-full bg-transparent :class="navHeightClass" />
       </n-layout-header>
       <n-layout-content style="min-height: calc(100% - 114px)">
         <TheMain />
       </n-layout-content>
-      <n-layout-footer :class="{ footHeightClass }">
-        <TheFoot />
+      <n-layout-footer v-if="baseSettings.showFoot" h-50px>
+        <TheFoot :class="footHeightClass" />
       </n-layout-footer>
     </n-layout>
   </n-layout>
