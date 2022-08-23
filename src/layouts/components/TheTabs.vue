@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  Tabs
+  <div h-full w-full>
+    The Tabs
+  </div>
 </template>

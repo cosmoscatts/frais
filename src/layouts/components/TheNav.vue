@@ -6,7 +6,6 @@ import {
   NavBell,
   NavBreadCrumb,
   NavFullScreen,
-  NavHamburger,
 } from './nav'
 
 // const { appMenus } = storeToRefs(usePermissionStore())
@@ -26,7 +25,6 @@ watchEffect(() => {
 <template>
   <div flex justify-between items-center pr-5 shadow="sm light-900 dark:dark-700">
     <Logo v-if="!isVertical" :class="shortLogo ? 'w-64px' : 'w-200px'" />
-    <NavHamburger v-if="isVertical" mx-4 />
     <NavBreadCrumb v-if="isVertical" mr-4 />
     <!-- <Menu v-if="!isVertical" :mode="mode" :metadata="appMenus" /> -->
     <div flex-auto />

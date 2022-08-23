@@ -9,6 +9,10 @@ import {
 } from '../components'
 import { appLayoutParams } from '~/config'
 
+const appStore = useAppStore()
+const { menuCollapsed, baseSettings } = storeToRefs(appStore)
+const { setMenuCollapsed, setMenuUnCollapsed } = appStore
+
 const {
   navHeight,
   tabHeight,
@@ -16,38 +20,61 @@ const {
   sideCollapsedWidth,
   footHeight,
 } = appLayoutParams
-const height = computed(() => {
-  return navHeight + footHeight
-})
 
-const appStore = useAppStore()
-const { menuCollapsed, baseSettings } = storeToRefs(appStore)
-const { toggleMenuCollapsed } = appStore
+// 计算内容区域需要减去的高度值
+const diffheight = computed(() => {
+  let height = navHeight
+  if (baseSettings.value.showTabs)
+    height += tabHeight
+  // if (baseSettings.value.showFoot)
+  //   height += footHeight
+  // border 边框的高度也需要考虑
+  return height + 1
+})
 </script>
 
 <template>
-  <n-layout has-sider h-screen w-screen>
+  <n-layout has-sider h-screen w-screen :native-scrollbar="false">
     <n-layout-sider
-      :collapsed="menuCollapsed"
+      bordered :position="baseSettings.fixNav ? 'absolute' : 'static'"
       show-trigger="bar"
       collapse-mode="width"
-      :collapsed-width="sideCollapsedWidth"
+      :collapsed="menuCollapsed"
       :width="sideWidth"
-      @collapse="toggleMenuCollapsed"
-      @expand="toggleMenuCollapsed"
+      :collapsed-width="sideCollapsedWidth"
+      :native-scrollbar="false"
+      @collapse="setMenuCollapsed"
+      @expand="setMenuUnCollapsed"
     >
       <TheSide />
     </n-layout-sider>
-    <n-layout>
-      <n-layout-header :style="{ height: `${navHeight}px` }">
-        <TheNav h-full w-full bg-transparent />
+    <n-layout :position="baseSettings.fixNav ? 'absolute' : 'static'">
+      <n-layout-header bordered :position="baseSettings.fixNav ? 'absolute' : 'static'">
+        <TheNav w-full bg-transparent :style="{ height: `${navHeight}px` }" />
+        <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
       </n-layout-header>
-      <n-layout-content :style="{ minHeight: `calc(100% - ${height}px)` }">
-        <TheMain />
-      </n-layout-content>
-      <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }">
-        <TheFoot h-full w-full />
-      </n-layout-footer>
+      <n-layout
+        :position="baseSettings.fixNav ? 'absolute' : 'static'"
+        :style="{
+          marginTop: `${
+            !baseSettings.fixNav
+              ? 0
+              : baseSettings.showTabs
+                ? navHeight + tabHeight + 1
+                : navHeight + 1
+          }px`,
+          minHeight: `calc(100% - ${diffheight}px)`,
+        }"
+        :native-scrollbar="false"
+      >
+        <n-layout-content>
+          <TheMain />
+          <div h-1000px />
+        </n-layout-content>
+        <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
+          <TheFoot h-full w-full />
+        </n-layout-footer>
+      </n-layout>
     </n-layout>
   </n-layout>
 </template>

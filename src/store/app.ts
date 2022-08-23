@@ -61,7 +61,7 @@ export const useAppStore = defineStore(
     }
 
     // 菜单是否折叠
-    const { bool: menuCollapsed, toggleBool: toggleMenuCollapsed } = useBoolean(false)
+    const { bool: menuCollapsed, setTrue: setMenuCollapsed, setFalse: setMenuUnCollapsed } = useBoolean(false)
 
     return {
       baseSettings,
@@ -69,7 +69,8 @@ export const useAppStore = defineStore(
       resetStageData,
       updateSettingsFromStageData,
       menuCollapsed,
-      toggleMenuCollapsed,
+      setMenuCollapsed,
+      setMenuUnCollapsed,
     }
   },
   {
