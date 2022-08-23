@@ -37,6 +37,7 @@ export interface ConfigSettingObject {
   layout: 'vertical' | 'horizontal'
   showLogo: boolean
   showTabs: boolean
+  showFoot: boolean
   showTransitionAnimation: boolean
   fixNav: boolean
   themePrimaryColor: string
@@ -67,6 +68,12 @@ export const configSettings: ConfigSettingObject = {
    * @default true
    */
   showTabs: true,
+  /**
+   * 是否显示底部栏
+   *
+   * @default true
+   */
+  showFoot: true,
   /**
    * 是否显示页面切换动画
    *

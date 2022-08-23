@@ -27,6 +27,7 @@ const {
   animation-name: scale;
   animation-duration: 1.5s;
   animation-timeline: box-move;
+  z-index: 10000;
 }
 .mask {
   position: absolute;
