@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
-import AppLoading from './components/AppLoading/index.vue'
+import BaseLayout from './layouts/base-layout/index.vue'
 
 const theme = computed(() => {
   return isDark.value
@@ -8,7 +8,6 @@ const theme = computed(() => {
     : null
 })
 const themeOverrides = ref()
-const toggleDark = useToggleDark
 
 const { loading: appLoading, startLoading, endLoading } = useLoading()
 startLoading()
@@ -27,12 +26,7 @@ useTimeoutFn(endLoading, 1000)
         :loading="appLoading"
       />
       <router-view />
-      <n-card h-400px>
-        1111
-        <button @click="toggleDark()">
-          切换
-        </button>
-      </n-card>
+      <BaseLayout />
     </naive-provider>
   </n-config-provider>
 </template>
