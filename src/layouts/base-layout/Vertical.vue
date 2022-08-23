@@ -10,12 +10,15 @@ import {
 import { appLayoutParams } from '~/config'
 
 const {
-  navHeight: { class: navHeightClass },
-  tabHeight: { class: tabHeightClass },
-  sideWidth: { value: sideWidthValue },
-  sideCollapsedWidth: { value: sideCollapsedWidthValue },
-  footHeight: { class: footHeightClass },
+  navHeight,
+  tabHeight,
+  sideWidth,
+  sideCollapsedWidth,
+  footHeight,
 } = appLayoutParams
+const height = computed(() => {
+  return navHeight + footHeight
+})
 
 const appStore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appStore)
@@ -28,22 +31,22 @@ const { toggleMenuCollapsed } = appStore
       :collapsed="menuCollapsed"
       show-trigger="bar"
       collapse-mode="width"
-      :collapsed-width="sideCollapsedWidthValue"
-      :width="sideWidthValue"
+      :collapsed-width="sideCollapsedWidth"
+      :width="sideWidth"
       @collapse="toggleMenuCollapsed"
       @expand="toggleMenuCollapsed"
     >
       <TheSide />
     </n-layout-sider>
     <n-layout>
-      <n-layout-header>
-        <TheNav w-full bg-transparent :class="navHeightClass" />
+      <n-layout-header :style="{ height: `${navHeight}px` }">
+        <TheNav h-full w-full bg-transparent />
       </n-layout-header>
-      <n-layout-content style="min-height: calc(100% - 114px)">
+      <n-layout-content :style="{ minHeight: `calc(100% - ${height}px)` }">
         <TheMain />
       </n-layout-content>
-      <n-layout-footer v-if="baseSettings.showFoot" h-50px>
-        <TheFoot :class="footHeightClass" />
+      <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }">
+        <TheFoot h-full w-full />
       </n-layout-footer>
     </n-layout>
   </n-layout>
