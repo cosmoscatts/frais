@@ -20,6 +20,22 @@ export const cacheAppSettings = true
  */
 export const defaultThemeMode = 'system'
 
+/**
+ * app 配置对象的类型
+ */
+export interface ConfigSettingObject {
+  layout: 'vertical' | 'horizontal'
+  showLogo: boolean
+  showTabs: boolean
+  showTransitionAnimation: boolean
+  fixNav: boolean
+  themePrimaryColor: string
+  TransitionAnimation: boolean
+  cacheTabs: boolean
+  tabShapeStyle: 'default' | 'chrome'
+  invertMenu: boolean
+}
+
 export const configSettings = {
   /**
    * 布局
@@ -64,7 +80,7 @@ export const configSettings = {
    *
    * @default
    */
-  TransitionAnimation: '',
+  transitionAnimation: 'slide',
   /**
    * 是否缓存多页签
    *
