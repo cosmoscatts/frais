@@ -1,17 +1,15 @@
 import { defaultThemeMode } from '~/config'
-const THEME_MODE_KEY = EnumStorageKey.themeMode
+import { wrapStorageKey } from '~/utils'
+import { appStorageKeyEnum } from '~/enum'
+
+const THEME_MODE_KEY = wrapStorageKey(appStorageKeyEnum.themeMode)
 
 /**
- * 主题的亮、暗模式
+ * 初始化主题的亮、暗模式
  */
-export const isDark = useDark()
-export const useToggleDark = useToggle(isDark)
-
-function initDark() {
-  if (themeMode === 'auto') {
-    const prefersDark = window.matchMedia
-                     && window.matchMedia('(prefers-color-scheme: dark)')
-                       .matches
+function initThemeMode() {
+  if (defaultThemeMode === 'auto') {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     localStorage.setItem(
       THEME_MODE_KEY,
       prefersDark
@@ -20,7 +18,7 @@ function initDark() {
     )
   }
   else {
-    localStorage.setItem(THEME_MODE_KEY, themeMode)
+    localStorage.setItem(THEME_MODE_KEY, defaultThemeMode)
   }
 
   return useDark({
@@ -30,21 +28,6 @@ function initDark() {
   })
 }
 
-export const isDark = initDark()
-export const toggleDark = useToggle(isDark)
-export const preferredDark = usePreferredDark()
+export const isDark = initThemeMode()
+export const useToggleDark = useToggle(isDark)
 
-/**
- * when the dark changed, we should
- * change the app theme immediately.
- */
-watchEffect(() => {
-  if (isDark.value) {
-    // set dark theme
-    document.body.setAttribute('arco-theme', 'dark')
-  }
-  else {
-    // back to light theme
-    document.body.removeAttribute('arco-theme')
-  }
-})

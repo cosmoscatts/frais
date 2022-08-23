@@ -1,8 +1,9 @@
 import type { UnwrapNestedRefs } from 'vue'
+import { wrapStorageKey } from './wrapStorageKey'
 import { appStorageKeyEnum } from '~/enum'
 import type { ConfigSettingObject } from '~/config'
 
-const APP_SETTINGS_KEY = appStorageKeyEnum.appSettings
+const APP_SETTINGS_KEY = wrapStorageKey(appStorageKeyEnum.appSettings)
 export function initAppSettings() {
   const appSettingsStorage = ref()
 

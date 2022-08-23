@@ -14,11 +14,11 @@ export const cacheAppSettings = true
  * 默认亮暗模式
  *  - 'dark': 暗色
  *  - 'light': 亮色
- *  - 'system': 跟随系统
+ *  - 'auto': 跟随系统
  *
- * @default: 'system'
+ * @default: 'auto'
  */
-export const defaultThemeMode = 'system'
+export const defaultThemeMode = 'auto'
 
 /**
  * app 配置对象的类型
