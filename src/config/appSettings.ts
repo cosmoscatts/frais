@@ -19,6 +19,12 @@ export const cacheAppSettings = true
  * @default: 'auto'
  */
 export const defaultThemeMode = 'auto'
+/**
+ * 菜单来源: 'front' | 'end'
+ *
+ * @default 'front'
+ */
+export const menuSource = 'front'
 
 /**
  * app 配置对象的类型
