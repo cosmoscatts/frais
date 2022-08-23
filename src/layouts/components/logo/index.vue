@@ -17,9 +17,9 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div v-if="baseSettings.showLogo" h-50px flex justify-center items-center>
-    <img src="https://www.naiveui.com/assets/naivelogo.93278402.svg" alt="" h-34px w-34px :class="menuCollapsed || hiddenTitle ? '' : 'mr-5'">
-    <h1 v-if="!menuCollapsed && !hiddenTitle" font="bold serif" text-2xl op50>
+  <div v-if="baseSettings.showLogo" h-64px flex justify-center items-center>
+    <img src="https://www.naiveui.com/assets/naivelogo.93278402.svg" alt="" h-34px w-34px :class="menuCollapsed || hiddenTitle ? '' : 'mr-2'">
+    <h1 v-if="!menuCollapsed && !hiddenTitle" font="bold sans" text-xl>
       {{ title }}
     </h1>
   </div>

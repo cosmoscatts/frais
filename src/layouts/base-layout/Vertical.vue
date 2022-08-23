@@ -12,7 +12,7 @@ import {
 <template>
   <n-layout has-sider h-screen w-screen>
     <n-layout-sider border="1 red">
-      海淀桥
+      <TheSide />
     </n-layout-sider>
     <n-layout>
       <n-layout-header>

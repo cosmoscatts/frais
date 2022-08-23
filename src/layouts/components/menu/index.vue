@@ -1,6 +1,6 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Component } from 'vue'
-import { NIcon, useMessage } from 'naive-ui'
+import { NEllipsis, NIcon, useMessage } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import {
   BookOutline as BookIcon,
@@ -12,14 +12,18 @@ function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
 
+function renderLabel(label: string) {
+  return () => h(NEllipsis, null, { default: () => '电灯熄灭 物换星移 泥牛入海' })
+}
+
 const menuOptions: MenuOption[] = [
   {
-    label: '且听风吟',
+    label: renderLabel('且听风吟'),
     key: 'hear-the-wind-sing',
     icon: renderIcon(BookIcon),
   },
   {
-    label: '1973年的弹珠玩具',
+    label: renderLabel('1973年的弹珠玩具'),
     key: 'pinball-1973',
     icon: renderIcon(BookIcon),
     disabled: true,
@@ -87,18 +91,10 @@ const menuOptions: MenuOption[] = [
   },
 ]
 
-export default defineComponent({
-  setup() {
-    const message = useMessage()
-    return {
-      menuOptions,
-      defaultExpandedKeys: ['dance-dance-dance', 'food'],
-      handleUpdateExpandedKeys(keys: string[]) {
-        message.info(`[onUpdate:expandedKeys]: ${JSON.stringify(keys)}`)
-      },
-    }
-  },
-})
+const defaultExpandedKeys = ['dance-dance-dance', 'food']
+function handleUpdateExpandedKeys(keys: string[]) {
+  // useMessage().info(`[onUpdate:expandedKeys]: ${JSON.stringify(keys)}`)
+}
 </script>
 
 <template>
