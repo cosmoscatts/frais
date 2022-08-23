@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import NavHamburger from '../widgets/NavHamburger.vue'
-import NavBreadCrumb from '../widgets/NavBreadCrumb.vue'
-import NavFullScreen from '../widgets/NavFullScreen.vue'
-import NavBell from '../widgets/NavBell.vue'
-import NavAvatar from '../widgets/NavAvatar.vue'
-import Logo from '../widgets/Logo.vue'
-// import Menu from '../widgets/Menu.vue'
+import NavBreadCrumb from './nav/NavBreadCrumb.vue'
+import NavFullScreen from './nav/NavFullScreen.vue'
+import NavHamburger from './nav/NavHamburger.vue'
+import NavBell from './nav/NavBell.vue'
+import NavAvatar from './nav/NavAvatar.vue'
+import Logo from './logo/Logo.vue'
+import Menu from './menu/Menu.vue'
 
 // const { appMenus } = storeToRefs(usePermissionStore())
 // const mode: 'vertical' | 'horizontal' | 'pop' | 'popButton' = 'horizontal'
@@ -31,7 +31,7 @@ watchEffect(() => {
     <div flex items-center>
       <a
         icon-btn text-lg i-carbon-logo-github mx-4
-        href="https://github.com/dud9/parfait"
+        href="https://github.com/dud9/petite"
         target="_blank" title="GitHub"
       />
       <NavBell mr-4 />

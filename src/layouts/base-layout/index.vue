@@ -2,9 +2,10 @@
 import BaseLayoutVertical from './BaseLayoutVertical.vue'
 import BaseLayoutHorizontal from './BaseLayoutHorizontal.vue'
 
-const { settings } = storeToRefs(useAppStore())
+const { baseSettings } = storeToRefs(useAppStore())
+// console.log('layout', baseSettings.value?.data)
 const component = computed(() => {
-  return settings.value?.layout === 'vertical'
+  return baseSettings.value?.data?.layout === 'vertical'
     ? BaseLayoutVertical
     : BaseLayoutHorizontal
 })

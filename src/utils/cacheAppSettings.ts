@@ -19,7 +19,7 @@ export function initAppSettings() {
 
   const updateSettingsFromStorage = (target: UnwrapNestedRefs<ConfigSettingObject>) => {
     const source = appSettingsStorage.value
-
+    console.log('target', target)
     if (!source || !Object.keys(source).length)
       return { ...target }
 

@@ -20,17 +20,19 @@ export const useAppStore = defineStore(
       data: { ...configSettings },
     })
 
-    const settings = computed(() => baseSettings.data)
-    const stageSettings = computed(() => baseSettings.stage)
-
     const init = () => {
       // 如果开启了缓存配置, 则从 storage 更新配置
-      if (cacheAppSettings) {
+      if (cacheAppSettings)
         initStorage()
-        baseSettings.data = updateSettingsFromStorage(reactive({
-          ...configSettings,
-        })) || { ...configSettings }
-      }
+      console.log(' init', updateSettingsFromStorage(reactive({
+        ...configSettings,
+      })))
+      console.log(baseSettings.data)
+      baseSettings.data = updateSettingsFromStorage(reactive({
+        ...configSettings,
+      })) || { ...configSettings }
+      console.log(baseSettings.data)
+
       // 根据主题主色调配置，生成颜色
       changeThemePrimaryColor(baseSettings.data?.themePrimaryColor)
     }
@@ -39,9 +41,12 @@ export const useAppStore = defineStore(
     // 初始化 app 设置项的暂存区
     const buildStageData = () => {
       const source = { ...baseSettings.data } as ConfigSettingObject
+      // console.log(baseSettings.data)
+      // console.log(source)
       baseSettings.stage = { ...source } || { ...configSettings }
     }
     buildStageData()
+    // console.log(baseSettings.stage)
 
     function resetStageData() {
       buildStageData()
@@ -67,8 +72,7 @@ export const useAppStore = defineStore(
     const { bool: menuCollapsed, toggleBool: toggleMenuCollapsed } = useBoolean(false)
 
     return {
-      settings,
-      stageSettings,
+      baseSettings,
       resetStageData,
       updateSettingsFromStageData,
       menuCollapsed,

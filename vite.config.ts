@@ -49,7 +49,7 @@ export default defineConfig({
     // your plugin installation
     Components({
       resolvers: [
-        NaiveUiResolver (),
+        NaiveUiResolver(),
       ],
       dts: 'src/components.d.ts',
     }),
