@@ -9,9 +9,9 @@ import Menu from './menu/Menu.vue'
 
 // const { appMenus } = storeToRefs(usePermissionStore())
 // const mode: 'vertical' | 'horizontal' | 'pop' | 'popButton' = 'horizontal'
-const { settings } = storeToRefs(useAppStore())
+const { baseSettings } = storeToRefs(useAppStore())
 const isVertical = computed(() => {
-  return settings.value?.layout === 'vertical'
+  return baseSettings.value?.layout === 'vertical'
 })
 const { width } = useWindowSize()
 let shortLogo = $ref(false)

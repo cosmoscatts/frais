@@ -1,4 +1,3 @@
-import type { UnwrapNestedRefs } from 'vue'
 import { wrapStorageKey } from './wrapStorageKey'
 import { appStorageKeyEnum } from '~/enum'
 import type { ConfigSettingObject } from '~/config'
@@ -17,11 +16,11 @@ export function initAppSettings() {
     appSettingsStorage.value = settings
   }
 
-  const updateSettingsFromStorage = (target: UnwrapNestedRefs<ConfigSettingObject>) => {
+  const updateSettingsFromStorage = (target: ConfigSettingObject) => {
     const source = appSettingsStorage.value
-    console.log('target', target)
+
     if (!source || !Object.keys(source).length)
-      return { ...target }
+      return { target }
 
     return {
       ...target,
