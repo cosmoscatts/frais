@@ -1,3 +1,6 @@
+/**
+ * 封装加载状态
+ */
 export function useLoading(initValue = false) {
   const {
     bool: loading,
