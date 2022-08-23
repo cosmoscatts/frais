@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
+import AppLoading from './components/AppLoading/index.vue'
 
 const theme = computed(() => {
-  return unref(isDark)
+  return isDark.value
     ? darkTheme
     : null
 })
 const themeOverrides = ref()
-const toggle = useToggle(isDark)
+const toggleDark = useToggleDark
+
+const { loading: appLoading, startLoading, endLoading } = useLoading()
+startLoading()
+useTimeoutFn(endLoading, 1000)
 </script>
 
 <template>
@@ -16,13 +21,15 @@ const toggle = useToggle(isDark)
     :theme-overrides="themeOverrides"
     :locale="zhCN"
     :date-locale="dateZhCN"
-    h-full w-full
   >
     <naive-provider>
+      <AppLoading
+        :loading="appLoading"
+      />
       <router-view />
       <n-card h-400px>
         1111
-        <button @click="toggle()">
+        <button @click="toggleDark()">
           切换
         </button>
       </n-card>
