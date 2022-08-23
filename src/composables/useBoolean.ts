@@ -13,8 +13,8 @@ export function useBoolean(initValue = false) {
     bool.value = false
   }
 
-  function toggle() {
-    setBool(!unref(bool))
+  function toggleBool() {
+    setBool(!bool.value)
   }
 
   return {
@@ -22,6 +22,6 @@ export function useBoolean(initValue = false) {
     setBool,
     setTrue,
     setFalse,
-    toggle,
+    toggleBool,
   }
 }
