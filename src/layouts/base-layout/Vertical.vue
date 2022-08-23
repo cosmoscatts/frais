@@ -7,21 +7,42 @@ import {
   TheSide,
   TheTabs,
 } from '../components'
+import { appLayoutParams } from '~/config'
+
+const {
+  navHeight: { class: navHeightClass },
+  tabHeight: { class: tabHeightClass },
+  sideWidth: { value: sideWidthValue },
+  sideCollapsedWidth: { value: sideCollapsedWidthValue },
+  footHeight: { class: footHeightClass },
+} = appLayoutParams
+
+const appStore = useAppStore()
+const { menuCollapsed } = storeToRefs(appStore)
+const { toggleMenuCollapsed } = appStore
 </script>
 
 <template>
   <n-layout has-sider h-screen w-screen>
-    <n-layout-sider>
+    <n-layout-sider
+      :collapsed="menuCollapsed"
+      show-trigger="bar"
+      collapse-mode="width"
+      :collapsed-width="sideCollapsedWidthValue"
+      :width="sideWidthValue"
+      @collapse="toggleMenuCollapsed"
+      @expand="toggleMenuCollapsed"
+    >
       <TheSide />
     </n-layout-sider>
     <n-layout>
       <n-layout-header>
-        <TheNav w-full h-64px bg-transparent />
+        <TheNav w-full bg-transparent :class="{ navHeightClass }" />
       </n-layout-header>
       <n-layout-content style="min-height: calc(100% - 114px)">
         <TheMain />
       </n-layout-content>
-      <n-layout-footer h-50px>
+      <n-layout-footer :class="{ footHeightClass }">
         <TheFoot />
       </n-layout-footer>
     </n-layout>

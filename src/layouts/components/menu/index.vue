@@ -8,6 +8,9 @@ import {
   WineOutline as WineIcon,
 } from '@vicons/ionicons5'
 
+const appStore = useAppStore()
+const { menuCollapsed } = storeToRefs(appStore)
+
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
@@ -99,6 +102,9 @@ function handleUpdateExpandedKeys(keys: string[]) {
 
 <template>
   <n-menu
+    :collapsed="menuCollapsed"
+    :collapsed-width="64"
+    :collapsed-icon-size="22"
     :options="menuOptions"
     :default-expanded-keys="defaultExpandedKeys"
     @update:expanded-keys="handleUpdateExpandedKeys"
