@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BaseLayoutVertical from './BaseLayoutVertical.vue'
-import BaseLayoutHorizontal from './BaseLayoutHorizontal.vue'
+import BaseLayoutVertical from './Vertical.vue'
+import BaseLayoutHorizontal from './Horizontal.vue'
 
 const { baseSettings } = storeToRefs(useAppStore())
 const component = computed(() => {

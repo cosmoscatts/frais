@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import NavBreadCrumb from './nav/NavBreadCrumb.vue'
-import NavFullScreen from './nav/NavFullScreen.vue'
-import NavHamburger from './nav/NavHamburger.vue'
-import NavBell from './nav/NavBell.vue'
-import NavAvatar from './nav/NavAvatar.vue'
-import Logo from './logo/Logo.vue'
-import Menu from './menu/Menu.vue'
+import { Logo } from './logo'
+// import { Menu } from './menu'
+import {
+  NavAvatar,
+  NavBell,
+  NavBreadCrumb,
+  NavFullScreen,
+  NavHamburger,
+} from './nav'
 
 // const { appMenus } = storeToRefs(usePermissionStore())
 // const mode: 'vertical' | 'horizontal' | 'pop' | 'popButton' = 'horizontal'
