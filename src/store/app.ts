@@ -1,29 +1,14 @@
-// import { baseSettingVars } from '~/config'
+import { cacheAppSettings, configSettings } from '~/config'
 
 export const useAppStore = defineStore(
   'appStore',
   () => {
-    // const { themeMode, ...restVars } = baseSettingVars
-    // const darkValue = themeMode === 'system'
-    //   ? ''
-    //   : ''
-    // the app theme mode
-    const {
-      bool: isDark,
-      setBool: toggleDark,
-    } = useBoolean()
-
-    // menu collapse state
-    const {
-      bool: menuCollapse,
-      setBool: toggleMenuCollapse,
-    } = useBoolean()
+    // 菜单是否折叠
+    const { bool: menuCollapsed, toggleBool: toggleMenuCollapsed } = useBoolean(false)
 
     return {
-      isDark,
-      menuCollapse,
-      toggleDark,
-      toggleMenuCollapse,
+      menuCollapsed,
+      toggleMenuCollapsed,
     }
   },
   {

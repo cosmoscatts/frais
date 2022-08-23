@@ -6,9 +6,9 @@ export const userStore = defineStore(
   () => {
     const user = ref<User>()
     /**
-     * update the new user.
+     * 更新用户
      *
-     * @param _user - new user
+     * @param _user - 新用户
      */
     function updateUser(_user: User) {
       if (!_user.avatar)
@@ -16,7 +16,7 @@ export const userStore = defineStore(
       user.value = _user
     }
     /**
-     * remove the user.
+     * 清空用户
      */
     function removeUser() {
       user.value = undefined

@@ -1,4 +1,4 @@
-export const APP_META = {
+export const appMeta = {
   name: 'Petite',
   description: '漂亮清新的 Vue3 后台模板',
   author: 'duende',
