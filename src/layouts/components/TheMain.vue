@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const appStore = useAppStore()
+const { settings } = storeToRefs(useAppStore())
 const animateName = computed(() => {
-  return appStore.settings.data?.showTransitionAnimation
-    ? appStore.settings.data?.transitionAnimation
+  return settings.value?.showTransitionAnimation
+    ? settings.value.transitionAnimation
     : undefined
 })
 </script>

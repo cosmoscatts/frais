@@ -12,7 +12,7 @@ export const useAppStore = defineStore(
     } = initAppSettings()
 
     // app 配置对象
-    const settings = reactive<{
+    const baseSettings = reactive<{
       stage?: ConfigSettingObject
       data?: ConfigSettingObject
     }>({
@@ -20,23 +20,26 @@ export const useAppStore = defineStore(
       data: { ...configSettings },
     })
 
+    const settings = computed(() => baseSettings.data)
+    const stageSettings = computed(() => baseSettings.stage)
+
     const init = () => {
       // 如果开启了缓存配置, 则从 storage 更新配置
       if (cacheAppSettings) {
         initStorage()
-        settings.data = updateSettingsFromStorage(reactive({
+        baseSettings.data = updateSettingsFromStorage(reactive({
           ...configSettings,
         })) || { ...configSettings }
       }
       // 根据主题主色调配置，生成颜色
-      changeThemePrimaryColor(settings.data?.themePrimaryColor)
+      changeThemePrimaryColor(baseSettings.data?.themePrimaryColor)
     }
     init()
 
     // 初始化 app 设置项的暂存区
     const buildStageData = () => {
-      const source = { ...settings.data } as ConfigSettingObject
-      settings.stage = { ...source } || { ...configSettings }
+      const source = { ...baseSettings.data } as ConfigSettingObject
+      baseSettings.stage = { ...source } || { ...configSettings }
     }
     buildStageData()
 
@@ -46,18 +49,18 @@ export const useAppStore = defineStore(
 
     // 从暂存区更新设置
     function updateSettingsFromStageData() {
-      const originThemePrimaryColor = settings.data?.themePrimaryColor
+      const originThemePrimaryColor = baseSettings.data?.themePrimaryColor
         || configSettings.themePrimaryColor
 
-      const source = { ...settings.stage } as ConfigSettingObject
-      settings.data = { ...source } || { ...configSettings }
+      const source = { ...baseSettings.stage } as ConfigSettingObject
+      baseSettings.data = { ...source } || { ...configSettings }
 
       // 如果主题主要色调发生改变，替换主色调
-      if (originThemePrimaryColor !== settings.data.themePrimaryColor)
-        changeThemePrimaryColor(settings.data?.themePrimaryColor)
+      if (originThemePrimaryColor !== baseSettings.data.themePrimaryColor)
+        changeThemePrimaryColor(baseSettings.data?.themePrimaryColor)
 
       if (cacheAppSettings)
-        cacheSettingsOnStorage({ ...settings.data })
+        cacheSettingsOnStorage({ ...baseSettings.data })
     }
 
     // 菜单是否折叠
@@ -65,6 +68,7 @@ export const useAppStore = defineStore(
 
     return {
       settings,
+      stageSettings,
       resetStageData,
       updateSettingsFromStageData,
       menuCollapsed,
