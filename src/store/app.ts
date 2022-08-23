@@ -50,7 +50,6 @@ export const useAppStore = defineStore(
     // 从暂存区更新设置
     function updateSettingsFromStageData() {
       const originThemePrimaryColor = baseSettings.value.themePrimaryColor
-
       baseSettings.value = { ...stageSettings.value } || { ...configSettings }
 
       // 如果主题主要色调发生改变，替换主色调

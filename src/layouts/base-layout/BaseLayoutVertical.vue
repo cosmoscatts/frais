@@ -4,15 +4,15 @@ import TheNav from '../components/TheNav.vue'
 
 <template>
   <n-layout h-screen w-screen>
-    <n-layout-header>
-      <TheNav />
-    </n-layout-header>
     <n-layout has-sider>
-      <n-layout-sider content-style="padding: 24px;">
+      <n-layout-sider>
         海淀桥
       </n-layout-sider>
-      <n-layout-content content-style="padding: 24px;">
-        平山道
+      <n-layout-content>
+        <n-layout-header>
+          <TheNav w-full h-50px bg-transparent />
+        </n-layout-header>
+        content
       </n-layout-content>
     </n-layout>
     <n-layout-footer>成府路</n-layout-footer>
