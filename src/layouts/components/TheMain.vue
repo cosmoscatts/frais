@@ -1,9 +1,8 @@
 <script setup lang="ts">
-const { cachedPageNames } = storeToRefs(useTagsStore())
-const { openAnimation, animationMode } = storeToRefs(useAppStore())
+const appStore = useAppStore()
 const animateName = computed(() => {
-  return unref(openAnimation)
-    ? unref(animationMode)
+  return appStore.settings.data?.showTransitionAnimation
+    ? appStore.settings.data?.transitionAnimation
     : undefined
 })
 </script>
@@ -11,7 +10,7 @@ const animateName = computed(() => {
 <template>
   <RouterView v-slot="{ Component, route }">
     <Transition :name="animateName" mode="out-in" appear>
-      <KeepAlive :include="cachedPageNames">
+      <KeepAlive :include="[]">
         <component :is="Component" :key="route.fullPath" />
       </KeepAlive>
     </Transition>
