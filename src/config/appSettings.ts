@@ -86,11 +86,11 @@ export const configSettings: ConfigSettingObject = {
    */
   themePrimaryColor: '#63E2B7',
   /**
-   * 页面切换动画类型
+   * 页面切换动画类型 - 'fade-slide' | 'fade' | 'fade-bottom' | 'fade-scale' | 'zoom-fade' | 'zoom-out'
    *
-   * @default
+   * @default 'fade-slide'
    */
-  transitionAnimation: 'slide',
+  transitionAnimation: 'fade-slide',
   /**
    * 是否缓存多页签
    *

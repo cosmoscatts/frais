@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// TODO 缓存页面
 const { settings } = storeToRefs(useAppStore())
 const animateName = computed(() => {
   return settings.value?.showTransitionAnimation
