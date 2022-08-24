@@ -4,7 +4,7 @@ import { Menu } from './menu'
 </script>
 
 <template>
-  <div flex="~ col" justify-center of-hidden>
+  <div flex="x-center col" of-hidden>
     <Logo />
     <Menu />
   </div>

@@ -21,13 +21,14 @@ useTimeoutFn(endLoading, 1000)
     :locale="zhCN"
     :date-locale="dateZhCN"
   >
-    <naive-provider>
-      <AppLoading
-        :loading="appLoading"
-      />
+    <n-global-style />
+    <AppLoading
+      :loading="appLoading"
+    />
+    <n-loading-bar-provider>
       <router-view />
       <BaseLayout />
-    </naive-provider>
+    </n-loading-bar-provider>
   </n-config-provider>
 </template>
 

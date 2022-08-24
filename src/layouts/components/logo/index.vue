@@ -18,7 +18,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div v-if="baseSettings.showLogo" flex justify-center items-center :style="{ height: `${navHeight}px` }">
+  <div v-if="baseSettings.showLogo" flex-center :style="{ height: `${navHeight}px` }">
     <img
       src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
       alt="" h-34px w-34px

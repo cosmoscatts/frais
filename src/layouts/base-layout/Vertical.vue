@@ -41,7 +41,7 @@ const refContentWrapper = ref()
 </script>
 
 <template>
-  <n-layout has-sider h-screen w-screen of-hidden>
+  <n-layout has-sider hw-screen of-hidden>
     <n-layout-sider
       bordered position="absolute"
       :show-trigger="baseSettings.sideCollapsedTriggerStyle"
@@ -91,7 +91,7 @@ const refContentWrapper = ref()
           <div h-1500px />
         </n-layout-content>
         <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
-          <TheFoot h-full w-full />
+          <TheFoot hw-full />
         </n-layout-footer>
         <n-back-top
           :listen-to="refContentWrapper"
