@@ -1,5 +1,6 @@
 <script  setup lang="ts">
 import {
+  BackTop,
   TheFoot,
   TheMain,
   TheNav,
@@ -21,6 +22,7 @@ const {
   footHeight,
   backTopRight,
   backTopBottom,
+  backTopvisibilityHeight,
 } = appLayoutParams
 
 // 计算内容区域需要减去的高度值
@@ -43,9 +45,9 @@ const backTopTarget = computed(() => {
 </script>
 
 <template>
-  <n-layout has-sider h-screen w-screen :native-scrollbar="false">
+  <n-layout has-sider h-screen w-screen of-hidden>
     <n-layout-sider
-      bordered :position="baseSettings.fixNav ? 'absolute' : 'static'"
+      bordered position="absolute"
       show-trigger="bar"
       collapse-mode="width"
       :collapsed="menuCollapsed"
@@ -58,16 +60,16 @@ const backTopTarget = computed(() => {
       <TheSide />
     </n-layout-sider>
     <n-layout
-      ref="refMainWrapper"
-      :position="baseSettings.fixNav ? 'absolute' : 'static'"
+      ref="refMainWrapper" of-auto
+      position="absolute"
       :style="{
         width: `calc(100% - ${menuCollapsed ? sideCollapsedWidth : sideWidth})px`,
-        left: `${baseSettings.fixNav
-          ? menuCollapsed
-            ? sideCollapsedWidth
-            : sideWidth
-          : 0}px`,
+        left: `${menuCollapsed
+          ? sideCollapsedWidth
+          : sideWidth
+        }px`,
       }"
+      :native-scrollbar="false"
     >
       <n-layout-header bordered :position="baseSettings.fixNav ? 'absolute' : 'static'">
         <TheNav w-full bg-transparent :style="{ height: `${navHeight}px` }" />
@@ -90,13 +92,19 @@ const backTopTarget = computed(() => {
       >
         <n-layout-content>
           <TheMain />
-          <div h-1000px />
+          <div h-1500px />
         </n-layout-content>
         <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
           <TheFoot h-full w-full />
         </n-layout-footer>
+        <n-back-top
+
+          :to="backTopTarget"
+          :right="backTopRight"
+          :bottom="backTopBottom"
+          :visibility-height="backTopvisibilityHeight"
+        />
       </n-layout>
-      <n-back-top :listen-to="backTopTarget" :right="backTopRight" :bottom="backTopBottom" />
     </n-layout>
   </n-layout>
 </template>

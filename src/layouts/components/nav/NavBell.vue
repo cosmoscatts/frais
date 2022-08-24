@@ -3,5 +3,7 @@
 </script>
 
 <template>
-  NavBell
+  <div>
+    NavBell
+  </div>
 </template>
