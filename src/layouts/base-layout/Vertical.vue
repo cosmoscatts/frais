@@ -19,6 +19,8 @@ const {
   sideWidth,
   sideCollapsedWidth,
   footHeight,
+  backTopRight,
+  backTopBottom,
 } = appLayoutParams
 
 // 计算内容区域需要减去的高度值
@@ -28,6 +30,15 @@ const diffheight = computed(() => {
     height += tabHeight
   // border 边框的高度也需要考虑
   return height + 1
+})
+
+// 设置 backTop 的监听目标
+const refMainWrapper = ref()
+const refContentWrapper = ref()
+const backTopTarget = computed(() => {
+  return baseSettings.value.fixNav
+    ? refContentWrapper.value
+    : refMainWrapper.value
 })
 </script>
 
@@ -47,6 +58,7 @@ const diffheight = computed(() => {
       <TheSide />
     </n-layout-sider>
     <n-layout
+      ref="refMainWrapper"
       :position="baseSettings.fixNav ? 'absolute' : 'static'"
       :style="{
         width: `calc(100% - ${menuCollapsed ? sideCollapsedWidth : sideWidth})px`,
@@ -62,6 +74,7 @@ const diffheight = computed(() => {
         <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
       </n-layout-header>
       <n-layout
+        ref="refContentWrapper"
         :position="baseSettings.fixNav ? 'absolute' : 'static'"
         :style="{
           marginTop: `${
@@ -83,6 +96,7 @@ const diffheight = computed(() => {
           <TheFoot h-full w-full />
         </n-layout-footer>
       </n-layout>
+      <n-back-top :listen-to="backTopTarget" :right="backTopRight" :bottom="backTopBottom" />
     </n-layout>
   </n-layout>
 </template>

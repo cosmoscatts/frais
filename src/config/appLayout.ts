@@ -13,7 +13,7 @@ export const appLayoutParams = {
   /** 底部高度 */
   footHeight: 50,
   /** backTop 距离页面右部的高度 */
-  backTopRight: 50,
+  backTopRight: 40,
   /** backTop 距离页面底部的高度 */
   backTopBottom: 200,
 }
