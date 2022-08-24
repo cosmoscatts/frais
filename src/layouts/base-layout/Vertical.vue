@@ -7,7 +7,7 @@ import {
   TheSide,
   TheTabs,
 } from '../components'
-import { appLayoutParams } from '~/config'
+import { appLayoutParams, showAppSettings } from '~/config'
 
 const appStore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appStore)
@@ -25,7 +25,7 @@ const {
 } = appLayoutParams
 
 // 计算内容区域需要减去的高度值
-const diffheight = computed(() => {
+const diffHeight = computed(() => {
   let height = navHeight
   if (baseSettings.value.showTabs)
     height += tabHeight
@@ -44,7 +44,7 @@ const refContentWrapper = ref()
   <n-layout has-sider h-screen w-screen of-hidden>
     <n-layout-sider
       bordered position="absolute"
-      show-trigger="bar"
+      :show-trigger="baseSettings.sideCollapsedTriggerStyle"
       collapse-mode="width"
       :collapsed="menuCollapsed"
       :width="sideWidth"
@@ -56,7 +56,7 @@ const refContentWrapper = ref()
       <TheSide />
     </n-layout-sider>
     <n-layout
-      ref="refMainWrapper" of-auto
+      ref="refMainWrapper" of="x-hidden y-auto"
       position="absolute"
       :style="{
         width: `calc(100% - ${menuCollapsed ? sideCollapsedWidth : sideWidth})px`,
@@ -82,7 +82,7 @@ const refContentWrapper = ref()
                 ? navHeight + tabHeight + 1
                 : navHeight + 1
           }px`,
-          minHeight: `calc(100% - ${diffheight}px)`,
+          minHeight: `calc(100% - ${diffHeight}px)`,
         }"
         :native-scrollbar="false"
       >
@@ -107,6 +107,6 @@ const refContentWrapper = ref()
         :visibility-height="backTopvisibilityHeight"
       />
     </n-layout>
-    <TheSettings />
+    <TheSettings v-if="showAppSettings" />
   </n-layout>
 </template>

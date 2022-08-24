@@ -21,10 +21,10 @@ watchEffect(() => {
   <div v-if="baseSettings.showLogo" flex justify-center items-center :style="{ height: `${navHeight}px` }">
     <img
       src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
-      alt="" h-34px w-34px :class="menuCollapsed || hiddenTitle ? '' : 'mr-2'"
+      alt="" h-34px w-34px
     >
-    <h1 v-if="!menuCollapsed && !hiddenTitle" font="bold sans" text-lg>
+    <span v-if="!menuCollapsed && !hiddenTitle" font="bold sans" pl-8px text-16px>
       {{ title }}
-    </h1>
+    </span>
   </div>
 </template>
