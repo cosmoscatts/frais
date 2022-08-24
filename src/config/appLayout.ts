@@ -17,6 +17,6 @@ export const appLayoutParams = {
   /** backTop 距离页面底部的高度 */
   backTopBottom: 200,
   /** backTop 滚动时触发显示回到顶部的高度 */
-  backTopvisibilityHeight: 180,
+  backTopvisibilityHeight: 250,
 }
 
