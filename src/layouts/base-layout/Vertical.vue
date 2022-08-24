@@ -1,6 +1,5 @@
 <script  setup lang="ts">
 import {
-  BackTop,
   TheFoot,
   TheMain,
   TheNav,
@@ -106,5 +105,6 @@ const backTopTarget = computed(() => {
         />
       </n-layout>
     </n-layout>
+    <TheSettings />
   </n-layout>
 </template>

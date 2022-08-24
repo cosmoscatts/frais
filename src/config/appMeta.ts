@@ -1,3 +1,6 @@
+/**
+ * 项目的一些基本信息
+ */
 export const appMeta = {
   name: 'Petite',
   title: 'Petite Vue Template',
