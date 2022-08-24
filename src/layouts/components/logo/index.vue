@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { appMeta } from '~/config'
+import { appLayoutParams, appMeta } from '~/config'
 
+const { navHeight } = appLayoutParams
 const title = computed(() => appMeta.title)
 const appstore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appstore)
-const { setMenuCollapsed } = appstore
+const { setMenuUnCollapsed } = appstore
 const { width } = useWindowSize()
 let hiddenTitle = $ref(false)
 watchEffect(() => {
@@ -12,14 +13,17 @@ watchEffect(() => {
   hiddenTitle = width.value < 1200
   // 当页面布局为水平时，重置菜单折叠标志
   if (baseSettings.value.layout === 'horizontal')
-    setMenuCollapsed()
+    setMenuUnCollapsed()
 })
 </script>
 
 <template>
-  <div v-if="baseSettings.showLogo" h-full flex justify-center items-center>
-    <img src="https://www.naiveui.com/assets/naivelogo.93278402.svg" alt="" h-34px w-34px :class="menuCollapsed || hiddenTitle ? '' : 'mr-2'">
-    <h1 v-if="!menuCollapsed && !hiddenTitle" font="bold sans" text-xl>
+  <div v-if="baseSettings.showLogo" flex justify-center items-center :style="{ height: `${navHeight}px` }">
+    <img
+      src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
+      alt="" h-34px w-34px :class="menuCollapsed || hiddenTitle ? '' : 'mr-2'"
+    >
+    <h1 v-if="!menuCollapsed && !hiddenTitle" font="bold sans" text-lg>
       {{ title }}
     </h1>
   </div>
