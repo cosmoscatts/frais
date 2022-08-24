@@ -1,5 +1,28 @@
 <script setup lang="ts">
 import { MdCash } from '@vicons/ionicons4'
+import type { RouteLocationMatched } from 'vue-router'
+
+let metadata = $ref<string[]>()
+const route = useRoute()
+
+// 从路由获取面包屑数据
+function getBreadCrumbs() {
+  metadata = []
+  const matched = route.matched.filter((i: RouteLocationMatched) => i.meta && i.meta.title)
+  if (!matched.length)
+    return
+  metadata = matched.map(i => i.meta.title as string)
+}
+getBreadCrumbs()
+
+watch(
+  () => route.path,
+  (path) => {
+    if (path.startsWith('/redirect/'))
+      return
+    getBreadCrumbs()
+  },
+)
 </script>
 
 <template>

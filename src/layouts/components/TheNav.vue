@@ -26,7 +26,7 @@ watchEffect(() => {
 <template>
   <div flex justify-between items-center pr-5 shadow="sm light-900 dark:dark-700">
     <Logo v-if="!isVerticalLayout" :class="shortLogo ? 'w-64px' : 'w-200px'" />
-    <NavBreadCrumb v-if="isVerticalLayout" mr-4 />
+    <NavBreadCrumb v-if="isVerticalLayout" mx-4 />
     <!-- <Menu v-if="!isVertical" :mode="mode" :metadata="appMenus" /> -->
     <div flex-auto />
     <div flex items-center>
