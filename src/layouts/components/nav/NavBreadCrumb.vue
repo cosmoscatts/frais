@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MdCash } from '@vicons/ionicons5'
+import { MdCash } from '@vicons/ionicons4'
 </script>
 
 <template>

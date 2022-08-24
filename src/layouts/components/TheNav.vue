@@ -11,21 +11,22 @@ import {
 // const { appMenus } = storeToRefs(usePermissionStore())
 // const mode: 'vertical' | 'horizontal' | 'pop' | 'popButton' = 'horizontal'
 const { baseSettings } = storeToRefs(useAppStore())
-const isVertical = computed(() => {
+// 判断是否为垂直布局
+const isVerticalLayout = computed(() => {
   return baseSettings.value?.layout === 'vertical'
 })
 const { width } = useWindowSize()
 let shortLogo = $ref(false)
 watchEffect(() => {
-  if (!isVertical.value)
+  if (!isVerticalLayout.value)
     shortLogo = width.value < 1200
 })
 </script>
 
 <template>
   <div flex justify-between items-center pr-5 shadow="sm light-900 dark:dark-700">
-    <Logo v-if="!isVertical" :class="shortLogo ? 'w-64px' : 'w-200px'" />
-    <NavBreadCrumb v-if="isVertical" mr-4 />
+    <Logo v-if="!isVerticalLayout" :class="shortLogo ? 'w-64px' : 'w-200px'" />
+    <NavBreadCrumb v-if="isVerticalLayout" mr-4 />
     <!-- <Menu v-if="!isVertical" :mode="mode" :metadata="appMenus" /> -->
     <div flex-auto />
     <div flex items-center>

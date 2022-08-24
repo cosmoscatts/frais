@@ -26,8 +26,6 @@ const diffheight = computed(() => {
   let height = navHeight
   if (baseSettings.value.showTabs)
     height += tabHeight
-  // if (baseSettings.value.showFoot)
-  //   height += footHeight
   // border 边框的高度也需要考虑
   return height + 1
 })
@@ -48,7 +46,17 @@ const diffheight = computed(() => {
     >
       <TheSide />
     </n-layout-sider>
-    <n-layout :position="baseSettings.fixNav ? 'absolute' : 'static'">
+    <n-layout
+      :position="baseSettings.fixNav ? 'absolute' : 'static'"
+      :style="{
+        width: `calc(100% - ${menuCollapsed ? sideCollapsedWidth : sideWidth})px`,
+        left: `${baseSettings.fixNav
+          ? menuCollapsed
+            ? sideCollapsedWidth
+            : sideWidth
+          : 0}px`,
+      }"
+    >
       <n-layout-header bordered :position="baseSettings.fixNav ? 'absolute' : 'static'">
         <TheNav w-full bg-transparent :style="{ height: `${navHeight}px` }" />
         <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
