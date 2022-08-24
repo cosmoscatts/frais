@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
+import { type GlobalThemeOverrides, darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import BaseLayout from './layouts/base-layout/index.vue'
 
 const theme = computed(() => {
@@ -7,7 +7,14 @@ const theme = computed(() => {
     ? darkTheme
     : null
 })
-const themeOverrides = ref()
+const themeOverrides: GlobalThemeOverrides = {
+  common: {
+    primaryColor: 'red',
+  },
+  LoadingBar: {
+    colorLoading: '#63E2B7',
+  },
+}
 
 const { loading: appLoading, startLoading, endLoading } = useLoading()
 startLoading()
@@ -26,7 +33,7 @@ useTimeoutFn(endLoading, 1000)
       :loading="appLoading"
     />
     <n-loading-bar-provider>
-      <router-view />
+      <RouterView />
       <BaseLayout />
     </n-loading-bar-provider>
   </n-config-provider>

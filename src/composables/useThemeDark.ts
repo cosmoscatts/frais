@@ -1,5 +1,5 @@
 import { defaultThemeMode } from '~/config'
-import { wrapStorageKey } from '~/utils'
+import { getNaiveUiCommonColors, wrapStorageKey } from '~/utils'
 import { appStorageKeyEnum } from '~/enum'
 
 const THEME_MODE_KEY = wrapStorageKey(appStorageKeyEnum.themeMode)
@@ -30,4 +30,4 @@ function initThemeMode() {
 
 export const isDark = initThemeMode()
 export const useToggleDark = useToggle(isDark)
-
+watch(isDark, getNaiveUiCommonColors)
