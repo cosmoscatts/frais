@@ -1,7 +1,17 @@
 <script setup lang="ts">
-
+import { MdCash } from '@vicons/ionicons5'
 </script>
 
 <template>
-  面包屑
+  <n-breadcrumb separator=">">
+    <n-breadcrumb-item>
+      <n-icon><MdCash /></n-icon> 北京总行
+    </n-breadcrumb-item>
+    <n-breadcrumb-item>
+      <n-icon><MdCash /></n-icon> 天津分行
+    </n-breadcrumb-item>
+    <n-breadcrumb-item>
+      <n-icon><MdCash /></n-icon> 平山道支行
+    </n-breadcrumb-item>
+  </n-breadcrumb>
 </template>

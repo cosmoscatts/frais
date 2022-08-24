@@ -9,7 +9,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppLoading: typeof import('./components/AppLoading.vue')['default']
     DarkToggle: typeof import('./components/DarkToggle.vue')['default']
+    NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
+    NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NIcon: typeof import('naive-ui')['NIcon']
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutContent: typeof import('naive-ui')['NLayoutContent']
     NLayoutFooter: typeof import('naive-ui')['NLayoutFooter']

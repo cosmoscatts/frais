@@ -10,6 +10,7 @@ specifiers:
   '@unocss/preset-wind': ^0.45.12
   '@unocss/reset': ^0.45.12
   '@vicons/carbon': ^0.12.0
+  '@vicons/ionicons4': ^0.12.0
   '@vicons/ionicons5': ^0.12.0
   '@vitejs/plugin-vue': ^3.0.3
   '@vueuse/components': ^9.1.1
@@ -59,6 +60,7 @@ devDependencies:
   '@unocss/preset-icons': registry.npmmirror.com/@unocss/preset-icons/0.45.12
   '@unocss/preset-wind': registry.npmmirror.com/@unocss/preset-wind/0.45.12
   '@vicons/carbon': registry.npmmirror.com/@vicons/carbon/0.12.0
+  '@vicons/ionicons4': registry.npmmirror.com/@vicons/ionicons4/0.12.0
   '@vicons/ionicons5': registry.npmmirror.com/@vicons/ionicons5/0.12.0
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/3.0.3_vite@3.0.9+vue@3.2.37
   eslint: registry.npmmirror.com/eslint/8.22.0
@@ -939,6 +941,12 @@ packages:
   registry.npmmirror.com/@vicons/carbon/0.12.0:
     resolution: {integrity: sha512-kCOgr/ZOhZzoiFLJ8pwxMa2TMxrkCUOA22qExPabus35F4+USqzcsxaPoYtqRd9ROOYiHrSqwapak/ywF0D9bg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vicons/carbon/-/carbon-0.12.0.tgz}
     name: '@vicons/carbon'
+    version: 0.12.0
+    dev: true
+
+  registry.npmmirror.com/@vicons/ionicons4/0.12.0:
+    resolution: {integrity: sha512-i+7YwlpCrqD6m9esbZLy1bpVQlh4CKugtS3OzgfNw6BLTQQK6HT7drktaJgcESj/BTr4avdNbAtMQXx56wSVMg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vicons/ionicons4/-/ionicons4-0.12.0.tgz}
+    name: '@vicons/ionicons4'
     version: 0.12.0
     dev: true
 
