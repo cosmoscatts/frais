@@ -86,7 +86,7 @@ export const configSettings: ConfigSettingObject = {
    *
    * @default true
    */
-  fixNav: false,
+  fixNav: true,
   /**
    * 主题主要色调
    *

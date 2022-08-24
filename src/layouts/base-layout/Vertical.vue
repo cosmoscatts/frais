@@ -34,13 +34,10 @@ const diffheight = computed(() => {
 })
 
 // 设置 backTop 的监听目标
+// fixNav = true 即固定页头时，target 为 refContentWrapper
+// 否则为 refMainWrapper
 const refMainWrapper = ref()
 const refContentWrapper = ref()
-const backTopTarget = computed(() => {
-  return baseSettings.value.fixNav
-    ? refContentWrapper.value
-    : refMainWrapper.value
-})
 </script>
 
 <template>
@@ -97,13 +94,18 @@ const backTopTarget = computed(() => {
           <TheFoot h-full w-full />
         </n-layout-footer>
         <n-back-top
-
-          :to="backTopTarget"
+          :listen-to="refContentWrapper"
           :right="backTopRight"
           :bottom="backTopBottom"
           :visibility-height="backTopvisibilityHeight"
         />
       </n-layout>
+      <n-back-top
+        :listen-to="refMainWrapper"
+        :right="backTopRight"
+        :bottom="backTopBottom"
+        :visibility-height="backTopvisibilityHeight"
+      />
     </n-layout>
     <TheSettings />
   </n-layout>
