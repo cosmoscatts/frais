@@ -45,6 +45,7 @@ export interface ConfigSettingObject {
   cacheTabs: boolean
   tabShapeStyle: 'default' | 'chrome'
   invertMenu: boolean
+  sideCollapsedTriggerStyle: 'bar' | 'arrow-circle'
 }
 
 export const configSettings: ConfigSettingObject = {
@@ -118,4 +119,10 @@ export const configSettings: ConfigSettingObject = {
    * @default false
    */
   invertMenu: false,
+  /**
+   * 侧边栏折叠触发器样式
+   *  - 'bar'
+   *  - 'arrow-circle'
+   */
+  sideCollapsedTriggerStyle: 'bar',
 }
