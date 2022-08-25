@@ -32,7 +32,7 @@ export const useAppStore = defineStore(
       }
 
       // 根据主题主色调配置，生成颜色
-      changeThemePrimaryColor(baseSettings.value.themePrimaryColor)
+      // changeThemePrimaryColor(baseSettings.value.themePrimaryColor)
     }
     init()
 
@@ -53,8 +53,8 @@ export const useAppStore = defineStore(
       baseSettings.value = { ...stageSettings.value } || { ...configSettings }
 
       // 如果主题主要色调发生改变，替换主色调
-      if (originThemePrimaryColor !== baseSettings.value.themePrimaryColor)
-        changeThemePrimaryColor(baseSettings.value.themePrimaryColor)
+      // if (originThemePrimaryColor !== baseSettings.value.themePrimaryColor)
+      //   changeThemePrimaryColor(baseSettings.value.themePrimaryColor)
 
       if (cacheAppSettings)
         cacheSettingsOnStorage({ ...baseSettings.value })
