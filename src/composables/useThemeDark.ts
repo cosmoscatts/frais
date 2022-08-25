@@ -6,8 +6,9 @@ const THEME_MODE_KEY = wrapStorageKey(appStorageKeyEnum.themeMode)
 
 /**
  * 初始化主题的亮、暗模式
+ * 模式为 `auto` 则需要判断当前系统的模式
  */
-function initThemeMode() {
+function initThemeDarkMode() {
   if (defaultThemeMode === 'auto') {
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     localStorage.setItem(
@@ -28,6 +29,6 @@ function initThemeMode() {
   })
 }
 
-export const isDark = initThemeMode()
+export const isDark = initThemeDarkMode()
 export const useToggleDark = useToggle(isDark)
 
