@@ -17,6 +17,7 @@ specifiers:
   '@vueuse/core': ^9.1.1
   '@vueuse/head': ^0.7.9
   axios: ^0.27.2
+  colord: ^2.9.3
   critters: ^0.0.16
   dayjs: ^1.11.5
   eslint: ^8.22.0
@@ -44,6 +45,7 @@ dependencies:
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/9.1.1_vue@3.2.37
   '@vueuse/head': registry.npmmirror.com/@vueuse/head/0.7.9_vue@3.2.37
   axios: registry.npmmirror.com/axios/0.27.2
+  colord: registry.npmmirror.com/colord/2.9.3
   critters: registry.npmmirror.com/critters/0.0.16
   dayjs: registry.npmmirror.com/dayjs/1.11.5
   nprogress: registry.npmmirror.com/nprogress/0.2.0
@@ -1508,6 +1510,12 @@ packages:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/color-name/-/color-name-1.1.4.tgz}
     name: color-name
     version: 1.1.4
+
+  registry.npmmirror.com/colord/2.9.3:
+    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/colord/-/colord-2.9.3.tgz}
+    name: colord
+    version: 2.9.3
+    dev: false
 
   registry.npmmirror.com/colorette/2.0.19:
     resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/colorette/-/colorette-2.0.19.tgz}

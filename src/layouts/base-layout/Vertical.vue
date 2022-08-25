@@ -1,4 +1,5 @@
 <script  setup lang="ts">
+import { commonDark, commonLight } from 'naive-ui'
 import {
   TheFoot,
   TheMain,
@@ -8,6 +9,8 @@ import {
   TheTabs,
 } from '../components'
 import { appLayoutParams, showAppSettings } from '~/config'
+
+import { addColorAlpha, createHoverColor, createPressedColor } from '~/utils'
 
 const appStore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appStore)
@@ -38,6 +41,15 @@ const diffHeight = computed(() => {
 // 否则为 refMainWrapper
 const refMainWrapper = ref()
 const refContentWrapper = ref()
+
+const primaryColorHover = createHoverColor('#63E2B7')
+const primaryColorPressed = createPressedColor('#63E2B7')
+const primaryColorPressed2 = addColorAlpha('#63E2B7', 0.05)
+
+console.log(primaryColorHover)
+console.log(primaryColorPressed)
+
+console.log(commonDark)
 </script>
 
 <template>
@@ -90,9 +102,27 @@ const refContentWrapper = ref()
           <TheMain />
           <div h-1500px>
             <n-space>
+              <div h-30px w-30px :style="{ backgroundColor: primaryColorHover }" />
+              <div h-30px w-30px :style="{ backgroundColor: primaryColorPressed }" />
+              <div h-30px w-30px :style="{ backgroundColor: primaryColorPressed2 }" />
+
               <n-button type="primary">
                 Primary
               </n-button>
+            </n-space>
+            <n-space>
+              浅色
+              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColor }" />
+              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColorHover }" />
+              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColorPressed }" />
+              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColorSuppl }" />
+            </n-space>
+            <n-space>
+              深色
+              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColor }" />
+              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColorHover }" />
+              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColorPressed }" />
+              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColorSuppl }" />
             </n-space>
             <n-space>
               <n-tag :bordered="false">
