@@ -26,6 +26,7 @@ specifiers:
   nprogress: ^0.2.0
   pinia: ^2.0.20
   pinia-plugin-persist-uni: ^1.1.5
+  seemly: ^0.3.6
   typescript: ^4.7.4
   unocss: ^0.45.12
   unplugin-auto-import: ^0.11.2
@@ -48,6 +49,7 @@ dependencies:
   nprogress: registry.npmmirror.com/nprogress/0.2.0
   pinia: registry.npmmirror.com/pinia/2.0.20_j6bzmzd4ujpabbp5objtwxyjp4
   pinia-plugin-persist-uni: registry.npmmirror.com/pinia-plugin-persist-uni/1.1.5_pinia@2.0.20+vue@3.2.37
+  seemly: registry.npmmirror.com/seemly/0.3.6
   vue: registry.npmmirror.com/vue/3.2.37
   vue-router: registry.npmmirror.com/vue-router/4.1.2_vue@3.2.37
 
@@ -4365,7 +4367,6 @@ packages:
     resolution: {integrity: sha512-lEV5VB8BUKTo/AfktXJcy+JeXns26ylbMkIUco8CYREsQijuz4mrXres2Q+vMLdwkuLxJdIPQ8IlCIxLYm71Yw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/seemly/-/seemly-0.3.6.tgz}
     name: seemly
     version: 0.3.6
-    dev: true
 
   registry.npmmirror.com/semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/semver/-/semver-5.7.1.tgz}
