@@ -2,9 +2,9 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': ^0.26.1
-  '@iconify/json': ^2.1.96
+  '@iconify/json': ^2.1.97
   '@types/markdown-it-link-attributes': ^3.0.1
-  '@types/node': ^18.7.11
+  '@types/node': ^18.7.13
   '@types/nprogress': ^0.2.0
   '@unocss/preset-icons': ^0.45.12
   '@unocss/preset-wind': ^0.45.12
@@ -53,9 +53,9 @@ dependencies:
 
 devDependencies:
   '@antfu/eslint-config': registry.npmmirror.com/@antfu/eslint-config/0.26.1_4rv7y5c6xz3vfxwhbrcxxi73bq
-  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.96
+  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.97
   '@types/markdown-it-link-attributes': registry.npmmirror.com/@types/markdown-it-link-attributes/3.0.1
-  '@types/node': registry.npmmirror.com/@types/node/18.7.11
+  '@types/node': registry.npmmirror.com/@types/node/18.7.13
   '@types/nprogress': registry.npmmirror.com/@types/nprogress/0.2.0
   '@unocss/preset-icons': registry.npmmirror.com/@unocss/preset-icons/0.45.12
   '@unocss/preset-wind': registry.npmmirror.com/@unocss/preset-wind/0.45.12
@@ -342,10 +342,10 @@ packages:
     version: 1.2.1
     dev: true
 
-  registry.npmmirror.com/@iconify/json/2.1.96:
-    resolution: {integrity: sha512-wmc5KRqvKAlAr0bQz3P1UnUCXC9hYu1o89GZFR5Mr5NiUhhNHdbZyosOPnDHXduOa9lTM/ve8/Vo1vR55hCF5A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.96.tgz}
+  registry.npmmirror.com/@iconify/json/2.1.97:
+    resolution: {integrity: sha512-oS04S/mAT9/d5sTMy3vH3180eoQJbNBiGxykliOApAaJ71+GEmV9hAa1TvdkmXTiv8ymdQCpcvFD8Fy53zDFcg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.97.tgz}
     name: '@iconify/json'
-    version: 2.1.96
+    version: 2.1.97
     dependencies:
       '@iconify/types': registry.npmmirror.com/@iconify/types/1.1.0
       pathe: registry.npmmirror.com/pathe/0.3.5
@@ -569,10 +569,10 @@ packages:
     version: 17.0.45
     dev: true
 
-  registry.npmmirror.com/@types/node/18.7.11:
-    resolution: {integrity: sha512-KZhFpSLlmK/sdocfSAjqPETTMd0ug6HIMIAwkwUpU79olnZdQtMxpQP+G1wDzCH7na+FltSIhbaZuKdwZ8RDrw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-18.7.11.tgz}
+  registry.npmmirror.com/@types/node/18.7.13:
+    resolution: {integrity: sha512-46yIhxSe5xEaJZXWdIBP7GU4HDTG8/eo0qd9atdiL+lFpA03y8KS+lkTN834TWJj5767GbWv4n/P6efyTFt1Dw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-18.7.13.tgz}
     name: '@types/node'
-    version: 18.7.11
+    version: 18.7.13
     dev: true
 
   registry.npmmirror.com/@types/normalize-package-data/2.4.1:
