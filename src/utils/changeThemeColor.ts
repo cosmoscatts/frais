@@ -1,7 +1,7 @@
 import { commonDark, commonLight } from 'naive-ui'
 import { addColorAlpha, createHoverColor, createPressedColor } from '~/utils'
 
-const ALPHA = 0.1
+const ALPHA = 0.8
 
 const colorPropertyMap: { [key: string]: string } = {
   primaryColor: '--primary-color',

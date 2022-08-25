@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type GlobalThemeOverrides, darkTheme, dateZhCN, zhCN } from 'naive-ui'
+import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import BaseLayout from './layouts/base-layout/index.vue'
 
 const theme = computed(() => {
@@ -7,17 +7,10 @@ const theme = computed(() => {
     ? darkTheme
     : null
 })
-const themeOverrides: GlobalThemeOverrides = {
-  common: {
-    primaryColor: 'red',
-    primaryColorHover: 'red',
-    primaryColorPressed: 'yellow',
-  },
-  LoadingBar: {
-    colorLoading: '#63E2B7',
-  },
-}
 
+/** 主题覆盖 */
+const { themeOverrides } = storeToRefs(useAppStore())
+/** 初始化 loading */
 const { loading: appLoading, startLoading, endLoading } = useLoading()
 startLoading()
 useTimeoutFn(endLoading, 1000)
@@ -30,7 +23,6 @@ useTimeoutFn(endLoading, 1000)
     :locale="zhCN"
     :date-locale="dateZhCN"
   >
-    <n-global-style />
     <AppLoading
       :loading="appLoading"
     />
