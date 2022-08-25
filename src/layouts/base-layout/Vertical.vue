@@ -1,5 +1,4 @@
 <script  setup lang="ts">
-import { commonDark, commonLight, useThemeVars } from 'naive-ui'
 import {
   TheFoot,
   TheMain,
@@ -39,8 +38,6 @@ const diffHeight = computed(() => {
 // 否则为 refMainWrapper
 const refMainWrapper = ref()
 const refContentWrapper = ref()
-
-const themeVars = useThemeVars()
 </script>
 
 <template>
@@ -75,7 +72,7 @@ const themeVars = useThemeVars()
         <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
       </n-layout-header>
       <n-layout
-        ref="refContentWrapper"
+        ref="refContentWrapper" ha
         :position="baseSettings.fixNav ? 'absolute' : 'static'"
         :style="{
           marginTop: `${
@@ -85,55 +82,12 @@ const themeVars = useThemeVars()
                 ? navHeight + tabHeight + 1
                 : navHeight + 1
           }px`,
-          minHeight: `calc(100% - ${diffHeight}px)`,
+          minHeight: `calc(100% - ${diffHeight}px) !important`,
         }"
         :native-scrollbar="false"
       >
         <n-layout-content>
-          <TheMain />
-          <div h-1500px>
-            <n-space>
-              <div h-30px w-30px :style="{ backgroundColor: themeVars.primaryColor }" />
-              <div h-30px w-30px :style="{ backgroundColor: themeVars.primaryColorHover }" />
-              <div h-30px w-30px :style="{ backgroundColor: themeVars.primaryColorPressed }" />
-              <div h-30px w-30px :style="{ backgroundColor: themeVars.primaryColorSuppl }" />
-
-              <n-button type="primary">
-                Primary
-              </n-button>
-            </n-space>
-            <n-space>
-              浅色
-              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColor }" />
-              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColorHover }" />
-              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColorPressed }" />
-              <div h-30px w-30px :style="{ backgroundColor: commonLight.primaryColorSuppl }" />
-            </n-space>
-            <n-space>
-              深色
-              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColor }" />
-              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColorHover }" />
-              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColorPressed }" />
-              <div h-30px w-30px :style="{ backgroundColor: commonDark.primaryColorSuppl }" />
-            </n-space>
-            <n-space>
-              <n-tag :bordered="false">
-                爱在西元前
-              </n-tag>
-              <n-tag :bordered="false" type="success">
-                不该
-              </n-tag>
-              <n-tag :bordered="false" type="warning">
-                超人不会飞
-              </n-tag>
-              <n-tag :bordered="false" type="error">
-                手写的从前
-              </n-tag>
-              <n-tag :bordered="false" type="info">
-                哪里都是你
-              </n-tag>
-            </n-space>
-          </div>
+          <TheMain hw-full p-5 />
         </n-layout-content>
         <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
           <TheFoot hw-full />
