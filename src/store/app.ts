@@ -1,6 +1,6 @@
 import type { ConfigSettingObject } from '~/config'
 import { cacheAppSettings, configSettings } from '~/config'
-import { changeThemePrimaryColor, getNaiveUiCommonColors, initAppSettings } from '~/utils'
+import { changeThemePrimaryColor, initAppSettings } from '~/utils'
 
 export const useAppStore = defineStore(
   'appStore',
@@ -31,7 +31,6 @@ export const useAppStore = defineStore(
         }),
       }
 
-      getNaiveUiCommonColors()
       // 根据主题主色调配置，生成颜色
       changeThemePrimaryColor(baseSettings.value.themePrimaryColor)
     }

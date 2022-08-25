@@ -1,7 +1,7 @@
 import { composite } from 'seemly'
 
-export declare type RGBA = [number, number, number, number]
-export declare type RGB = [number, number, number]
+export type RGBA = [number, number, number, number]
+export type RGB = [number, number, number]
 
 export function createHoverColor(color: string | RGB | RGBA) {
   return composite(color, [255, 255, 255, 0.16])

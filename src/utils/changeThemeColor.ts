@@ -1,4 +1,4 @@
-import { commonDark, commonLight } from 'naive-ui'
+import { commonDark, commonLight, useThemeVars } from 'naive-ui'
 
 const colorPropertyMap: { [key: string]: string } = {
   primaryColor: '--primary-color',
@@ -24,17 +24,38 @@ const colorPropertyMap: { [key: string]: string } = {
 }
 
 /**
- * 获取 naive ui 的通用颜色，并写入 body
+ * 将 naive ui 的通用颜色，并写入 body
  */
-export function getNaiveUiCommonColors() {
+function setNaiveUiCommonColors(_primaryColorMap: { [key: string]: string }) {
   const colors: any = isDark.value
     ? commonDark
     : commonLight
+
+  // console.log(colors)
+  // console.log(_primaryColorMap)
+  const mergedColors = {
+    ...colors,
+    ..._primaryColorMap,
+  }
   Object.entries(colorPropertyMap).forEach(([key, value]) => {
-    document.body.style.setProperty(value, colors[key])
+    document.body.style.setProperty(value, mergedColors[key])
   })
 }
 
 export function changeThemePrimaryColor(_color?: string) {
-
+  const themeVars = useThemeVars().value
+  console.log('themeVars', themeVars)
+  const {
+    primaryColor,
+    primaryColorHover,
+    primaryColorPressed,
+    primaryColorSuppl,
+  } = themeVars
+  const primaryColorMap = {
+    primaryColor,
+    primaryColorHover,
+    primaryColorPressed,
+    primaryColorSuppl,
+  }
+  setNaiveUiCommonColors(primaryColorMap)
 }

@@ -9,7 +9,7 @@ const theme = computed(() => {
 })
 const themeOverrides: GlobalThemeOverrides = {
   common: {
-    primaryColor: 'red',
+    // primaryColor: 'red',
   },
   LoadingBar: {
     colorLoading: '#63E2B7',
