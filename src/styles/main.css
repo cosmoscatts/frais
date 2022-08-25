@@ -12,9 +12,3 @@ body,
   overflow: hidden;
 }
 
-html.dark {
-  background: #17171A;
-  color: white;
-  color-scheme: dark;
-}
-
