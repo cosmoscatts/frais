@@ -1,18 +1,18 @@
 import { BASE_LAYOUT } from '~/router/constants'
 
 /**
- * 首页路由
+ * 个人资料路由
  */
 export default {
-  path: '/dashboard',
+  path: '/profile',
   component: BASE_LAYOUT,
   children: [
     {
       path: '',
-      name: 'Dashboard',
-      component: () => import('~/pages/dashboard/index.vue'),
+      name: 'Profile',
+      component: () => import('~/pages/profile/index.vue'),
       meta: {
-        title: '首页',
+        title: '个人资料',
         requiresAuth: true,
         cached: true,
       },
