@@ -20,6 +20,12 @@
 * [ ] 系统管理，用户管理 & 角色管理
 * [ ] 支持 markdown
 
+## 如何启动？
+```TypeScript
+pnpm install
+pnpm run dev
+pnpm run build
+```
 
 ## 作者
 🧑🏻‍💻 duende 
