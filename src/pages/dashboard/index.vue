@@ -2,5 +2,7 @@
 </script>
 
 <template>
-  <div />
+  <div text-xl font-bold h-300px>
+    首页
+  </div>
 </template>
