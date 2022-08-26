@@ -71,6 +71,7 @@ const defaultSelectedMenuOptionKey = computed(() => {
 
 <template>
   <n-menu
+    :mode="baseSettings.layout"
     :default-value="defaultSelectedMenuOptionKey"
     :inverted="baseSettings.invertMenu"
     :collapsed="menuCollapsed"

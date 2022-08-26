@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Logo } from './logo'
-// import { Menu } from './menu'
+import { Menu } from './menu'
 import {
   NavAvatar,
   NavBell,
@@ -8,9 +8,8 @@ import {
   NavFullScreen,
 } from './nav'
 
-// const { appMenus } = storeToRefs(usePermissionStore())
-// const mode: 'vertical' | 'horizontal' | 'pop' | 'popButton' = 'horizontal'
 const { baseSettings } = storeToRefs(useAppStore())
+
 // 判断是否为垂直布局
 const isVerticalLayout = computed(() => {
   return baseSettings.value?.layout === 'vertical'
@@ -21,7 +20,7 @@ const isVerticalLayout = computed(() => {
   <div flex-center pr-5 shadow="sm light-900 dark:dark-700">
     <Logo v-if="!isVerticalLayout" />
     <NavBreadcrumb v-if="isVerticalLayout" mx-4 />
-    <!-- <Menu v-if="!isVertical" :mode="mode" :metadata="appMenus" /> -->
+    <Menu v-if="!isVerticalLayout" />
     <div flex-auto />
     <div flex-y-center>
       <a
