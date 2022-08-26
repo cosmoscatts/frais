@@ -1,7 +1,7 @@
 import { appMeta } from '~/config'
 
 /**
- * 创建页面 head 数据
+ * 创建页面 `head` 数据
  */
 export function useHeadMeta() {
   const { name, description } = appMeta
