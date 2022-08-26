@@ -40,17 +40,17 @@ function onClick() {
   </div>
 
   <n-drawer v-model:show="showSettingsDrawer" :width="settingsDrawerWidth">
-    <n-drawer-content>
+    <n-drawer-content closable>
       <template #header>
         主题配置
       </template>
       <template #footer>
         <n-space vertical w-full>
-          <n-button type="primary" block text-white>
-            应用当前配置
+          <n-button type="primary" block>
+            <span text="dark dark:white" font-bold>应用当前配置</span>
           </n-button>
-          <n-button type="warning" block text-white>
-            重置当前配置
+          <n-button type="warning" block>
+            <span text="dark dark:white" font-bold>重置当前配置</span>
           </n-button>
         </n-space>
       </template>
