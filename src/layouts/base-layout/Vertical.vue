@@ -82,12 +82,12 @@ const refContentWrapper = ref()
                 ? navHeight + tabHeight + 1
                 : navHeight + 1
           }px`,
-          minHeight: `calc(100% - ${diffHeight}px) !important`,
+          minHeight: `calc(100% - ${diffHeight}px)`,
         }"
         :native-scrollbar="false"
       >
         <n-layout-content>
-          <TheMain hw-full p-5 />
+          <TheMain p-5 :style="{ minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
         </n-layout-content>
         <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
           <TheFoot hw-full />

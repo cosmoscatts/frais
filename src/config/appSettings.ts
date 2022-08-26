@@ -56,7 +56,7 @@ export const configSettings: ConfigSettingObject = {
    *
    * @default 'vertical'
    */
-  layout: 'horizontal',
+  layout: 'vertical',
   /**
    * 是否显示 logo
    *
@@ -86,7 +86,7 @@ export const configSettings: ConfigSettingObject = {
    *
    * @default true
    */
-  fixNav: false,
+  fixNav: true,
   /**
    * 主题主要色调
    *
