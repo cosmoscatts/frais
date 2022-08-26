@@ -23,7 +23,7 @@ watchEffect(() => {
       src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
       alt="头像" :style="{ width: `${navHeight * 0.68}px`, height: `${navHeight * 0.68}px` }"
     >
-    <span v-if="!menuCollapsed && !hiddenTitle" font="bold sans" pl-8px text-16px>
+    <span v-if="!menuCollapsed && !hiddenTitle" font="bold sans" pl-16px text-16px>
       {{ title }}
     </span>
   </div>
