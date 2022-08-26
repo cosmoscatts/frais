@@ -32,7 +32,7 @@ const options = [
 </script>
 
 <template>
-  <n-dropdown :options="options">
+  <n-dropdown :options="options" trigger="click">
     <div flex items-center cursor-pointer>
       <n-avatar
         round
@@ -40,9 +40,9 @@ const options = [
         :src="defaultAvatar"
         fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
       />
-      <h4 ml-2>
-        Admin
-      </h4>
+      <n-ellipsis style="max-width: 100px" ml-3>
+        机器人 bot
+      </n-ellipsis>
     </div>
   </n-dropdown>
 </template>
