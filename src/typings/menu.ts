@@ -1,8 +1,10 @@
+/**
+ * 定义菜单项的数据类型
+ */
 export interface Menu {
   id: number
-  key: string | number
   label: string
-  icon: string
+  icon?: string
   path?: string
   children?: Menu[]
 }

@@ -6,34 +6,25 @@ import type { Menu } from '~/types'
 export const defaultMenus: Menu[] = [
   {
     id: 101,
-    key: '',
-    label: '',
-    icon: '',
-    path: '',
-    children: [],
+    label: '首页',
+    icon: 'home',
+    path: '/dashboard',
   },
   {
     id: 102,
-    key: '',
-    label: '',
-    icon: '',
-    path: '',
-    children: [],
-  },
-  {
-    id: 103,
-    key: '',
-    label: '',
-    icon: '',
-    path: '',
-    children: [],
-  },
-  {
-    id: 104,
-    key: '',
-    label: '',
-    icon: '',
-    path: '',
-    children: [],
+    label: '系统管理',
+    icon: 'user',
+    children: [
+      {
+        id: 10201,
+        label: '用户管理',
+        path: '/system/user',
+      },
+      {
+        id: 10202,
+        label: '角色管理',
+        path: '/system/role',
+      },
+    ],
   },
 ]
