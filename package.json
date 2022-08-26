@@ -35,6 +35,7 @@
     "@unocss/preset-icons": "^0.45.12",
     "@unocss/preset-wind": "^0.45.12",
     "@vicons/carbon": "^0.12.0",
+    "@vicons/fluent": "^0.12.0",
     "@vicons/ionicons4": "^0.12.0",
     "@vicons/ionicons5": "^0.12.0",
     "@vitejs/plugin-vue": "^3.0.3",
