@@ -7,6 +7,7 @@ import {
 } from '@vicons/ionicons5'
 import defaultAvatar from '~/assets/default-avatar.jpg'
 
+// 渲染图标组件
 const renderIcon = (icon: Component) => {
   return () => {
     return h(NIcon, null, {
@@ -15,6 +16,7 @@ const renderIcon = (icon: Component) => {
   }
 }
 
+// dropdown 选项数据
 const options = [
   {
     label: '用户资料',

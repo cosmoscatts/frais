@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
+import { useHeadMeta } from './composables/useHeadMeta'
 import BaseLayout from './layouts/base-layout/index.vue'
 
 const theme = computed(() => {
@@ -8,9 +9,11 @@ const theme = computed(() => {
     : null
 })
 
-/** 主题覆盖 */
+// useHead 创建 head 数据
+useHeadMeta()
+// 主题覆盖
 const { themeOverrides } = storeToRefs(useAppStore())
-/** 初始化 loading */
+// 初始化 loading
 const { loading: appLoading, startLoading, endLoading } = useLoading()
 startLoading()
 useTimeoutFn(endLoading, 1000)
