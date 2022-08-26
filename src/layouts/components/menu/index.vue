@@ -54,7 +54,12 @@ const menuOptions = computed<MenuOption[]>(() => {
 const route = useRoute()
 // 默认选中的 `menu option`
 const defaultSelectedMenuOptionKey = computed(() => {
-  return menuOptions.value.find(i => i.path === route.path)?.key || undefined
+  const allMenuOptions = menuOptions.value.flatMap((i) => {
+    return i.children
+      ? [i, ...i.children]
+      : [i]
+  })
+  return allMenuOptions.find(i => i.path === route.path)?.key || undefined
 })
 </script>
 
