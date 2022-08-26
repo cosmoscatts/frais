@@ -5,6 +5,7 @@ import {
   LogOutOutline as LogoutIcon,
   PersonCircleOutline as UserIcon,
 } from '@vicons/ionicons5'
+import defaultAvatar from '~/assets/default-avatar.jpg'
 
 const renderIcon = (icon: Component) => {
   return () => {
@@ -34,7 +35,7 @@ const options = [
       <n-avatar
         round
         size="small"
-        src="empty.png"
+        :src="defaultAvatar"
         fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
       />
       <h4 ml-2>
