@@ -9,11 +9,11 @@ const theme = computed(() => {
     : null
 })
 
-// useHead 创建 head 数据
+// `useHead` 创建 `head` 数据
 useHeadMeta()
 // 主题覆盖
 const { themeOverrides } = storeToRefs(useAppStore())
-// 初始化 loading
+// 初始化 `loading`
 const { loading: appLoading, startLoading, endLoading } = useLoading()
 startLoading()
 useTimeoutFn(endLoading, 1000)
