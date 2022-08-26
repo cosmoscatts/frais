@@ -2,12 +2,8 @@
 import type { Component } from 'vue'
 import { NEllipsis, NIcon } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
-import {
-  BookOutline as BookIcon,
-  PersonOutline as PersonIcon,
-} from '@vicons/ionicons5'
 import { RouterLink } from 'vue-router'
-import { defaultMenus } from '~/config'
+import { defaultMenus, iconMap } from '~/config'
 import type { Menu } from '~/types'
 
 const appStore = useAppStore()
@@ -32,12 +28,6 @@ function renderLabel(label: string, path?: string) {
           { default: () => label },
         )
     : () => h(NEllipsis, null, { default: () => label })
-}
-
-// 储存 `icon` 字段对应的图标组件
-const iconMap: { [key: string]: Component } = {
-  user: PersonIcon,
-  home: BookIcon,
 }
 
 // 将菜单项转换成 `<NMenu>` 组件需要的格式
