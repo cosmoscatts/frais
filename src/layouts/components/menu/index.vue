@@ -60,14 +60,14 @@ const menuOptions = computed<MenuOption[]>(() => {
 
 const route = useRoute()
 // 默认选中的 `menu option`
-const selectedMenuOptionKey = computed(() => {
+const defaultSelectedMenuOptionKey = computed(() => {
   return menuOptions.value.find(i => i.path === route.path)?.key || undefined
 })
 </script>
 
 <template>
   <n-menu
-    :default-value="selectedMenuOptionKey"
+    :default-value="defaultSelectedMenuOptionKey"
     :inverted="baseSettings.invertMenu"
     :collapsed="menuCollapsed"
     :collapsed-width="64"
