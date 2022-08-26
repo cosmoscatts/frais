@@ -2,8 +2,12 @@
 import { MdCash } from '@vicons/ionicons4'
 import type { RouteLocationMatched } from 'vue-router'
 
-let metadata = $ref<string[]>()
 const route = useRoute()
+
+interface Breadcrumb {}
+
+// `breadcrumb` 数据
+let metadata = $ref<string[]>()
 
 // 从路由获取面包屑数据
 function getBreadCrumbs() {

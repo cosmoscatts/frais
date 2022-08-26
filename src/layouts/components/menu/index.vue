@@ -3,11 +3,12 @@ import type { Component } from 'vue'
 import { NEllipsis, NIcon } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
-import { defaultMenus, iconMap } from '~/config'
 import type { Menu } from '~/types'
 
 const appStore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appStore)
+const permissionStore = usePermissionStore()
+const { appMenus, menuIconMap } = storeToRefs(permissionStore)
 
 // 渲染图标
 function renderIcon(icon: Component) {
@@ -32,6 +33,7 @@ function renderLabel(label: string, path?: string) {
 
 // 将菜单项转换成 `<NMenu>` 组件需要的格式
 function generateMenuOption(menuItem: Menu): MenuOption {
+  const { value: iconMap } = menuIconMap
   const { id, label, icon, path, children } = menuItem
   return {
     key: id,
@@ -45,7 +47,8 @@ function generateMenuOption(menuItem: Menu): MenuOption {
 }
 
 const menuOptions = computed<MenuOption[]>(() => {
-  return defaultMenus.map(i => generateMenuOption(i)) || []
+  const { value: menus } = appMenus
+  return menus.map(i => generateMenuOption(i)) || []
 })
 
 const route = useRoute()

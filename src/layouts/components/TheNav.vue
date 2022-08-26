@@ -4,7 +4,7 @@ import { Logo } from './logo'
 import {
   NavAvatar,
   NavBell,
-  NavBreadCrumb,
+  NavBreadcrumb,
   NavFullScreen,
 } from './nav'
 
@@ -26,7 +26,7 @@ watchEffect(() => {
 <template>
   <div flex-center pr-5 shadow="sm light-900 dark:dark-700">
     <Logo v-if="!isVerticalLayout" :class="shortLogo ? 'w-64px' : 'w-200px'" />
-    <NavBreadCrumb v-if="isVerticalLayout" mx-4 />
+    <NavBreadcrumb v-if="isVerticalLayout" mx-4 />
     <!-- <Menu v-if="!isVertical" :mode="mode" :metadata="appMenus" /> -->
     <div flex-auto />
     <div flex-y-center>
