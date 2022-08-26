@@ -1,15 +1,15 @@
 /**
- * 是否开启 debug 模式
+ * 是否开启 `debug` 模式
  */
 export const debug = true
 /**
- * 是否显示 app 设置抽屉
+ * 是否显示 `app` 设置抽屉
  *
  * @default true
  */
 export const showAppSettings = true
 /**
- * 是否缓存 app 设置
+ * 是否缓存 `app` 设置
  *
  * @default true
  */
@@ -31,7 +31,7 @@ export const defaultThemeMode = 'auto'
 export const menuSource = 'front'
 
 /**
- * app 配置对象的类型
+ * `app` 配置对象的类型
  */
 export interface ConfigSettingObject {
   layout: 'vertical' | 'horizontal'
@@ -58,7 +58,7 @@ export const configSettings: ConfigSettingObject = {
    */
   layout: 'vertical',
   /**
-   * 是否显示 logo
+   * 是否显示 `logo`
    *
    * @default true
    */

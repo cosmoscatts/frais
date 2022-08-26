@@ -1,6 +1,6 @@
 {
   "name": "petite",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
     "dev": "vite --port 3333 --open",
