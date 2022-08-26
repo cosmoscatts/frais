@@ -6,11 +6,9 @@ const title = computed(() => appMeta.title)
 const appstore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appstore)
 const { setMenuUnCollapsed } = appstore
-const { width } = useWindowSize()
-let hiddenTitle = $ref(false)
+
+// TODO
 watchEffect(() => {
-  // 当屏幕尺寸小于 `1200px` 时，隐藏 `title`
-  hiddenTitle = width.value < 1200
   // 当页面布局为水平时，重置菜单折叠标志
   if (baseSettings.value.layout === 'horizontal')
     setMenuUnCollapsed()
@@ -23,7 +21,7 @@ watchEffect(() => {
       src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
       alt="头像" :style="{ width: `${navHeight * 0.68}px`, height: `${navHeight * 0.68}px` }"
     >
-    <span v-if="!menuCollapsed && !hiddenTitle" font="bold sans" pl-16px text-16px>
+    <span v-if="!menuCollapsed" font="bold sans" pl-16px text-16px>
       {{ title }}
     </span>
   </div>
