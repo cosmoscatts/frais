@@ -4,6 +4,12 @@ import { NEllipsis, NIcon } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import type { Menu } from '~/types'
+import { appLayoutParams } from '~/config'
+
+const {
+  sideCollapsedWidth,
+  sideCollapsedIconSize,
+} = appLayoutParams
 
 const appStore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appStore)
@@ -68,8 +74,8 @@ const defaultSelectedMenuOptionKey = computed(() => {
     :default-value="defaultSelectedMenuOptionKey"
     :inverted="baseSettings.invertMenu"
     :collapsed="menuCollapsed"
-    :collapsed-width="64"
-    :collapsed-icon-size="22"
+    :collapsed-width="sideCollapsedWidth"
+    :collapsed-icon-size="sideCollapsedIconSize"
     :options="menuOptions"
     default-expand-all
   />
