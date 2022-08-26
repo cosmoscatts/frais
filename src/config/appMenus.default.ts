@@ -12,7 +12,7 @@ import type { Menu } from '~/types'
 /**
  * 储存 `icon` 字段对应的图标组件
  */
-export const iconMap: { [key: string]: Component } = {
+export const defaultMenuIconMap: { [key: string]: Component } = {
   home: BookIcon,
   system: DeskTopIcon,
   user: PersonIcon,
