@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <div text-primary>
-    NavBell
-  </div>
+  <button
+    icon-btn text-lg
+    i-fa-solid-bell
+  />
 </template>
