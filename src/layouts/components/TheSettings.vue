@@ -18,6 +18,7 @@ function onHover(state: boolean) {
 }
 
 function onClick() {
+  isButtonHovered = false
   showSettingsDrawer = true
 }
 </script>
