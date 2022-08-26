@@ -37,7 +37,7 @@ const refContentWrapper = ref()
 </script>
 
 <template>
-  <n-layout hw-screen of-hidden>
+  <n-layout ref="refMainWrapper" hw-screen of-hidden :native-scrollbar="false">
     <n-layout-header bordered :position="baseSettings.fixNav ? 'absolute' : 'static'">
       <TheNav w-full bg-transparent :style="{ height: `${navHeight}px` }" />
       <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
@@ -53,12 +53,12 @@ const refContentWrapper = ref()
               ? navHeight + tabHeight + 1
               : navHeight + 1
         }px`,
-        minHeight: `calc(100% - ${diffHeight}px) !important`,
+        minHeight: `calc(100% - ${diffHeight}px)`,
       }"
       :native-scrollbar="false"
     >
       <n-layout-content>
-        <TheMain hw-full p-5 />
+        <TheMain p-5 ha :style="{ minHeight: `calc(100vh - ${diffHeight + footHeight + 2}px)` }" />
       </n-layout-content>
       <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
         <TheFoot hw-full />
