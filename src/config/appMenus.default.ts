@@ -13,10 +13,10 @@ import type { Menu } from '~/types'
  * 储存 `icon` 字段对应的图标组件
  */
 export const defaultMenuIconMap: { [key: string]: Component } = {
-  home: BookIcon,
-  system: DeskTopIcon,
-  user: PersonIcon,
-  role: NotepadPersonIcon,
+  home: markRaw(BookIcon),
+  system: markRaw(DeskTopIcon),
+  user: markRaw(PersonIcon),
+  role: markRaw(NotepadPersonIcon),
 }
 
 /**
