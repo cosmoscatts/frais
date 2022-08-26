@@ -22,7 +22,7 @@ function renderLabel(label: string) {
   return () => h(NEllipsis, null, { default: () => label })
 }
 
-// 储存 icon 字段对应的图标组件
+// 储存 `icon` 字段对应的图标组件
 const iconMap: { [key: string]: Component } = {
   user: PersonIcon,
   home: BookIcon,

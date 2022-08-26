@@ -9,7 +9,7 @@ const { setMenuUnCollapsed } = appstore
 const { width } = useWindowSize()
 let hiddenTitle = $ref(false)
 watchEffect(() => {
-  // 当屏幕尺寸小于 1200px 时，隐藏 title
+  // 当屏幕尺寸小于 `1200px` 时，隐藏 `title`
   hiddenTitle = width.value < 1200
   // 当页面布局为水平时，重置菜单折叠标志
   if (baseSettings.value.layout === 'horizontal')

@@ -16,7 +16,7 @@ const renderIcon = (icon: Component) => {
   }
 }
 
-// dropdown 选项数据
+// `dropdown` 选项数据
 const options = [
   {
     label: '用户资料',
