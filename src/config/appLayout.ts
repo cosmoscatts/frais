@@ -13,15 +13,17 @@ export const appLayoutParams = {
   sideCollapsedWidth: 64,
   /** 底部高度 */
   footHeight: 50,
-  /** backTop 距离页面右部的距离 */
+  /** `backTop` 距离页面右部的距离 */
   backTopRight: 40,
-  /** backTop 距离页面底部的距离 */
+  /** `backTop` 距离页面底部的距离 */
   backTopBottom: 200,
-  /** backTop 滚动时触发显示回到顶部的高度 */
+  /** `backTop` 滚动时触发显示回到顶部的高度 */
   backTopvisibilityHeight: 250,
-  /** 距离页面右部的距离 */
+  /** `settingsDrawer` 距离页面右部的距离 */
   settingsDrawerRight: 40,
-  /** 距离页面底部的距离 */
-  settingsDrawerBottom: 500,
+  /** `settingsDrawer` 距离页面底部的距离 */
+  settingsDrawerBottom: 350,
+  /** `settingsDrawer` 的宽度 */
+  settingsDrawerWidth: 360,
 }
 
