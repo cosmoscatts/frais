@@ -43,8 +43,6 @@ function generateMenuOption(menuItem: Menu): MenuOption {
 const menuOptions = computed<MenuOption[]>(() => {
   return defaultMenus.map(i => generateMenuOption(i)) || []
 })
-console.log('menu created')
-console.log(menuOptions.value)
 </script>
 
 <template>

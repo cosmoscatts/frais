@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
-import { useHeadMeta } from './composables/useHeadMeta'
-import BaseLayout from './layouts/base-layout/index.vue'
 
 const theme = computed(() => {
   return isDark.value
@@ -31,7 +29,6 @@ useTimeoutFn(endLoading, 1000)
     />
     <n-loading-bar-provider>
       <RouterView />
-      <BaseLayout />
     </n-loading-bar-provider>
   </n-config-provider>
 </template>

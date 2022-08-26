@@ -181,6 +181,7 @@ declare global {
   const useGeolocation: typeof import('@vueuse/core')['useGeolocation']
   const useGlobalNaiveApi: typeof import('./composables/useNaiveUiGlobalApi')['useGlobalNaiveApi']
   const useHead: typeof import('@vueuse/head')['useHead']
+  const useHeadMeta: typeof import('./composables/useHeadMeta')['useHeadMeta']
   const useIdle: typeof import('@vueuse/core')['useIdle']
   const useImage: typeof import('@vueuse/core')['useImage']
   const useInfiniteScroll: typeof import('@vueuse/core')['useInfiniteScroll']
@@ -473,6 +474,7 @@ declare module '@vue/runtime-core' {
     readonly useGeolocation: UnwrapRef<typeof import('@vueuse/core')['useGeolocation']>
     readonly useGlobalNaiveApi: UnwrapRef<typeof import('./composables/useNaiveUiGlobalApi')['useGlobalNaiveApi']>
     readonly useHead: UnwrapRef<typeof import('@vueuse/head')['useHead']>
+    readonly useHeadMeta: UnwrapRef<typeof import('./composables/useHeadMeta')['useHeadMeta']>
     readonly useIdle: UnwrapRef<typeof import('@vueuse/core')['useIdle']>
     readonly useImage: UnwrapRef<typeof import('@vueuse/core')['useImage']>
     readonly useInfiniteScroll: UnwrapRef<typeof import('@vueuse/core')['useInfiniteScroll']>
