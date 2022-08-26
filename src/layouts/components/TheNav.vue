@@ -15,17 +15,11 @@ const { baseSettings } = storeToRefs(useAppStore())
 const isVerticalLayout = computed(() => {
   return baseSettings.value?.layout === 'vertical'
 })
-const { width } = useWindowSize()
-let shortLogo = $ref(false)
-watchEffect(() => {
-  if (!isVerticalLayout.value)
-    shortLogo = width.value < 1200
-})
 </script>
 
 <template>
   <div flex-center pr-5 shadow="sm light-900 dark:dark-700">
-    <Logo v-if="!isVerticalLayout" :class="shortLogo ? 'w-64px' : 'w-200px'" />
+    <Logo v-if="!isVerticalLayout" />
     <NavBreadcrumb v-if="isVerticalLayout" mx-4 />
     <!-- <Menu v-if="!isVertical" :mode="mode" :metadata="appMenus" /> -->
     <div flex-auto />
