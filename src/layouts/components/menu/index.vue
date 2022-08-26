@@ -28,7 +28,7 @@ const iconMap: { [key: string]: Component } = {
   home: BookIcon,
 }
 
-// 将菜单项转换成 `NMenu` 组件需要的格式
+// 将菜单项转换成 `<NMenu>` 组件需要的格式
 function generateMenuOption(menuItem: Menu): MenuOption {
   return {
     label: renderLabel(menuItem.label),
