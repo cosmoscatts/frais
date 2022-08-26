@@ -29,3 +29,13 @@ export function createPressedColor(color: string | RGB | RGBA) {
 export function addColorAlpha(color: string, alpha: number) {
   return colord(color).alpha(alpha).toHex()
 }
+/**
+ * 混合颜色
+ * @param firstColor
+ * @param secondColor
+ * @param ratio
+ * @returns
+ */
+export function useMixinColor(firstColor: string, secondColor: string, ratio: number) {
+  return colord(firstColor).mix(secondColor, ratio).toHex()
+}
