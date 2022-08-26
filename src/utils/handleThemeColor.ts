@@ -39,7 +39,7 @@ export function generatePrimaryColor(_primaryColor: string) {
 }
 
 /**
- * 将 naive ui 的通用颜色，并写入 body
+ * 将 `naive ui` 的通用颜色，并写入 `body`
  */
 export function setNaiveUiCommonColors(_primaryColorMap: { [key: string]: string }) {
   const colors: any = isDark.value

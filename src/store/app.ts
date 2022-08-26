@@ -12,11 +12,11 @@ export const useAppStore = defineStore(
       updateSettingsFromStorage,
     } = initAppSettings()
 
-    // app 配置对象
+    // `app` 配置对象
     const baseSettings = ref<ConfigSettingObject>({
       ...configSettings,
     })
-    // app 暂存配置对象
+    // `app` 暂存配置对象
     const stageSettings = ref<ConfigSettingObject>({
       ...configSettings,
     })
@@ -35,7 +35,7 @@ export const useAppStore = defineStore(
           colorLoading: baseSettings.value.themePrimaryColor,
         },
       }
-      // 将 naive ui 颜色写入 body
+      // 将 `naive ui` 颜色写入 `body`
       setNaiveUiCommonColors(primaryColorOverrides)
     }
 
@@ -54,11 +54,11 @@ export const useAppStore = defineStore(
     }
     init()
 
-    // 当亮、暗模式改变时，更新 body 中的颜色
-    // 因为 naive ui 内置的颜色亮暗模式稍有区别
+    // 当亮、暗模式改变时，更新 `body` 中的颜色
+    // 因为 `naive ui` 内置的颜色亮暗模式稍有区别
     watch(isDark, changePrimaryColor)
 
-    // 初始化 app 设置项的暂存区
+    // 初始化 `app` 设置项的暂存区
     const buildStageData = () => {
       const source = { ...baseSettings.value } as ConfigSettingObject
       stageSettings.value = { ...source } || { ...configSettings }

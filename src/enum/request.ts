@@ -1,5 +1,5 @@
 /**
- * 这里定义的是 Request 错误消息
+ * 这里定义的是 `Request` 错误消息
  */
 export enum requestErrorMsgEnum {
   notFound = '抱歉，页面未找到',

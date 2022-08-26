@@ -8,14 +8,14 @@ export type RGBA = [number, number, number, number]
 export type RGB = [number, number, number]
 
 /**
- * 创建 Hover 颜色
+ * 创建 `Hover` 颜色
  * @param color
  */
 export function createHoverColor(color: string | RGB | RGBA) {
   return composite(color, [255, 255, 255, 0.12])
 }
 /**
- * 创建 Pressed 颜色
+ * 创建 `Pressed` 颜色
  * @param color
  */
 export function createPressedColor(color: string | RGB | RGBA) {
