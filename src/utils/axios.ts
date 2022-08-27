@@ -16,7 +16,7 @@ function createAxios() {
     },
     (e: any) => {
       router.push(ERROR_PAGE)
-      Message.error('请求异常')
+      // Message.error('请求异常')
       Promise.reject(e).then(() => console.error(e))
     },
   )
@@ -30,7 +30,7 @@ function createAxios() {
     },
     (error: any) => {
       router.push(ERROR_PAGE)
-      Message.error('服务器异常')
+      // Message.error('服务器异常')
       return Promise.reject(error)
     },
   )
