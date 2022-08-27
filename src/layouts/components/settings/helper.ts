@@ -30,6 +30,7 @@ export interface CollapseItem {
   name: string
   title: string
   data: SettingItem[]
+  disabledMsg?: string
 }
 
 // 设置项分类 (12)
@@ -57,6 +58,7 @@ export const layoutSettings: CollapseItem[] = [
         dependOn: undefined,
       },
     ],
+    disabledMsg: undefined,
   },
   {
     name: '页面模块显示',
@@ -91,6 +93,7 @@ export const layoutSettings: CollapseItem[] = [
         dependOn: undefined,
       },
     ],
+    disabledMsg: undefined,
   },
 ]
 
@@ -131,6 +134,7 @@ export const funcSettings: CollapseItem[] = [
         dependOn: 'showTabs',
       },
     ],
+    disabledMsg: '多页签已隐藏',
   },
   {
     name: '侧边栏和菜单',
@@ -154,6 +158,7 @@ export const funcSettings: CollapseItem[] = [
         dependOn: 'layout',
       },
     ],
+    disabledMsg: '当前为布局无侧边栏',
   },
   {
     name: '页面动画',
@@ -181,5 +186,6 @@ export const funcSettings: CollapseItem[] = [
         dependOn: 'showTransitionAnimation',
       },
     ],
+    disabledMsg: '页面动画已关闭',
   },
 ]
