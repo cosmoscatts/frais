@@ -65,7 +65,7 @@ function saveCurrentSettings() {
         主题配置
       </template>
 
-      <SettingsDrawer />
+      <SettingsDrawer v-if="showSettingsDrawer" />
 
       <template #footer>
         <n-space vertical w-full>

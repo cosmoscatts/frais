@@ -18,7 +18,7 @@ const isWhite = computed(() => whiteColors.includes(color))
 
 <template>
   <div flex-center w-20px h-20px rounded-2px shadow cursor-pointer :style="{ backgroundColor: color }">
-    <icon-ic-outline-check v-if="checked" :class="[iconClass, isWhite ? 'text-gray-700' : 'text-white']" />
+    <div v-if="checked" i-carbon-checkmark :class="[iconClass, isWhite ? 'text-gray-700' : 'text-white']" />
   </div>
 </template>
 
