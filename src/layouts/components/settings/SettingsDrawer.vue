@@ -2,6 +2,13 @@
 import { CashOutline as CashIcon } from '@vicons/ionicons5'
 
 const defaultExpandedNames = ['1', '2', '3']
+
+const appStore = useAppStore()
+const { stageSettings } = storeToRefs(appStore)
+
+// 页面布局 - layout | fixNav | showLogo | showTabs | showFoot 5
+// 主色调 - primaryColor 1
+// 页面功能 - 开启动画 | 动画类型 | 多页签风格 | 多页签缓存 | 反转菜单色 | 侧边栏触发器样式 6
 </script>
 
 <template>
@@ -27,13 +34,10 @@ const defaultExpandedNames = ['1', '2', '3']
       <div>真棒</div>
     </n-collapse-item>
     <n-divider>
-      主色调和动画
+      系统主色调
     </n-divider>
     <n-divider>
-      侧边栏
-    </n-divider>
-    <n-divider>
-      多页签
+      页面功能
     </n-divider>
   </n-collapse>
 </template>

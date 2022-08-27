@@ -10,6 +10,11 @@ const {
   settingsDrawerWidth,
 } = appLayoutParams
 
+const {
+  updateSettingsFromStageData,
+  resetStageData,
+} = useAppStore()
+
 // 是否显示 `app` 设置抽屉
 let showSettingsDrawer = $ref(false)
 
@@ -51,10 +56,10 @@ function onClick() {
 
       <template #footer>
         <n-space vertical w-full>
-          <n-button type="primary" block>
+          <n-button type="primary" block @click="updateSettingsFromStageData">
             <span text="dark dark:white" font-bold>应用当前配置</span>
           </n-button>
-          <n-button type="warning" block>
+          <n-button type="warning" block @click="resetStageData">
             <span text="dark dark:white" font-bold>重置当前配置</span>
           </n-button>
         </n-space>
