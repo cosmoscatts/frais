@@ -1,14 +1,18 @@
+import type { ConfigSettingObject } from '~/config'
+
 /**
  * 配置项组件渲染类型
  */
 export type SettingItemRenderType = 'layoutRadio' | 'select' | 'switch' | 'colorPicker'
+
+type SettingItemProp = keyof ConfigSettingObject
 
 /**
  * 配置项渲染结构
  */
 export interface SettingItem {
   /** 字段属性 */
-  prop: string
+  prop: SettingItemProp
   /** 配置项名称 */
   name?: string
   /** 配置项渲染组件类型 */

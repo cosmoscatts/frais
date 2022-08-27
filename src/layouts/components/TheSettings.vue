@@ -47,7 +47,7 @@ function onClick() {
   </div>
 
   <n-drawer v-model:show="showSettingsDrawer" :width="settingsDrawerWidth">
-    <n-drawer-content closable>
+    <n-drawer-content closable :native-scrollbar="false">
       <template #header>
         主题配置
       </template>
