@@ -8,7 +8,7 @@ const {
   hasRightTags = true,
 } = defineProps<{
   index?: number
-  tags?: Tag[]
+  tags?: Tab[]
   hasLeftTags?: boolean
   hasRightTags?: boolean
 }>()
