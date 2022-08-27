@@ -1,7 +1,7 @@
-import TabDefault from './TabDefault.vue'
-import TabChrome from './TabChrome.vue'
+import TabButton from './components/TabButton.vue'
+import TabChrome from './components/TabChrome.vue'
 
 export {
-  TabDefault,
+  TabButton,
   TabChrome,
 }

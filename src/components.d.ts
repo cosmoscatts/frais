@@ -46,5 +46,6 @@ declare module '@vue/runtime-core' {
     NTooltip: typeof import('naive-ui')['NTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScrollWrapper: typeof import('./components/ScrollWrapper.vue')['default']
   }
 }
