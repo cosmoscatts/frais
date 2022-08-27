@@ -24,8 +24,8 @@ function onUpdateValue(value: boolean) {
     <n-switch
       :round="false"
       :value="modelValue"
-      :on-update:value="onUpdateValue"
       :disabled="disabled"
+      @update:value="onUpdateValue"
     />
   </div>
 </template>
