@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { IconArrowLeft, IconArrowRight, IconCloseCircle, IconRefresh } from '@arco-design/web-vue/es/icon'
-import type { Tag } from '~/types'
+import type { Tab } from '~/types'
 
 const {
   index = -1,

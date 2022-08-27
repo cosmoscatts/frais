@@ -11,6 +11,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@better-scroll/core": "^2.4.2",
     "@unocss/reset": "^0.45.12",
     "@vueuse/components": "^9.1.1",
     "@vueuse/core": "^9.1.1",
@@ -19,7 +20,6 @@
     "colord": "^2.9.3",
     "critters": "^0.0.16",
     "dayjs": "^1.11.5",
-    "nprogress": "^0.2.0",
     "pinia": "^2.0.20",
     "pinia-plugin-persist-uni": "^1.1.5",
     "seemly": "^0.3.6",
