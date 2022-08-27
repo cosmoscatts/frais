@@ -20,7 +20,7 @@ export interface SettingItem {
   /** 配置项可配置的值 */
   options?: any
   /** 依赖于其他配置项 */
-  dependOn?: string
+  dependOn?: SettingItemProp
 }
 
 /**
@@ -178,7 +178,7 @@ export const funcSettings: CollapseItem[] = [
           { label: '渐变', value: 'zoom-fade' },
           { label: '闪现', value: 'zoom-out' },
         ],
-        dependOn: undefined,
+        dependOn: 'showTransitionAnimation',
       },
     ],
   },

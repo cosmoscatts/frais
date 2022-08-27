@@ -9,7 +9,7 @@ import {
 } from './components'
 import {
   type CollapseItem,
-  // type SettingItem,
+  type SettingItem,
   type SettingItemRenderType,
   funcSettings,
   layoutSettings,
@@ -32,6 +32,17 @@ function renderComponent(key: SettingItemRenderType) {
     colorPicker: SettingsDrawerColorPicker,
   }
   return componentMap[key]
+}
+
+const isDisabled = ({ dependOn }: SettingItem) => {
+  if (!dependOn)
+    return false
+  // 侧边栏折叠触发器样式需要单独判断
+  // 只有垂直布局时，才有侧边栏
+  const { value: stage } = stageSettings
+  return dependOn === 'layout'
+    ? stage[dependOn] !== 'vertical'
+    : !stage[dependOn]
 }
 </script>
 
@@ -76,6 +87,7 @@ function renderComponent(key: SettingItemRenderType) {
         <Component
           :is="renderComponent(item.type)"
           v-bind="{ ...item }" v-model:model-value="stageSettings[item.prop]"
+          :disabled="isDisabled(item)"
         />
       </div>
     </n-collapse-item>
