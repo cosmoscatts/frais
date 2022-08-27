@@ -29,13 +29,13 @@ const diffHeight = computed(() => {
   let height = navHeight
   if (baseSettings.value.showTabs)
     height += tabHeight
-  // border 边框的高度也需要考虑
+  // `border` 边框的高度也需要考虑
   return height + 1
 })
 
-// 设置 backTop 的监听目标
-// fixNav = true 即固定页头时，target 为 refContentWrapper
-// 否则为 refMainWrapper
+// 设置 `backTop` 的监听目标
+// `fixNav = true` 即固定页头时，`target` 为 `refContentWrapper`
+// 否则为 `refMainWrapper`
 const refMainWrapper = ref()
 const refContentWrapper = ref()
 </script>
