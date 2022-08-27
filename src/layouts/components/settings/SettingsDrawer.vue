@@ -81,7 +81,7 @@ const showDisabledMsg = (data: SettingItem[], disabledMsg?: string) => {
       系统主色调
     </n-divider>
     <Component
-      :is="renderComponent('colorPicker')" v-bind="primaryColorSetting"
+      :is="renderComponent('colorPicker')"
       v-model:model-value="stageSettings[primaryColorSetting.prop]"
     />
 

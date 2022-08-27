@@ -102,9 +102,9 @@ export const layoutSettings: CollapseItem[] = [
  */
 export const primaryColorSetting: SettingItem = {
   prop: 'themePrimaryColor',
-  name: '',
+  name: '页面主色调',
   type: 'colorPicker',
-  options: [],
+  options: undefined,
   dependOn: undefined,
 }
 
