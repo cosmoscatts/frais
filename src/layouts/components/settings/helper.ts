@@ -14,7 +14,7 @@ export interface SettingItem {
   /** 配置项渲染组件类型 */
   type: SettingItemRenderType
   /** 配置项可配置的值 */
-  options: any
+  options?: any
   /** 依赖于其他配置项 */
   dependOn?: string
 }
@@ -41,24 +41,31 @@ export const layoutSettings: SettingItem[] = [
   },
   {
     prop: 'fixNav',
-    name: '',
+    name: '是否固定导航栏',
     type: 'switch',
-    options: [],
+    options: undefined,
+    dependOn: undefined,
   },
   {
     prop: 'showLogo',
+    name: '是否显示 Logo',
     type: 'switch',
-    options: [],
+    options: undefined,
+    dependOn: undefined,
   },
   {
     prop: 'showTabs',
+    name: '是否显示多页签',
     type: 'switch',
-    options: [],
+    options: undefined,
+    dependOn: undefined,
   },
   {
     prop: 'showFoot',
+    name: '是否显示底部栏',
     type: 'switch',
     options: undefined,
+    dependOn: undefined,
   },
 ]
 
