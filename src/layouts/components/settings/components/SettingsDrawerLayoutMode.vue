@@ -10,7 +10,7 @@ const {
   }[]
 }>()
 
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:model-value'])
 
 // 验证是否选中
 const isChecked = (value: string) => (value === modelValue)
@@ -35,7 +35,7 @@ const renderLayoutIcon = (value: string) => {
 }
 
 function onClick(value: string) {
-  emits('update:modelValue', value)
+  emits('update:model-value', value)
 }
 </script>
 
