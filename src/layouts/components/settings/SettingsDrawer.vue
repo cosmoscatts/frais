@@ -1,16 +1,38 @@
 <script setup lang="ts">
 import { CashOutline as CashIcon } from '@vicons/ionicons5'
+import type { Component } from 'vue'
 import {
   SettingsDrawerColorPicker,
   SettingsDrawerLayoutMode,
   SettingsDrawerSelectItem,
   SettingsDrawerSwitchItem,
 } from './components'
+import {
+  type CollapseItem,
+  type SettingItem,
+  type SettingItemRenderType,
+  funcSettings,
+  layoutSettings,
+  primaryColorSetting,
+} from './helper'
 
-const defaultExpandedNames = ['1', '2', '3']
+const defaultExpandedNames = computed(() => {
+  return [funcSettings, layoutSettings]
+    .flatMap((i: CollapseItem[]) => i.map(j => j.name)) || []
+})
 
 const appStore = useAppStore()
 const { stageSettings } = storeToRefs(appStore)
+
+function renderComponent(key: SettingItemRenderType) {
+  const componentMap: Record<SettingItemRenderType, Component> = {
+    layoutRadio: SettingsDrawerLayoutMode,
+    select: SettingsDrawerSelectItem,
+    switch: SettingsDrawerSwitchItem,
+    colorPicker: SettingsDrawerColorPicker,
+  }
+  return componentMap[key]
+}
 </script>
 
 <template>
@@ -26,21 +48,31 @@ const { stageSettings } = storeToRefs(appStore)
     <n-divider>
       页面布局
     </n-divider>
-    <n-collapse-item title="青铜" name="1">
-      <div>可以</div>
+    <n-collapse-item
+      v-for="{ name, title, data } in layoutSettings"
+      :key="name" :title="title" :name="name"
+    >
+      <div v-for="item, idx in data" :key="idx">
+        {{ item.name }}
+      </div>
     </n-collapse-item>
-    <n-collapse-item title="白银" name="2">
-      <div>很好</div>
-    </n-collapse-item>
-    <n-collapse-item title="黄金" name="3">
-      <div>真棒</div>
-    </n-collapse-item>
+
     <n-divider>
       系统主色调
     </n-divider>
+    <Componet :is="renderComponent('colorPicker')" />
+
     <n-divider>
       页面功能
     </n-divider>
+    <n-collapse-item
+      v-for="{ name, title, data } in funcSettings"
+      :key="name" :title="title" :name="name"
+    >
+      <div v-for="item, idx in data" :key="idx">
+        {{ item.name }}
+      </div>
+    </n-collapse-item>
   </n-collapse>
 </template>
 
