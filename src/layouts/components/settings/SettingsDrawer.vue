@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { CashOutline as CashIcon } from '@vicons/ionicons5'
+import {
+  SettingsDrawerColorPicker,
+  SettingsDrawerLayoutMode,
+  SettingsDrawerSelectItem,
+  SettingsDrawerSwitchItem,
+} from './components'
 
 const defaultExpandedNames = ['1', '2', '3']
 
 const appStore = useAppStore()
 const { stageSettings } = storeToRefs(appStore)
-
-// 页面布局 - layout | fixNav | showLogo | showTabs | showFoot 5
-// 主色调 - primaryColor 1
-// 页面功能 - 开启动画 | 动画类型 | 多页签风格 | 多页签缓存 | 反转菜单色 | 侧边栏触发器样式 6
 </script>
 
 <template>
