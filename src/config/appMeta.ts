@@ -8,4 +8,5 @@ export const appMeta = {
   author: 'duende',
   github: 'https://github.com/dud9/petite',
   doc: 'https://github.com/dud9/petite',
+  footCopyRight: 'Petite 1.0 - Made by duende',
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { vElementHover } from '@vueuse/components'
 import { ColorPaletteOutline } from '@vicons/ionicons5'
+import SettingsDrawer from './settings/SettingsDrawer.vue'
 import { appLayoutParams } from '~/config'
 
 const {
@@ -45,6 +46,9 @@ function onClick() {
       <template #header>
         主题配置
       </template>
+
+      <SettingsDrawer />
+
       <template #footer>
         <n-space vertical w-full>
           <n-button type="primary" block>
