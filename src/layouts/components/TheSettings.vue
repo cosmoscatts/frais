@@ -27,6 +27,19 @@ function onClick() {
   isButtonHovered = false
   showSettingsDrawer = true
 }
+
+// 应用当前配置
+function saveCurrentSettings() {
+  const { message } = useGlobalNaiveApi()
+  const LOADING_INTERVAL = 1000
+  message.loading('正在更新配置')
+  updateSettingsFromStageData()
+  useTimeoutFn(() => {
+    message.destroyAll()
+    message.success('应用成功')
+    showSettingsDrawer = false
+  }, LOADING_INTERVAL)
+}
 </script>
 
 <template>
@@ -56,7 +69,7 @@ function onClick() {
 
       <template #footer>
         <n-space vertical w-full>
-          <n-button type="primary" block @click="updateSettingsFromStageData">
+          <n-button type="primary" block @click="saveCurrentSettings">
             <span text="dark dark:white" font-bold>应用当前配置</span>
           </n-button>
           <n-button type="warning" block @click="resetStageData">
