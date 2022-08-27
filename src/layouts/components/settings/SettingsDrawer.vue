@@ -34,6 +34,7 @@ function renderComponent(key: SettingItemRenderType) {
   return componentMap[key]
 }
 
+// 判断关联的设置项是否需要禁止点击
 const isDisabled = ({ dependOn }: SettingItem) => {
   if (!dependOn)
     return false
@@ -44,13 +45,17 @@ const isDisabled = ({ dependOn }: SettingItem) => {
     ? stage[dependOn] !== 'vertical'
     : !stage[dependOn]
 }
+
+// 判断 `collapse-item` 是否显示禁止点击信息
+const showDisabledMsg = (data: SettingItem[], disabledMsg?: string) => {
+  if (!disabledMsg)
+    return false
+  return data.some(i => isDisabled(i))
+}
 </script>
 
 <template>
   <n-collapse :default-expanded-names="defaultExpandedNames">
-    <template #header-extra>
-      <n-icon><CashIcon /></n-icon>
-    </template>
     <template #arrow>
       <n-icon>
         <CashIcon />
@@ -80,9 +85,14 @@ const isDisabled = ({ dependOn }: SettingItem) => {
       页面功能
     </n-divider>
     <n-collapse-item
-      v-for="{ name, title, data } in funcSettings"
+      v-for="{ name, title, data, disabledMsg } in funcSettings"
       :key="name" :title="title" :name="name"
     >
+      <template v-if="showDisabledMsg(data, disabledMsg)" #header-extra>
+        <n-text type="error">
+          {{ disabledMsg }}
+        </n-text>
+      </template>
       <div v-for="item, idx in data" :key="idx">
         <Component
           :is="renderComponent(item.type)"
