@@ -82,7 +82,7 @@ export const configSettings: ConfigSettingObject = {
    */
   showTransitionAnimation: true,
   /**
-   * 是否固定 nav 导航栏
+   * 是否固定 `nav` 导航栏
    *
    * @default true
    */
