@@ -20,7 +20,7 @@ const isVerticalLayout = computed(() => {
   <div flex-center pr-5 shadow="sm light-900 dark:dark-700">
     <Logo v-if="!isVerticalLayout" />
     <NavBreadcrumb v-if="isVerticalLayout" mx-4 />
-    <Menu v-if="!isVerticalLayout" />
+    <Menu v-if="!isVerticalLayout" mx-4 />
     <div flex-auto />
     <div flex-y-center>
       <a

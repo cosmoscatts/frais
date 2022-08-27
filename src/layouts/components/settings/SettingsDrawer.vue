@@ -53,7 +53,10 @@ function renderComponent(key: SettingItemRenderType) {
       :key="name" :title="title" :name="name"
     >
       <div v-for="item, idx in data" :key="idx">
-        <Component :is="renderComponent(item.type)" v-bind="{ ...item }" v-model:model-value="stageSettings[item.prop]" />
+        <Component
+          :is="renderComponent(item.type)"
+          v-bind="{ ...item }" v-model:model-value="stageSettings[item.prop]"
+        />
       </div>
     </n-collapse-item>
 

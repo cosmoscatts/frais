@@ -13,10 +13,16 @@ watchEffect(() => {
   if (baseSettings.value.layout === 'horizontal')
     setMenuUnCollapsed()
 })
+
+const isHorizontalLayout = computed(() => baseSettings.value.layout === 'horizontal')
 </script>
 
 <template>
-  <div v-if="baseSettings.showLogo" flex-center :style="{ height: `${navHeight}px` }">
+  <div
+    v-if="baseSettings.showLogo"
+    flex-center :style="{ height: `${navHeight}px` }"
+    :class="{ 'ml-4': isHorizontalLayout }"
+  >
     <img
       src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
       alt="头像" :style="{ width: `${navHeight * 0.68}px`, height: `${navHeight * 0.68}px` }"
