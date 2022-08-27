@@ -50,9 +50,8 @@ const showTraditionalColors = $ref(false)
             <n-grid-item v-for="i in item.data" :key="i.label">
               <ColorCheckbox
                 class="!w-full !h-36px !rounded-4px"
-                :color="i.color"
+                :color="i.color" icon-class="text-20px"
                 :checked="i.color === modelValue"
-                icon-class="text-20px"
                 @click="onUpdateValue(i.color)"
               />
               <p text-center>
