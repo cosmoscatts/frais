@@ -63,7 +63,7 @@ function renderComponent(key: SettingItemRenderType) {
     <n-divider>
       系统主色调
     </n-divider>
-    <Componet :is="renderComponent('colorPicker')" v-bind="primaryColorSetting" />
+    <Component :is="renderComponent('colorPicker')" v-bind="primaryColorSetting" />
 
     <n-divider>
       页面功能
@@ -73,7 +73,10 @@ function renderComponent(key: SettingItemRenderType) {
       :key="name" :title="title" :name="name"
     >
       <div v-for="item, idx in data" :key="idx">
-        {{ item.name }}
+        <Component
+          :is="renderComponent(item.type)"
+          v-bind="{ ...item }" v-model:model-value="stageSettings[item.prop]"
+        />
       </div>
     </n-collapse-item>
   </n-collapse>
