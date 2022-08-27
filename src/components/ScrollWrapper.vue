@@ -4,30 +4,44 @@ import type { Options } from '@better-scroll/core'
 
 // better-scroll
 // https://better-scroll.github.io/docs/zh-CN/guide/base-scroll-options.html
-interface Props {
+const {
+  options = {},
+} = defineProps<{
   options: Options
-}
-const props = defineProps<Props>()
+}>()
+
+const instance = ref<BScroll>()
 
 const refScrollWrapper = ref<HTMLElement>()
-const instance = ref<BScroll>()
 const refScrollContent = ref<HTMLElement>()
-const isScrollY = computed(() => Boolean(props.options.scrollY))
+
+const isScrollY = computed(() => Boolean(options.scrollY))
+
 function initBetterScroll() {
   if (!refScrollWrapper.value)
     return
-  instance.value = new BScroll(refScrollWrapper.value, props.options)
+  instance.value = new BScroll(refScrollWrapper.value, options)
 }
-// when scroll change, refresh browser
+
 const { width: wrapWidth } = useElementSize(refScrollWrapper)
 const { width, height } = useElementSize(refScrollContent)
-watch([() => wrapWidth.value, () => width.value, () => height.value], () => {
-  if (instance.value)
-    instance.value.refresh()
-})
+
+watch(
+  [
+    () => wrapWidth.value,
+    () => width.value,
+    () => height.value,
+  ],
+  () => {
+    if (instance.value)
+      instance.value.refresh()
+  },
+)
+
 onMounted(() => {
   initBetterScroll()
 })
+
 defineExpose({ instance })
 </script>
 
