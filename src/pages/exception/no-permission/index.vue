@@ -1,5 +1,8 @@
 <script setup lang="ts">
-
+const router = useRouter()
+function goBack() {
+  router.push('/')
+}
 </script>
 
 <template>
@@ -10,7 +13,9 @@
       description="总有些门是对你关闭的"
     >
       <template #footer>
-        <n-button>放轻松</n-button>
+        <n-button @click="goBack">
+          放轻松
+        </n-button>
       </template>
     </n-result>
   </div>
