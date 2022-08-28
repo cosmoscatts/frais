@@ -32,7 +32,18 @@ const router = createRouter({
         {
           path: '',
           name: 'ErrorPage',
-          component: () => import('~/pages/exception/500/index.vue'),
+          component: () => import('~/pages/exception/error/index.vue'),
+        },
+      ],
+    },
+    {
+      path: '/403',
+      component: BLANK_LAYOUT,
+      children: [
+        {
+          path: '',
+          name: 'NoPermission',
+          component: () => import('~/pages/exception/no-permission/index.vue'),
         },
       ],
     },
@@ -43,7 +54,7 @@ const router = createRouter({
         {
           path: '',
           name: 'NotFound',
-          component: () => import('~/pages/exception/404/index.vue'),
+          component: () => import('~/pages/exception/not-found/index.vue'),
         },
       ],
     },
