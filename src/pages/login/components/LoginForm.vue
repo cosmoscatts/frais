@@ -38,9 +38,9 @@ const rules: FormRules = {
     },
     {
       validator(_rule: FormItemRule, value: string) {
-        return value.length >= 6 && value.length <= 20
+        return value.length >= 5 && value.length <= 20
       },
-      message: '账号的长度为 6 ~ 20',
+      message: '账号的长度为 5 ~ 20',
       trigger: ['input', 'blur'],
     },
   ],
