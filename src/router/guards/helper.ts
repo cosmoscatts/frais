@@ -29,6 +29,8 @@ export function findFirstPermissionRoute() {
  * 判断是否有页面的权限
  */
 export function hasPermissionOfThePage(menus: Menu[], toPath: string) {
+  if (toPath === '/')
+    return true
   let exist = false
   while (menus.length && !exist) {
     const element = menus.shift()

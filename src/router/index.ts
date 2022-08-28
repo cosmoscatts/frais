@@ -9,6 +9,9 @@ const router = createRouter({
     {
       path: '/',
       component: BASE_LAYOUT,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/login',
