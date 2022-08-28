@@ -2,6 +2,8 @@
 import { TabItem } from './tab'
 import type { Tab } from '~/types'
 
+const route = useRoute()
+const router = useRouter()
 const { message } = useGlobalNaiveApi()
 
 const tabStore = useTabStore()
@@ -16,8 +18,6 @@ const isChromeTabShapeStyle = computed(() => {
 const tabs = $computed(() => {
   return tabStore.visitedTabs || []
 })
-
-const route = useRoute()
 
 /**
  * 添加 `tab`
@@ -48,8 +48,6 @@ function isActive(path?: string) {
     return `/redirect${path}` === route.path
   return path === route.path
 }
-
-const router = useRouter()
 
 /**
  * 关闭选中的 `tab`
