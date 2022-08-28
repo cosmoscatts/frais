@@ -3,5 +3,7 @@ import { TheMain } from '../components'
 </script>
 
 <template>
-  <TheMain />
+  <n-layout hw-screen of-hidden :native-scrollbar="false">
+    <TheMain />
+  </n-layout>
 </template>
