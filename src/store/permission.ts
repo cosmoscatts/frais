@@ -10,7 +10,7 @@ export const usePermissionStore = defineStore(
     /**
      * 获取菜单
      */
-    function fetchAppMenus() {
+    async function fetchAppMenus() {
       appMenus.value = menuSource === 'front'
         ? [...defaultMenus]
         : []

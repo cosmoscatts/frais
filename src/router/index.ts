@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { BLANK_LAYOUT } from './constants'
+import { BASE_LAYOUT, BLANK_LAYOUT } from './constants'
 import appRoutes from './routes'
 import createRouterGuard from './guards'
 
@@ -8,7 +8,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: 'dashboard',
+      component: BASE_LAYOUT,
     },
     {
       path: '/login',
