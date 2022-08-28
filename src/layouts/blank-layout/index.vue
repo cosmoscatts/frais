@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import { TheMain } from '../components'
 </script>
 
 <template>
-  <h1>
-    BlankLayout
-  </h1>
+  <TheMain />
 </template>
