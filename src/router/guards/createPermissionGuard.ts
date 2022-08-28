@@ -1,6 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { executeActions, findFirstPermissionRoute, hasPermissionOfThePage } from './helper'
-import { NOT_FOUND, WHITE_LIST } from '~/router/constants'
+import { NO_PERMISSION, WHITE_LIST } from '~/router/constants'
 
 export default async function createPermissionGuard(
   to: RouteLocationNormalized,
@@ -60,7 +60,7 @@ export default async function createPermissionGuard(
       // 登录状态进入需要登录权限的页面，无权限，重定向到无权限页面
       isLogin && needLogin && !hasPermission,
       () => {
-        next(NOT_FOUND)
+        next(NO_PERMISSION)
         message.error('没有权限哦，请联系管理员')
         loadingBar.error()
       },

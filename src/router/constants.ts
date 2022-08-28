@@ -7,6 +7,7 @@ export const BLANK_LAYOUT = BlankLayout
  * 路由白名单
  */
 export const WHITE_LIST = [
+  'NoPermission',
   'NotFound',
   'ErrorPage',
   'Login',
@@ -20,4 +21,8 @@ export const NOT_FOUND = {
 
 export const ERROR_PAGE = {
   name: 'ErrorPage',
+}
+
+export const NO_PERMISSION = {
+  name: 'NoPermission',
 }
