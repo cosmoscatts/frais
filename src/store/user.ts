@@ -1,7 +1,7 @@
 import type { User } from '~/types'
 import defaultAvatar from '~/assets/default-avatar.jpg'
 
-export const userStore = defineStore(
+export const useUserStore = defineStore(
   'userStore',
   () => {
     const user = ref<User>()
