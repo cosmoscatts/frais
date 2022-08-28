@@ -7,6 +7,9 @@ import {
 } from '@vicons/ionicons5'
 import defaultAvatar from '~/assets/default-avatar.jpg'
 
+const router = useRouter()
+const { message } = useGlobalNaiveApi()
+
 // 渲染图标组件
 const renderIcon = (icon: Component) => {
   return () => {
@@ -22,11 +25,25 @@ const options = [
     label: '用户资料',
     key: 'profile',
     icon: renderIcon(UserIcon),
+    props: {
+      onClick: () => {
+        router.push('/profile')
+      },
+    },
   },
   {
     label: '退出登录',
     key: 'logout',
     icon: renderIcon(LogoutIcon),
+    props: {
+      onClick: () => {
+        message.success('登出成功')
+        useTimeoutFn(() => {
+          router.push('/login')
+          useLogout()
+        }, 1000)
+      },
+    },
   },
 ]
 </script>
