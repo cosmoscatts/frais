@@ -1,7 +1,13 @@
 import type { GlobalThemeOverrides } from 'naive-ui'
 import type { ConfigSettingObject } from '~/config'
 import { cacheAppSettings, configSettings } from '~/config'
-import { generatePrimaryColor, initAppSettings, setNaiveUiCommonColors } from '~/utils'
+import {
+  clearTabStorage,
+  generatePrimaryColor,
+  initAppSettings,
+  setNaiveUiCommonColors,
+  writeTabsIntoStorageIfCached,
+} from '~/utils'
 
 export const useAppStore = defineStore(
   'appStore',
@@ -77,6 +83,14 @@ export const useAppStore = defineStore(
       // 如果主题主要色调发生改变，替换主色调
       if (originThemePrimaryColor !== baseSettings.value.themePrimaryColor)
         changePrimaryColor()
+
+      // 如果改变多页签的显示状态 | 多页签的缓存状态
+      // 需要更新多页签的缓存
+      if (baseSettings.value.showTabs && baseSettings.value.cacheTabs)
+        writeTabsIntoStorageIfCached([...useTabStore().visitedTabs])
+
+      else
+        clearTabStorage()
 
       if (cacheAppSettings)
         cacheSettingsOnStorage({ ...baseSettings.value })

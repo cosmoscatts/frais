@@ -42,3 +42,7 @@ export function readTabsFromStorageIfCached(userId: number) {
   const key = `user-${userId}`
   return tabData[key] || []
 }
+
+export function clearTabStorage() {
+  tabStorage.value = {}
+}

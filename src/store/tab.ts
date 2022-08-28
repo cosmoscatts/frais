@@ -16,16 +16,6 @@ export const useTabStore = defineStore(
       ]
     })
 
-    // watch(
-    //   [() => baseSettings.showTheTags, () => baseSettings.cacheTheTags],
-    //   ([v1, v2]) => {
-    //     if (!v1 || !v2)
-    //       tagsOnStorage.value = {}
-    //     else
-    //       updateTagStorageIfCached([...visitedPages.value])
-    //   },
-    // )
-
     /**
      * 初始化 `tabs`，如果开启了多页签缓存，需要从缓存中读取历史数据
      */
