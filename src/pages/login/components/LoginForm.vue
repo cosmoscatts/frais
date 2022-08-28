@@ -4,23 +4,27 @@ import type {
   FormItemRule,
   FormRules,
 } from 'naive-ui'
-import { appMeta } from '~/config'
-
-const router = useRouter()
+import { appMeta, debug } from '~/config'
 
 interface ModelType {
   username?: string
   password?: string
 }
 
+const router = useRouter()
 const { message } = useGlobalNaiveApi()
 
 const refForm = ref<FormInst | null>(null)
 
-const baseFormModel = {
-  username: '',
-  password: '',
-}
+const baseFormModel = debug
+  ? {
+      username: 'admin',
+      password: '123456',
+    }
+  : {
+      username: '',
+      password: '',
+    }
 
 const formModel = reactive<ModelType>({
   ...baseFormModel,
@@ -54,6 +58,10 @@ function onSubmit(e: MouseEvent) {
   refForm.value?.validate((errors) => {
     if (errors)
       return
+    if (formModel.password !== '123456') {
+      message.error('账号或密码错误')
+      return
+    }
     message.success('欢迎使用')
     updateUser({
       id: 1,
