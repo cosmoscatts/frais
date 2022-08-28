@@ -19,6 +19,8 @@ export default async function createPermissionGuard(
   const needLogin = Boolean(to.meta?.requiresAuth) && !WHITE_LIST.includes(to.name as string)
   const hasPermission = hasPermissionOfThePage(menus, to.path)
 
+  permissionStore.fetchAppMenus()
+
   const actions: [boolean, Function][] = [
     // 已登录状态跳转登录页，跳转至首页
     [
@@ -50,7 +52,6 @@ export default async function createPermissionGuard(
       async () => {
         // 从登录页跳转，需要查询菜单
         if (to.path === '/') {
-          permissionStore.fetchAppMenus()
           tabStore.initTabs(userStore.user!.id)
           const path = findFirstPermissionRoute() as string
           next({ path })
