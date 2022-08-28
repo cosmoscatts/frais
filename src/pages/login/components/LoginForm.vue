@@ -87,15 +87,24 @@ function handlePasswordInput() {
     rPasswordFormItemRef.value?.validate({ trigger: 'password-input' })
 }
 
+const router = useRouter()
+const { updateUser } = useUserStore()
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
   refForm.value?.validate((errors) => {
-    if (!errors)
-      message.success('验证成功')
-
-    else
-
-      message.error('验证失败')
+    if (errors)
+      return
+    message.success('欢迎使用')
+    updateUser({
+      id: 1,
+      username: 'admin',
+      name: 'admin',
+      roleId: 1,
+      createTime: new Date(),
+    })
+    useTimeoutFn(() => {
+      router.push('/')
+    }, 1000)
   })
 }
 </script>
