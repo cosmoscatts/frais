@@ -10,8 +10,8 @@ export default async function createPermissionGuard(
   // `message` & `Loading Bar`
   const { message, loadingBar } = useGlobalNaiveApi()
 
-  const userStore = useUserStore()
   const tabStore = useTabStore()
+  const userStore = useUserStore()
   const permissionStore = usePermissionStore()
 
   const menus = permissionStore.appMenus
@@ -50,7 +50,7 @@ export default async function createPermissionGuard(
       async () => {
         // 从登录页跳转，需要查询菜单
         if (to.path === '/') {
-          await permissionStore.fetchAppMenus()
+          permissionStore.fetchAppMenus()
           tabStore.initTabs(userStore.user!.id)
           const path = findFirstPermissionRoute() as string
           next({ path })
