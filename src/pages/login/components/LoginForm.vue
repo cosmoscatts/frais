@@ -78,11 +78,12 @@ function onSubmit(e: MouseEvent) {
 </script>
 
 <template>
-  <a-space direction="vertical" size="large" w-450px mt-200px>
+  <div flex="y-center col" mt-200px>
     <div text="32px center" font-bold>
       🎃 {{ appMeta.name }}
     </div>
-    <n-form ref="refForm" :model="formModel" :rules="rules">
+
+    <n-form ref="refForm" :model="formModel" :rules="rules" size="large" w-450px>
       <n-form-item path="username" label="账号">
         <n-input v-model:value="formModel.username" @keydown.enter.prevent />
       </n-form-item>
@@ -100,9 +101,10 @@ function onSubmit(e: MouseEvent) {
         <span font-bold text="lg white">登录</span>
       </n-button>
     </n-form>
+
     <div flex-center mt-200px>
       <DarkToggle />
       <span ml-5 op-50 text-xl>🙌🙌 By {{ appMeta.author }} 🙌🙌</span>
     </div>
-  </a-space>
+  </div>
 </template>
