@@ -4,7 +4,7 @@ import { NO_PERMISSION, WHITE_LIST } from '~/router/constants'
 
 export default async function createPermissionGuard(
   to: RouteLocationNormalized,
-  from: RouteLocationNormalized,
+  _from: RouteLocationNormalized,
   next: NavigationGuardNext,
 ) {
   // `message` & `Loading Bar`
@@ -49,11 +49,15 @@ export default async function createPermissionGuard(
       isLogin && needLogin && hasPermission,
       async () => {
         // 从登录页跳转，需要查询菜单
-        if (from.name === 'Login') {
+        if (to.path === '/') {
           await permissionStore.fetchAppMenus()
           tabStore.initTabs(userStore.user!.id)
+          const path = findFirstPermissionRoute() as string
+          next({ path })
         }
-        next()
+        else {
+          next()
+        }
       },
     ],
     [
