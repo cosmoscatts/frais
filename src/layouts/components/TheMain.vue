@@ -12,7 +12,7 @@ const animateName = computed(() => {
   <RouterView v-slot="{ Component, route }">
     <Transition :name="animateName" mode="out-in" appear>
       <KeepAlive :include="[]">
-        <component :is="Component" :key="route.fullPath" />
+        <component :is="Component" :key="route.path" />
       </KeepAlive>
     </Transition>
   </RouterView>
