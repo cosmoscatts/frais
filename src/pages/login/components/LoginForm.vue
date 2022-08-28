@@ -1,47 +1,30 @@
 <script setup lang="ts">
 import type {
   FormInst,
-  FormItemInst,
   FormItemRule,
   FormRules,
 } from 'naive-ui'
 import { appMeta } from '~/config'
 
+const router = useRouter()
+
 interface ModelType {
   username?: string
   password?: string
-  reenteredPassword?: string
 }
 
 const { message } = useGlobalNaiveApi()
 
 const refForm = ref<FormInst | null>(null)
-const rPasswordFormItemRef = ref<FormItemInst | null>(null)
 
 const baseFormModel = {
   username: '',
   password: '',
-  reenteredPassword: '',
 }
 
 const formModel = reactive<ModelType>({
   ...baseFormModel,
 })
-
-function validatePasswordStartWith(
-  _rule: FormItemRule,
-  value: string,
-): boolean {
-  return (
-    !!formModel.password
-    && formModel.password.startsWith(value)
-    && formModel.password.length >= value.length
-  )
-}
-
-function validatePasswordSame(_rule: FormItemRule, value: string): boolean {
-  return value === formModel.password
-}
 
 const rules: FormRules = {
   username: [
@@ -50,8 +33,8 @@ const rules: FormRules = {
       message: '请输入账号',
     },
     {
-      validator(_rule: FormItemRule, value: number) {
-        return value >= 6 && value <= 20
+      validator(_rule: FormItemRule, value: string) {
+        return value.length >= 6 && value.length <= 20
       },
       message: '账号的长度为 6 ~ 20',
       trigger: ['input', 'blur'],
@@ -63,31 +46,8 @@ const rules: FormRules = {
       message: '请输入密码',
     },
   ],
-  reenteredPassword: [
-    {
-      required: true,
-      message: '请再次输入密码',
-      trigger: ['input', 'blur'],
-    },
-    {
-      validator: validatePasswordStartWith,
-      message: '两次密码输入不一致',
-      trigger: 'input',
-    },
-    {
-      validator: validatePasswordSame,
-      message: '两次密码输入不一致',
-      trigger: ['blur', 'password-input'],
-    },
-  ],
 }
 
-function handlePasswordInput() {
-  if (formModel.reenteredPassword)
-    rPasswordFormItemRef.value?.validate({ trigger: 'password-input' })
-}
-
-const router = useRouter()
 const { updateUser } = useUserStore()
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
@@ -110,7 +70,7 @@ function onSubmit(e: MouseEvent) {
 </script>
 
 <template>
-  <a-space direction="vertical" size="large" w-450px class="mt-1/15">
+  <a-space direction="vertical" size="large" w-450px mt-200px>
     <div text="32px center" font-bold>
       🎃 {{ appMeta.name }}
     </div>
@@ -122,31 +82,17 @@ function onSubmit(e: MouseEvent) {
         <n-input
           v-model:value="formModel.password"
           type="password"
-          @input="handlePasswordInput"
-          @keydown.enter.prevent
-        />
-      </n-form-item>
-      <n-form-item
-        ref="rPasswordFormItemRef"
-        first
-        path="reenteredPassword"
-        label="重复密码"
-      >
-        <n-input
-          v-model:value="formModel.reenteredPassword"
-          :disabled="!formModel.password"
-          type="password"
           @keydown.enter.prevent
         />
       </n-form-item>
       <n-button
-        block strong round type="primary"
-        @click="onSubmit"
+        block round type="primary"
+        mt-3 @click="onSubmit"
       >
-        登录
+        <span font-bold text="lg white">登录</span>
       </n-button>
     </n-form>
-    <div flex justify-center items-center>
+    <div flex-center mt-200px>
       <DarkToggle />
       <span ml-5 op-50 text-xl>🙌🙌 By {{ appMeta.author }} 🙌🙌</span>
     </div>

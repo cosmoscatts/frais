@@ -64,6 +64,8 @@ const router = createRouter({
   },
 })
 
-createRouterGuard(router)
-
 export default router
+
+export {
+  createRouterGuard,
+}
