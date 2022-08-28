@@ -1,5 +1,98 @@
 <script setup lang="ts">
 import { TabItem } from './tab'
+
+const tabStore = useTabStore()
+
+const tags = $computed(() => {
+  return tagsStore.visitedPages || []
+})
+const route = useRoute()
+function addTag() {
+  const { name, meta: { title, cached }, path, fullPath, query } = route
+  if ([title, path, fullPath].some(i => !i))
+    return
+  tagsStore.addTag({
+    path,
+    query,
+    fullPath,
+    name: name?.toString() || '',
+    title: title as string,
+    cached: cached as boolean || false,
+  })
+}
+addTag()
+watch(() => route.path, () => {
+  addTag()
+})
+function isActive(path?: string) {
+  if (!path)
+    return false
+  if (route.path.startsWith('/redirect'))
+    return `/redirect${path}` === route.path
+  return path === route.path
+}
+const router = useRouter()
+function closeTag(idx: number) {
+  if (tags.length === 1) {
+    Message.warning('已经是最后一个标签了')
+    return
+  }
+  const tag = tags[idx]
+  if (!tag)
+    return
+  tagsStore.removeTag(tag).then(() => {
+    // close the current tag that is show
+    if (tag.path === route.path) {
+      // find the latest
+      const latest = tags.slice(-1)[0]
+      const path = latest
+        ? latest.fullPath!
+        : '/'
+      router.push(path)
+    }
+  })
+}
+const refWrapper = ref()
+const refScroll = ref()
+const refTag = ref()
+const { width: refWrapperWidth, left: refWrapperLeft } = useElementBounding(refWrapper)
+const activeTagIndex = computed(() => {
+  const redirectPrefix = '/redirect'
+  const activePath = route.path.startsWith(redirectPrefix)
+    ? route.path.substring(redirectPrefix.length)
+    : route.path
+  return tags.findIndex(i => i.path === activePath) || -1
+})
+async function getActiveTabClientX() {
+  await nextTick()
+  if (refTag.value && refTag.value?.children?.length && refTag.value.children[activeTagIndex.value]) {
+    const activeTagEl = refTag.value.children[activeTagIndex.value]
+    const { x, width } = activeTagEl.getBoundingClientRect()
+    const clientX = x + width / 2
+    useTimeoutFn(() => {
+      handleScroll(clientX)
+    }, 50)
+  }
+}
+function handleScroll(clientX: number) {
+  const currentX = clientX - refWrapperLeft.value
+  const deltaX = currentX - refWrapperWidth.value / 2
+  if (refScroll.value) {
+    const { maxScrollX, x: leftX } = refScroll.value.instance
+    const rightX = maxScrollX - leftX
+    const update = deltaX > 0 ? Math.max(-deltaX, rightX) : Math.min(-deltaX, -leftX)
+    refScroll.value?.instance.scrollBy(update, 0, 300)
+  }
+}
+watch(
+  activeTagIndex,
+  () => {
+    getActiveTabClientX()
+  },
+  {
+    immediate: true,
+  },
+)
 </script>
 
 <template>
@@ -11,7 +104,12 @@ import { TabItem } from './tab'
           h-26px lh-26px wa flex-inline items-center cursor-pointer
           :class="{ 'ha max-h-full': tagButtonShape !== 'default' }"
         >
-          <TabItem />
+          <TabItem
+            :idx="idx"
+            :title="title"
+            :path="path"
+            :is-active="false"
+          />
         </div>
       </div>
     </ScrollWrapper>
