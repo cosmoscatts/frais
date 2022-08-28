@@ -1,7 +1,5 @@
-import TabButton from './components/TabButton.vue'
-import TabChrome from './components/TabChrome.vue'
+import TabItem from './TabItem.vue'
 
 export {
-  TabButton,
-  TabChrome,
+  TabItem,
 }

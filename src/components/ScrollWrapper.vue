@@ -23,14 +23,14 @@ function initBetterScroll() {
   instance.value = new BScroll(refScrollWrapper.value, options)
 }
 
-const { width: wrapWidth } = useElementSize(refScrollWrapper)
 const { width, height } = useElementSize(refScrollContent)
+const { width: wrapperWidth } = useElementSize(refScrollWrapper)
 
 watch(
   [
-    () => wrapWidth.value,
     () => width.value,
     () => height.value,
+    () => wrapperWidth.value,
   ],
   () => {
     if (instance.value)
