@@ -1,29 +1,46 @@
 <script setup lang="ts">
 import { TabItem } from './tab'
+import type { Tab } from '~/types'
+
+const { message } = useGlobalNaiveApi()
 
 const tabStore = useTabStore()
+const { baseSettings } = storeToRefs(useAppStore())
 
-const tags = $computed(() => {
-  return tagsStore.visitedPages || []
+// 多页签风格是否为谷歌风格
+const isChromeTabShapeStyle = computed(() => {
+  return baseSettings.value.tabShapeStyle === 'chrome'
 })
+
+// 多页签集合
+const tabs = $computed(() => {
+  return tabStore.visitedTabs || []
+})
+
 const route = useRoute()
+
+/**
+ * 添加 `tab`
+ */
 function addTag() {
-  const { name, meta: { title, cached }, path, fullPath, query } = route
-  if ([title, path, fullPath].some(i => !i))
+  const { name, path, meta: { title, cached } } = route
+  if ([title, path].some(i => !i))
     return
-  tagsStore.addTag({
+  tabStore.addOneTab({
     path,
-    query,
-    fullPath,
-    name: name?.toString() || '',
-    title: title as string,
-    cached: cached as boolean || false,
-  })
+    name,
+    title,
+    cached,
+  } as Tab)
 }
 addTag()
 watch(() => route.path, () => {
   addTag()
 })
+
+/**
+ * 判断是否为当前路由，即当前页面
+ */
 function isActive(path?: string) {
   if (!path)
     return false
@@ -31,38 +48,49 @@ function isActive(path?: string) {
     return `/redirect${path}` === route.path
   return path === route.path
 }
+
 const router = useRouter()
+
+/**
+ * 关闭选中的 `tab`
+ */
 function closeTag(idx: number) {
-  if (tags.length === 1) {
-    Message.warning('已经是最后一个标签了')
+  if (tabs.length === 1) {
+    message.warning('已经是最后一个标签了')
     return
   }
-  const tag = tags[idx]
-  if (!tag)
+
+  const tab = tabs[idx]
+  if (!tab)
     return
-  tagsStore.removeTag(tag).then(() => {
-    // close the current tag that is show
-    if (tag.path === route.path) {
-      // find the latest
-      const latest = tags.slice(-1)[0]
+  tabStore.removeOneTab(tab).then(() => {
+    // 当关闭的是当前路由，需要跳转到 `tabs` 的最后一个
+    if (tab.path === route.path) {
+      // 找到最后一个
+      const latest = tabs.slice(-1)[0]
       const path = latest
-        ? latest.fullPath!
+        ? latest.path
         : '/'
       router.push(path)
     }
   })
 }
-const refWrapper = ref()
-const refScroll = ref()
+
 const refTag = ref()
-const { width: refWrapperWidth, left: refWrapperLeft } = useElementBounding(refWrapper)
+const refContainer = ref()
+const refScrollWrapper = ref()
+
+const { width: refContainerWidth, left: refContainerLeft } = useElementBounding(refContainer)
+
+// 当前显示的 `tab` 索引
 const activeTagIndex = computed(() => {
   const redirectPrefix = '/redirect'
   const activePath = route.path.startsWith(redirectPrefix)
     ? route.path.substring(redirectPrefix.length)
     : route.path
-  return tags.findIndex(i => i.path === activePath) || -1
+  return tabs.findIndex(i => i.path === activePath) || -1
 })
+
 async function getActiveTabClientX() {
   await nextTick()
   if (refTag.value && refTag.value?.children?.length && refTag.value.children[activeTagIndex.value]) {
@@ -74,14 +102,18 @@ async function getActiveTabClientX() {
     }, 50)
   }
 }
+
+/**
+ * 处理多页签滚动
+ */
 function handleScroll(clientX: number) {
-  const currentX = clientX - refWrapperLeft.value
-  const deltaX = currentX - refWrapperWidth.value / 2
-  if (refScroll.value) {
-    const { maxScrollX, x: leftX } = refScroll.value.instance
+  const currentX = clientX - refContainerLeft.value
+  const deltaX = currentX - refContainerWidth.value / 2
+  if (refScrollWrapper.value) {
+    const { maxScrollX, x: leftX } = refScrollWrapper.value.instance
     const rightX = maxScrollX - leftX
     const update = deltaX > 0 ? Math.max(-deltaX, rightX) : Math.min(-deltaX, -leftX)
-    refScroll.value?.instance.scrollBy(update, 0, 300)
+    refScrollWrapper.value?.instance.scrollBy(update, 0, 300)
   }
 }
 watch(
@@ -96,19 +128,29 @@ watch(
 </script>
 
 <template>
-  <div ref="refWrapper" of-hidden mx-1rem style="width: calc(100% - 2rem);">
-    <ScrollWrapper ref="refScroll" :options="{ scrollX: true, scrollY: false, click: true }">
-      <div ref="refTag" h-full :class="[tagButtonShape === 'default' ? 'flex !items-center gap-x-2 mt-1px' : 'flex items-end pr-7']">
+  <div ref="refContainer" of-hidden mx-1rem style="width: calc(100% - 2rem);">
+    <ScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }">
+      <div
+        ref="refTag" h-full
+        :class="[
+          isChromeTabShapeStyle
+            ? 'flex items-end pr-7'
+            : 'flex !items-center gap-x-2 mt-1px',
+        ]"
+      >
         <div
-          v-for="{ title, path }, idx in tags" :key="idx"
+          v-for="{ title, path }, idx in tabs" :key="idx"
           h-26px lh-26px wa flex-inline items-center cursor-pointer
-          :class="{ 'ha max-h-full': tagButtonShape !== 'default' }"
+          :class="{ 'ha max-h-full': isChromeTabShapeStyle }"
         >
           <TabItem
             :idx="idx"
             :title="title"
             :path="path"
-            :is-active="false"
+            :tabs-length="tabs.length"
+            :is-active="isActive(path)"
+            :is-chrome-tab-shape-style="isChromeTabShapeStyle"
+            @close-tag="closeTag"
           />
         </div>
       </div>

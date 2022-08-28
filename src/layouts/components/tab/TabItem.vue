@@ -5,21 +5,21 @@ const {
   idx = -1,
   title = '',
   path = '/',
+  tabsLength = 0,
   isActive = false,
+  isChromeTabShapeStyle = false,
 } = defineProps<{
   idx: number
   title: string
   path: string
+  tabsLength?: number
   isActive?: boolean
+  isChromeTabShapeStyle?: boolean
 }>()
 
-const { message } = useGlobalNaiveApi()
-const { baseSettings } = storeToRefs(useAppStore())
+const emits = defineEmits(['closeTag'])
 
-// 多页签风格是否为谷歌风格
-const isChromeTabShapeStyle = computed(() => {
-  return baseSettings.value.tabShapeStyle === 'chrome'
-})
+const { message } = useGlobalNaiveApi()
 
 // 右键菜单项
 const tabContextMenuOptions = [
@@ -99,8 +99,8 @@ function onClickoutside() {
 }
 
 // 关闭标签
-function closeTag(_idx: number) {
-
+function closeTag(idx: number) {
+  emits('closeTag', idx)
 }
 </script>
 
@@ -113,7 +113,7 @@ function closeTag(_idx: number) {
         v-if="isChromeTabShapeStyle"
         :title="title"
         :is-active="isActive"
-        :is-last="idx === tags.length - 1"
+        :is-last="idx === tabsLength - 1"
       >
         <template #close>
           <span
