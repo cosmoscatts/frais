@@ -1,10 +1,11 @@
 import type { Menu } from '~/types'
+import { specialRoutePathList } from '~/router/constants'
 
 /**
- * 判断是否有页面的权限
+ * 判断是否有页面的权限, '/' 和 '/profile' 需要单独判断
  */
 export function hasPermissionOfThePage(menus: Menu[], toPath: string) {
-  if (toPath === '/')
+  if (specialRoutePathList.includes(toPath))
     return true
   let exist = false
   while (menus.length && !exist) {

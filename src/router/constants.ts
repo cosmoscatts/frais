@@ -14,6 +14,11 @@ export const WHITE_LIST = [
   'Redirect',
 ]
 
+/**
+ * 特殊的路由路径，每个用户都会必然存在
+ */
+export const specialRoutePathList = ['/', '/profile']
+
 export const NOT_FOUND = {
   name: 'NotFound',
 }
