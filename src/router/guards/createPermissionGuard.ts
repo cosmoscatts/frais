@@ -2,7 +2,7 @@ import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { executeActions, findFirstPermissionRoute, hasPermissionOfThePage } from './helper'
 import { NO_PERMISSION, WHITE_LIST } from '~/router/constants'
 
-export default async function createPermissionGuard(
+export default function createPermissionGuard(
   to: RouteLocationNormalized,
   _from: RouteLocationNormalized,
   next: NavigationGuardNext,
@@ -10,7 +10,6 @@ export default async function createPermissionGuard(
   // `message` & `Loading Bar`
   const { message, loadingBar } = useGlobalNaiveApi()
 
-  const tabStore = useTabStore()
   const userStore = useUserStore()
   const permissionStore = usePermissionStore()
 
@@ -47,13 +46,17 @@ export default async function createPermissionGuard(
     // 登录状态进入需要登录权限的页面，有权限直接通行
     [
       isLogin && needLogin && hasPermission,
-      async () => {
+      () => {
         // 从登录页跳转，需要查询菜单
         if (to.path === '/') {
-          await permissionStore.fetchAppMenus()
-          tabStore.initTabs(userStore.user!.id)
           const path = findFirstPermissionRoute() as string
-          next({ path })
+          if (path === null) {
+            next('/login')
+            message.error('请联系管理员配置用户角色')
+          }
+          else {
+            next(path)
+          }
         }
         else {
           next()

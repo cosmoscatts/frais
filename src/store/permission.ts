@@ -15,6 +15,7 @@ export const usePermissionStore = defineStore(
         ? [...defaultMenus]
         : []
     }
+
     /**
      * 清空菜单
      */
@@ -28,10 +29,5 @@ export const usePermissionStore = defineStore(
       fetchAppMenus,
       removeAppMenus,
     }
-  },
-  {
-    persist: {
-      enabled: true,
-    },
   },
 )

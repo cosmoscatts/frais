@@ -5,6 +5,7 @@ import type {
   FormRules,
 } from 'naive-ui'
 import { appMeta, debug } from '~/config'
+import { createPermission } from '~/utils'
 
 interface ModelType {
   username?: string
@@ -52,10 +53,9 @@ const rules: FormRules = {
   ],
 }
 
-const { updateUser } = useUserStore()
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
-  refForm.value?.validate((errors) => {
+  refForm.value?.validate(async (errors) => {
     if (errors)
       return
     if (formModel.password !== '123456') {
@@ -63,7 +63,7 @@ function onSubmit(e: MouseEvent) {
       return
     }
     message.success('欢迎使用')
-    updateUser({
+    await createPermission({
       id: 1,
       username: 'admin',
       name: 'admin',
