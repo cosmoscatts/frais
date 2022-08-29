@@ -102,9 +102,9 @@ export const configSettings: ConfigSettingObject = {
   /**
    * 是否缓存多页签
    *
-   * @default true
+   * @default false
    */
-  cacheTabs: true,
+  cacheTabs: false,
   /**
    * 多页签风格
    *  - 'default': 默认按钮风格
