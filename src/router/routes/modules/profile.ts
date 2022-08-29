@@ -14,7 +14,7 @@ export default {
       meta: {
         title: '个人资料',
         requiresAuth: true,
-        cached: true,
+        cached: false,
       },
     },
   ],

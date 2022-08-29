@@ -12,7 +12,6 @@ export const WHITE_LIST = [
   'ErrorPage',
   'Login',
   'Redirect',
-  'Profile',
 ]
 
 export const NOT_FOUND = {
