@@ -44,6 +44,7 @@ const refContentWrapper = ref()
   <n-layout has-sider hw-screen of-hidden>
     <n-layout-sider
       bordered position="absolute"
+      :inverted="baseSettings.invertMenu"
       :show-trigger="baseSettings.sideCollapsedTriggerStyle"
       collapse-mode="width"
       :collapsed="menuCollapsed"
