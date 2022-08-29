@@ -122,4 +122,9 @@ export const useTabStore = defineStore(
       removeAllTabs,
     }
   },
+  {
+    persist: {
+      enabled: true,
+    },
+  },
 )
