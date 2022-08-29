@@ -30,4 +30,9 @@ export const usePermissionStore = defineStore(
       removeAppMenus,
     }
   },
+  {
+    persist: {
+      enabled: true,
+    },
+  },
 )

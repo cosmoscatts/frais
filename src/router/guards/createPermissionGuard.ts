@@ -51,7 +51,7 @@ export default function createPermissionGuard(
         if (to.path === '/') {
           const path = findFirstPermissionRoute() as string
           if (path === null) {
-            next('/login')
+            next()
             message.error('请联系管理员配置用户角色')
           }
           else {
