@@ -6,7 +6,7 @@ export const useTabStore = defineStore(
   () => {
     // 记录访问过的页面
     const visitedTabs = ref<Tab[]>([])
-    // 记录防问过的缓存页面
+    // 记录访问过的缓存页面
     const cachedTabNames = computed<string[]>(() => {
       const names = visitedTabs.value.filter(i => !!i.cached && !!i.name)
         .map(j => j.name) || []
