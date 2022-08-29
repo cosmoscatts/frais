@@ -30,7 +30,7 @@ const { baseSettings } = storeToRefs(useAppStore())
   <div
     ref="refTag" text="stone-600 dark:light-600/80"
     relative flex-inline items-center h-34px px-24px m="r-[-18px]" cursor-pointer
-    :class="{ 'z-10': isActive, 'z-9': isHovered, '!text-[rgb(var(--primary-6))]': isActive }"
+    :class="{ 'z-10': isActive, 'z-9': isHovered, '!text-primary': isActive }"
   >
     <div absolute left-0 bottom-0 h-full w-full of-hidden>
       <TabChromeShape

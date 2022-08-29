@@ -30,7 +30,7 @@ const tagStyle = computed(() => {
   <span
     ref="refTag" :style="tagStyle"
     flex="~ nowrap" justify-center items-center lt-sm="!min-w-70px" px-2 truncate
-    text="stone-600 dark:light-600/80 13px hover:[rgb(var(--primary-6))]"
+    text="stone-600 dark:light-600/80 13px hover:primary"
     border="1px #e5e7eb dark:#ffffff3d"
     :class="{
       '!text-[rgb(var(--primary-6))]': isActive,
