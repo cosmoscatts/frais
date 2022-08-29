@@ -126,7 +126,7 @@ watch(
 </script>
 
 <template>
-  <div ref="refContainer" of-hidden mx-1rem style="width: calc(100% - 2rem);">
+  <div ref="refContainer" of-hidden mx="[0.5rem]" style="width: calc(100% - 1rem);">
     <ScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }">
       <div
         ref="refTag" h-full
