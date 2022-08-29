@@ -1,6 +1,7 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
-import { executeActions, findFirstPermissionRoute, hasPermissionOfThePage } from './helper'
+import { executeActions, hasPermissionOfThePage } from './helper'
 import { NO_PERMISSION, WHITE_LIST } from '~/router/constants'
+import { findFirstPermissionRoute } from '~/utils'
 
 export default function createPermissionGuard(
   to: RouteLocationNormalized,
@@ -13,10 +14,11 @@ export default function createPermissionGuard(
   const userStore = useUserStore()
   const permissionStore = usePermissionStore()
 
-  const menus = permissionStore.appMenus
   const isLogin = !!userStore.user
   const needLogin = Boolean(to.meta?.requiresAuth) && !WHITE_LIST.includes(to.name as string)
-  const hasPermission = hasPermissionOfThePage(menus, to.path)
+  // 需要对 `menus` 拷贝，`hasPermissionOfThePage` 方法会对原对象造成影响
+  const menusClone = JSON.parse(JSON.stringify(permissionStore.appMenus))
+  const hasPermission = hasPermissionOfThePage(menusClone, to.path)
 
   const actions: [boolean, Function][] = [
     // 已登录状态跳转登录页，跳转至首页
@@ -47,20 +49,7 @@ export default function createPermissionGuard(
     [
       isLogin && needLogin && hasPermission,
       () => {
-        // 从登录页跳转，需要查询菜单
-        if (to.path === '/') {
-          const path = findFirstPermissionRoute() as string
-          if (path === null) {
-            next()
-            message.error('请联系管理员配置用户角色')
-          }
-          else {
-            next(path)
-          }
-        }
-        else {
-          next()
-        }
+        next()
       },
     ],
     [

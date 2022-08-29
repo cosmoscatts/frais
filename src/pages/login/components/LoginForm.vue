@@ -5,7 +5,7 @@ import type {
   FormRules,
 } from 'naive-ui'
 import { appMeta, debug } from '~/config'
-import { createPermission } from '~/utils'
+import { findFirstPermissionRoute, loginCallback } from '~/utils'
 
 interface ModelType {
   username?: string
@@ -63,15 +63,16 @@ function onSubmit(e: MouseEvent) {
       return
     }
     message.success('欢迎使用')
-    await createPermission({
+    await loginCallback({
       id: 1,
       username: 'admin',
       name: 'admin',
       roleId: 1,
       createTime: new Date(),
     })
+    const path = findFirstPermissionRoute() ?? '/'
     useTimeoutFn(() => {
-      router.push('/')
+      router.push(path)
     }, 1000)
   })
 }
