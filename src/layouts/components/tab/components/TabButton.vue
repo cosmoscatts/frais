@@ -33,7 +33,7 @@ const tagStyle = computed(() => {
     text="stone-600 dark:light-600/80 13px hover:primary"
     border="1px #e5e7eb dark:#ffffff3d"
     :class="{
-      '!text-[rgb(var(--primary-6))]': isActive,
+      '!text-primary': isActive,
     }"
   >
     <span v-if="isActive" i-ri-price-tag-3-fill mr-1 />
