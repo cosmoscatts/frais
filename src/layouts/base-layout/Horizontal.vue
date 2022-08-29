@@ -34,12 +34,14 @@ const diffHeight = computed(() => {
 // 否则为 refMainWrapper
 const refMainWrapper = ref()
 const refContentWrapper = ref()
+// 是否为暗色模式
+const isDarkMode = isDark
 </script>
 
 <template>
   <n-layout ref="refMainWrapper" hw-screen of-hidden :native-scrollbar="false">
     <n-layout-header bordered :position="baseSettings.fixNav ? 'absolute' : 'static'">
-      <TheNav w-full bg-transparent :style="{ height: `${navHeight}px` }" />
+      <TheNav w-full :class="baseSettings.invertMenu && !isDarkMode ? 'bg-[#001428] text-neutral' : 'bg-transparent'" :style="{ height: `${navHeight}px` }" />
       <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
     </n-layout-header>
     <n-layout
