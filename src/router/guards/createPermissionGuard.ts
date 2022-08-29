@@ -26,7 +26,7 @@ export default function createPermissionGuard(
       isLogin && to.name === 'Login',
       () => {
         const path = findFirstPermissionRoute() as string
-        next({ path })
+        next(path)
       },
     ],
     // 不需要登录权限的页面直接通行
