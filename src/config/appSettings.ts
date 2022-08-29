@@ -102,9 +102,9 @@ export const configSettings: ConfigSettingObject = {
   /**
    * 是否缓存多页签
    *
-   * @default false
+   * @default true
    */
-  cacheTabs: false,
+  cacheTabs: true,
   /**
    * 多页签风格
    *  - 'default': 默认按钮风格
@@ -123,6 +123,8 @@ export const configSettings: ConfigSettingObject = {
    * 侧边栏折叠触发器样式
    *  - 'bar'
    *  - 'arrow-circle'
+   *
+   * @default 'bar'
    */
   sideCollapsedTriggerStyle: 'bar',
 }
