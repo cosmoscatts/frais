@@ -2,22 +2,17 @@ import type { GlobalThemeOverrides } from 'naive-ui'
 import type { ConfigSettingObject } from '~/config'
 import { cacheAppSettings, configSettings } from '~/config'
 import {
+  cacheSettingsOnStorage,
   clearTabStorage,
   generatePrimaryColor,
-  initAppSettings,
   setNaiveUiCommonColors,
+  updateSettingsFromStorage,
   writeTabsIntoStorageIfCached,
 } from '~/utils'
 
 export const useAppStore = defineStore(
   'appStore',
   () => {
-    const {
-      initStorage,
-      cacheSettingsOnStorage,
-      updateSettingsFromStorage,
-    } = initAppSettings()
-
     // `app` 配置对象
     const baseSettings = ref<ConfigSettingObject>({
       ...configSettings,
@@ -46,10 +41,8 @@ export const useAppStore = defineStore(
     }
 
     const init = () => {
-      // 如果开启了缓存配置, 则从 storage 更新配置
-      if (cacheAppSettings)
-        initStorage()
-
+      // 如果开启了缓存配置, 则从 `storage` 更新配置
+      // 未开启，`updateSettingsFromStorage` 方法会返回默认配置
       baseSettings.value = {
         ...updateSettingsFromStorage({
           ...configSettings,
