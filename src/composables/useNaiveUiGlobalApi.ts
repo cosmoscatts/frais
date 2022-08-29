@@ -5,11 +5,15 @@ import {
   lightTheme,
 } from 'naive-ui'
 
-const configProviderProps = computed<ConfigProviderProps>(() => ({
-  theme: isDark.value
-    ? darkTheme
-    : lightTheme,
-}))
+const configProviderProps = computed<ConfigProviderProps>(() => {
+  const { themeOverrides: { value: _themeOverrides } } = storeToRefs(useAppStore())
+  return {
+    theme: isDark.value
+      ? darkTheme
+      : lightTheme,
+    themeOverrides: _themeOverrides,
+  }
+})
 
 /**
  * 封装 `Naive UI` 提供的全局 `Api`
