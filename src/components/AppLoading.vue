@@ -3,12 +3,15 @@ import { NGradientText, useThemeVars } from 'naive-ui'
 import { appMeta } from '~/config'
 
 const vars = useThemeVars()
+
+const { loading, endLoading } = useLoading(true)
+useTimeoutFn(endLoading, 2000)
 </script>
 
 <template>
   <div class="hb-admin-loading-mask" />
   <transition leave-active-class="animate__animated animate__bounceOutDown">
-    <div class="hb-admin-loading-com">
+    <div v-if="loading" class="hb-admin-loading-com">
       <div>
         <div class="sk-cube-grid">
           <div class="sk-cube sk-cube1" />
