@@ -26,9 +26,12 @@ useTimeoutFn(endLoading, 1800)
           <div class="cube cube9" />
         </div>
         <div class="flex-y-center animate__animated animate__fadeInUpBig animate__faster">
-          <div i-carbon-campsite text="success 40px" />
+          <div i-carbon-campsite text="primary 40px" />
           <div ml-20px>
-            <NGradientText type="success" :size="36" style="font-weight: bold;">
+            <NGradientText
+              gradient="linear-gradient(90deg, red 0%, green 50%, blue 100%)"
+              :size="36" style="font-weight: bold;"
+            >
               {{ appMeta.title }}
             </NGradientText>
           </div>
