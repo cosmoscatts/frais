@@ -46,3 +46,29 @@ export const baseTabContextMenuOptions = [
 
 /** 定义右键菜单项 `key` 类型 */
 export type TabContextMenuOptionKeyType = 'refresh' | 'closeLeft' | 'closeRight' | 'closeOthers'
+
+export function isTabContextMenuOptionDisabled({
+  key,
+  tabIdx,
+  tabsLength,
+}: {
+  key: TabContextMenuOptionKeyType
+  tabIdx: number
+  tabsLength: number
+}) {
+  const actionMap: Record<TabContextMenuOptionKeyType, Function> = {
+    refresh: () => {
+      return false
+    },
+    closeLeft: (tabIdx: number, tabsLength: number) => {
+      return !(tabsLength > 1 && tabIdx > 0)
+    },
+    closeRight: (tabIdx: number, tabsLength: number) => {
+      return !(tabsLength > 1 && tabIdx < tabsLength - 1)
+    },
+    closeOthers: (_tabIdx: number, tabsLength: number) => {
+      return tabsLength <= 1
+    },
+  }
+  return actionMap[key](tabIdx, tabsLength) || false
+}

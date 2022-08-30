@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { TabButton, TabChrome } from './components'
+import type { TabContextMenuOptionKeyType } from './tabContextMenu'
+import { baseTabContextMenuOptions, isTabContextMenuOptionDisabled } from './tabContextMenu'
 
 const {
   idx = -1,
@@ -21,53 +23,19 @@ const emits = defineEmits(['closeTag'])
 
 const { message } = useGlobalNaiveApi()
 
-// 右键菜单项
-const tabContextMenuOptions = [
-  {
-    label: '杰·盖茨比',
-    key: 'jay gatsby',
-  },
-  {
-    label: '黛西·布坎南',
-    key: 'daisy buchanan',
-  },
-  {
-    type: 'divider',
-    key: 'd1',
-  },
-  {
-    label: '尼克·卡拉威',
-    key: 'nick carraway',
-  },
-  {
-    label: '其他',
-    key: 'others1',
-    children: [
-      {
-        label: '乔丹·贝克',
-        key: 'jordan baker',
-      },
-      {
-        label: '汤姆·布坎南',
-        key: 'tom buchanan',
-      },
-      {
-        label: '其他',
-        key: 'others2',
-        children: [
-          {
-            label: '鸡肉',
-            key: 'chicken',
-          },
-          {
-            label: '牛肉',
-            key: 'beef',
-          },
-        ],
-      },
-    ],
-  },
-]
+// 右键菜单项，判断选项是否 `disabled`
+const tabContextMenuOptions = computed(() => {
+  return baseTabContextMenuOptions.map((i) => {
+    return {
+      ...i,
+      disabled: isTabContextMenuOptionDisabled({
+        key: i.key as TabContextMenuOptionKeyType,
+        tabIdx: idx,
+        tabsLength,
+      }),
+    }
+  })
+})
 
 // 是否显示右键菜单
 let showTabContextMenu = $ref(false)
@@ -86,15 +54,15 @@ function handleContextMenu(e: MouseEvent) {
   })
 }
 
-// 点击菜单
-function handleSelect(key: string | number) {
+// 点击右键菜单
+function handleSelect(key: TabContextMenuOptionKeyType) {
   showTabContextMenu = false
   message.info(String(key))
 }
 
 // 外部点击事件
 function onClickoutside() {
-  message.info('clickoutside')
+  // message.info('clickoutside')
   showTabContextMenu = false
 }
 
