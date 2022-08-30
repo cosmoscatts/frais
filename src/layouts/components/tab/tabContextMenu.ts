@@ -33,7 +33,7 @@ export const baseTabContextMenuOptions = [
     icon: renderIcon(ArrowLeftIcon),
   },
   {
-    type: '关闭左边',
+    label: '关闭右边',
     key: 'closeRight',
     icon: renderIcon(ArrowRightIcon),
   },
