@@ -9,11 +9,13 @@ const animateName = computed(() => {
 </script>
 
 <template>
-  <RouterView v-slot="{ Component, route }">
-    <Transition :name="animateName" mode="out-in" appear>
-      <KeepAlive :include="[]">
-        <component :is="Component" :key="route.path" />
-      </KeepAlive>
-    </Transition>
-  </RouterView>
+  <div>
+    <RouterView v-slot="{ Component, route }">
+      <Transition :name="animateName" mode="out-in" appear>
+        <KeepAlive :include="[]">
+          <component :is="Component" :key="route.path" />
+        </KeepAlive>
+      </Transition>
+    </RouterView>
+  </div>
 </template>
