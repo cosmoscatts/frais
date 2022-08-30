@@ -25,10 +25,10 @@ useTimeoutFn(endLoading, 1800)
           <div class="cube cube8" />
           <div class="cube cube9" />
         </div>
-        <div class="logo animate__animated animate__fadeInUpBig animate__faster">
-          <img class="logo-image" src="/src/assets/default-avatar.jpg">
-          <div class="logo-text">
-            <NGradientText type="warning" size="36">
+        <div class="flex-y-center animate__animated animate__fadeInUpBig animate__faster">
+          <div i-carbon-campsite text="primary_hover 40px" />
+          <div ml-20px>
+            <NGradientText type="warning" size="40">
               {{ appMeta.title }}
             </NGradientText>
           </div>
@@ -40,13 +40,13 @@ useTimeoutFn(endLoading, 1800)
 
 <style scoped>
 .loading-mask {
-  background-color: v-bind('themeVars.bodyColor');
-  pointer-events: none;
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
+  background-color: v-bind('themeVars.bodyColor');
+  pointer-events: none;
   z-index: 10000;
 }
 
@@ -61,24 +61,6 @@ useTimeoutFn(endLoading, 1800)
   justify-content: center;
   background-color: v-bind('themeVars.bodyColor');
   z-index: 10001;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-image {
-  width: 40px;
-}
-
-.logo-text {
-  margin-left: 10px;
-}
-
-.hb-admin-copyright-box {
-  position: fixed;
-  bottom: 20px;
 }
 
 .cube-grid {
