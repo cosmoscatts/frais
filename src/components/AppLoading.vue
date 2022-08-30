@@ -5,7 +5,7 @@ import { appMeta } from '~/config'
 const vars = useThemeVars()
 
 const { loading, endLoading } = useLoading(true)
-useTimeoutFn(endLoading, 2000)
+useTimeoutFn(endLoading, 1500)
 </script>
 
 <template>

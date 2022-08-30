@@ -14,7 +14,7 @@ const { themeOverrides } = storeToRefs(useAppStore())
 // 初始化 `loading`
 const { loading: appLoading, startLoading, endLoading } = useLoading()
 startLoading()
-useTimeoutFn(endLoading, 3000)
+useTimeoutFn(endLoading, 2200)
 </script>
 
 <template>
