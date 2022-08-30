@@ -5,9 +5,9 @@
 *********
 
 ## 预览
-![垂直布局](./public/preview-vertical.png)
+![垂直布局](./public/preview-vertical.png=400x400)
 
-![水平布局](./public/preview-horizontal.png)
+![水平布局](./public/preview-horizontal.png=400x400)
 
 [在线预览](https://petite.netlify.app/)
 
