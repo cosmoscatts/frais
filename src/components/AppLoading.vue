@@ -26,9 +26,9 @@ useTimeoutFn(endLoading, 1800)
           <div class="cube cube9" />
         </div>
         <div class="flex-y-center animate__animated animate__fadeInUpBig animate__faster">
-          <div i-carbon-campsite text="primary_hover 40px" />
+          <div i-carbon-campsite text="success 40px" />
           <div ml-20px>
-            <NGradientText type="warning" size="40">
+            <NGradientText type="success" :size="40">
               {{ appMeta.title }}
             </NGradientText>
           </div>
