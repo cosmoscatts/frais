@@ -4,6 +4,13 @@
 
 *********
 
+## 预览
+![垂直布局](./public/preview-vertical.png)
+
+![水平布局](./public/preview-horizontal.png)
+
+[在线预览](https://petite.netlify.app/)
+
 ## 技术栈
 - 🤙🏻 Vue3 <setup>
 - ⚡️ Vite2
