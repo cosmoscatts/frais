@@ -28,7 +28,7 @@ useTimeoutFn(endLoading, 1800)
         <div class="flex-y-center animate__animated animate__fadeInUpBig animate__faster">
           <div i-carbon-campsite text="success 40px" />
           <div ml-20px>
-            <NGradientText type="success" :size="40">
+            <NGradientText type="success" :size="36" style="font-weight: bold;">
               {{ appMeta.title }}
             </NGradientText>
           </div>
