@@ -9,19 +9,21 @@ const THEME_MODE_KEY = wrapStorageKey(appStorageKeyEnum.themeMode)
  * 模式为 `auto` 则需要判断当前系统的模式
  */
 function initThemeDarkMode() {
-  if (defaultThemeMode === 'auto') {
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-    localStorage.setItem(
-      THEME_MODE_KEY,
-      prefersDark
-        ? 'dark'
-        : 'light',
-    )
+  // 只有第一次会初始化 `localStorage`
+  if (!localStorage.getItem(THEME_MODE_KEY)) {
+    if (defaultThemeMode === 'auto') {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      localStorage.setItem(
+        THEME_MODE_KEY,
+        prefersDark
+          ? 'dark'
+          : 'light',
+      )
+    }
+    else {
+      localStorage.setItem(THEME_MODE_KEY, defaultThemeMode)
+    }
   }
-  else {
-    localStorage.setItem(THEME_MODE_KEY, defaultThemeMode)
-  }
-
   return useDark({
     storageKey: THEME_MODE_KEY,
     valueDark: 'dark',
