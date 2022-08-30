@@ -12,8 +12,7 @@ useHeadMeta()
 // 主题覆盖
 const { themeOverrides } = storeToRefs(useAppStore())
 // 初始化 `loading`
-const { loading: appLoading, startLoading, endLoading } = useLoading()
-startLoading()
+const { loading: appLoading, endLoading } = useLoading(true)
 useTimeoutFn(endLoading, 2200)
 </script>
 
