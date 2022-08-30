@@ -6,7 +6,7 @@ const themeVars = useThemeVars()
 
 // 控制内层动画
 const { loading, endLoading } = useLoading(true)
-useTimeoutFn(endLoading, 1500)
+useTimeoutFn(endLoading, 1800)
 </script>
 
 <template>
