@@ -8,6 +8,7 @@ import {
   ArrowLeft as ArrowLeftIcon,
   ArrowRight as ArrowRightIcon,
 } from '@vicons/carbon'
+import type { Router } from 'vue-router'
 
 /**
  * 渲染图标
@@ -60,15 +61,90 @@ export function isTabContextMenuOptionDisabled({
     refresh: () => {
       return false
     },
-    closeLeft: (tabIdx: number, tabsLength: number) => {
+    closeLeft: () => {
       return !(tabsLength > 1 && tabIdx > 0)
     },
-    closeRight: (tabIdx: number, tabsLength: number) => {
+    closeRight: () => {
       return !(tabsLength > 1 && tabIdx < tabsLength - 1)
     },
-    closeOthers: (_tabIdx: number, tabsLength: number) => {
+    closeOthers: () => {
       return tabsLength <= 1
     },
   }
-  return actionMap[key](tabIdx, tabsLength) || false
+  return actionMap[key]() || false
+}
+
+/**
+ * 处理 `tab` 右键菜单选项点击事件
+ */
+export function handleTabContextMenuOptionFn({
+  tabIdx,
+  optionKey,
+  router,
+}: {
+  tabIdx: number
+  optionKey: TabContextMenuOptionKeyType
+  router: Router
+}) {
+  const { removeTabsByList, removerOtherTabs, visitedTabs: tabs } = useTabStore()
+
+  /**
+   * 处理刷新事件
+   */
+  const handleRefresh = () => {
+    const currentTab = tabs[tabIdx]
+    if (!currentTab)
+      return
+    const { path } = currentTab
+    nextTick(() => {
+      router.replace({
+        path: `/redirect${path}`,
+      })
+    })
+  }
+
+  /**
+   * 处理关闭左边事件
+   */
+  const handleCloseLeft = () => {
+    const currentTab = tabs[tabIdx]
+    if (!currentTab)
+      return
+    const { path } = currentTab
+    router.push(path)
+    removeTabsByList(tabs.slice(0, tabIdx) || [])
+  }
+
+  /**
+   * 处理关闭右边事件
+   */
+  const handleCloseRight = () => {
+    const currentTab = tabs[tabIdx]
+    if (!currentTab)
+      return
+    const { path } = currentTab
+    router.push(path)
+    removeTabsByList(tabs.slice(tabIdx + 1) || [])
+  }
+
+  /**
+   * 处理关闭其他事件
+   */
+  const handleCloseOthers = () => {
+    const currentTab = tabs[tabIdx]
+    if (!currentTab)
+      return
+    const { path } = currentTab
+    router.push(path)
+    removerOtherTabs(currentTab)
+  }
+
+  const actionMap: Record<TabContextMenuOptionKeyType, Function> = {
+    refresh: handleRefresh,
+    closeLeft: handleCloseLeft,
+    closeRight: handleCloseRight,
+    closeOthers: handleCloseOthers,
+  }
+
+  actionMap[optionKey]()
 }

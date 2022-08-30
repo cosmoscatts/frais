@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { TabButton, TabChrome } from './components'
 import type { TabContextMenuOptionKeyType } from './tabContextMenu'
-import { baseTabContextMenuOptions, isTabContextMenuOptionDisabled } from './tabContextMenu'
+import {
+  baseTabContextMenuOptions,
+  handleTabContextMenuOptionFn,
+  isTabContextMenuOptionDisabled,
+} from './tabContextMenu'
 
 const {
   idx = -1,
@@ -20,8 +24,6 @@ const {
 }>()
 
 const emits = defineEmits(['closeTag'])
-
-const { message } = useGlobalNaiveApi()
 
 // 右键菜单项，判断选项是否 `disabled`
 const tabContextMenuOptions = computed(() => {
@@ -54,15 +56,20 @@ function handleContextMenu(e: MouseEvent) {
   })
 }
 
+const router = useRouter()
+
 // 点击右键菜单
 function handleSelect(key: TabContextMenuOptionKeyType) {
   showTabContextMenu = false
-  message.info(String(key))
+  handleTabContextMenuOptionFn({
+    tabIdx: idx,
+    optionKey: key,
+    router,
+  })
 }
 
 // 外部点击事件
 function onClickoutside() {
-  // message.info('clickoutside')
   showTabContextMenu = false
 }
 
