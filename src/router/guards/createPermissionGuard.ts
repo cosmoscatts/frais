@@ -41,8 +41,10 @@ export default function createPermissionGuard(
       !isLogin && needLogin,
       () => {
         next('/login')
-        message.error('请登录')
-        loadingBar.error()
+        if (to.path !== '/') {
+          message.error('请登录')
+          loadingBar.error()
+        }
       },
     ],
     // 登录状态进入需要登录权限的页面，有权限直接通行
