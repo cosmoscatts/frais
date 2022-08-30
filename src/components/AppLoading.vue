@@ -2,7 +2,7 @@
 import { NGradientText, useThemeVars } from 'naive-ui'
 import { appMeta } from '~/config'
 
-const vars = useThemeVars()
+const themeVars = useThemeVars()
 
 const { loading, endLoading } = useLoading(true)
 useTimeoutFn(endLoading, 1500)
@@ -13,18 +13,18 @@ useTimeoutFn(endLoading, 1500)
   <Transition leave-active-class="animate__animated animate__bounceOut">
     <div v-if="loading" class="loading-wrapper">
       <div>
-        <div class="sk-cube-grid">
-          <div class="sk-cube sk-cube1" />
-          <div class="sk-cube sk-cube2" />
-          <div class="sk-cube sk-cube3" />
-          <div class="sk-cube sk-cube4" />
-          <div class="sk-cube sk-cube5" />
-          <div class="sk-cube sk-cube6" />
-          <div class="sk-cube sk-cube7" />
-          <div class="sk-cube sk-cube8" />
-          <div class="sk-cube sk-cube9" />
+        <div class="cube-grid">
+          <div class="cube cube1" />
+          <div class="cube cube2" />
+          <div class="cube cube3" />
+          <div class="cube cube4" />
+          <div class="cube cube5" />
+          <div class="cube cube6" />
+          <div class="cube cube7" />
+          <div class="cube cube8" />
+          <div class="cube cube9" />
         </div>
-        <div class="hb-admin-logo animate__animated animate__fadeInUpBig animate__faster">
+        <div class="logo animate__animated animate__fadeInUpBig animate__faster">
           <img class="logo-image" src="/src/assets/default-avatar.jpg">
           <div class="logo-text">
             <NGradientText type="warning" size="36">
@@ -38,21 +38,8 @@ useTimeoutFn(endLoading, 1500)
 </template>
 
 <style scoped>
-.loading-wrapper {
-  position: fixed;
-  left: -300px;
-  top: -300px;
-  bottom: -300px;
-  right: -300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: v-bind('vars.bodyColor');
-  z-index: 10001;
-}
-
 .loading-mask {
-  background-color: v-bind('vars.bodyColor');
+  background-color: v-bind('themeVars.bodyColor');
   pointer-events: none;
   position: fixed;
   left: 0;
@@ -62,7 +49,20 @@ useTimeoutFn(endLoading, 1500)
   z-index: 10000;
 }
 
-.hb-admin-logo {
+.loading-wrapper {
+  position: fixed;
+  left: -300px;
+  top: -300px;
+  bottom: -300px;
+  right: -300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: v-bind('themeVars.bodyColor');
+  z-index: 10001;
+}
+
+.logo {
   display: flex;
   align-items: center;
 }
@@ -80,7 +80,7 @@ useTimeoutFn(endLoading, 1500)
   bottom: 20px;
 }
 
-.sk-cube-grid {
+.cube-grid {
   width: 50px;
   height: 50px;
   margin: 30px auto;
@@ -90,71 +90,72 @@ useTimeoutFn(endLoading, 1500)
   grid-gap: 2px;
 }
 
-.sk-cube-grid .sk-cube {
+.cube-grid .cube {
   width: 100%;
   height: 100%;
-  background-color: v-bind('vars.primaryColor');
-  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  background-color: v-bind('themeVars.primaryColor');
+  -webkit-animation: cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: cubeGridScaleDelay 1.3s infinite ease-in-out;
   border-radius: 10%;
   box-sizing: border-box;
 }
 
-.sk-cube-grid .sk-cube1 {
+.cube-grid .cube1 {
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
   background-color: #E15140;
 }
 
-.sk-cube-grid .sk-cube2 {
+.cube-grid .cube2 {
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
   background-color: #D73D64;
 }
 
-.sk-cube-grid .sk-cube3 {
+.cube-grid .cube3 {
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
   background-color: #9036AA;
 }
 
-.sk-cube-grid .sk-cube4 {
+.cube-grid .cube4 {
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
   background-color: #6040B0;
 }
 
-.sk-cube-grid .sk-cube5 {
+.cube-grid .cube5 {
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
   background-color: #4253AF;
 }
 
-.sk-cube-grid .sk-cube6 {
+.cube-grid .cube6 {
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
   background-color: #4696EC;
 }
 
-.sk-cube-grid .sk-cube7 {
+.cube-grid .cube7 {
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
   background-color: #48A8ED;
 }
 
-.sk-cube-grid .sk-cube8 {
+.cube-grid .cube8 {
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
   background-color: #52BAD1;
 }
 
-.sk-cube-grid .sk-cube9 {
+.cube-grid .cube9 {
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
   background-color: #419488;
 }
 
-@-webkit-keyframes sk-cubeGridScaleDelay {
+@-webkit-keyframes cubeGridScaleDelay {
+
   0%,
   70%,
   100% {
@@ -168,7 +169,7 @@ useTimeoutFn(endLoading, 1500)
   }
 }
 
-@keyframes sk-cubeGridScaleDelay {
+@keyframes cubeGridScaleDelay {
 
   0%,
   70%,
