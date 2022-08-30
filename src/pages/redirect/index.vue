@@ -5,3 +5,7 @@ const { params: { path }, query } = route
 router.replace({ path: `/${path}`, query })
 </script>
 
+<template>
+  <div />
+</template>
+
