@@ -4,6 +4,7 @@ import { appMeta } from '~/config'
 
 const themeVars = useThemeVars()
 
+// 控制内层动画
 const { loading, endLoading } = useLoading(true)
 useTimeoutFn(endLoading, 1500)
 </script>
