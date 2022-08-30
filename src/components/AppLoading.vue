@@ -10,7 +10,7 @@ useTimeoutFn(endLoading, 1500)
 
 <template>
   <div class="hb-admin-loading-mask" />
-  <transition leave-active-class="animate__animated animate__bounceOutDown">
+  <transition leave-active-class="animate__animated animate__bounceOut">
     <div v-if="loading" class="hb-admin-loading-com">
       <div>
         <div class="sk-cube-grid">
@@ -27,7 +27,7 @@ useTimeoutFn(endLoading, 1500)
         <div class="hb-admin-logo animate__animated animate__fadeInUpBig animate__faster">
           <img class="logo-image" src="/src/assets/default-avatar.jpg">
           <div class="logo-text">
-            <NGradientText type="success" size="36">
+            <NGradientText type="warning" size="36">
               {{ appMeta.title }}
             </NGradientText>
           </div>
@@ -48,6 +48,7 @@ useTimeoutFn(endLoading, 1500)
   align-items: center;
   justify-content: center;
   background-color: v-bind('vars.bodyColor');
+  z-index: 10001;
 }
 
 .hb-admin-loading-mask {
@@ -58,7 +59,7 @@ useTimeoutFn(endLoading, 1500)
   top: 0;
   bottom: 0;
   right: 0;
-  z-index: -1;
+  z-index: 10000;
 }
 
 .hb-admin-logo {
