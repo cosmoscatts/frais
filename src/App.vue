@@ -13,7 +13,11 @@ useHeadMeta()
 const { themeOverrides } = storeToRefs(useAppStore())
 // 初始化 `loading`
 const { loading: appLoading, endLoading } = useLoading(true)
-useTimeoutFn(endLoading, 2500)
+
+// 定义 `loading` 整体时间和内层动画持续时间
+const LOADING_INTERVAL = 2500
+const LOADING_INNER_INTERVAL = 1800
+useTimeoutFn(endLoading, LOADING_INTERVAL)
 </script>
 
 <template>
@@ -24,7 +28,7 @@ useTimeoutFn(endLoading, 2500)
     :date-locale="dateZhCN"
   >
     <n-loading-bar-provider>
-      <AppLoading v-if="appLoading" />
+      <AppLoading v-if="appLoading" :inner-loading="LOADING_INNER_INTERVAL"/>
       <RouterView v-else />
     </n-loading-bar-provider>
   </n-config-provider>

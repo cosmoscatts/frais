@@ -2,11 +2,17 @@
 import { NGradientText, useThemeVars } from 'naive-ui'
 import { appMeta } from '~/config'
 
+const {
+  innerLoading = 1500
+} = defineProps<{
+  innerLoading: number
+}>()
+
 const themeVars = useThemeVars()
 
 // 控制内层动画
 const { loading, endLoading } = useLoading(true)
-useTimeoutFn(endLoading, 1800)
+useTimeoutFn(endLoading, innerLoading)
 </script>
 
 <template>
