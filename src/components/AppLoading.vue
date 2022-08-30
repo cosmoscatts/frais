@@ -19,7 +19,7 @@ useTimeoutFn(endLoading, innerLoading)
   <div class="loading-mask" />
   <Transition leave-active-class="animate__animated animate__bounceOut">
     <div v-if="loading" class="loading-wrapper">
-      <div>
+      <div mb-100px>
         <div class="cube-grid">
           <div class="cube cube1" />
           <div class="cube cube2" />
