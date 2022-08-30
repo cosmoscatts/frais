@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ColorCheckbox from './SettingsDrawerColorCheckBox.vue'
+import ColorCheckbox from './SettingsDrawerColorCheckbox.vue'
 import { themeColorList, traditionalColorList } from '~/config'
 
 const {
