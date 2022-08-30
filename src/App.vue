@@ -24,9 +24,7 @@ useTimeoutFn(endLoading, 1000)
     :locale="zhCN"
     :date-locale="dateZhCN"
   >
-    <AppLoading
-      :loading="appLoading"
-    />
+    <AppLoading :loading="appLoading" />
     <n-loading-bar-provider>
       <RouterView />
     </n-loading-bar-provider>
