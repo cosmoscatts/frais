@@ -9,9 +9,9 @@ useTimeoutFn(endLoading, 1500)
 </script>
 
 <template>
-  <div class="hb-admin-loading-mask" />
-  <transition leave-active-class="animate__animated animate__bounceOut">
-    <div v-if="loading" class="hb-admin-loading-com">
+  <div class="loading-mask" />
+  <Transition leave-active-class="animate__animated animate__bounceOut">
+    <div v-if="loading" class="loading-wrapper">
       <div>
         <div class="sk-cube-grid">
           <div class="sk-cube sk-cube1" />
@@ -34,11 +34,11 @@ useTimeoutFn(endLoading, 1500)
         </div>
       </div>
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <style scoped>
-.hb-admin-loading-com {
+.loading-wrapper {
   position: fixed;
   left: -300px;
   top: -300px;
@@ -51,7 +51,7 @@ useTimeoutFn(endLoading, 1500)
   z-index: 10001;
 }
 
-.hb-admin-loading-mask {
+.loading-mask {
   background-color: v-bind('vars.bodyColor');
   pointer-events: none;
   position: fixed;
@@ -155,7 +155,6 @@ useTimeoutFn(endLoading, 1500)
 }
 
 @-webkit-keyframes sk-cubeGridScaleDelay {
-
   0%,
   70%,
   100% {
