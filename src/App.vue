@@ -28,7 +28,7 @@ useTimeoutFn(endLoading, LOADING_INTERVAL)
     :date-locale="dateZhCN"
   >
     <n-loading-bar-provider>
-      <AppLoading v-if="appLoading" :inner-loading="LOADING_INNER_INTERVAL"/>
+      <AppLoading v-if="appLoading" :inner-loading="LOADING_INNER_INTERVAL" />
       <RouterView v-else />
     </n-loading-bar-provider>
   </n-config-provider>

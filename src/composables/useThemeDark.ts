@@ -24,7 +24,7 @@ function initThemeDarkMode() {
       localStorage.setItem(THEME_MODE_KEY, defaultThemeMode)
     }
   }
-  
+
   return useDark({
     storageKey: THEME_MODE_KEY,
     valueDark: 'dark',

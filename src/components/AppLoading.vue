@@ -3,7 +3,7 @@ import { NGradientText, useThemeVars } from 'naive-ui'
 import { appMeta } from '~/config'
 
 const {
-  innerLoading = 1500
+  innerLoading = 1500,
 } = defineProps<{
   innerLoading: number
 }>()
