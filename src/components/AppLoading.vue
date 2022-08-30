@@ -35,7 +35,7 @@ useTimeoutFn(endLoading, innerLoading)
           <div i-carbon-campsite text="primary 40px" />
           <div ml-20px>
             <NGradientText
-              gradient="linear-gradient(90deg, red 0%, green 50%, blue 100%)"
+              :gradient="`linear-gradient(90deg, ${themeVars.successColor} 0%, ${themeVars.warningColor} 33%, ${themeVars.infoColor} 66%, ${themeVars.errorColor} 100%)`"
               :size="36" style="font-weight: bold;"
             >
               {{ appMeta.title }}
