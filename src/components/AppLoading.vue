@@ -1,96 +1,182 @@
 <script setup lang="ts">
-const {
-  loading = false,
-} = defineProps<{
-  loading: boolean
-}>()
+import { NGradientText, useThemeVars } from 'naive-ui'
+import { appMeta } from '~/config'
 
-// const { settings } = storeToRefs(useAppStore())
+const vars = useThemeVars()
 </script>
 
 <template>
-  <Teleport to="body">
-    <div class="wrapper" bg="white dark:[#17171A]" :class="loading ? 'block' : 'hidden'">
-      <div class="mask" />
-      <div class="logo" i-carbon-campsite text=" white" />
+  <div class="hb-admin-loading-mask" />
+  <transition leave-active-class="animate__animated animate__bounceOutDown">
+    <div class="hb-admin-loading-com">
+      <div>
+        <div class="sk-cube-grid">
+          <div class="sk-cube sk-cube1" />
+          <div class="sk-cube sk-cube2" />
+          <div class="sk-cube sk-cube3" />
+          <div class="sk-cube sk-cube4" />
+          <div class="sk-cube sk-cube5" />
+          <div class="sk-cube sk-cube6" />
+          <div class="sk-cube sk-cube7" />
+          <div class="sk-cube sk-cube8" />
+          <div class="sk-cube sk-cube9" />
+        </div>
+        <div class="hb-admin-logo animate__animated animate__fadeInUpBig animate__faster">
+          <img class="logo-image" src="/src/assets/default-avatar.jpg">
+          <div class="logo-text">
+            <NGradientText type="success" size="36">
+              {{ appMeta.title }}
+            </NGradientText>
+          </div>
+        </div>
+      </div>
     </div>
-  </Teleport>
+  </transition>
 </template>
 
 <style scoped>
-.wrapper {
+.hb-admin-loading-com {
   position: fixed;
-  top: 0;
+  left: -300px;
+  top: -300px;
+  bottom: -300px;
+  right: -300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: v-bind('vars.bodyColor');
+}
+
+.hb-admin-loading-mask {
+  background-color: v-bind('vars.bodyColor');
+  pointer-events: none;
+  position: fixed;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  animation-name: scale;
-  animation-duration: 1.5s;
-  animation-timeline: box-move;
-  z-index: 10000;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
-.mask {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(-75deg, #63E2B7, #1F8F93);
-  z-index: 2;
-  animation-name: reOpacityChange;
-  animation-duration: 1.5s;
-  animation-timeline: box-move;
+
+.hb-admin-logo {
+  display: flex;
+  align-items: center;
 }
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(calc(-50% - 2px), calc(-50% - 2px));
-  width: 198px;
-  height: 282px;
-  z-index: 3;
-  animation-name: reOpacityChange;
-  animation-duration: 1.5s;
-  animation-timeline: box-move;
+
+.logo-image {
+  width: 40px;
 }
-@keyframes reOpacityChange {
+
+.logo-text {
+  margin-left: 10px;
+}
+
+.hb-admin-copyright-box {
+  position: fixed;
+  bottom: 20px;
+}
+
+.sk-cube-grid {
+  width: 50px;
+  height: 50px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 2px;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 100%;
+  height: 100%;
+  background-color: v-bind('vars.primaryColor');
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  border-radius: 10%;
+  box-sizing: border-box;
+}
+
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  background-color: #E15140;
+}
+
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  background-color: #D73D64;
+}
+
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+  background-color: #9036AA;
+}
+
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  background-color: #6040B0;
+}
+
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  background-color: #4253AF;
+}
+
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  background-color: #4696EC;
+}
+
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  background-color: #48A8ED;
+}
+
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  background-color: #52BAD1;
+}
+
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  background-color: #419488;
+}
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+
   0%,
-  40% {
-    opacity: 1;
-  }
+  70%,
   100% {
-    opacity: 0;
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
   }
 }
-@keyframes scale {
+
+@keyframes sk-cubeGridScaleDelay {
+
   0%,
-  40% {
-    transform: scale(1);
-  }
+  70%,
   100% {
-    transform: scale(3);
-  }
-}
-
-@keyframes fade-small-larger {
-  from {
-    opacity: 1;
-    transform: scale(1, 1)
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
   }
 
-  to {
-    opacity: 0;
-    transform: scale(20, 20)
-  }
-}
-
-@-webkit-keyframes fade-small-larger {
-  from {
-    opacity: 1;
-    transform: scale(1, 1)
-  }
-
-  to {
-    opacity: 0;
-    transform: scale(20, 20)
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
   }
 }
 </style>

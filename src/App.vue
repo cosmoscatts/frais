@@ -14,7 +14,7 @@ const { themeOverrides } = storeToRefs(useAppStore())
 // 初始化 `loading`
 const { loading: appLoading, startLoading, endLoading } = useLoading()
 startLoading()
-useTimeoutFn(endLoading, 1000)
+useTimeoutFn(endLoading, 3000)
 </script>
 
 <template>
@@ -24,9 +24,9 @@ useTimeoutFn(endLoading, 1000)
     :locale="zhCN"
     :date-locale="dateZhCN"
   >
-    <AppLoading :loading="appLoading" />
     <n-loading-bar-provider>
-      <RouterView />
+      <AppLoading v-if="appLoading" />
+      <RouterView v-else />
     </n-loading-bar-provider>
   </n-config-provider>
 </template>
