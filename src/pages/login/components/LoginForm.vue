@@ -103,7 +103,7 @@ function onSubmit(e: MouseEvent) {
       </n-button>
     </n-form>
 
-    <div flex-center mt-200px>
+    <div flex-center mt-150px>
       <DarkToggle />
       <span ml-5 op-50 text-xl>🙌🙌 By {{ appMeta.author }} 🙌🙌</span>
     </div>
