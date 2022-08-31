@@ -11,7 +11,9 @@ export default function createRouterGuard(router: Router) {
     createPermissionGuard(to, from, next)
   })
 
-  router.afterEach(() => {
+  router.afterEach((to) => {
+    // 设置 `document title`
+    useTitle(to.meta?.title as string)
     // 结束 loadingBar
     loadingBar.finish()
   })

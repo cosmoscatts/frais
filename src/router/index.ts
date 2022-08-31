@@ -22,6 +22,7 @@ const router = createRouter({
           name: 'Login',
           component: () => import('~/pages/login/index.vue'),
           meta: {
+            title: '登录',
             requiresAuth: false,
           },
         },
@@ -36,6 +37,9 @@ const router = createRouter({
           path: '',
           name: 'ErrorPage',
           component: () => import('~/pages/exception/error/index.vue'),
+          meta: {
+            title: '500',
+          },
         },
       ],
     },
@@ -47,6 +51,9 @@ const router = createRouter({
           path: '',
           name: 'NoPermission',
           component: () => import('~/pages/exception/no-permission/index.vue'),
+          meta: {
+            title: '403',
+          },
         },
       ],
     },
@@ -58,6 +65,9 @@ const router = createRouter({
           path: '',
           name: 'NotFound',
           component: () => import('~/pages/exception/not-found/index.vue'),
+          meta: {
+            title: '403',
+          },
         },
       ],
     },
