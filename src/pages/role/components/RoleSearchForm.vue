@@ -11,6 +11,9 @@ const {
 
 const emits = defineEmits(['fetchTableData'])
 
+/** 是否隐藏 `form-label` */
+const labelHidden = useResponsiveFormLabelHidden
+
 /** 定义日期选择器值的格式 */
 const datePickerValueFormatter = 'yyyy-MM-dd'
 
@@ -71,16 +74,16 @@ defineExpose({
 
 <template>
   <n-collapse-transition :show="showSearchForm" ha>
-    <n-grid :x-gap="12" :y-gap="8" :cols="24">
+    <n-grid :x-gap="18" :y-gap="8" :cols="24">
       <n-gi :span="20">
         <n-grid :x-gap="12" :y-gap="12" cols="1 s:2 l:3" responsive="screen">
           <n-gi :span="1">
-            <n-form-item label="角色名称" label-placement="left" :show-feedback="false">
+            <n-form-item label="角色名称" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
               <n-input v-model:value="searchModel.name" placeholder="角色名称" clearable />
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
-            <n-form-item label="创建时间" label-placement="left" :show-feedback="false">
+            <n-form-item label="创建时间" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
               <n-date-picker
                 v-model:formatted-value="searchModel.createTime" type="daterange"
                 :value-format="datePickerValueFormatter" clearable
@@ -89,7 +92,7 @@ defineExpose({
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
-            <n-form-item label="更新时间" label-placement="left" :show-feedback="false">
+            <n-form-item label="更新时间" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
               <n-date-picker
                 v-model:formatted-value="searchModel.updateTime" type="daterange"
                 :value-format="datePickerValueFormatter" clearable
