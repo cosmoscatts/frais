@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Add as AddIcon } from '@vicons/ionicons5'
-import { type SearchModel, createTableColumns, createTableData } from './helper.table'
+import type { SearchModel } from './helper.table'
+import { createTableColumns, createTableData } from './helper.table'
 import RoleSearchForm from './components/RoleSearchForm.vue'
 import type { Role } from '~/types'
 
