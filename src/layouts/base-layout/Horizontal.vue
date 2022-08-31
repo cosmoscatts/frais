@@ -25,7 +25,7 @@ const diffHeight = computed(() => {
   let height = navHeight
   if (baseSettings.value.showTabs)
     height += tabHeight
-  // border 边框的高度也需要考虑
+  // `border` 边框的高度也需要考虑
   return height + 1
 })
 
