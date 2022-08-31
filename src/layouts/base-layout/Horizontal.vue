@@ -29,9 +29,9 @@ const diffHeight = computed(() => {
   return height + 1
 })
 
-// 设置 backTop 的监听目标
-// fixNav = true 即固定页头时，target 为 refContentWrapper
-// 否则为 refMainWrapper
+// 设置 `backTop` 的监听目标
+// `fixNav = true` 即固定页头时，`target` 为 `refContentWrapper`
+// 否则为 `refMainWrapper`
 const refMainWrapper = ref()
 const refContentWrapper = ref()
 // 是否为暗色模式
