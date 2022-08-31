@@ -9,14 +9,16 @@ const {
   showSearchForm?: boolean
 }>()
 
+const emits = defineEmits(['fetchTableData'])
+
 /** 定义搜索表单结构 */
 interface SearchModel {
   /** 角色名称 */
   name?: string
   /** 创建时间 */
-  createTime?: FormattedValue
+  createTime: FormattedValue | null
   /** 更新时间 */
-  updateTime?: FormattedValue
+  updateTime: FormattedValue | null
 }
 
 /** 定义日期选择器值的格式 */
@@ -24,8 +26,8 @@ const datePickerValueFormatter = 'yyyy-MM-dd'
 
 const baseSearchModel: SearchModel = {
   name: '',
-  createTime: undefined,
-  updateTime: undefined,
+  createTime: null,
+  updateTime: null,
 }
 
 /** 搜索表单数据 */
@@ -38,9 +40,43 @@ function disablePreviousDate(ts: number) {
   return ts > Date.now()
 }
 
+/**
+ * 处理搜索表单的数据，同时这个方法会暴露给父级
+ */
+function getSearchParams() {
+  const { value: model } = searchModel
+  const cloneParams: SearchModel = JSON.parse(JSON.stringify(model))
+
+  type K = keyof Omit<SearchModel, 'name'>
+  const checkFields = ['createTime', 'updateTime']
+  for (const [key, value] of Object.entries(cloneParams)) {
+    if (!checkFields.includes(key) || (value?.length ?? 0) !== 2)
+      continue
+    const [start, end] = value
+    if (start === end)
+      cloneParams[key as K] = [`${start} 00:00:00`, `${end} 23:59:59`]
+  }
+  return cloneParams
+}
+
+/**
+ * 根据筛选条件，搜索表格数据
+ */
+function searchTableData() {
+  emits('fetchTableData', getSearchParams())
+}
+searchTableData()
+
+/**
+ * 重置搜索表单
+ */
 function resetSearchModel() {
   searchModel.value = { ...baseSearchModel }
 }
+
+defineExpose({
+  getSearchParams,
+})
 </script>
 
 <template>
