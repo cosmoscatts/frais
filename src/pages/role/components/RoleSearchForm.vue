@@ -76,7 +76,7 @@ defineExpose({
         <n-grid :x-gap="12" :y-gap="12" cols="1 s:2 l:3" responsive="screen">
           <n-gi :span="1">
             <n-form-item label="角色名称" label-placement="left" :show-feedback="false">
-              <n-input v-model:value="searchModel.name" clearable />
+              <n-input v-model:value="searchModel.name" placeholder="角色名称" clearable />
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
