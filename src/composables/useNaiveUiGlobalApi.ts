@@ -5,16 +5,6 @@ import {
   lightTheme,
 } from 'naive-ui'
 
-const configProviderProps = computed<ConfigProviderProps>(() => {
-  const { themeOverrides } = useAppStore()
-  return {
-    theme: isDark.value
-      ? darkTheme
-      : lightTheme,
-    themeOverrides,
-  }
-})
-
 /**
  * 封装 `Naive UI` 提供的全局 `Api`
  * 如何使用？
@@ -23,6 +13,18 @@ const configProviderProps = computed<ConfigProviderProps>(() => {
  * 搭配 `unplugin-auto-import` 可以不用 `import`，十分方便
  */
 export function useGlobalNaiveApi() {
+  const appStore = useAppStore()
+
+  const configProviderProps = computed<ConfigProviderProps>(() => {
+    const { themeOverrides } = appStore
+    return {
+      theme: isDark.value
+        ? darkTheme
+        : lightTheme,
+      themeOverrides,
+    }
+  })
+
   const {
     dialog,
     message,
