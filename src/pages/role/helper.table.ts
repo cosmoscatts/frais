@@ -1,7 +1,18 @@
 import { NButton, NTag } from 'naive-ui'
 import type { DataTableColumns } from 'naive-ui'
+import type { FormattedValue } from 'naive-ui/es/date-picker/src/interface'
 import type { Role } from '~/types'
 import { dayJs } from '~/composables/useGlobalPlugin'
+
+/** 定义搜索表单结构 */
+export interface SearchModel {
+  /** 角色名称 */
+  name?: string
+  /** 创建时间 */
+  createTime: FormattedValue | null
+  /** 更新时间 */
+  updateTime: FormattedValue | null
+}
 
 /**
  * 生成表格的列
@@ -103,23 +114,28 @@ export function createTableColumns({
 /**
  * 生成表格数据
  */
-export function createTableData(): Role[] {
-  return [
-    {
-      id: 1,
-      name: '管理员',
-      description: '拥有管理员权限，可以对普通用户进行一些操作',
-      createTime: new Date(),
-      updateTime: new Date(),
+export function createTableData() {
+  return {
+    data: {
+      total: 2,
+      records: [
+        {
+          id: 1,
+          name: '管理员',
+          description: '拥有管理员权限，可以对普通用户进行一些操作',
+          createTime: new Date(),
+          updateTime: new Date(),
+        },
+        {
+          id: 2,
+          name: '用户',
+          description: '拥有普通用户权限，可以查看基础页面',
+          createTime: new Date(),
+          updateTime: new Date(),
+        },
+      ],
     },
-    {
-      id: 2,
-      name: '用户',
-      description: '拥有普通用户权限，可以查看基础页面',
-      createTime: new Date(),
-      updateTime: new Date(),
-    },
-  ]
+  }
 }
 
 /**

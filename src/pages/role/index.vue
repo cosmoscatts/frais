@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Add as AddIcon } from '@vicons/ionicons5'
-import { createTableColumns, createTableData } from './helper.table'
+import { type SearchModel, createTableColumns, createTableData } from './helper.table'
 import RoleSearchForm from './components/RoleSearchForm.vue'
+import type { Role } from '~/types'
 
 const { message } = useGlobalNaiveApi()
 
@@ -33,13 +34,48 @@ function onUpdateRole() {
   message.success('编辑成功')
 }
 
-// 创建表格数据
-const data = createTableData()
 // 创建表格列信息
 const columns = createTableColumns({
   createRowNumber,
   onUpdateRole,
 })
+
+// 定义表格数据
+let tableData = $ref<Role[]>([])
+// 表格加载状态
+const { loading, startLoading, endLoading } = useLoading()
+
+/** 搜索参数包含搜索表单参数和分页参数 */
+interface SearchParmas extends SearchModel {
+  page?: number
+  pageSize?: number
+}
+
+/**
+ * 查询表格数据，分两种情况：
+ *    1）搜索栏调用会传 `SearchModel`
+ *    2）分页调用会传 `{ page, pageSize }` 和 `SearchModel`
+ */
+function fetchTableData(searchParams: SearchParmas) {
+  startLoading()
+  // 合并默认分页参数
+  const { page, pageSize } = pagination
+  searchParams = { page, pageSize, ...searchParams }
+  try {
+    const { data: { records, total } } = createTableData()
+    tableData = records
+    pagination.page = searchParams.page!
+    pagination.itemCount = total
+  }
+  catch (err) {
+    // 处理异常
+  }
+  finally {
+    useTimeoutFn(() => {
+      endLoading()
+    }, 1000)
+  }
+}
 </script>
 
 <template>
@@ -66,11 +102,12 @@ const columns = createTableColumns({
         <span text-white font-bold>新增</span>
       </n-button>
     </template>
-    <RoleSearchForm :show-search-form="showSearchForm" mb-20px />
+    <RoleSearchForm :show-search-form="showSearchForm" mb-20px @fetch-table-data="fetchTableData" />
     <n-data-table
+      :loading="loading"
       :bordered="false"
       :columns="columns"
-      :data="data"
+      :data="tableData"
       :pagination="pagination"
     />
   </n-card>

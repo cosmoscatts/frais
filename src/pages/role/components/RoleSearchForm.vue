@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Refresh as RefreshIcon, Search as SearchIcon } from '@vicons/ionicons5'
-import type { FormattedValue } from 'naive-ui/es/date-picker/src/interface'
+import type { SearchModel } from '../helper.table'
 
 const {
   showSearchForm = true,
@@ -10,16 +10,6 @@ const {
 }>()
 
 const emits = defineEmits(['fetchTableData'])
-
-/** 定义搜索表单结构 */
-interface SearchModel {
-  /** 角色名称 */
-  name?: string
-  /** 创建时间 */
-  createTime: FormattedValue | null
-  /** 更新时间 */
-  updateTime: FormattedValue | null
-}
 
 /** 定义日期选择器值的格式 */
 const datePickerValueFormatter = 'yyyy-MM-dd'
@@ -114,7 +104,7 @@ defineExpose({
         <n-grid :x-gap="12" :y-gap="12" cols="1 l:2" responsive="screen">
           <n-gi span="0 s:1">
             <div flex-y-center justify-end>
-              <n-button type="primary">
+              <n-button type="primary" @click="searchTableData">
                 <template #icon>
                   <n-icon :component="SearchIcon" color="white" />
                 </template>

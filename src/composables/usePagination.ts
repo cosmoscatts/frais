@@ -4,6 +4,7 @@
 export function usePagination({
   page = 1,
   pageSize = 10,
+  itemCount = 0,
   showSizePicker = true,
   pageSizes = [10, 20, 50, 100],
   onChangeCallback,
@@ -13,6 +14,8 @@ export function usePagination({
   page?: number
   /** 每页条数 */
   pageSize?: number
+  /** 总条数 */
+  itemCount?: number
   /** 是否显示每页条数的选择器 */
   showSizePicker?: boolean
   /** 每页条数选择器选项 */
@@ -25,6 +28,7 @@ export function usePagination({
   const pagination = reactive({
     page,
     pageSize,
+    itemCount,
     showSizePicker,
     pageSizes,
     onChange: (page: number) => {
