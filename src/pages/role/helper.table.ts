@@ -17,6 +17,7 @@ export function createTableColumns({
     {
       key: 'id',
       title: '序号',
+      align: 'center',
       render(_row, rowIndex) {
         return createRowNumber?.(rowIndex)
       },
@@ -24,14 +25,29 @@ export function createTableColumns({
     {
       key: 'name',
       title: '角色名称',
+      align: 'center',
+      render({ name }) {
+        return h(
+          NTag,
+          {
+            type: 'info',
+            style: { fontWeight: 'bold' },
+          },
+          {
+            default: () => name || '',
+          },
+        )
+      },
     },
     {
       key: 'description',
       title: '角色描述',
+      align: 'center',
     },
     {
       key: 'createTime',
       title: '创建时间',
+      align: 'center',
       render({ createTime }) {
         return formatDate(createTime)
       },
@@ -39,6 +55,7 @@ export function createTableColumns({
     {
       key: 'updateTime',
       title: '更新时间',
+      align: 'center',
       render({ updateTime }) {
         return formatDate(updateTime)
       },
@@ -46,14 +63,35 @@ export function createTableColumns({
     {
       key: 'actions',
       title: '操作',
+      align: 'center',
       render(row) {
         return h(
-          NButton,
-          {
-            size: 'small',
-            onClick: () => onUpdateRole?.(row),
-          },
-          { default: () => '编辑' },
+          'div',
+          {},
+          [
+            h(
+              NButton,
+              {
+                size: 'small',
+                secondary: true,
+                type: 'warning',
+                style: { marginRight: '10px', fontWeight: 'bold' },
+                onClick: () => onUpdateRole?.(row),
+              },
+              { default: () => '编辑' },
+            ),
+            h(
+              NButton,
+              {
+                size: 'small',
+                secondary: true,
+                type: 'error',
+                style: { fontWeight: 'bold' },
+                onClick: () => onUpdateRole?.(row),
+              },
+              { default: () => '删除' },
+            ),
+          ],
         )
       },
     },
