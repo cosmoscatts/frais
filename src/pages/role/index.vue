@@ -2,6 +2,8 @@
 import { createTableColumns, createTableData } from './helper.table'
 
 const { message } = useGlobalNaiveApi()
+
+// 分页参数
 const pagination = usePagination({})
 
 /**
