@@ -9,9 +9,11 @@ import { dayJs } from '~/composables/useGlobalPlugin'
 export function createTableColumns({
   createRowNumber,
   onUpdateRole,
+  onRemoveRole,
 }: {
   createRowNumber?: (rowIndex: number) => number
   onUpdateRole?: (role: Role) => void
+  onRemoveRole?: (role: Role) => void
 }): DataTableColumns<Role> {
   return [
     {
@@ -87,7 +89,7 @@ export function createTableColumns({
                 secondary: true,
                 type: 'error',
                 style: { fontWeight: 'bold' },
-                onClick: () => onUpdateRole?.(row),
+                onClick: () => onRemoveRole?.(row),
               },
               { default: () => '删除' },
             ),
@@ -120,6 +122,9 @@ export function createTableData(): Role[] {
   ]
 }
 
+/**
+ * 格式化时间
+ */
 function formatDate(date?: Date) {
   return dayJs(date).format('YYYY-MM-DD HH:mm:ss') || '-'
 }
