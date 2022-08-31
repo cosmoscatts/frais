@@ -5,41 +5,13 @@ import { createTableColumns, createTableData } from './helper.table'
 import RoleSearchForm from './components/RoleSearchForm.vue'
 import type { Role } from '~/types'
 
-const { message } = useGlobalNaiveApi()
+const { message, dialog } = useGlobalNaiveApi()
 
 // 是否显示搜索栏
 const showSearchForm = ref(true)
 
 // 分页参数
 const pagination = usePagination({})
-
-/**
- * 创建表格序号
- */
-function createRowNumber(rowIndex: number) {
-  const { page, pageSize } = pagination
-  return (page - 1) * pageSize + rowIndex + 1
-}
-
-/**
- * 添加角色
- */
-function onAddRole() {
-  message.success('添加成功')
-}
-
-/**
- * 编辑角色
- */
-function onUpdateRole() {
-  message.success('编辑成功')
-}
-
-// 创建表格列信息
-const columns = createTableColumns({
-  createRowNumber,
-  onUpdateRole,
-})
 
 // 定义表格数据
 let tableData = $ref<Role[]>([])
@@ -77,6 +49,51 @@ function fetchTableData(searchParams: SearchParmas) {
     }, 1000)
   }
 }
+
+/**
+ * 创建表格序号
+ */
+function createRowNumber(rowIndex: number) {
+  const { page, pageSize } = pagination
+  return (page - 1) * pageSize + rowIndex + 1
+}
+
+/**
+ * 添加角色
+ */
+function onAddRole() {
+  message.success('添加成功')
+}
+
+/**
+ * 编辑角色
+ */
+function onUpdateRole() {
+  message.success('编辑成功')
+}
+
+/**
+ * 删除角色
+ */
+function onRemoveRole(role: Role) {
+  dialog.warning({
+    title: '警告',
+    content: '你确定要删除该用户吗？',
+    positiveText: '确定',
+    negativeText: '取消',
+    onPositiveClick: () => {
+      tableData.splice(tableData.findIndex(i => i.id === role.id), 1)
+      message.success('删除成功')
+    },
+  })
+}
+
+// 创建表格列信息
+const columns = createTableColumns({
+  createRowNumber,
+  onUpdateRole,
+  onRemoveRole,
+})
 </script>
 
 <template>
