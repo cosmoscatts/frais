@@ -6,12 +6,12 @@ import {
 } from 'naive-ui'
 
 const configProviderProps = computed<ConfigProviderProps>(() => {
-  const { themeOverrides: { value: _themeOverrides } } = storeToRefs(useAppStore())
+  const { themeOverrides } = useAppStore()
   return {
     theme: isDark.value
       ? darkTheme
       : lightTheme,
-    themeOverrides: _themeOverrides,
+    themeOverrides,
   }
 })
 
