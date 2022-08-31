@@ -66,7 +66,7 @@ const columns = createTableColumns({
         <span text-white font-bold>新增</span>
       </n-button>
     </template>
-    <RoleSearchForm :show-search-form="showSearchForm" />
+    <RoleSearchForm :show-search-form="showSearchForm" mb-20px />
     <n-data-table
       :bordered="false"
       :columns="columns"
