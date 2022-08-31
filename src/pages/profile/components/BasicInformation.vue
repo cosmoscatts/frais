@@ -1,11 +1,5 @@
 <script setup lang="ts">
-const {
 
-} = defineProps<{
-
-}>()
-
-const emits = defineEmits([])
 </script>
 
 <template>
