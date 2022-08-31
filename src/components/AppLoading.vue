@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NGradientText, useThemeVars } from 'naive-ui'
+import { useThemeVars } from 'naive-ui'
 import { appMeta } from '~/config'
 
 const {
@@ -34,12 +34,12 @@ useTimeoutFn(endLoading, innerLoading)
         <div class="flex-y-center animate__animated animate__fadeInUpBig animate__faster">
           <div i-carbon-campsite text="primary 40px" />
           <div ml-20px>
-            <NGradientText
+            <n-gradient-text
               :gradient="`linear-gradient(90deg, ${themeVars.successColor} 0%, ${themeVars.warningColor} 33%, ${themeVars.infoColor} 66%, ${themeVars.errorColor} 100%)`"
               :size="36" style="font-weight: bold;"
             >
               {{ appMeta.title }}
-            </NGradientText>
+            </n-gradient-text>
           </div>
         </div>
       </div>
