@@ -11,7 +11,10 @@ const { message, dialog } = useGlobalNaiveApi()
 const showSearchForm = ref(true)
 
 // 分页参数
-const pagination = usePagination({})
+const pagination = usePagination({
+  onChangeCallback,
+  onUpdatePageSizeCallback,
+})
 
 // 定义表格数据
 let tableData = $ref<Role[]>([])
@@ -22,6 +25,35 @@ const { loading, startLoading, endLoading } = useLoading()
 interface SearchParmas extends SearchModel {
   page?: number
   pageSize?: number
+}
+
+/** 搜索栏元素 */
+const refSearchForm = ref()
+
+/**
+ * 改变页码的回调方法
+ */
+function onChangeCallback() {
+  const { page, pageSize } = pagination
+  const searchParams = refSearchForm.value?.getSearchParams()
+  fetchTableData({
+    ...searchParams,
+    page,
+    pageSize,
+  })
+}
+
+/**
+ * 改变每页条数的回调方法
+ */
+function onUpdatePageSizeCallback() {
+  const { page, pageSize } = pagination
+  const searchParams = refSearchForm.value?.getSearchParams()
+  fetchTableData({
+    ...searchParams,
+    page,
+    pageSize,
+  })
 }
 
 /**
@@ -37,7 +69,6 @@ function fetchTableData(searchParams: SearchParmas) {
   try {
     const { data: { records, total } } = createTableData()
     tableData = records
-    pagination.page = searchParams.page!
     pagination.itemCount = total
   }
   catch (err) {
@@ -120,7 +151,11 @@ const columns = createTableColumns({
         <span text-white font-bold>新增</span>
       </n-button>
     </template>
-    <RoleSearchForm :show-search-form="showSearchForm" mb-20px @fetch-table-data="fetchTableData" />
+    <RoleSearchForm
+      ref="refSearchForm" mb-20px
+      :show-search-form="showSearchForm"
+      @fetch-table-data="fetchTableData"
+    />
     <n-data-table
       :loading="loading"
       :bordered="false"
