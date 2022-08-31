@@ -211,6 +211,7 @@ declare global {
   const useOnline: typeof import('@vueuse/core')['useOnline']
   const useOpenWindow: typeof import('./composables/useOpenWindow')['useOpenWindow']
   const usePageLeave: typeof import('@vueuse/core')['usePageLeave']
+  const usePagination: typeof import('./composables/usePagination')['usePagination']
   const useParallax: typeof import('@vueuse/core')['useParallax']
   const usePermission: typeof import('@vueuse/core')['usePermission']
   const usePermissionStore: typeof import('./store/permission')['usePermissionStore']
@@ -506,6 +507,7 @@ declare module '@vue/runtime-core' {
     readonly useOnline: UnwrapRef<typeof import('@vueuse/core')['useOnline']>
     readonly useOpenWindow: UnwrapRef<typeof import('./composables/useOpenWindow')['useOpenWindow']>
     readonly usePageLeave: UnwrapRef<typeof import('@vueuse/core')['usePageLeave']>
+    readonly usePagination: UnwrapRef<typeof import('./composables/usePagination')['usePagination']>
     readonly useParallax: UnwrapRef<typeof import('@vueuse/core')['useParallax']>
     readonly usePermission: UnwrapRef<typeof import('@vueuse/core')['usePermission']>
     readonly usePermissionStore: UnwrapRef<typeof import('./store/permission')['usePermissionStore']>
