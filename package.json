@@ -24,7 +24,7 @@
     "pinia": "^2.0.21",
     "pinia-plugin-persist-uni": "^1.1.5",
     "seemly": "^0.3.6",
-    "vue": "^3.2.37",
+    "vue": "^3.2.38",
     "vue-router": "4"
   },
   "devDependencies": {
@@ -51,6 +51,6 @@
     "vfonts": "^0.0.3",
     "vite": "^3.0.9",
     "vite-plugin-vue-markdown": "^0.21.1",
-    "vue-tsc": "^0.40.4"
+    "vue-tsc": "^0.40.5"
   }
 }
