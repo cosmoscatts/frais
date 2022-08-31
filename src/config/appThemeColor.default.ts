@@ -1,8 +1,6 @@
 import colorJson from './color.traditional.json'
 
-/**
- * 常用颜色
- */
+/** 常用颜色 */
 export const themeColorList = [
   '#1890ff',
   '#409EFF',
@@ -40,11 +38,12 @@ export interface TraditionColor {
   data: TraditionColorDetail[]
 }
 
-/**
- * 中国传统颜色
- */
+/** 中国传统颜色 */
 export const traditionalColorList = colorJson as TraditionColor[]
 
+/**
+ * 判断是否为传统颜色
+ */
 export function isInTraditionalColorList(color: string) {
   return traditionalColorList.some(i => i.data.some(v => v.color === color))
 }
