@@ -7,6 +7,9 @@ import type {
 import { appMeta, debug } from '~/config'
 import { findFirstPermissionRoute, loginCallback } from '~/utils'
 
+/**
+ * 定义表单数据结构
+ */
 interface ModelType {
   username?: string
   password?: string
@@ -17,6 +20,7 @@ const { message } = useGlobalNaiveApi()
 
 const refForm = ref<FormInst | null>(null)
 
+// 表单基础数据
 const baseFormModel = debug
   ? {
       username: 'admin',
@@ -27,10 +31,12 @@ const baseFormModel = debug
       password: '',
     }
 
+// 表单数据
 const formModel = reactive<ModelType>({
   ...baseFormModel,
 })
 
+// 表单校验规则
 const rules: FormRules = {
   username: [
     {
@@ -53,6 +59,9 @@ const rules: FormRules = {
   ],
 }
 
+/**
+ * 登录
+ */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
   refForm.value?.validate(async (errors) => {
