@@ -113,7 +113,7 @@ const columns = createTableColumns({
           <span font-bold>展开搜索栏</span>
         </template>
       </n-switch>
-      <n-button type="success" @click="onAddRole">
+      <n-button type="primary" @click="onAddRole">
         <template #icon>
           <n-icon :component="AddIcon" color="white" />
         </template>
