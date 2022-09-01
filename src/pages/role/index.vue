@@ -137,7 +137,7 @@ function onSaveRoleData(role: Role) {
 function onRemoveRole(role: Role) {
   dialog.warning({
     title: '警告',
-    content: '你确定要删除该用户吗？',
+    content: '你确定要删除该角色吗？',
     positiveText: '确定',
     negativeText: '取消',
     onPositiveClick: () => {
