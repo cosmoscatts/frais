@@ -27,7 +27,7 @@ interface SearchParmas extends SearchModel {
   pageSize?: number
 }
 
-/** 搜索栏元素 */
+// 搜索栏元素
 const refSearchForm = ref()
 
 /**
