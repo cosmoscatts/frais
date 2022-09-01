@@ -3,6 +3,7 @@ import type {
   FormInst,
   FormItemRule,
   FormRules,
+  FormValidationError,
 } from 'naive-ui'
 import { appMeta, debug } from '~/config'
 import { findFirstPermissionRoute, loginCallback } from '~/utils'
@@ -64,7 +65,7 @@ const rules: FormRules = {
  */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
-  refForm.value?.validate(async (errors) => {
+  refForm.value?.validate(async (errors?: FormValidationError[]) => {
     if (errors)
       return
     if (formModel.password !== '123456') {
