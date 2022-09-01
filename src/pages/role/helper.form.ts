@@ -93,7 +93,7 @@ export function renderTreeLabel({
         prefix: 'bar',
         style: { marginBottom: 0 },
       },
-      h(
+      () => h(
         NText,
         {
           type: checked ? 'primary' : undefined,

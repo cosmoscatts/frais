@@ -44,7 +44,37 @@ const formModel = reactive<FormModel>({
   ...baseFormModel,
 })
 
+// 是否全选
+let hasCheckedAll = $ref(false)
 const { loading, startLoading, endLoading } = useLoading()
+// 所有的菜单项 `id`，包含子集合
+const allMenuOptionsKeys = $computed(() => {
+  const keys: number[] = []
+  const dfs = (keys: number[], { key, children }: TreeOption) => {
+    if (key)
+      keys.push(key as number)
+    if (children?.length)
+      children.forEach(i => dfs(keys, i))
+  }
+  menuTreeData.forEach(i => dfs(keys, i))
+  return keys
+})
+
+/**
+ * 判断是否全选
+ */
+function handleCheckedAllOptionsOrNot() {
+  const menuIdListLength = formModel.menuIdList?.length ?? 0
+  hasCheckedAll = menuIdListLength > 0 && menuIdListLength === allMenuOptionsKeys.length
+}
+
+watch(() => formModel.menuIdList, handleCheckedAllOptionsOrNot)
+
+watch(() => hasCheckedAll, (val) => {
+  formModel.menuIdList = val
+    ? allMenuOptionsKeys
+    : []
+})
 
 /**
  * 表单赋值
@@ -127,17 +157,32 @@ function onCloseModal() {
         />
       </n-form-item>
       <n-form-item label="菜单权限" path="menuIdList">
-        <n-tree
-          v-model:checked-keys="formModel.menuIdList"
-          block-line
-          cascade
-          checkable
-          default-expand-all
-          :selectable="false"
-          :render-label="renderTreeLabel"
-          :render-prefix="renderTreePrefix"
-          :data="menuTreeData"
-        />
+        <div flex="~ col">
+          <div flex justify-start ml-12px my-5px>
+            <n-switch v-model:value="hasCheckedAll" size="large">
+              <template #icon>
+                🤔
+              </template>
+              <template #checked>
+                <span font-bold>全选</span>
+              </template>
+              <template #unchecked>
+                <span font-bold>反选</span>
+              </template>
+            </n-switch>
+          </div>
+          <n-tree
+            v-model:checked-keys="formModel.menuIdList"
+            block-line
+            cascade
+            checkable
+            default-expand-all
+            :selectable="false"
+            :render-label="renderTreeLabel"
+            :render-prefix="renderTreePrefix"
+            :data="menuTreeData"
+          />
+        </div>
       </n-form-item>
     </n-form>
     <template #footer>
