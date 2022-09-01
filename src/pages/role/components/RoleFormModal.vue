@@ -64,7 +64,7 @@ function assign() {
 watch(() => modalVisible, () => {
   assign()
   endLoading()
-  refForm.value && refForm.value.clearValidate()
+  refForm.value && refForm.value.restoreValidation()
 })
 
 function onSubmit(e: MouseEvent) {
@@ -111,6 +111,7 @@ function updateCheckedKeys() {
       :rules="rules"
       label-placement="left"
       label-width="auto"
+      :show-require-mark="false"
       :style="{
         maxWidth: '600px',
       }"
@@ -121,24 +122,25 @@ function updateCheckedKeys() {
       <n-form-item label="角色描述" path="description">
         <n-input
           v-model:value="formModel.description"
-          placeholder="请输入角色描述"
+          placeholder="请输入角色描述" w-full
           type="textarea"
           :autosize="{
             minRows: 3,
             maxRows: 5,
           }"
         />
-        <n-form-item label="菜单权限" path="menuIdList">
-          <n-tree
-            block-line
-            cascade
-            checkable
-            default-expand-all
-            :data="menuTreeData"
-            :default-checked-keys="formModel.menuIdList"
-            @update:checked-keys="updateCheckedKeys"
-          />
-        </n-form-item>
+      </n-form-item>
+      <n-form-item label="菜单权限" path="menuIdList">
+        <n-tree
+          block-line
+          cascade
+          checkable
+          default-expand-all
+          :selectable="false"
+          :data="menuTreeData"
+          :default-checked-keys="formModel.menuIdList"
+          @update:checked-keys="updateCheckedKeys"
+        />
       </n-form-item>
     </n-form>
     <template #footer>
