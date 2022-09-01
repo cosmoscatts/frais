@@ -137,11 +137,11 @@ function onCloseModal() {
     </n-form>
     <template #footer>
       <div flex-center gap-x-5>
-        <n-button type="primary" :loading="loading" @click="onSubmit">
-          <span text-white font-bold>保存</span>
+        <n-button type="primary" :loading="loading" text-color="white" @click="onSubmit">
+          <span font-bold>保存</span>
         </n-button>
-        <n-button type="error" @click="onCloseModal">
-          <span text-white font-bold>取消</span>
+        <n-button type="error" text-color="white" @click="onCloseModal">
+          <span font-bold>取消</span>
         </n-button>
       </div>
     </template>
