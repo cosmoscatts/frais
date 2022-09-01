@@ -107,11 +107,11 @@ defineExpose({
         <n-grid :x-gap="12" :y-gap="12" cols="1 l:2" responsive="screen">
           <n-gi span="0 s:1">
             <div flex-y-center justify-end>
-              <n-button type="primary" @click="searchTableData">
+              <n-button type="primary" text-color="white" @click="searchTableData">
                 <template #icon>
                   <n-icon :component="SearchIcon" color="white" />
                 </template>
-                <span text-white font-bold>查询</span>
+                <span font-bold>查询</span>
               </n-button>
             </div>
           </n-gi>
