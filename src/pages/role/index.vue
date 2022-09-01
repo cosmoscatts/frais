@@ -126,6 +126,7 @@ function onSaveRoleData(role: Role) {
     tableData,
   })
   useTimeoutFn(() => {
+    message.success('保存成功')
     roleModalVisible = false
   }, 1200)
 }
