@@ -89,43 +89,43 @@ function createRowNumber(rowIndex: number) {
   return (page - 1) * pageSize + rowIndex + 1
 }
 
-// 是否显示『添加』、『编辑』角色表单
-let roleModalVisible = $ref(false)
-// 角色表单操作类型 - `add`： 新增、`edit`：编辑
-let roleModalAction = $ref<RoleModalActionType>()
+// 是否显示『添加』、『编辑』用户表单
+let userModalVisible = $ref(false)
+// 用户表单操作类型 - `add`： 新增、`edit`：编辑
+let userModalAction = $ref<RoleModalActionType>()
 // 编辑角色时，选中的角色
-let selectedRole = $ref<User>()
+let selectedUser = $ref<User>()
 
 /**
  * 添加角色
  */
 function onAddRole() {
-  selectedRole = {}
-  roleModalAction = 'add'
-  roleModalVisible = true
+  selectedUser = {}
+  userModalAction = 'add'
+  userModalVisible = true
 }
 
 /**
  * 编辑角色
  */
 function onUpdateUser(user: User) {
-  selectedRole = user
-  roleModalAction = 'edit'
-  roleModalVisible = true
+  selectedUser = user
+  userModalAction = 'edit'
+  userModalVisible = true
 }
 
 /**
- * 保存角色 -『新增』&『编辑』
+ * 保存用户 -『新增』&『编辑』
  */
-function onSaveRoleData(user: User) {
-  handleSaveRole({
-    type: roleModalAction,
+function onSaveUserData(user: User) {
+  handleSaveUser({
+    type: userModalAction,
     data: user,
     tableData,
   })
   useTimeoutFn(() => {
     message.success('保存成功')
-    roleModalVisible = false
+    userModalVisible = false
   }, 1200)
 }
 
