@@ -2,7 +2,6 @@ import { NButton, NTag } from 'naive-ui'
 import type { DataTableColumns } from 'naive-ui'
 import type { FormattedValue } from 'naive-ui/es/date-picker/src/interface'
 import type { Role } from '~/types'
-import { dayJs } from '~/composables/useGlobalPlugin'
 
 /** 定义搜索表单结构 */
 export interface SearchModel {
