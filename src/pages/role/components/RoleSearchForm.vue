@@ -40,7 +40,7 @@ function getSearchParams() {
   const { value: model } = searchModel
   const cloneParams: SearchModel = JSON.parse(JSON.stringify(model))
 
-  type K = keyof Omit<SearchModel, 'name'>
+  type K = keyof Pick<SearchModel, 'createTime' | 'updateTime'>
   const checkFields = ['createTime', 'updateTime']
   for (const [key, value] of Object.entries(cloneParams)) {
     if (!checkFields.includes(key) || (value?.length ?? 0) !== 2)
