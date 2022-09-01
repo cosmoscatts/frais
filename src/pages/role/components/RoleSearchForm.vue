@@ -11,10 +11,10 @@ const {
 
 const emits = defineEmits(['fetchTableData'])
 
-/** 是否隐藏 `form-label` */
+// 是否隐藏 `form-label`
 const labelHidden = useResponsiveFormLabelHidden
 
-/** 定义日期选择器值的格式 */
+// 定义日期选择器值的格式
 const datePickerValueFormatter = 'yyyy-MM-dd'
 
 const baseSearchModel: SearchModel = {
@@ -23,7 +23,7 @@ const baseSearchModel: SearchModel = {
   updateTime: null,
 }
 
-/** 搜索表单数据 */
+// 搜索表单数据
 const searchModel = ref<SearchModel>({ ...baseSearchModel })
 
 /**
