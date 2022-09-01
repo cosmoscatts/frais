@@ -96,7 +96,7 @@ defineExpose({
             <n-form-item label="创建时间" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
               <n-date-picker
                 v-model:formatted-value="searchModel.createTime" type="daterange"
-                :value-format="datePickerValueFormatter" clearable
+                :value-format="datePickerValueFormatter" clearable w-full
                 :is-date-disabled="disablePreviousDate"
               >
                 <template #separator>
@@ -112,7 +112,7 @@ defineExpose({
             <n-form-item label="更新时间" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
               <n-date-picker
                 v-model:formatted-value="searchModel.updateTime" type="daterange"
-                :value-format="datePickerValueFormatter" clearable
+                :value-format="datePickerValueFormatter" clearable w-full
                 :is-date-disabled="disablePreviousDate"
               >
                 <template #separator>
