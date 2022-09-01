@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FormValidationError, TreeOption } from 'naive-ui'
+import { TrashBinOutline as TrashBinOutlineIcon } from '@vicons/ionicons5'
 import { renderTreeLabel, renderTreePrefix, rules } from '../helper.form'
 import type { Role } from '~/types'
 
@@ -143,7 +144,11 @@ function onCloseModal() {
       }"
     >
       <n-form-item label="角色名称" path="name">
-        <n-input v-model:value="formModel.name" placeholder="请输入角色名称" />
+        <n-input v-model:value="formModel.name" placeholder="请输入角色名称">
+          <template #clear-icon>
+            <n-icon :component="TrashBinOutlineIcon" />
+          </template>
+        </n-input>
       </n-form-item>
       <n-form-item label="角色描述" path="description">
         <n-input
@@ -154,7 +159,11 @@ function onCloseModal() {
             minRows: 3,
             maxRows: 5,
           }"
-        />
+        >
+          <template #clear-icon>
+            <n-icon :component="TrashBinOutlineIcon" />
+          </template>
+        </n-input>
       </n-form-item>
       <n-form-item label="菜单权限" path="menuIdList">
         <div flex="~ col">
