@@ -144,7 +144,7 @@ function onCloseModal() {
       }"
     >
       <n-form-item label="角色名称" path="name">
-        <n-input v-model:value="formModel.name" placeholder="请输入角色名称">
+        <n-input v-model:value="formModel.name" placeholder="请输入角色名称" clearable>
           <template #clear-icon>
             <n-icon :component="TrashBinOutlineIcon" />
           </template>
@@ -154,7 +154,7 @@ function onCloseModal() {
         <n-input
           v-model:value="formModel.description"
           placeholder="请输入角色描述" w-full
-          type="textarea"
+          type="textarea" clearable
           :autosize="{
             minRows: 3,
             maxRows: 5,
