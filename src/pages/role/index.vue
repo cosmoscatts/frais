@@ -4,6 +4,7 @@ import type { SearchModel } from './helper.table'
 import { createTableColumns, createTableData } from './helper.table'
 import RoleSearchForm from './components/RoleSearchForm.vue'
 import RoleFormModal from './components/RoleFormModal.vue'
+import { type RoleModalActionType, defaultMenuTreeData } from './helper.form'
 import type { Role } from '~/types'
 
 const { message, dialog } = useGlobalNaiveApi()
@@ -92,21 +93,27 @@ function createRowNumber(rowIndex: number) {
 
 // 是否显示『添加』、『编辑』角色表单
 let roleModalVisible = $ref(false)
+// 角色表单操作类型 - `add`： 新增、`edit`：编辑
+let roleModalAction = $ref<RoleModalActionType>()
+// 编辑角色时，选中的角色
+let selectedRole = $ref<Role>()
 
 /**
  * 添加角色
  */
 function onAddRole() {
+  selectedRole = {}
+  roleModalAction = 'add'
   roleModalVisible = true
-  message.success('添加成功')
 }
 
 /**
  * 编辑角色
  */
-function onUpdateRole() {
+function onUpdateRole(role: Role) {
+  selectedRole = role
+  roleModalAction = 'edit'
   roleModalVisible = true
-  message.success('编辑成功')
 }
 
 /**
@@ -171,6 +178,11 @@ const columns = createTableColumns({
         :pagination="pagination"
       />
     </n-card>
-    <RoleFormModal v-model:modal-visible="roleModalVisible" />
+    <RoleFormModal
+      v-model:modal-visible="roleModalVisible"
+      :type="roleModalAction"
+      :form="selectedRole"
+      :menu-tree-data="defaultMenuTreeData"
+    />
   </div>
 </template>
