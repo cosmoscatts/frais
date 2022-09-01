@@ -17,7 +17,7 @@ interface ModelType {
 }
 
 const router = useRouter()
-const { message } = useGlobalNaiveApi()
+const { message, notification } = useGlobalNaiveApi()
 
 const refForm = ref<FormInst | null>(null)
 
@@ -60,6 +60,8 @@ const rules: FormRules = {
   ],
 }
 
+const { loading, startLoading, endLoading } = useLoading()
+
 /**
  * 登录
  */
@@ -72,7 +74,7 @@ function onSubmit(e: MouseEvent) {
       message.error('账号或密码错误')
       return
     }
-    message.success('欢迎使用')
+    startLoading()
     await loginCallback({
       id: 1,
       username: 'admin',
@@ -82,7 +84,13 @@ function onSubmit(e: MouseEvent) {
     })
     const path = findFirstPermissionRoute() ?? '/'
     useTimeoutFn(() => {
+      endLoading()
       router.push(path)
+      notification.success({
+        title: '登录成功',
+        content: '欢迎使用~',
+        duration: 3000,
+      })
     }, 1000)
   })
 }
@@ -106,10 +114,10 @@ function onSubmit(e: MouseEvent) {
         />
       </n-form-item>
       <n-button
-        block round type="primary"
-        mt-3 @click="onSubmit"
+        block round type="primary" :loading="loading"
+        mt-3 text-color="white" @click="onSubmit"
       >
-        <span font-bold text="lg white">登录</span>
+        <span font-bold text-lag>登录</span>
       </n-button>
     </n-form>
 
