@@ -125,6 +125,7 @@ export function createTableData() {
           description: '拥有管理员权限，可以对普通用户进行一些操作',
           createTime: new Date(),
           updateTime: new Date(),
+          menuIdList: [101, 102, 10201, 10202],
         },
         {
           id: 2,
@@ -132,6 +133,15 @@ export function createTableData() {
           description: '拥有普通用户权限，可以查看基础页面',
           createTime: new Date(),
           updateTime: new Date(),
+          menuIdList: [101],
+        },
+        {
+          id: 3,
+          name: '用户2',
+          description: '拥有普通用户权限，可以查看基础页面',
+          createTime: new Date(),
+          updateTime: new Date(),
+          menuIdList: [101, 10201],
         },
       ],
     },

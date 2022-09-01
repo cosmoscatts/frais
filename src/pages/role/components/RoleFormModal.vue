@@ -84,13 +84,6 @@ function onSubmit(e: MouseEvent) {
 function onCloseModal() {
   emits('update:modal-visible', false)
 }
-
-/**
- * 更新选中的菜单项
- */
-function updateCheckedKeys() {
-
-}
 </script>
 
 <template>
@@ -132,14 +125,13 @@ function updateCheckedKeys() {
       </n-form-item>
       <n-form-item label="菜单权限" path="menuIdList">
         <n-tree
+          v-model:checked-keys="formModel.menuIdList"
           block-line
           cascade
           checkable
           default-expand-all
           :selectable="false"
           :data="menuTreeData"
-          :default-checked-keys="formModel.menuIdList"
-          @update:checked-keys="updateCheckedKeys"
         />
       </n-form-item>
     </n-form>

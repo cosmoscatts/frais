@@ -1,4 +1,5 @@
 import type { FormRules, TreeOption } from 'naive-ui'
+import type { Role } from '~/types'
 
 // 表单校验规则
 export const rules: FormRules = {
@@ -46,3 +47,28 @@ export const defaultMenuTreeData: TreeOption[] = [
     ],
   },
 ]
+
+/**
+ * 统一处理保存角色功能
+ */
+export function handleSaveRole({
+  type = 'add',
+  data = {},
+  tableData = [],
+}: {
+  type: RoleModalActionType
+  data?: Role
+  tableData?: Role[]
+}) {
+  const actionMap = {
+    add: () => {
+      tableData.push({ ...data })
+    },
+    edit: () => {
+      const index = tableData.findIndex(i => i.id === data.id)
+      tableData.splice(index, 1, { ...data })
+    },
+  }
+
+  return actionMap[type]()
+}

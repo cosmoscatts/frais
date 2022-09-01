@@ -4,7 +4,7 @@ import type { SearchModel } from './helper.table'
 import { createTableColumns, createTableData } from './helper.table'
 import RoleSearchForm from './components/RoleSearchForm.vue'
 import RoleFormModal from './components/RoleFormModal.vue'
-import { type RoleModalActionType, defaultMenuTreeData } from './helper.form'
+import { type RoleModalActionType, defaultMenuTreeData, handleSaveRole } from './helper.form'
 import type { Role } from '~/types'
 
 const { message, dialog } = useGlobalNaiveApi()
@@ -117,6 +117,20 @@ function onUpdateRole(role: Role) {
 }
 
 /**
+ * 保存角色 -『新增』&『编辑』
+ */
+function onSaveRoleData(role: Role) {
+  handleSaveRole({
+    type: roleModalAction,
+    data: role,
+    tableData,
+  })
+  useTimeoutFn(() => {
+    roleModalVisible = false
+  }, 1200)
+}
+
+/**
  * 删除角色
  */
 function onRemoveRole(role: Role) {
@@ -183,6 +197,7 @@ const columns = createTableColumns({
       :type="roleModalAction"
       :form="selectedRole"
       :menu-tree-data="defaultMenuTreeData"
+      @save-role-data="onSaveRoleData"
     />
   </div>
 </template>
