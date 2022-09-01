@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormValidationError, TreeOption } from 'naive-ui'
-import { renderTreeLabel, rules } from '../helper.form'
+import { renderTreeLabel, renderTreePrefix, rules } from '../helper.form'
 import type { Role } from '~/types'
 
 const {
@@ -135,6 +135,7 @@ function onCloseModal() {
           default-expand-all
           :selectable="false"
           :render-label="renderTreeLabel"
+          :render-prefix="renderTreePrefix"
           :data="menuTreeData"
         />
       </n-form-item>

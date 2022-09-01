@@ -1,5 +1,6 @@
 import type { FormRules, TreeOption } from 'naive-ui'
-import { NH4, NText } from 'naive-ui'
+import { NH4, NIcon, NText } from 'naive-ui'
+import { Bookmark as BookmarkIcon, Bookmarks as BookmarksIcon } from '@vicons/ionicons5'
 import type { Role } from '~/types'
 
 // 表单校验规则
@@ -112,4 +113,28 @@ export function renderTreeLabel({
         default: () => label,
       },
     )
+}
+
+/**
+ *自定义渲染菜单树 `prefix` 前缀
+ */
+export function renderTreePrefix({
+  option: { children },
+  checked,
+}: {
+  option: TreeOption
+  checked: boolean
+  selected: boolean
+}) {
+  const { baseSettings } = useAppStore()
+  const iconComponent = (children?.length ?? 0) > 0
+    ? BookmarksIcon
+    : BookmarkIcon
+  return h(
+    NIcon,
+    {
+      color: checked ? baseSettings.themePrimaryColor : undefined,
+      component: iconComponent,
+    },
+  )
 }
