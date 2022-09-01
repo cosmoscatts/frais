@@ -14,6 +14,7 @@ const { baseSettings } = storeToRefs(appStore)
 const {
   navHeight,
   tabHeight,
+  contentPadding,
   footHeight,
   backTopRight,
   backTopBottom,
@@ -60,7 +61,7 @@ const isDarkMode = isDark
       :native-scrollbar="false"
     >
       <n-layout-content>
-        <TheMain p-5 ha :style="{ minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
+        <TheMain ha :style="{ padding: `${contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
       </n-layout-content>
       <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
         <TheFoot hw-full />

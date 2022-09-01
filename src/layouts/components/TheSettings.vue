@@ -46,7 +46,7 @@ function saveCurrentSettings() {
   <div fixed :style="{ right: `${settingsDrawerRight}px`, bottom: `${settingsDrawerBottom}px` }" z-1000>
     <n-button
       v-if="!showSettingsDrawer" v-element-hover="onHover"
-      secondary size="large" type="primary"
+      size="large" type="primary" text-color="white"
       :circle="!isButtonHovered" :round="isButtonHovered"
       @click="onClick()"
     >
