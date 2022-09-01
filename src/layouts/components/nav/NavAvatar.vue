@@ -8,7 +8,7 @@ import {
 import defaultAvatar from '~/assets/default-avatar.jpg'
 
 const router = useRouter()
-const { message } = useGlobalNaiveApi()
+const { notification } = useGlobalNaiveApi()
 
 // 渲染图标组件
 const renderIcon = (icon: Component) => {
@@ -37,7 +37,11 @@ const options = [
     icon: renderIcon(LogoutIcon),
     props: {
       onClick: () => {
-        message.success('登出成功')
+        notification.success({
+          title: '登出成功',
+          content: '记得回来~',
+          duration: 1000,
+        })
         useTimeoutFn(() => {
           router.push('/login')
           useLogout()
