@@ -22,6 +22,10 @@ export const rules: FormRules = {
   ],
 }
 
+/** `form-action` 类型  */
+export type RoleModalActionType = 'add' | 'edit'
+
+// 默认的菜单树数据
 export const defaultMenuTreeData: TreeOption[] = [
   {
     key: 101,
