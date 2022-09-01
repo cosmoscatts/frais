@@ -12,4 +12,6 @@ export interface Role {
   createTime?: Date
   /** 更新时间 */
   updateTime?: Date
+  /** 所拥有的菜单 `id` 集合 */
+  menuIdList?: number[]
 }
