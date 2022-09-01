@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { Add as AddIcon } from '@vicons/ionicons5'
+import type { SelectOption } from 'naive-ui'
 import type { SearchModel } from './helper.table'
-import { createTableColumns, createTableData } from './helper.table'
+import { createRoleOptionsData, createTableColumns, createTableData } from './helper.table'
 import UserSearchForm from './components/UserSearchForm.vue'
-import type { User } from '~/types'
+import UserFormModal from './components/UserFormModal.vue'
+import type { UserModalActionType } from './helper.form'
+import { handleSaveUser } from './helper.form'
+import type { Role, User } from '~/types'
 
 const { message, dialog } = useGlobalNaiveApi()
 
@@ -92,21 +96,21 @@ function createRowNumber(rowIndex: number) {
 // 是否显示『添加』、『编辑』用户表单
 let userModalVisible = $ref(false)
 // 用户表单操作类型 - `add`： 新增、`edit`：编辑
-let userModalAction = $ref<RoleModalActionType>()
-// 编辑角色时，选中的角色
+let userModalAction = $ref<UserModalActionType>()
+// 编辑用户时，选中的用户
 let selectedUser = $ref<User>()
 
 /**
- * 添加角色
+ * 添加用户
  */
-function onAddRole() {
+function onAddUser() {
   selectedUser = {}
   userModalAction = 'add'
   userModalVisible = true
 }
 
 /**
- * 编辑角色
+ * 编辑用户
  */
 function onUpdateUser(user: User) {
   selectedUser = user
@@ -130,16 +134,16 @@ function onSaveUserData(user: User) {
 }
 
 /**
- * 删除角色
+ * 删除用户
  */
-function onRemoveUser(role: User) {
+function onRemoveUser(user: User) {
   dialog.warning({
     title: '警告',
     content: '你确定要删除该用户吗？',
     positiveText: '确定',
     negativeText: '取消',
     onPositiveClick: () => {
-      tableData.splice(tableData.findIndex(i => i.id === role.id), 1)
+      tableData.splice(tableData.findIndex(i => i.id === user.id), 1)
       message.success('删除成功')
     },
   })
@@ -151,11 +155,23 @@ const columns = createTableColumns({
   onUpdateUser,
   onRemoveUser,
 })
+
+// 角色选择框数据
+let roleOptions = $ref<SelectOption[]>()
+function fetchRoleOptions() {
+  roleOptions = createRoleOptionsData().map(({ id, name }: Role) => {
+    return {
+      label: name,
+      value: id,
+    }
+  })
+}
+fetchRoleOptions()
 </script>
 
 <template>
   <div>
-    <n-card title="查询角色">
+    <n-card title="查询用户">
       <template #header-extra>
         <n-switch v-model:value="showSearchForm" :round="false" size="large" mr-3>
           <template #checked-icon>
@@ -171,7 +187,7 @@ const columns = createTableColumns({
             <span font-bold>展开搜索栏</span>
           </template>
         </n-switch>
-        <n-button type="primary" text-color="white" @click="onAddRole">
+        <n-button type="primary" text-color="white" @click="onAddUser">
           <template #icon>
             <n-icon :component="AddIcon" color="white" />
           </template>
@@ -181,6 +197,7 @@ const columns = createTableColumns({
       <UserSearchForm
         ref="refSearchForm" mb-20px
         :show-search-form="showSearchForm"
+        :role-options="roleOptions"
         @fetch-table-data="fetchTableData"
       />
       <n-data-table
@@ -191,12 +208,12 @@ const columns = createTableColumns({
         :pagination="pagination"
       />
     </n-card>
-    <!-- <RoleFormModal
-      v-model:modal-visible="roleModalVisible"
-      :type="roleModalAction"
-      :form="selectedRole"
-      :menu-tree-data="defaultMenuTreeData"
-      @save-role-data="onSaveRoleData"
-    /> -->
+    <UserFormModal
+      v-model:modal-visible="userModalVisible"
+      :type="userModalAction"
+      :form="selectedUser"
+      :role-options="roleOptions"
+      @save-user-data="onSaveUserData"
+    />
   </div>
 </template>
