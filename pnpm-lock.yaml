@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.26.2
   '@better-scroll/core': ^2.4.2
-  '@iconify/json': ^2.1.100
+  '@iconify/json': ^2.1.101
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/node': ^18.7.14
   '@types/nprogress': ^0.2.0
@@ -26,7 +26,7 @@ specifiers:
   eslint: ^8.23.0
   markdown-it-link-attributes: ^4.0.1
   markdown-it-shiki: ^0.5.1
-  naive-ui: ^2.33.1
+  naive-ui: ^2.33.2
   pinia: ^2.0.21
   pinia-plugin-persist-uni: ^1.1.5
   seemly: ^0.3.6
@@ -60,7 +60,7 @@ dependencies:
 
 devDependencies:
   '@antfu/eslint-config': registry.npmmirror.com/@antfu/eslint-config/0.26.2_yqf6kl63nyoq5megxukfnom5rm
-  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.100
+  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.101
   '@types/markdown-it-link-attributes': registry.npmmirror.com/@types/markdown-it-link-attributes/3.0.1
   '@types/node': registry.npmmirror.com/@types/node/18.7.14
   '@types/nprogress': registry.npmmirror.com/@types/nprogress/0.2.0
@@ -74,7 +74,7 @@ devDependencies:
   eslint: registry.npmmirror.com/eslint/8.23.0
   markdown-it-link-attributes: registry.npmmirror.com/markdown-it-link-attributes/4.0.1
   markdown-it-shiki: registry.npmmirror.com/markdown-it-shiki/0.5.1
-  naive-ui: registry.npmmirror.com/naive-ui/2.33.1_vue@3.2.38
+  naive-ui: registry.npmmirror.com/naive-ui/2.33.2_vue@3.2.38
   typescript: registry.npmmirror.com/typescript/4.8.2
   unocss: registry.npmmirror.com/unocss/0.45.13_vite@3.0.9
   unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.11.2_jfxn32i2eq37u3jpfk3zc3f4hy
@@ -382,10 +382,10 @@ packages:
     version: 1.2.1
     dev: true
 
-  registry.npmmirror.com/@iconify/json/2.1.100:
-    resolution: {integrity: sha512-ztPJgsoqJQ2T216O0Wl94YmK085kLWeu25SekkwZaaTVZ5XaByER/h84AWGaKz7sBnnvdWJ+8ExAGyBGdr44bg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.100.tgz}
+  registry.npmmirror.com/@iconify/json/2.1.101:
+    resolution: {integrity: sha512-IZ7+DDY9OdVcV0TEI/Dd6KZirX+8JlUUtty75OgqbN+Hnj9T2fkD1MiLQT6HEqCcU8PzZUq0DSvwcIKaN/H/Xw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.101.tgz}
     name: '@iconify/json'
-    version: 2.1.100
+    version: 2.1.101
     dependencies:
       '@iconify/types': registry.npmmirror.com/@iconify/types/1.1.0
       pathe: registry.npmmirror.com/pathe/0.3.5
@@ -3826,11 +3826,11 @@ packages:
     version: 2.1.3
     dev: true
 
-  registry.npmmirror.com/naive-ui/2.33.1_vue@3.2.38:
-    resolution: {integrity: sha512-S8iS5TsnJ5PAbUCCC+IGjW7H6fYJF5s0HTzuUjqRLS8C1tFxmWhKkBZU1db/vg/4O5GKEyjaoq4ZSzRHOwRTcQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/naive-ui/-/naive-ui-2.33.1.tgz}
-    id: registry.npmmirror.com/naive-ui/2.33.1
+  registry.npmmirror.com/naive-ui/2.33.2_vue@3.2.38:
+    resolution: {integrity: sha512-XT18dOE7dK15xedO9MlrPsD3AXBKncr0lqlsxakHl/DckqOaAbdA7yxDl/qtVTBC+1Rlf29cFP/th7P7DSy5zg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/naive-ui/-/naive-ui-2.33.2.tgz}
+    id: registry.npmmirror.com/naive-ui/2.33.2
     name: naive-ui
-    version: 2.33.1
+    version: 2.33.2
     peerDependencies:
       vue: ^3.0.0
     dependencies:
