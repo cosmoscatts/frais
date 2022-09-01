@@ -3,6 +3,7 @@ import { Add as AddIcon } from '@vicons/ionicons5'
 import type { SearchModel } from './helper.table'
 import { createTableColumns, createTableData } from './helper.table'
 import RoleSearchForm from './components/RoleSearchForm.vue'
+import RoleFormModal from './components/RoleFormModal.vue'
 import type { Role } from '~/types'
 
 const { message, dialog } = useGlobalNaiveApi()
@@ -89,10 +90,14 @@ function createRowNumber(rowIndex: number) {
   return (page - 1) * pageSize + rowIndex + 1
 }
 
+// 是否显示『添加』、『编辑』角色表单
+let roleModalVisible = $ref(false)
+
 /**
  * 添加角色
  */
 function onAddRole() {
+  roleModalVisible = true
   message.success('添加成功')
 }
 
@@ -100,6 +105,7 @@ function onAddRole() {
  * 编辑角色
  */
 function onUpdateRole() {
+  roleModalVisible = true
   message.success('编辑成功')
 }
 
@@ -128,40 +134,43 @@ const columns = createTableColumns({
 </script>
 
 <template>
-  <n-card title="查询角色">
-    <template #header-extra>
-      <n-switch v-model:value="showSearchForm" :round="false" size="large" mr-3>
-        <template #checked-icon>
-          🤩
-        </template>
-        <template #unchecked-icon>
-          🤔
-        </template>
-        <template #checked>
-          <span font-bold>折叠搜索栏</span>
-        </template>
-        <template #unchecked>
-          <span font-bold>展开搜索栏</span>
-        </template>
-      </n-switch>
-      <n-button type="primary" @click="onAddRole">
-        <template #icon>
-          <n-icon :component="AddIcon" color="white" />
-        </template>
-        <span text-white font-bold>新增</span>
-      </n-button>
-    </template>
-    <RoleSearchForm
-      ref="refSearchForm" mb-20px
-      :show-search-form="showSearchForm"
-      @fetch-table-data="fetchTableData"
-    />
-    <n-data-table
-      :loading="loading"
-      :bordered="false"
-      :columns="columns"
-      :data="tableData"
-      :pagination="pagination"
-    />
-  </n-card>
+  <div>
+    <n-card title="查询角色">
+      <template #header-extra>
+        <n-switch v-model:value="showSearchForm" :round="false" size="large" mr-3>
+          <template #checked-icon>
+            🤩
+          </template>
+          <template #unchecked-icon>
+            🤔
+          </template>
+          <template #checked>
+            <span font-bold>折叠搜索栏</span>
+          </template>
+          <template #unchecked>
+            <span font-bold>展开搜索栏</span>
+          </template>
+        </n-switch>
+        <n-button type="primary" @click="onAddRole">
+          <template #icon>
+            <n-icon :component="AddIcon" color="white" />
+          </template>
+          <span text-white font-bold>新增</span>
+        </n-button>
+      </template>
+      <RoleSearchForm
+        ref="refSearchForm" mb-20px
+        :show-search-form="showSearchForm"
+        @fetch-table-data="fetchTableData"
+      />
+      <n-data-table
+        :loading="loading"
+        :bordered="false"
+        :columns="columns"
+        :data="tableData"
+        :pagination="pagination"
+      />
+    </n-card>
+    <RoleFormModal v-model:modal-visible="roleModalVisible" />
+  </div>
 </template>
