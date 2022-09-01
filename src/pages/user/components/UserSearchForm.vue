@@ -6,13 +6,17 @@ import {
   TrashBinOutline as TrashBinOutlineIcon,
   TrendingUpSharp as TrendingUpSharpIcon,
 } from '@vicons/ionicons5'
+import Flash16Regular from '@vicons/fluent/Flash16Regular'
+import type { SelectOption } from 'naive-ui'
 import type { SearchModel } from '../helper.table'
 
 const {
   showSearchForm = true,
+  roleOptions = [],
 } = defineProps<{
   /** 是否显示搜索栏 */
   showSearchForm?: boolean
+  roleOptions?: SelectOption[]
 }>()
 
 const emits = defineEmits(['fetchTableData'])
@@ -115,11 +119,11 @@ defineExpose({
           </n-gi>
           <n-gi :span="1">
             <n-form-item label="用户角色" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
-              <n-input v-model:value="searchModel.phone" placeholder="用户角色" clearable>
-                <template #clear-icon>
-                  <n-icon :component="TrashBinOutlineIcon" />
+              <n-select v-model:value="searchModel.roleId" placeholder="用户角色" :options="roleOptions" clearable>
+                <template #arrow>
+                  <Flash16Regular />
                 </template>
-              </n-input>
+              </n-select>
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
