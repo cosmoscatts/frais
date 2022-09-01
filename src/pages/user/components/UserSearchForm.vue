@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import {
   Refresh as RefreshIcon,
+  RocketOutline as RocketOutlineIcon,
   Search as SearchIcon,
   TrashBinOutline as TrashBinOutlineIcon,
+  TrendingUpSharp as TrendingUpSharpIcon,
 } from '@vicons/ionicons5'
 import type { SearchModel } from '../helper.table'
 
@@ -125,7 +127,14 @@ defineExpose({
               <n-date-picker
                 v-model:formatted-value="searchModel.createTime" type="daterange"
                 :value-format="datePickerValueFormatter" clearable :is-date-disabled="disablePreviousDate"
-              />
+              >
+                <template #separator>
+                  <n-icon :size="16" :component="TrendingUpSharpIcon" />
+                </template>
+                <template #date-icon>
+                  <n-icon :size="16" :component="RocketOutlineIcon" />
+                </template>
+              </n-date-picker>
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
@@ -133,7 +142,14 @@ defineExpose({
               <n-date-picker
                 v-model:formatted-value="searchModel.updateTime" type="daterange"
                 :value-format="datePickerValueFormatter" clearable :is-date-disabled="disablePreviousDate"
-              />
+              >
+                <template #separator>
+                  <n-icon :size="16" :component="TrendingUpSharpIcon" />
+                </template>
+                <template #date-icon>
+                  <n-icon :size="16" :component="RocketOutlineIcon" />
+                </template>
+              </n-date-picker>
             </n-form-item>
           </n-gi>
         </n-grid>
