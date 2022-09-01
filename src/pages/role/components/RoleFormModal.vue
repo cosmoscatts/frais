@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormValidationError, TreeOption } from 'naive-ui'
-import { rules } from '../helper.form'
+import { renderTreeLabel, rules } from '../helper.form'
 import type { Role } from '~/types'
 
 const {
@@ -67,6 +67,9 @@ watch(() => modalVisible, () => {
   refForm.value && refForm.value.restoreValidation()
 })
 
+/**
+ * 提交表单
+ */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
   refForm.value?.validate((errors?: FormValidationError[]) => {
@@ -131,6 +134,7 @@ function onCloseModal() {
           checkable
           default-expand-all
           :selectable="false"
+          :render-label="renderTreeLabel"
           :data="menuTreeData"
         />
       </n-form-item>

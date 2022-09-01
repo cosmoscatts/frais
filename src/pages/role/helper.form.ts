@@ -1,4 +1,5 @@
 import type { FormRules, TreeOption } from 'naive-ui'
+import { NH4, NText } from 'naive-ui'
 import type { Role } from '~/types'
 
 // 表单校验规则
@@ -71,4 +72,44 @@ export function handleSaveRole({
   }
 
   return actionMap[type]()
+}
+
+/**
+ * 自定义渲染菜单树 `label`
+ */
+export function renderTreeLabel({
+  option: { label, children },
+  checked,
+}: {
+  option: TreeOption
+  checked: boolean
+  selected: boolean
+}) {
+  return (children?.length ?? 0) > 0
+    ? h(
+      NH4,
+      {
+        prefix: 'bar',
+        style: { marginBottom: 0 },
+      },
+      h(
+        NText,
+        {
+          type: checked ? 'primary' : undefined,
+        },
+        {
+          default: () => label,
+        },
+      ),
+    )
+    : h(
+      'span',
+      {
+        style: { marginLeft: '12px' },
+        class: { 'text-primary': checked },
+      },
+      {
+        default: () => label,
+      },
+    )
 }
