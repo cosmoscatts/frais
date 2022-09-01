@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { Refresh as RefreshIcon, Search as SearchIcon } from '@vicons/ionicons5'
+import {
+  Refresh as RefreshIcon,
+  Search as SearchIcon,
+  TrashBinOutline as TrashBinOutlineIcon,
+} from '@vicons/ionicons5'
 import type { SearchModel } from '../helper.table'
 
 const {
@@ -82,22 +86,38 @@ defineExpose({
         <n-grid :x-gap="12" :y-gap="12" cols="1 s:2 l:3" responsive="screen">
           <n-gi :span="1">
             <n-form-item label="用户账号" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
-              <n-input v-model:value="searchModel.username" placeholder="用户账号" clearable />
+              <n-input v-model:value="searchModel.username" placeholder="用户账号" clearable>
+                <template #clear-icon>
+                  <n-icon :component="TrashBinOutlineIcon" />
+                </template>
+              </n-input>
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
             <n-form-item label="用户名称" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
-              <n-input v-model:value="searchModel.name" placeholder="用户名称" clearable />
+              <n-input v-model:value="searchModel.name" placeholder="用户名称" clearable>
+                <template #clear-icon>
+                  <n-icon :component="TrashBinOutlineIcon" />
+                </template>
+              </n-input>
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
             <n-form-item label="用户手机号" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
-              <n-input v-model:value="searchModel.phone" placeholder="用户手机号" clearable />
+              <n-input v-model:value="searchModel.phone" placeholder="用户手机号" clearable>
+                <template #clear-icon>
+                  <n-icon :component="TrashBinOutlineIcon" />
+                </template>
+              </n-input>
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
             <n-form-item label="用户角色" label-placement="left" :show-label="!labelHidden" :show-feedback="false">
-              <n-input v-model:value="searchModel.phone" placeholder="用户角色" clearable />
+              <n-input v-model:value="searchModel.phone" placeholder="用户角色" clearable>
+                <template #clear-icon>
+                  <n-icon :component="TrashBinOutlineIcon" />
+                </template>
+              </n-input>
             </n-form-item>
           </n-gi>
           <n-gi :span="1">
