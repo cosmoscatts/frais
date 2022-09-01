@@ -23,11 +23,11 @@ const layoutIconClass: Record<string, {
   mainClass: string
 }> = {
   vertical: {
-    menuClass: 'w-1/3 h-full',
-    mainClass: 'w-2/3 h-3/4',
+    menuClass: 'w-1/3 h-full dark:border-r dark:border-[#333335]',
+    mainClass: 'w-2/3 h-3/4 dark:border-t dark:border-[#333335]',
   },
   horizontal: {
-    menuClass: 'w-full h-1/4',
+    menuClass: 'w-full h-1/4 dark:border-b dark:border-[#333335]',
     mainClass: 'w-full h-3/4',
   },
 }
@@ -59,9 +59,9 @@ function onClick(value: string) {
     >
       <n-tooltip placement="bottom" trigger="hover">
         <template #trigger>
-          <div relative h-80px bg="white dark:[#18181C]" rounded-4px of-hidden :style="{ width: `${layoutElWidth}px` }">
-            <div class="absolute left-0 top-0 bg-[#273352] dark:bg-[#18181C]" :class="renderLayoutIcon(value)?.menuClass" />
-            <div class="absolute right-0 bottom-0 bg-[#f0f2f5] dark:bg-[#101014]" :class="renderLayoutIcon(value)?.mainClass" />
+          <div relative h-80px bg="white dark:[#232324]" rounded-4px of-hidden :style="{ width: `${layoutElWidth}px` }">
+            <div class="absolute left-0 top-0 bg-[#273352] dark:bg-[#232324]" :class="renderLayoutIcon(value)?.menuClass" />
+            <div class="absolute right-0 bottom-0 bg-[#f0f2f5] dark:bg-[#17171A]" :class="renderLayoutIcon(value)?.mainClass" />
           </div>
         </template>
         <span>{{ label }}</span>
