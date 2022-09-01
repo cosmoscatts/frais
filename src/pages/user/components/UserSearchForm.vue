@@ -30,7 +30,7 @@ const datePickerValueFormatter = 'yyyy-MM-dd'
 const baseSearchModel: SearchModel = {
   username: '',
   name: '',
-  roleId: undefined,
+  roleId: null,
   phone: '',
   createTime: null,
   updateTime: null,

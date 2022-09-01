@@ -13,7 +13,7 @@ export interface SearchModel {
   /** 手机号 */
   phone?: string
   /** 角色 */
-  roleId?: number
+  roleId?: number | null
   /** 创建时间 */
   createTime: FormattedValue | null
   /** 更新时间 */
