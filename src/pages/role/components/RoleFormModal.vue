@@ -109,7 +109,6 @@ function onSubmit(e: MouseEvent) {
     startLoading()
     emits('saveRoleData', JSON.parse(JSON.stringify(formModel)))
   })
-  e.preventDefault()
 }
 
 /**
