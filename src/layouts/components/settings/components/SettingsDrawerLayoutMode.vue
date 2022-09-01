@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { appLayoutParams } from '~/config'
+
 const {
   modelValue = 'vertical',
   options = [],
@@ -34,6 +36,14 @@ const renderLayoutIcon = (value: string) => {
   return layoutIconClass[value]
 }
 
+// 布局 `div` 的宽度
+const layoutElWidth = computed(() => {
+  const { settingsDrawerWidth } = appLayoutParams
+  const MAX_WIDTH = 180
+  const PADDING_AND_MARGIN = 66
+  return Math.min((settingsDrawerWidth - PADDING_AND_MARGIN) / 2, MAX_WIDTH)
+})
+
 function onClick(value: string) {
   emits('update:model-value', value)
 }
@@ -49,7 +59,7 @@ function onClick(value: string) {
     >
       <n-tooltip placement="bottom" trigger="hover">
         <template #trigger>
-          <div relative w-140px h-80px bg="white dark:[#18181C]" rounded-4px of-hidden>
+          <div relative h-80px bg="white dark:[#18181C]" rounded-4px of-hidden :style="{ width: `${layoutElWidth}px` }">
             <div class="absolute left-0 top-0 bg-[#273352] dark:bg-[#18181C]" :class="renderLayoutIcon(value)?.menuClass" />
             <div class="absolute right-0 bottom-0 bg-[#f0f2f5] dark:bg-[#101014]" :class="renderLayoutIcon(value)?.mainClass" />
           </div>

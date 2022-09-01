@@ -26,6 +26,6 @@ export const appLayoutParams = {
   /** `settingsDrawer` 距离页面底部的距离 */
   settingsDrawerBottom: 350,
   /** `settingsDrawer` 的宽度 */
-  settingsDrawerWidth: 360,
+  settingsDrawerWidth: 330,
 }
 
