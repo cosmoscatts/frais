@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import type { UploadFileInfo } from 'naive-ui'
 
+const { message } = useGlobalNaiveApi()
+
 const userStore = useUserStore()
 const { user } = storeToRefs(userStore)
+const { updateUser } = userStore
 
 /**
  * 将角色 `id` 转换为名称
@@ -18,77 +21,70 @@ function formatDate(date?: Date) {
   return dayJs(date).format('YYYY-MM-DD HH:mm:ss') || '-'
 }
 
-// function getFileUrl() {
-//   const avatar = unref(user)?.avatar
-//   return avatar
-//     ? {
-//         url: avatar,
-//       }
-//     : undefined
-// }
-
-// const file = ref<any>(getFileUrl())
-// const avatar = computed(() => {
-//   return unref(user)?.avatar
-// })
-// watch(avatar, () => {
-//   file.value = getFileUrl()
-// })
-
-// function onChange(_: FileItem[], currentFile: FileItem) {
-//   file.value = {
-//     ...currentFile,
-//   }
-//   getBase64(unref(file).file).then(async (imageAsDateURL) => {
-//     // const formData = {
-//     //   id: unref(user)?.id,
-//     //   avatar: imageAsDateURL,
-//     // }
-//     // const { code } = await UserApi.updateAvatar(formData) as any
-//     // if (code === 0) {
-//     Message.success('上传成功')
-//     userStore.updateAvatar(imageAsDateURL as string)
-//     // }
-//     // else {
-//     //   Message.error('上传失败')
-//     // }
-//   })
-// }
-
-// function getBase64(file: any) {
-//   return new Promise((resolve, reject) => {
-//     const reader = new FileReader()
-//     let imageAsDateURL = ''
-//     reader.readAsDataURL(file)
-//     reader.onload = (data) => {
-//       const res: any = data.target || data.srcElement
-//       imageAsDateURL = res.result
-//     }
-//     reader.onerror = (err) => {
-//       reject(err)
-//     }
-//     reader.onloadend = () => {
-//       resolve(imageAsDateURL)
-//     }
-//   })
-// }
-
-const showModal = ref(false)
-const previewImageUrl = ref('')
-function handlePreview(file: UploadFileInfo) {
-  const { url } = file
-  previewImageUrl.value = url as string
-  showModal.value = true
+/**
+ * 转换图片成 `Base64`
+ */
+function getBase64(file: File) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    let imageAsDateURL = ''
+    reader.readAsDataURL(file)
+    reader.onload = (data) => {
+      const res: any = data.target || data.srcElement
+      imageAsDateURL = res.result
+    }
+    reader.onerror = (err) => {
+      reject(err)
+    }
+    reader.onloadend = () => {
+      resolve(imageAsDateURL)
+    }
+  })
 }
 
-const previewFileList = ref<UploadFileInfo[]>([
-  {
-    id: 'react',
-    name: '我是react.png',
-    status: 'finished',
-    url: 'https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg',
-  },
-])
+// 是否显示头像预览
+let showImagePreview = $ref(false)
+// 预览头像 `url`
+let previewImageUrl = $ref('')
+
+/**
+ * 处理头像预览
+ */
+function handlePreview({ url }: UploadFileInfo) {
+  previewImageUrl = url as string
+  showImagePreview = true
+}
+
+const avatar = computed<UploadFileInfo[]>(() => {
+  const { value: _user } = user
+  return _user?.avatar
+    ? [
+        {
+          id: 'avatar',
+          name: 'avatar',
+          url: _user.avatar,
+          status: 'finished',
+        },
+      ]
+    : []
+})
+
+function onChange({
+  file: uploadingFileInfo,
+}: {
+  file: UploadFileInfo
+  fileList: Array<UploadFileInfo>
+  event?: Event
+}) {
+  getBase64(uploadingFileInfo.file!).then(async (imageAsDateURL) => {
+    const { value: _user } = user
+    updateUser({
+      ...JSON.parse(JSON.stringify(_user)),
+      avatar: imageAsDateURL as string,
+    })
+    message.success('上传成功')
+  })
+}
 </script>
 
 <template>
@@ -97,14 +93,17 @@ const previewFileList = ref<UploadFileInfo[]>([
       <n-gi span="4 m:1">
         <div flex-center w-full>
           <n-upload
-            action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
-            :default-file-list="previewFileList"
+            :file-list="avatar"
+            :default-upload="false"
             list-type="image-card"
-            :max="1" :style="{ width: '200px' }"
+            :show-remove-button="false"
+            :max="2" :style="{ width: '200px' }"
             @preview="handlePreview"
+            @change="onChange"
           />
         </div>
       </n-gi>
+
       <n-gi span="4 m:3">
         <div flex-y-center hw-full>
           <n-descriptions label-placement="left" w-full lt-md:m="t-5 x-5">
@@ -174,12 +173,12 @@ const previewFileList = ref<UploadFileInfo[]>([
     </n-grid>
 
     <n-modal
-      v-model:show="showModal"
+      v-model:show="showImagePreview"
       preset="card"
       style="width: 600px"
-      title="一张很酷的图片"
+      title="预览头像"
     >
-      <img :src="previewImageUrl" style="width: 100%">
+      <img :src="previewImageUrl" w-full>
     </n-modal>
   </n-card>
 </template>
