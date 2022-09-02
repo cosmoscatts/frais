@@ -80,6 +80,8 @@ function onSubmit(e: MouseEvent) {
       username: 'admin',
       name: 'admin',
       roleId: 1,
+      phone: '6666666666',
+      email: 'dasb@qq.com',
       createTime: new Date(),
     })
     const path = findFirstPermissionRoute() ?? '/'
