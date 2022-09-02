@@ -5,7 +5,9 @@
 *********
 
 ## 预览
-![垂直布局](./public/preview-vertical.png)
+<p align="center">
+  <img src="./public/preview-vertical.png" alt="垂直布局" width="600" />
+</p>
 
 ![水平布局](./public/preview-horizontal.png)
 
