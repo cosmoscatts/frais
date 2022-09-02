@@ -15,7 +15,11 @@ const refForm = ref<FormInst | null>(null)
 
 type FormModel = Pick<User, 'id' | 'name' | 'phone' | 'email'>
 
-const { user } = storeToRefs(useUserStore())
+const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
+const { updateUser } = userStore
+
+const { message } = useGlobalNaiveApi()
 
 /**
  * 获取表单数据
@@ -59,8 +63,23 @@ const { loading, startLoading, endLoading } = useLoading()
 /**
  * 保存修改内容
  */
-function onSubmit() {
-
+function onSubmit(e: MouseEvent) {
+  e.preventDefault()
+  refForm.value?.validate((errors) => {
+    if (errors)
+      return
+    startLoading()
+    const { value: _user } = user
+    const cloneUser = JSON.parse(JSON.stringify(_user)) as User
+    useTimeoutFn(() => {
+      updateUser({
+        ...cloneUser,
+        ...formModel,
+      })
+      endLoading()
+      message.success('修改成功')
+    }, 1500)
+  })
 }
 </script>
 

@@ -82,7 +82,7 @@ function getBase64(file: any) {
           </n-h5>
         </template>
         <n-tag type="warning">
-          {{ user?.username ?? '-' }}
+          {{ user?.username || '-' }}
         </n-tag>
       </n-descriptions-item>
       <n-descriptions-item>
@@ -92,7 +92,7 @@ function getBase64(file: any) {
           </n-h5>
         </template>
         <n-tag>
-          {{ user?.name ?? '-' }}
+          {{ user?.name || '-' }}
         </n-tag>
       </n-descriptions-item>
       <n-descriptions-item>
@@ -102,7 +102,7 @@ function getBase64(file: any) {
           </n-h5>
         </template>
         <n-tag>
-          {{ user?.phone ?? '无' }}
+          {{ user?.phone || '无' }}
         </n-tag>
       </n-descriptions-item>
       <n-descriptions-item>
@@ -112,7 +112,7 @@ function getBase64(file: any) {
           </n-h5>
         </template>
         <n-tag>
-          {{ user?.email ?? '无' }}
+          {{ user?.email || '无' }}
         </n-tag>
       </n-descriptions-item>
       <n-descriptions-item>
