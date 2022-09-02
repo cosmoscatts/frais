@@ -70,19 +70,6 @@ function getBase64(file: any) {
     }
   })
 }
-
-const { width } = useWindowSize()
-const imagePreviewVisible = ref(false)
-
-function beforeUpload(file: any): any {
-  return new Promise((resolve) => {
-    if (!file.type.startsWith('image')) {
-      Message.error('请上传图片')
-      return resolve(false)
-    }
-    resolve(true)
-  })
-}
 </script>
 
 <template>
