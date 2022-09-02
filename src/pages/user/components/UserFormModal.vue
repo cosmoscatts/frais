@@ -126,7 +126,7 @@ function validatePasswordStartWith(
 /**
  * 校验两次输入的密码是否一致
  */
-function validatePasswordSame(rule: FormItemRule, value: string): boolean {
+function validatePasswordSame(_rule: FormItemRule, value: string): boolean {
   return value === formModel.password
 }
 
