@@ -22,7 +22,7 @@ const { user } = storeToRefs(useUserStore())
  */
 function getBaseFormModel(): FormModel {
   const { value: _user } = user
-  const { id, name, phone, email } = JSON.parse(JSON.stringify(_user)) as User
+  const { id, name = '', phone = '', email = '' } = JSON.parse(JSON.stringify(_user)) as User
   return {
     id,
     name,
@@ -31,15 +31,15 @@ function getBaseFormModel(): FormModel {
   }
 }
 
+let formModel = $ref<FormModel>(getBaseFormModel())
+
 /**
  * 重置表单数据及校验状态
  */
 function resetFormModel() {
-  getBaseFormModel()
+  formModel = getBaseFormModel()
   refForm.value && refForm.value.restoreValidation()
 }
-
-const formModel = $ref<FormModel>(getBaseFormModel())
 
 // 当 `tab` 改变，重置表单及校验
 watch(() => currentTab, resetFormModel)
