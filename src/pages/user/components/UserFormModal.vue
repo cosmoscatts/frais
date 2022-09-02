@@ -174,7 +174,7 @@ const rules = createRules(
           </template>
         </n-input>
       </n-form-item>
-      <n-form-item label="用户密码" path="password">
+      <n-form-item v-if="type === 'add'" label="用户密码" path="password">
         <n-input
           v-model:value="formModel.password"
           type="password" placeholder="请输入用户密码" clearable
@@ -193,6 +193,7 @@ const rules = createRules(
         </n-input>
       </n-form-item>
       <n-form-item
+        v-if="type === 'add'"
         ref="refRPasswordFormItem"
         first
         label="重复密码"
