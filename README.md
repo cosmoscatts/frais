@@ -6,14 +6,6 @@
 
 ## 预览
 <p align="center">
-  <img src="./public/preview-vertical.png" alt="垂直布局" width="600" />
-</p>
-
-<p align="center">
-  <img src="./public/preview-horizontal.png" alt="水平布局" width="600" />
-</p>
-
-<p align="center">
   <img src="./public/preview-user-manage.png" alt="用户管理" width="600" />
 </p>
 
