@@ -8,7 +8,12 @@ import {
 import defaultAvatar from '~/assets/default-avatar.jpg'
 
 const router = useRouter()
+const { user } = storeToRefs(useUserStore())
 const { notification } = useGlobalNaiveApi()
+
+const avatar = computed(() => {
+  return user.value?.avatar ?? defaultAvatar
+})
 
 // 渲染图标组件
 const renderIcon = (icon: Component) => {
@@ -58,7 +63,7 @@ const options = [
       <n-avatar
         round
         size="small"
-        :src="defaultAvatar"
+        :src="avatar"
         fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
       />
       <n-ellipsis style="max-width: 100px" ml-3>
