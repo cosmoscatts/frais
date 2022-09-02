@@ -25,10 +25,12 @@ export interface SearchModel {
  */
 export function createTableColumns({
   createRowNumber,
+  transformRoleName,
   onUpdateUser,
   onRemoveUser,
 }: {
   createRowNumber?: (rowIndex: number) => number
+  transformRoleName?: (roleId?: number) => string
   onUpdateUser?: (user: User) => void
   onRemoveUser?: (user: User) => void
 }): DataTableColumns<User> {
@@ -67,6 +69,18 @@ export function createTableColumns({
       key: 'roleId',
       title: '角色',
       align: 'center',
+      render({ roleId }) {
+        return h(
+          NTag,
+          {
+            type: 'warning',
+            style: { fontWeight: 'bold' },
+          },
+          {
+            default: () => transformRoleName?.(roleId),
+          },
+        )
+      },
     },
     {
       key: 'phone',

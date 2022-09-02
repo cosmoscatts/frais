@@ -149,13 +149,6 @@ function onRemoveUser(user: User) {
   })
 }
 
-// 创建表格列信息
-const columns = createTableColumns({
-  createRowNumber,
-  onUpdateUser,
-  onRemoveUser,
-})
-
 // 角色选择框数据
 let roleOptions = $ref<SelectOption[]>()
 function fetchRoleOptions() {
@@ -167,6 +160,21 @@ function fetchRoleOptions() {
   })
 }
 fetchRoleOptions()
+
+/**
+ * 将角色 `id` 转换为名称
+ */
+function transformRoleName(roleId = -1): string {
+  return (roleOptions.find(i => i.value === roleId)?.label ?? '-') as string
+}
+
+// 创建表格列信息
+const columns = createTableColumns({
+  createRowNumber,
+  transformRoleName,
+  onUpdateUser,
+  onRemoveUser,
+})
 </script>
 
 <template>
