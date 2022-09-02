@@ -42,7 +42,7 @@ let formModel = $ref<FormModel>(getBaseFormModel())
  */
 function resetFormModel() {
   formModel = getBaseFormModel()
-  refForm.value && refForm.value.restoreValidation()
+  refForm.value?.restoreValidation()
 }
 
 // 当 `tab` 改变，重置表单及校验

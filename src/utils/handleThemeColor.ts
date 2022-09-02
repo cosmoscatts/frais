@@ -27,7 +27,7 @@ const colorPropertyMap: { [key: string]: string } = {
 }
 
 /**
- * 生成主色调的其他状态颜色，包括 hover、pressed、suppl
+ * 生成主色调的其他状态颜色，包括 `hover`、`pressed`、`suppl` 等状态
  */
 export function generatePrimaryColor(_primaryColor: string) {
   return {

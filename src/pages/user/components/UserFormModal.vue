@@ -75,7 +75,7 @@ function assign() {
 watch(() => modalVisible, () => {
   assign()
   endLoading()
-  refForm.value && refForm.value.restoreValidation()
+  refForm.value?.restoreValidation()
 })
 
 /**
