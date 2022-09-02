@@ -14,10 +14,10 @@ const currentTab = ref(1)
     <n-card mt-20px>
       <n-tabs v-model:value="currentTab" type="card" animated w-full>
         <n-tab-pane :name="1" tab="信息修改">
-          <BasicInformation />
+          <BasicInformation :current-tab="currentTab" />
         </n-tab-pane>
         <n-tab-pane :name="2" tab="安全设置">
-          <SecuritySettings />
+          <SecuritySettings :current-tab="currentTab" />
         </n-tab-pane>
       </n-tabs>
     </n-card>
