@@ -9,7 +9,21 @@
   <img src="./public/preview-vertical.png" alt="垂直布局" width="600" />
 </p>
 
-![水平布局](./public/preview-horizontal.png)
+<p align="center">
+  <img src="./public/preview-horizontal.png" alt="水平布局" width="600" />
+</p>
+
+<p align="center">
+  <img src="./public/preview-user-manage.png" alt="用户管理" width="600" />
+</p>
+
+<p align="center">
+  <img src="./public/preview-role-manage.png" alt="角色管理" width="600" />
+</p>
+
+<p align="center">
+  <img src="./public/preview-edit-role.png" alt="角色编辑" width="600" />
+</p>
 
 [在线预览](https://petite.netlify.app/)
 
