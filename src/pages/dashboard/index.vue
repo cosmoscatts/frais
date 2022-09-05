@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import README from 'README.md'
+import DOC from './doc.md'
 </script>
 
 <template>
   <div hw-full flex-x-center>
-    <README />
+    <DOC />
   </div>
 </template>
