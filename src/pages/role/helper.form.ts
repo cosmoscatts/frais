@@ -48,6 +48,14 @@ export const defaultMenuTreeData: TreeOption[] = [
       },
     ],
   },
+  {
+    key: 103,
+    label: 'Markdown 示例',
+  },
+  {
+    key: 104,
+    label: 'Charts 示例',
+  },
 ]
 
 /**
