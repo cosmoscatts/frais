@@ -1,4 +1,5 @@
 import type { GlobalThemeOverrides } from 'naive-ui'
+import { breakpointsTailwind } from '@vueuse/core'
 import type { ConfigSettingObject } from '~/config'
 import { cacheAppSettings, configSettings } from '~/config'
 import {
@@ -13,6 +14,10 @@ import {
 export const useAppStore = defineStore(
   'appStore',
   () => {
+    // 是否为移动端（包含 `PC` 端宽度过小的情况）
+    const breakpoints = useBreakpoints(breakpointsTailwind)
+    const isMobile = breakpoints.smaller('sm')
+
     // `app` 配置对象
     const baseSettings = ref<ConfigSettingObject>({
       ...configSettings,
@@ -93,6 +98,7 @@ export const useAppStore = defineStore(
     const { bool: menuCollapsed, setTrue: setMenuCollapsed, setFalse: setMenuUnCollapsed } = useBoolean(false)
 
     return {
+      isMobile,
       themeOverrides,
       baseSettings,
       stageSettings,
