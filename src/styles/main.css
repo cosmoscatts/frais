@@ -12,3 +12,7 @@ body,
   overflow: hidden;
 }
 
+/** 重置 `tailwind` 预设 */
+img, video {
+  max-width: none !important;
+}

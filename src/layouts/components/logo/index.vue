@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from '@vueuse/core'
 import { appLayoutParams, appMeta } from '~/config'
 
 const { navHeight } = appLayoutParams
@@ -15,6 +16,9 @@ watchEffect(() => {
 })
 
 const isHorizontalLayout = computed(() => baseSettings.value.layout === 'horizontal')
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const hiddenTitle = breakpoints.smaller('lg')
 </script>
 
 <template>
@@ -25,9 +29,9 @@ const isHorizontalLayout = computed(() => baseSettings.value.layout === 'horizon
   >
     <img
       src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
-      alt="头像" :style="{ width: `${navHeight * 0.68}px`, height: `${navHeight * 0.68}px` }"
+      alt="Logo" :style="{ width: `${navHeight * 0.68}px !important`, height: `${navHeight * 0.68}px !important` }"
     >
-    <span v-if="!menuCollapsed" font="bold sans" pl-16px text-16px>
+    <span v-if="!menuCollapsed && (!hiddenTitle || !isHorizontalLayout)" font="bold sans" pl-16px text-16px>
       {{ title }}
     </span>
   </div>

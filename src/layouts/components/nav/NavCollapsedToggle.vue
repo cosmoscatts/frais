@@ -13,7 +13,7 @@ function toggle() {
 
 <template>
   <button
-    icon-btn text-5
+    icon-btn text-xl
     :class="menuCollapsed
       ? 'i-line-md-menu-unfold-right'
       : 'i-line-md-menu-unfold-left'"
