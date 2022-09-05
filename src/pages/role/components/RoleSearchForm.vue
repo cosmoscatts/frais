@@ -128,8 +128,8 @@ defineExpose({
       </n-gi>
 
       <n-gi :span="4">
-        <n-grid :x-gap="12" :y-gap="12" cols="1 l:2 xl:3" responsive="screen">
-          <n-gi span="0 s:1" offset="0 xl:1">
+        <n-grid :x-gap="12" :y-gap="12" cols="1 l:2 xxl:3" responsive="screen">
+          <n-gi span="0 s:1" offset="0 xxl:1">
             <div flex-y-center justify-end>
               <n-button type="primary" text-color="white" @click="searchTableData">
                 <template #icon>
