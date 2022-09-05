@@ -1,5 +1,6 @@
 import {
   BookOutline as BookIcon,
+  StatsChart as ChartIcon,
   DesktopOutline as DeskTopIcon,
   LogoMarkdown as MarkdownIcon,
   PersonOutline as PersonIcon,
@@ -19,6 +20,7 @@ export const defaultMenuIconMap: { [key: string]: Component } = {
   user: markRaw(PersonIcon),
   role: markRaw(NotepadPersonIcon),
   markdown: markRaw(MarkdownIcon),
+  chart: markRaw(ChartIcon),
 }
 
 /**
@@ -55,5 +57,11 @@ export const defaultMenus: Menu[] = [
     label: 'Markdown 示例',
     icon: 'markdown',
     path: '/markdown',
+  },
+  {
+    id: 104,
+    label: 'Chart 示例',
+    icon: 'chart',
+    path: '/charts',
   },
 ]

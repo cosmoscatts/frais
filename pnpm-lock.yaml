@@ -23,6 +23,7 @@ specifiers:
   colord: ^2.9.3
   critters: ^0.0.16
   dayjs: ^1.11.5
+  echarts: ^5.3.3
   eslint: ^8.23.0
   markdown-it-link-attributes: ^4.0.1
   markdown-it-shiki: ^0.5.1
@@ -52,6 +53,7 @@ dependencies:
   colord: registry.npmmirror.com/colord/2.9.3
   critters: registry.npmmirror.com/critters/0.0.16
   dayjs: registry.npmmirror.com/dayjs/1.11.5
+  echarts: registry.npmmirror.com/echarts/5.3.3
   pinia: registry.npmmirror.com/pinia/2.0.21_pj7ch6rmow6odq73xb5hfvge3q
   pinia-plugin-persist-uni: registry.npmmirror.com/pinia-plugin-persist-uni/1.1.5_pinia@2.0.21+vue@3.2.38
   seemly: registry.npmmirror.com/seemly/0.3.6
@@ -1887,6 +1889,15 @@ packages:
     name: duplexer
     version: 0.1.2
     dev: true
+
+  registry.npmmirror.com/echarts/5.3.3:
+    resolution: {integrity: sha512-BRw2serInRwO5SIwRviZ6Xgm5Lb7irgz+sLiFMmy/HOaf4SQ+7oYqxKzRHAKp4xHQ05AuHw1xvoQWJjDQq/FGw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/-/echarts-5.3.3.tgz}
+    name: echarts
+    version: 5.3.3
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.3.0
+      zrender: registry.npmmirror.com/zrender/5.3.2
+    dev: false
 
   registry.npmmirror.com/entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/entities/-/entities-2.2.0.tgz}
@@ -4739,6 +4750,12 @@ packages:
     version: 1.14.1
     dev: true
 
+  registry.npmmirror.com/tslib/2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: false
+
   registry.npmmirror.com/tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz}
     name: tslib
@@ -5296,3 +5313,11 @@ packages:
     version: 0.1.0
     engines: {node: '>=10'}
     dev: true
+
+  registry.npmmirror.com/zrender/5.3.2:
+    resolution: {integrity: sha512-8IiYdfwHj2rx0UeIGZGGU4WEVSDEdeVCaIg/fomejg1Xu6OifAL1GVzIPHg2D+MyUkbNgPWji90t0a8IDk+39w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zrender/-/zrender-5.3.2.tgz}
+    name: zrender
+    version: 5.3.2
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.3.0
+    dev: false

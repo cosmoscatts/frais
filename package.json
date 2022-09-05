@@ -21,6 +21,7 @@
     "colord": "^2.9.3",
     "critters": "^0.0.16",
     "dayjs": "^1.11.5",
+    "echarts": "^5.3.3",
     "pinia": "^2.0.21",
     "pinia-plugin-persist-uni": "^1.1.5",
     "seemly": "^0.3.6",
