@@ -9,7 +9,7 @@
 - [soybean-admin](https://github.com/honghuangdc/soybean-admin/)
 
 ## 技术栈
-- 🤙🏻 Vue3 <setup>
+- 🤙🏻 Vue3 & `<setup>`
 - ⚡️ Vite2
 - 🦾 TypeScript
 - 🍍 Pinia
