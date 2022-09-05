@@ -1,4 +1,5 @@
 <script  setup lang="ts">
+import { useThemeVars } from 'naive-ui'
 import {
   TheFoot,
   TheMain,
@@ -10,7 +11,7 @@ import {
 import { appLayoutParams, showAppSettings } from '~/config'
 
 const appStore = useAppStore()
-const { menuCollapsed, baseSettings } = storeToRefs(appStore)
+const { isMobile, menuCollapsed, baseSettings } = storeToRefs(appStore)
 const { setMenuCollapsed, setMenuUnCollapsed } = appStore
 
 const {
@@ -39,11 +40,28 @@ const diffHeight = computed(() => {
 // 否则为 `refMainWrapper`
 const refMainWrapper = ref()
 const refContentWrapper = ref()
+
+// 计算 `MainWrapper` 宽度
+const mainWrapperWidth = computed(() => {
+  return isMobile.value
+    ? '100%'
+    : `calc(100% - ${menuCollapsed.value ? sideCollapsedWidth : sideWidth}px)`
+})
+
+// 计算 `MainWrapper` `left` 偏移
+const mainWrapperLeft = computed(() => {
+  return isMobile.value
+    ? '0px'
+    : `${menuCollapsed.value ? sideCollapsedWidth : sideWidth}px`
+})
+
+const themeVars = useThemeVars()
 </script>
 
 <template>
   <n-layout has-sider hw-screen of-hidden>
     <n-layout-sider
+      v-if="!isMobile"
       bordered position="absolute"
       :inverted="baseSettings.invertMenu"
       :show-trigger="baseSettings.sideCollapsedTriggerStyle"
@@ -57,15 +75,28 @@ const refContentWrapper = ref()
     >
       <TheSide />
     </n-layout-sider>
+    <n-drawer
+      v-else
+      :style="{
+        backgroundColor: themeVars.cardColor,
+      }"
+      :width="sideWidth"
+      :auto-focus="false"
+      :show="!menuCollapsed"
+      placement="left"
+      display-directive="show"
+      @mask-click="setMenuCollapsed"
+    >
+      <TheSide />
+    </n-drawer>
+
     <n-layout
-      ref="refMainWrapper" of="x-hidden y-auto"
+      ref="refMainWrapper"
+      of="x-hidden y-auto"
       position="absolute"
       :style="{
-        width: `calc(100% - ${menuCollapsed ? sideCollapsedWidth : sideWidth})px`,
-        left: `${menuCollapsed
-          ? sideCollapsedWidth
-          : sideWidth
-        }px`,
+        width: mainWrapperWidth,
+        left: mainWrapperLeft,
       }"
       :native-scrollbar="false"
     >
