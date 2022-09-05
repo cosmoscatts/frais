@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import README from 'README.md'
 </script>
 
 <template>
-  <div text-xl font-bold>
-    首页
+  <div hw-full flex-x-center>
+    <README />
   </div>
 </template>
