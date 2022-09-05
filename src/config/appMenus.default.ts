@@ -1,6 +1,7 @@
 import {
   BookOutline as BookIcon,
   DesktopOutline as DeskTopIcon,
+  LogoMarkdown as MarkdownIcon,
   PersonOutline as PersonIcon,
 } from '@vicons/ionicons5'
 import type { Component } from 'vue'
@@ -17,6 +18,7 @@ export const defaultMenuIconMap: { [key: string]: Component } = {
   system: markRaw(DeskTopIcon),
   user: markRaw(PersonIcon),
   role: markRaw(NotepadPersonIcon),
+  markdown: markRaw(MarkdownIcon),
 }
 
 /**
@@ -47,5 +49,11 @@ export const defaultMenus: Menu[] = [
         path: '/system/role',
       },
     ],
+  },
+  {
+    id: 103,
+    label: 'Markdown 示例',
+    icon: 'markdown',
+    path: '/markdown',
   },
 ]
