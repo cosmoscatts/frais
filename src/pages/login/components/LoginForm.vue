@@ -99,7 +99,7 @@ function onSubmit(e: MouseEvent) {
 </script>
 
 <template>
-  <div flex="y-center col" mt-200px>
+  <div flex="y-center col" min-h-400px mt-200px>
     <div text="32px center" font-bold>
       🎃 {{ appMeta.name }}
     </div>
