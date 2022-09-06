@@ -99,12 +99,15 @@ function onSubmit(e: MouseEvent) {
 </script>
 
 <template>
-  <div flex="y-center col" min-h-400px mt-200px>
-    <div text="32px center" font-bold>
-      🎃 {{ appMeta.name }}
+  <div flex="center col" p-15 rounded-3>
+    <div text="32px center" font-bold flex-y-center>
+      <div h-36px w-36px bg="[var(--primary-color)]" rounded-1 flex-center mr-2>
+        <div i-carbon-campsite text="24px white" />
+      </div>
+      <span font-bold text-36px>{{ appMeta.name }}</span>
     </div>
 
-    <n-form ref="refForm" :model="formModel" :rules="rules" size="large" w-450px>
+    <n-form ref="refForm" :model="formModel" :rules="rules" size="large" min-w-350px mt-20px>
       <n-form-item path="username" label="账号">
         <n-input v-model:value="formModel.username" @keydown.enter.prevent />
       </n-form-item>
@@ -125,7 +128,7 @@ function onSubmit(e: MouseEvent) {
 
     <div flex-center mt-150px>
       <DarkToggle />
-      <span ml-5 op-50 text-xl>🙌🙌 By {{ appMeta.author }} 🙌🙌</span>
+      <span ml-5 op-50 text-xl> {{ appMeta.author }} </span>
     </div>
   </div>
 </template>
