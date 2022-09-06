@@ -116,7 +116,7 @@ function onSubmit(e: MouseEvent) {
         />
       </n-form-item>
       <n-button
-        block round type="primary" :loading="loading"
+        block type="primary" :loading="loading"
         mt-3 text-color="white" @click="onSubmit"
       >
         <span font-bold text-lag>登录</span>
