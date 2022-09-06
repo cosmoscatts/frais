@@ -14,7 +14,7 @@ const animateName = computed(() => {
   <div>
     <RouterView v-slot="{ Component, route }">
       <Transition :name="animateName" mode="out-in" appear>
-        <KeepAlive :include="cachedTabNames">
+        <KeepAlive :include="cachedTabNames" :max="10">
           <component :is="Component" :key="route.path" />
         </KeepAlive>
       </Transition>
