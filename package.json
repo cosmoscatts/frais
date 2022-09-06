@@ -49,6 +49,7 @@
     "unocss": "^0.45.15",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
+    "unplugin-vue-define-options": "^0.11.1",
     "vfonts": "^0.0.3",
     "vite": "^3.1.0",
     "vite-plugin-vue-markdown": "^0.21.1",
