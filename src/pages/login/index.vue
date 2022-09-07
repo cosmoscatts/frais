@@ -11,12 +11,15 @@ import { appMeta } from '~/config'
     of="x-hidden y-auto" lt-sm="!of-hidden"
   >
     <div
+      relative
       flex-center
       h-full min-h-650px
       w="35/100" max-w-600px
       bg="[var(--primary-color)]"
       lt-md:hidden
     >
+      <div absolute top-20px left-20px i-ri-vip-crown-2-fill text="20px white" />
+
       <div flex="col center" mb-50px>
         <div text-32px font-bold flex-center>
           欢迎使用 {{ appMeta.name }}
