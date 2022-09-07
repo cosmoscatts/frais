@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LoginWrapper from './components/LoginWrapper.vue'
-import BgBanner from '~/assets/bg-banner.svg'
+import BgBanner from '~/assets/bg-banner.png'
 import { appMeta } from '~/config'
 </script>
 
@@ -20,18 +20,19 @@ import { appMeta } from '~/config'
     >
       <div absolute top-20px left-20px i-ri-vip-crown-2-fill text-20px />
 
-      <div flex="col center" mb-50px>
+      <div flex="col center" mb-100px>
         <div text-32px font-bold flex-center>
           欢迎使用 {{ appMeta.name }}
         </div>
         <p v-if="appMeta.description" text-16px>
           {{ appMeta.description }}
         </p>
-        <img :src="BgBanner" w-350px h-350px>
-        <p v-if="appMeta.author" text-16px mt-30px>
-          By {{ appMeta.author }}
-        </p>
+        <img :src="BgBanner" w-300px mt-30px>
       </div>
+
+      <p v-if="appMeta.author" absolute bottom-20px left="[1/2]" text-24px mt-50px>
+        {{ appMeta.author }} 🧑🏻‍💻
+      </p>
     </div>
     <div
       relative
