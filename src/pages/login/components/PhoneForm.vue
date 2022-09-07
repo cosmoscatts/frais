@@ -8,7 +8,7 @@ import type {
 import {
   TrashBinOutline as TrashBinOutlineIcon,
 } from '@vicons/ionicons5'
-import { REGEXP_PHONE } from '../helper'
+import { REGEXP_PHONE, countSendingSmsCode, getSmsCode } from '../helper'
 import { debug } from '~/config'
 import { findFirstPermissionRoute, loginCallback } from '~/utils'
 
@@ -114,16 +114,33 @@ function focusFirstInput() {
   refInputPhone.value?.focus()
 }
 
-function handleSmsCode() {
-  // getSmsCode(model.phone)
-}
-
 // 禁用验证码及发送按钮
 const codeInputDisabled = computed(() => (!formModel.phone || !validatePhone(formModel.phone)))
 
-const isCounting = ref(false)
-const smsLoading = ref(false)
-const sendCodeBtnLabel = ref('发送验证码')
+const {
+  loading: smsLoading,
+  startLoading: startSmsLoading,
+  endLoading: endSmsLoading,
+} = useLoading(false)
+
+const {
+  isCounting,
+  sendCodeBtnLabel,
+  startCounting,
+} = countSendingSmsCode()
+
+/**
+ * 处理发送验证码
+ */
+function handleSmsCode() {
+  startSmsLoading()
+  useTimeoutFn(() => {
+    message.success('验证码发送成功')
+    endSmsLoading()
+    startCounting()
+    getSmsCode()
+  }, 1000)
+}
 
 defineExpose({
   focusFirstInput,
