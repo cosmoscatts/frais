@@ -4,8 +4,18 @@ import BgBanner from '~/assets/bg-banner.svg'
 </script>
 
 <template>
-  <div hw-screen flex of-hidden>
-    <div h-full w="35/100" max-w-600px bg="[var(--primary-color)]" lt-lg:hidden flex-center>
+  <div
+    flex
+    hw-screen
+    of="x-hidden y-auto" lt-sm="!of-hidden"
+  >
+    <div
+      flex-center
+      h-full min-h-650px
+      w="35/100" max-w-600px
+      bg="[var(--primary-color)]"
+      lt-md:hidden
+    >
       <div flex="col center" mb-100px>
         <div text-32px font-bold flex-center>
           欢迎使用 Petite
@@ -13,13 +23,23 @@ import BgBanner from '~/assets/bg-banner.svg'
         <img :src="BgBanner" w-350px h-350px>
       </div>
     </div>
-    <div h-full flex="1 center" bg="[#F5F5F5] dark:[#101014]" lt-lg:w-full lt-md:bg="!white dark:![#101014]">
+    <div
+      relative
+      flex="1 center"
+      h-full min-h-650px
+      bg="[#F5F5F5] dark:[#121212]"
+      lt-sm:w-full
+      lt-sm:bg="!white dark:![#121212]"
+    >
       <LoginForm
-        bg="white dark:[#101014]"
+        bg="white dark:[#121212]"
         h-542px w-440px shadow-lg
         dark="border-2 border-neutral-900"
-        lt-md="!shadow-none !border-none"
+        lt-sm="!shadow-none !border-none"
       />
+      <div flex-center absolute left="[1/2]" bottom-20px>
+        <DarkToggle />
+      </div>
     </div>
   </div>
 </template>
