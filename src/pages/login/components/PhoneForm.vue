@@ -9,8 +9,8 @@ import { debug } from '~/config'
 import { findFirstPermissionRoute, loginCallback } from '~/utils'
 
 /**
- * 定义表单数据结构
- */
+   * 定义表单数据结构
+   */
 interface ModelType {
   username?: string
   password?: string
@@ -63,8 +63,8 @@ const rules: FormRules = {
 const { loading, startLoading, endLoading } = useLoading()
 
 /**
- * 登录
- */
+   * 登录
+   */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
   refForm.value?.validate(async (errors?: FormValidationError[]) => {
@@ -107,10 +107,10 @@ function onSubmit(e: MouseEvent) {
     size="large"
     min-w-350px
   >
-    <n-form-item path="username" label="账号">
+    <n-form-item path="username" label="手机号">
       <n-input v-model:value="formModel.username" @keydown.enter.prevent />
     </n-form-item>
-    <n-form-item path="password" label="密码">
+    <n-form-item path="password" label="验证码">
       <n-input
         v-model:value="formModel.password"
         type="password"
@@ -125,4 +125,3 @@ function onSubmit(e: MouseEvent) {
     </n-button>
   </n-form>
 </template>
-
