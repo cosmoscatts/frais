@@ -5,6 +5,10 @@ import type {
   FormRules,
   FormValidationError,
 } from 'naive-ui'
+import {
+  TrashBinOutline as TrashBinOutlineIcon,
+} from '@vicons/ionicons5'
+import { REGEXP_PHONE } from '../helper'
 import { debug } from '~/config'
 import { findFirstPermissionRoute, loginCallback } from '~/utils'
 
@@ -37,6 +41,13 @@ const formModel = reactive<ModelType>({
   ...baseFormModel,
 })
 
+/**
+ * 校验手机号
+ */
+function validatePhone(value: string) {
+  return REGEXP_PHONE.test(value)
+}
+
 // 表单校验规则
 const rules: FormRules = {
   phone: [
@@ -46,7 +57,7 @@ const rules: FormRules = {
     },
     {
       validator(_rule: FormItemRule, value: string) {
-        return /^[1]+[3,8]+\\d{9}$/.test(value)
+        return validatePhone(value)
       },
       message: '请输入正确的手机号',
       trigger: ['input'],
@@ -103,6 +114,17 @@ function focusFirstInput() {
   refInputPhone.value?.focus()
 }
 
+function handleSmsCode() {
+  // getSmsCode(model.phone)
+}
+
+// 禁用验证码及发送按钮
+const codeInputDisabled = computed(() => (!formModel.phone || !validatePhone(formModel.phone)))
+
+const isCounting = ref(false)
+const smsLoading = ref(true)
+const sendCodeBtnLabel = ref('')
+
 defineExpose({
   focusFirstInput,
 })
@@ -118,14 +140,38 @@ defineExpose({
     min-w-350px
   >
     <n-form-item path="phone" label="手机号">
-      <n-input ref="refInputPhone" v-model:value="formModel.phone" @keydown.enter.prevent />
+      <n-input
+        ref="refInputPhone"
+        v-model:value="formModel.phone"
+        clearable
+        @keydown.enter.prevent
+      >
+        <template #clear-icon>
+          <n-icon :component="TrashBinOutlineIcon" />
+        </template>
+      </n-input>
     </n-form-item>
     <n-form-item path="code" label="验证码">
-      <n-input
-        v-model:value="formModel.code"
-        type="password"
-        @keydown.enter.prevent
-      />
+      <div class="flex-y-center w-full">
+        <n-input
+          v-model:value="formModel.code"
+          :disabled="codeInputDisabled"
+          clearable
+        >
+          <template #clear-icon>
+            <n-icon :component="TrashBinOutlineIcon" />
+          </template>
+        </n-input>
+        <div class="w-18px" />
+        <n-button
+          size="large"
+          :disabled="codeInputDisabled || isCounting"
+          :loading="smsLoading"
+          @click="handleSmsCode"
+        >
+          {{ sendCodeBtnLabel }}
+        </n-button>
+      </div>
     </n-form-item>
     <n-button
       block type="primary" :loading="loading"
