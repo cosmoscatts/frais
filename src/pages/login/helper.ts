@@ -22,24 +22,23 @@ export function countSendingSmsCode() {
   const isCounting = ref(false)
   const sendCodeBtnLabel = ref(SEND_CODE_BTN_LABEL_DEFAULT)
   // 倒计时 60 秒
-  let maxMs = 60
+  const COUNT_MAX_NUM = 60
+  let maxMs = COUNT_MAX_NUM
 
-  const endCounting = () => {
-    isCounting.value = false
-    sendCodeBtnLabel.value = RETRY_BTN_LABEL
-  }
-
-  const { resume } = useIntervalFn(() => {
+  const { resume, pause } = useIntervalFn(() => {
+    if (maxMs > 0) { maxMs -= 1 }
+    else if (maxMs === 0) {
+      isCounting.value = false
+      sendCodeBtnLabel.value = RETRY_BTN_LABEL
+      pause()
+      return
+    }
     sendCodeBtnLabel.value = `${maxMs} 秒后重新获取`
-    if (maxMs > 0)
-      maxMs -= 1
-    else if (maxMs === 0)
-      endCounting()
   }, 1000, { immediate: false })
 
   const startCounting = () => {
     isCounting.value = true
-    maxMs = 60
+    maxMs = COUNT_MAX_NUM
     resume()
   }
 
