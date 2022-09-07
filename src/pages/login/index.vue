@@ -40,12 +40,12 @@ import { appMeta } from '~/config'
       h-full min-h-650px
       bg="[#F5F5F5] dark:[#121212]"
       lt-sm:w-full
-      lt-sm:bg="!white dark:![#121212]"
+      lt-sm:bg="!white dark:![#2a2a2b]"
     >
       <LoginWrapper
-        bg="white dark:[#121212]"
-        h-542px w-440px shadow-lg
-        dark="border-4 border-neutral-900"
+        bg="white dark:[#2a2a2b]"
+        h-542px w-440px class="wrapper-shadow"
+        dark="border-1 border-neutral-600 !shadow-none"
         lt-sm="!shadow-none !border-none"
       />
       <div flex-center absolute left="[1/2]" bottom-20px>
@@ -54,3 +54,9 @@ import { appMeta } from '~/config'
     </div>
   </div>
 </template>
+
+<style scoped>
+.wrapper-shadow {
+  box-shadow: 0 0 20px 5px rgba(40, 40, 40, 0.3);
+}
+</style>
