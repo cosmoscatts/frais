@@ -122,8 +122,8 @@ function handleSmsCode() {
 const codeInputDisabled = computed(() => (!formModel.phone || !validatePhone(formModel.phone)))
 
 const isCounting = ref(false)
-const smsLoading = ref(true)
-const sendCodeBtnLabel = ref('')
+const smsLoading = ref(false)
+const sendCodeBtnLabel = ref('发送验证码')
 
 defineExpose({
   focusFirstInput,
@@ -164,9 +164,9 @@ defineExpose({
         </n-input>
         <div class="w-18px" />
         <n-button
-          size="large"
+          size="large" type="primary" text-color="white"
           :disabled="codeInputDisabled || isCounting"
-          :loading="smsLoading"
+          :loading="!codeInputDisabled && smsLoading"
           @click="handleSmsCode"
         >
           {{ sendCodeBtnLabel }}
