@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LoginWrapper from './components/LoginWrapper.vue'
 import BgBanner from '~/assets/bg-banner.svg'
-// import { appMeta, debug } from '~/config'
+import { appMeta } from '~/config'
 </script>
 
 <template>
@@ -17,11 +17,17 @@ import BgBanner from '~/assets/bg-banner.svg'
       bg="[var(--primary-color)]"
       lt-md:hidden
     >
-      <div flex="col center" mb-100px>
+      <div flex="col center" mb-50px>
         <div text-32px font-bold flex-center>
-          欢迎使用 Petite
+          欢迎使用 {{ appMeta.name }}
         </div>
+        <p v-if="appMeta.description" text-16px>
+          {{ appMeta.description }}
+        </p>
         <img :src="BgBanner" w-350px h-350px>
+        <p v-if="appMeta.author" text-16px mt-30px>
+          By {{ appMeta.author }}
+        </p>
       </div>
     </div>
     <div
@@ -35,7 +41,7 @@ import BgBanner from '~/assets/bg-banner.svg'
       <LoginWrapper
         bg="white dark:[#121212]"
         h-542px w-440px shadow-lg
-        dark="border-2 border-neutral-900"
+        dark="border-4 border-neutral-900"
         lt-sm="!shadow-none !border-none"
       />
       <div flex-center absolute left="[1/2]" bottom-20px>
