@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import LoginForm from './components/LoginForm.vue'
+import LoginWrapper from './components/LoginWrapper.vue'
 import BgBanner from '~/assets/bg-banner.svg'
+// import { appMeta, debug } from '~/config'
 </script>
 
 <template>
@@ -31,7 +32,7 @@ import BgBanner from '~/assets/bg-banner.svg'
       lt-sm:w-full
       lt-sm:bg="!white dark:![#121212]"
     >
-      <LoginForm
+      <LoginWrapper
         bg="white dark:[#121212]"
         h-542px w-440px shadow-lg
         dark="border-2 border-neutral-900"
