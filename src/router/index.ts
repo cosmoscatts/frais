@@ -66,7 +66,7 @@ const router = createRouter({
           name: 'NotFound',
           component: () => import('~/pages/exception/not-found/index.vue'),
           meta: {
-            title: '403',
+            title: '404',
           },
         },
       ],

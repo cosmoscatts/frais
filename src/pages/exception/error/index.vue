@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ImageErrorPage from '~/assets/500.png'
+
 const router = useRouter()
 function goBack() {
   router.push('/')
@@ -12,6 +14,9 @@ function goBack() {
       title="500 服务器错误"
       description="服务器出错可能说明该雇更多程序员了"
     >
+      <template #icon>
+        <img :src="ImageErrorPage" h-400px>
+      </template>
       <template #footer>
         <n-button @click="goBack">
           散财消灾
