@@ -1,3 +1,5 @@
+import { appMeta } from '~/config'
+
 /** 校验手机号 */
 export const REGEXP_PHONE
   = /^[1](([3][0-9])|([4][01456789])|([5][012356789])|([6][2567])|([7][0-8])|([8][0-9])|([9][012356789]))[0-9]{8}$/
@@ -6,9 +8,12 @@ export const REGEXP_PHONE
  * 获取验证码
  */
 export function getSmsCode() {
-  const { message } = useGlobalNaiveApi()
+  const { notification } = useGlobalNaiveApi()
   useTimeoutFn(() => {
-    message.info('验证码为 123456')
+    notification.info({
+      content: `【${appMeta.name}】验证码：123456，有效期10分钟。如非本人操作，请忽略。`,
+      duration: 30 * 1000,
+    })
   }, 5000)
 }
 
