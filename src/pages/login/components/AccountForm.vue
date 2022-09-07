@@ -5,6 +5,11 @@ import type {
   FormRules,
   FormValidationError,
 } from 'naive-ui'
+import {
+  Glasses as GlassesIcon,
+  GlassesOutline as GlassesOutlineIcon,
+  TrashBinOutline as TrashBinOutlineIcon,
+} from '@vicons/ionicons5'
 import { debug } from '~/config'
 import { findFirstPermissionRoute, loginCallback } from '~/utils'
 
@@ -96,6 +101,16 @@ function onSubmit(e: MouseEvent) {
     }, 1000)
   })
 }
+
+// 实现聚焦功能
+const refInputUserName = ref()
+function focusFirstInput() {
+  refInputUserName.value?.focus()
+}
+
+defineExpose({
+  focusFirstInput,
+})
 </script>
 
 <template>
@@ -108,14 +123,30 @@ function onSubmit(e: MouseEvent) {
     min-w-350px
   >
     <n-form-item path="username" label="账号">
-      <n-input v-model:value="formModel.username" @keydown.enter.prevent />
+      <n-input ref="refInputUserName" v-model:value="formModel.username" clearable @keydown.enter.prevent>
+        <template #clear-icon>
+          <n-icon :component="TrashBinOutlineIcon" />
+        </template>
+      </n-input>
     </n-form-item>
     <n-form-item path="password" label="密码">
       <n-input
         v-model:value="formModel.password"
         type="password"
+        clearable
+        show-password-on="click"
         @keydown.enter.prevent
-      />
+      >
+        <template #clear-icon>
+          <n-icon :component="TrashBinOutlineIcon" />
+        </template>
+        <template #password-visible-icon>
+          <n-icon :size="16" :component="GlassesOutlineIcon" />
+        </template>
+        <template #password-invisible-icon>
+          <n-icon :size="16" :component="GlassesIcon" />
+        </template>
+      </n-input>
     </n-form-item>
     <n-button
       block type="primary" :loading="loading"

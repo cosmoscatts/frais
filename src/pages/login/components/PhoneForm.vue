@@ -9,11 +9,11 @@ import { debug } from '~/config'
 import { findFirstPermissionRoute, loginCallback } from '~/utils'
 
 /**
-   * 定义表单数据结构
-   */
+ * 定义表单数据结构
+ */
 interface ModelType {
-  username?: string
-  password?: string
+  phone?: string
+  code?: string
 }
 
 const router = useRouter()
@@ -24,12 +24,12 @@ const refForm = ref<FormInst | null>(null)
 // 表单基础数据
 const baseFormModel = debug
   ? {
-      username: 'admin',
-      password: '123456',
+      phone: '13650223322',
+      code: '123456',
     }
   : {
-      username: '',
-      password: '',
+      phone: '',
+      code: '',
     }
 
 // 表单数据
@@ -39,23 +39,23 @@ const formModel = reactive<ModelType>({
 
 // 表单校验规则
 const rules: FormRules = {
-  username: [
+  phone: [
     {
       required: true,
-      message: '请输入账号',
+      message: '请输入手机号',
     },
     {
       validator(_rule: FormItemRule, value: string) {
-        return value.length >= 5 && value.length <= 20
+        return /^[1]+[3,8]+\\d{9}$/.test(value)
       },
-      message: '账号的长度为 5 ~ 20',
-      trigger: ['input', 'blur'],
+      message: '请输入正确的手机号',
+      trigger: ['input'],
     },
   ],
-  password: [
+  code: [
     {
       required: true,
-      message: '请输入密码',
+      message: '请输入验证码',
     },
   ],
 }
@@ -63,15 +63,15 @@ const rules: FormRules = {
 const { loading, startLoading, endLoading } = useLoading()
 
 /**
-   * 登录
-   */
+ * 登录
+ */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
   refForm.value?.validate(async (errors?: FormValidationError[]) => {
     if (errors)
       return
-    if (formModel.password !== '123456') {
-      message.error('账号或密码错误')
+    if (formModel.code !== '123456') {
+      message.error('验证码错误')
       return
     }
     startLoading()
@@ -96,6 +96,16 @@ function onSubmit(e: MouseEvent) {
     }, 1000)
   })
 }
+
+// 实现聚焦功能
+const refInputPhone = ref()
+function focusFirstInput() {
+  refInputPhone.value?.focus()
+}
+
+defineExpose({
+  focusFirstInput,
+})
 </script>
 
 <template>
@@ -107,12 +117,12 @@ function onSubmit(e: MouseEvent) {
     size="large"
     min-w-350px
   >
-    <n-form-item path="username" label="手机号">
-      <n-input v-model:value="formModel.username" @keydown.enter.prevent />
+    <n-form-item path="phone" label="手机号">
+      <n-input ref="refInputPhone" v-model:value="formModel.phone" @keydown.enter.prevent />
     </n-form-item>
-    <n-form-item path="password" label="验证码">
+    <n-form-item path="code" label="验证码">
       <n-input
-        v-model:value="formModel.password"
+        v-model:value="formModel.code"
         type="password"
         @keydown.enter.prevent
       />

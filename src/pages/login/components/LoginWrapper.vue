@@ -1,7 +1,31 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import AccountForm from './AccountForm.vue'
 import PhoneForm from './PhoneForm.vue'
 import { appMeta } from '~/config'
+
+const refAccountForm = ref()
+const refPhoneForm = ref()
+
+type TabValue = 'account' | 'phone'
+const currentTabValue = ref<TabValue>('account')
+
+/**
+ * 实现 `form` 显示时，`input` 自动 `focus`
+ */
+function inputAutoFocus() {
+  const refMap: Record<TabValue, Ref> = {
+    account: refAccountForm,
+    phone: refPhoneForm,
+  }
+  refMap[currentTabValue.value]?.value?.focusFirstInput()
+}
+
+onMounted(inputAutoFocus)
+watch(currentTabValue, () => {
+  // 等待 `form` 挂载完成
+  useTimeoutFn(inputAutoFocus, 200)
+})
 </script>
 
 <template>
@@ -14,16 +38,16 @@ import { appMeta } from '~/config'
     </div>
 
     <n-tabs
+      v-model:value="currentTabValue"
       mt-20px
-      default-value="account"
       size="large"
       animated
     >
       <n-tab-pane name="account" tab="账号密码">
-        <AccountForm />
+        <AccountForm ref="refAccountForm" />
       </n-tab-pane>
       <n-tab-pane name="phone" tab="手机号">
-        <PhoneForm />
+        <PhoneForm ref="refPhoneForm" />
       </n-tab-pane>
     </n-tabs>
 
