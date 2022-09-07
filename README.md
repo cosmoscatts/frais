@@ -6,6 +6,10 @@
 
 ## 预览
 <p align="center">
+  <img src="./public/preview-login.png" alt="登录页" width="600" />
+</p>
+
+<p align="center">
   <img src="./public/preview-user-manage.png" alt="用户管理" width="600" />
 </p>
 
