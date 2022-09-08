@@ -30,9 +30,9 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.3",
-    "@iconify/json": "^2.1.103",
+    "@iconify/json": "^2.1.104",
     "@types/markdown-it-link-attributes": "^3.0.1",
-    "@types/node": "^18.7.15",
+    "@types/node": "^18.7.16",
     "@types/nprogress": "^0.2.0",
     "@unocss/preset-icons": "^0.45.18",
     "@unocss/preset-wind": "^0.45.18",
@@ -49,10 +49,10 @@
     "unocss": "^0.45.18",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
-    "unplugin-vue-define-options": "^0.11.1",
+    "unplugin-vue-define-options": "^0.11.2",
     "vfonts": "^0.0.3",
     "vite": "^3.1.0",
     "vite-plugin-vue-markdown": "^0.21.1",
-    "vue-tsc": "^0.40.10"
+    "vue-tsc": "^0.40.12"
   }
 }
