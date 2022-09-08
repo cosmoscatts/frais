@@ -5,5 +5,5 @@ import { appMeta } from '~/config'
  */
 export function wrapStorageKey(key: string) {
   const { name } = appMeta
-  return `${name}-${key}`
+  return `${name.toUpperCase()}-${key}`
 }
