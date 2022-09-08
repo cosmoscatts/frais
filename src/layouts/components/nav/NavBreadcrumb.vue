@@ -12,7 +12,10 @@ interface BreadcrumbItem {
 let metadata = $ref<BreadcrumbItem[]>()
 
 const route = useRoute()
-// 从路由获取面包屑数据
+
+/**
+ * 从路由获取面包屑数据
+ */
 function getBreadCrumbs() {
   metadata = []
   const matched = route.matched.filter((i: RouteLocationMatched) => i.meta && i.meta.title)
