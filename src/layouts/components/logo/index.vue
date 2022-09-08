@@ -9,7 +9,6 @@ const appstore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appstore)
 const { setMenuUnCollapsed } = appstore
 
-// TODO
 watchEffect(() => {
   // 当页面布局为水平时，重置菜单折叠标志
   if (baseSettings.value.layout === 'horizontal')
