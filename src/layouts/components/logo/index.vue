@@ -2,8 +2,9 @@
 import { breakpointsTailwind } from '@vueuse/core'
 import { appLayoutParams, appMeta } from '~/config'
 
+const { title } = appMeta
 const { navHeight } = appLayoutParams
-const title = computed(() => appMeta.title)
+
 const appstore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appstore)
 const { setMenuUnCollapsed } = appstore
