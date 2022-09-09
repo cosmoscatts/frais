@@ -10,7 +10,7 @@ const {
 }>()
 
 const refTab = ref()
-const isHovered = useElementHover(refTab)
+const isTabHovered = useElementHover(refTab)
 const { baseSettings } = storeToRefs(useAppStore())
 
 const tabStyle = computed(() => {
@@ -19,7 +19,7 @@ const tabStyle = computed(() => {
   if (isActive)
     style.backgroundColor = addColorAlpha(_primaryColor, isDark.value ? 0.15 : 0.1)
 
-  if (isActive || isHovered.value)
+  if (isActive || isTabHovered.value)
     style.borderColor = addColorAlpha(_primaryColor, 0.3)
 
   return style
@@ -28,8 +28,10 @@ const tabStyle = computed(() => {
 
 <template>
   <span
-    ref="refTab" :style="tabStyle"
-    flex="~ nowrap" justify-center items-center lt-sm="!min-w-70px" px-2 truncate
+    ref="refTab"
+    :style="tabStyle"
+    flex="center nowrap"
+    lt-sm="!min-w-70px" px-2 truncate
     text="stone-600 dark:light-600/80 13px hover:primary"
     border="1px #e5e7eb dark:#ffffff3d"
     :class="{

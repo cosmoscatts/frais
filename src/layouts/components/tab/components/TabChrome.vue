@@ -22,20 +22,22 @@ const {
 
 const refTab = ref()
 const isDarkMode = isDark
-const isHovered = useElementHover(refTab)
+const isTabHovered = useElementHover(refTab)
 const { baseSettings } = storeToRefs(useAppStore())
 </script>
 
 <template>
   <div
-    ref="refTab" text="stone-600 dark:light-600/80"
-    relative flex-inline items-center h-34px px-24px m="r-[-18px]" cursor-pointer
-    :class="{ 'z-10': isActive, 'z-9': isHovered, '!text-primary': isActive }"
+    ref="refTab"
+    relative flex-inline items-center
+    h-34px px-24px m="r-[-18px]" cursor-pointer
+    text="stone-600 dark:light-600/80"
+    :class="{ 'z-10': isActive, 'z-9': isTabHovered, '!text-primary': isActive }"
   >
-    <div absolute left-0 bottom-0 h-full w-full of-hidden>
+    <div absolute left-0 bottom-0 hw-full of-hidden>
       <TabChromeShape
         :is-active="isActive"
-        :is-hover="isHovered"
+        :is-hover="isTabHovered"
         :primary-color="baseSettings.themePrimaryColor"
         :bg-color="bgColor"
         :hover-bg-color="hoverBgColor"
@@ -53,7 +55,7 @@ const { baseSettings } = storeToRefs(useAppStore())
       absolute right="[-2px]" z-2 w-20px scale-x-5 h-16px bg="[#1f2225]"
       op-100 transition="opacity 0.3s ease-in-out"
       :class="{
-        '!op-0': isHovered || isActive || isLast,
+        '!op-0': isTabHovered || isActive || isLast,
         '!bg-[#595959]': isDarkMode,
       }"
     />
