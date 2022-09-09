@@ -58,7 +58,9 @@ function handleContextMenu(e: MouseEvent) {
 
 const router = useRouter()
 
-// 点击右键菜单
+/**
+ * 点击右键菜单
+ */
 function handleSelect(key: TabContextMenuOptionKeyType) {
   showTabContextMenu = false
   handleTabContextMenuOptionFn({
@@ -68,13 +70,17 @@ function handleSelect(key: TabContextMenuOptionKeyType) {
   })
 }
 
-// 外部点击事件
+/**
+ * 外部点击事件
+ */
 function onClickoutside() {
   showTabContextMenu = false
 }
 
-// 关闭标签
-function closeTag(idx: number) {
+/**
+ * 关闭标签
+ */
+function handleCloseTag(idx: number) {
   emits('closeTag', idx)
 }
 </script>
@@ -94,7 +100,7 @@ function closeTag(idx: number) {
           <span
             i-ri-close-fill hover="i-carbon-close-filled" ml-1 z-2
             :class="{ '!text-[rgb(var(--primary-6))]': isActive }"
-            @click.prevent="closeTag(idx)"
+            @click.prevent="handleCloseTag(idx)"
           />
         </template>
       </TabChrome>
@@ -103,7 +109,7 @@ function closeTag(idx: number) {
         <template #close>
           <span
             i-ri-close-fill hover="i-carbon-close-filled" ml-1
-            @click.prevent="closeTag(idx)"
+            @click.prevent="handleCloseTag(idx)"
           />
         </template>
       </TabButton>
