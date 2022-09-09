@@ -23,7 +23,7 @@ const {
   isChromeTabShapeStyle?: boolean
 }>()
 
-const emits = defineEmits(['closeTag'])
+const emits = defineEmits(['closeTab'])
 
 // 右键菜单项，判断选项是否 `disabled`
 const tabContextMenuOptions = computed(() => {
@@ -80,8 +80,8 @@ function onClickoutside() {
 /**
  * 关闭标签
  */
-function handleCloseTag(idx: number) {
-  emits('closeTag', idx)
+function handleCloseTab(idx: number) {
+  emits('closeTab', idx)
 }
 </script>
 
@@ -100,7 +100,7 @@ function handleCloseTag(idx: number) {
           <span
             i-ri-close-fill hover="i-carbon-close-filled" ml-1 z-2
             :class="{ '!text-[rgb(var(--primary-6))]': isActive }"
-            @click.prevent="handleCloseTag(idx)"
+            @click.prevent="handleCloseTab(idx)"
           />
         </template>
       </TabChrome>
@@ -109,7 +109,7 @@ function handleCloseTag(idx: number) {
         <template #close>
           <span
             i-ri-close-fill hover="i-carbon-close-filled" ml-1
-            @click.prevent="handleCloseTag(idx)"
+            @click.prevent="handleCloseTab(idx)"
           />
         </template>
       </TabButton>

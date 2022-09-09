@@ -83,8 +83,8 @@ export const useTabStore = defineStore(
     function removeTabsByList(tabList: Tab[]) {
       return new Promise((resolve) => {
         const pathList = tabList.map(i => i.path) || []
-        const restTags = visitedTabs.value.filter(i => !pathList.includes(i.path))
-        visitedTabs.value = [...restTags]
+        const restTabs = visitedTabs.value.filter(i => !pathList.includes(i.path))
+        visitedTabs.value = [...restTabs]
 
         // 如果开启多页签缓存，则需要写入缓存
         writeTabsIntoStorageIfCached([...visitedTabs.value])
