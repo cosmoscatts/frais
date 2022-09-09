@@ -8,6 +8,7 @@ const { message } = useGlobalNaiveApi()
 
 const tabStore = useTabStore()
 const { baseSettings } = storeToRefs(useAppStore())
+const { addOneTab, removeOneTab } = tabStore
 
 // 多页签风格是否为谷歌风格
 const isChromeTabShapeStyle = computed(() => {
@@ -26,7 +27,7 @@ function addTab() {
   const { name, path, meta: { title, cached } } = route
   if ([title, path].some(i => !i))
     return
-  tabStore.addOneTab({
+  addOneTab({
     path,
     name,
     title,
@@ -59,7 +60,7 @@ function handleCloseTab(idx: number) {
   const currentTab = tabs[idx]
   if (!currentTab)
     return
-  tabStore.removeOneTab(currentTab).then(() => {
+  removeOneTab(currentTab).then(() => {
     // 当关闭的是当前路由，需要跳转到 `tabs` 的最后一个
     if (currentTab.path === route.path) {
       // 找到最后一个
