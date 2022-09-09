@@ -34,9 +34,7 @@ function addTab() {
   } as Tab)
 }
 addTab()
-watch(() => route.path, () => {
-  addTab()
-})
+watch(() => route.path, addTab)
 
 /**
  * 判断是否为当前路由，即当前页面
