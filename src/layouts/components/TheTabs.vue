@@ -7,8 +7,8 @@ const router = useRouter()
 const { message } = useGlobalNaiveApi()
 
 const tabStore = useTabStore()
-const { baseSettings } = storeToRefs(useAppStore())
 const { addOneTab, removeOneTab } = tabStore
+const { baseSettings } = storeToRefs(useAppStore())
 
 // 多页签风格是否为谷歌风格
 const isChromeTabShapeStyle = computed(() => {
