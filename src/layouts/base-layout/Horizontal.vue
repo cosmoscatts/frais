@@ -8,8 +8,7 @@ import {
 } from '../components'
 import { appLayoutParams, showAppSettings } from '~/config'
 
-const appStore = useAppStore()
-const { baseSettings } = storeToRefs(appStore)
+const { baseSettings } = storeToRefs(useAppStore())
 
 const {
   navHeight,
