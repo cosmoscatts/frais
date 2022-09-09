@@ -125,7 +125,11 @@ watch(
 </script>
 
 <template>
-  <div ref="refContainer" of-hidden mx="[0.5rem]" style="width: calc(100% - 1rem);">
+  <div
+    ref="refContainer"
+    of-hidden mx="[0.5rem]"
+    :style="{ width: 'calc(100% - 1rem)' }"
+  >
     <ScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }">
       <div
         ref="refTab" h-full
@@ -137,7 +141,8 @@ watch(
       >
         <div
           v-for="{ title, path }, idx in tabs" :key="idx"
-          h-26px lh-26px wa flex-inline items-center cursor-pointer
+          flex-inline items-center
+          h-26px lh-26px wa cursor-pointer
           :class="{ 'ha max-h-full': isChromeTabShapeStyle }"
         >
           <TabItem
