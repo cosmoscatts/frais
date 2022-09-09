@@ -80,7 +80,7 @@ function onClickoutside() {
 /**
  * 关闭标签
  */
-function handleCloseTab(idx: number) {
+function handleCloseTab() {
   emits('closeTab', idx)
 }
 </script>
@@ -100,7 +100,7 @@ function handleCloseTab(idx: number) {
           <span
             i-ri-close-fill hover="i-carbon-close-filled" ml-1 z-2
             :class="{ '!text-[rgb(var(--primary-6))]': isActive }"
-            @click.prevent="handleCloseTab(idx)"
+            @click.prevent="handleCloseTab"
           />
         </template>
       </TabChrome>
@@ -109,7 +109,7 @@ function handleCloseTab(idx: number) {
         <template #close>
           <span
             i-ri-close-fill hover="i-carbon-close-filled" ml-1
-            @click.prevent="handleCloseTab(idx)"
+            @click.prevent="handleCloseTab"
           />
         </template>
       </TabButton>
