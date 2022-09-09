@@ -9,11 +9,11 @@ const {
   isActive?: boolean
 }>()
 
-const refTag = ref()
-const isHovered = useElementHover(refTag)
+const refTab = ref()
+const isHovered = useElementHover(refTab)
 const { baseSettings } = storeToRefs(useAppStore())
 
-const tagStyle = computed(() => {
+const tabStyle = computed(() => {
   const style: Record<string, string> = {}
   const { value: { themePrimaryColor: _primaryColor } } = baseSettings
   if (isActive)
@@ -28,7 +28,7 @@ const tagStyle = computed(() => {
 
 <template>
   <span
-    ref="refTag" :style="tagStyle"
+    ref="refTab" :style="tabStyle"
     flex="~ nowrap" justify-center items-center lt-sm="!min-w-70px" px-2 truncate
     text="stone-600 dark:light-600/80 13px hover:primary"
     border="1px #e5e7eb dark:#ffffff3d"

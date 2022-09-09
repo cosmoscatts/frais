@@ -20,15 +20,15 @@ const {
   mixRatio?: MixRatio
 }>()
 
-const refTag = ref()
+const refTab = ref()
 const isDarkMode = isDark
-const isHovered = useElementHover(refTag)
+const isHovered = useElementHover(refTab)
 const { baseSettings } = storeToRefs(useAppStore())
 </script>
 
 <template>
   <div
-    ref="refTag" text="stone-600 dark:light-600/80"
+    ref="refTab" text="stone-600 dark:light-600/80"
     relative flex-inline items-center h-34px px-24px m="r-[-18px]" cursor-pointer
     :class="{ 'z-10': isActive, 'z-9': isHovered, '!text-primary': isActive }"
   >
