@@ -29,7 +29,8 @@ const { baseSettings } = storeToRefs(useAppStore())
 <template>
   <div
     ref="refTab"
-    relative flex-inline items-center
+    relative
+    flex-inline items-center
     h-34px px-24px m="r-[-18px]" cursor-pointer
     text="stone-600 dark:light-600/80"
     :class="{ 'z-10': isActive, 'z-9': isTabHovered, '!text-primary': isActive }"

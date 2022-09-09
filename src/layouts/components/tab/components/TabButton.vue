@@ -29,11 +29,11 @@ const tabStyle = computed(() => {
 <template>
   <span
     ref="refTab"
-    :style="tabStyle"
     flex="center nowrap"
     lt-sm="!min-w-70px" px-2 truncate
     text="stone-600 dark:light-600/80 13px hover:primary"
     border="1px #e5e7eb dark:#ffffff3d"
+    :style="tabStyle"
     :class="{
       '!text-primary': isActive,
     }"
