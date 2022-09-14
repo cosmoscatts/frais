@@ -13,7 +13,7 @@ function createAxios() {
       return config
     },
     (e: any) => {
-      Promise.reject(e).then(() => console.error(e))
+      Promise.reject(e)
     },
   )
 
