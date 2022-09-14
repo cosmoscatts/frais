@@ -43,7 +43,7 @@ function handleRequestError(fn: Fn) {
     data => data,
     (error) => {
       console.error(error)
-      message.error(error)
+      message.error('服务器异常')
       router.push(ERROR_PAGE)
       return undefined
     },
