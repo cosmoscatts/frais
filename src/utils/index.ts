@@ -1,4 +1,4 @@
-export * from './axios'
+export * from './createAxios'
 export * from './cacheAppSettings'
 export * from './cacheTabs'
 export * from './createColor'
