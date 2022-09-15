@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.26.3
   '@better-scroll/core': ^2.4.2
-  '@iconify/json': ^2.1.106
+  '@iconify/json': ^2.1.107
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/node': ^18.7.18
   '@types/nprogress': ^0.2.0
@@ -17,7 +17,7 @@ specifiers:
   '@vitejs/plugin-vue': ^3.1.0
   '@vueuse/components': ^9.2.0
   '@vueuse/core': ^9.2.0
-  '@vueuse/head': ^0.7.10
+  '@vueuse/head': ^0.7.11
   animate.css: ^4.1.1
   axios: ^0.27.2
   colord: ^2.9.3
@@ -48,7 +48,7 @@ dependencies:
   '@unocss/reset': registry.npmmirror.com/@unocss/reset/0.45.21
   '@vueuse/components': registry.npmmirror.com/@vueuse/components/9.2.0_vue@3.2.39
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/9.2.0_vue@3.2.39
-  '@vueuse/head': registry.npmmirror.com/@vueuse/head/0.7.10_vue@3.2.39
+  '@vueuse/head': registry.npmmirror.com/@vueuse/head/0.7.11_vue@3.2.39
   animate.css: registry.npmmirror.com/animate.css/4.1.1
   axios: registry.npmmirror.com/axios/0.27.2
   colord: registry.npmmirror.com/colord/2.9.3
@@ -63,7 +63,7 @@ dependencies:
 
 devDependencies:
   '@antfu/eslint-config': registry.npmmirror.com/@antfu/eslint-config/0.26.3_irgkl5vooow2ydyo6aokmferha
-  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.106
+  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.107
   '@types/markdown-it-link-attributes': registry.npmmirror.com/@types/markdown-it-link-attributes/3.0.1
   '@types/node': registry.npmmirror.com/@types/node/18.7.18
   '@types/nprogress': registry.npmmirror.com/@types/nprogress/0.2.0
@@ -386,10 +386,10 @@ packages:
     version: 1.2.1
     dev: true
 
-  registry.npmmirror.com/@iconify/json/2.1.106:
-    resolution: {integrity: sha512-wiA12Bn1Z7HggEh4YVh0zba2gWo08FArg4cnjkMIddX+pia9GMwyMWCaMBKWqWk1ZF3FOj2xkyzNatZoJFFksQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.106.tgz}
+  registry.npmmirror.com/@iconify/json/2.1.107:
+    resolution: {integrity: sha512-VJUQI4SDyOoa+DefJ5jdY5dOju52QUNfbaV6+hgFEp7QoP5ae7ZfQo+GcKYf+mvLb56U3UJL/E25PMFqHcZcYw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.107.tgz}
     name: '@iconify/json'
-    version: 2.1.106
+    version: 2.1.107
     dependencies:
       '@iconify/types': registry.npmmirror.com/@iconify/types/1.1.0
       pathe: registry.npmmirror.com/pathe/0.3.5
@@ -1285,14 +1285,15 @@ packages:
       - vue
     dev: false
 
-  registry.npmmirror.com/@vueuse/head/0.7.10_vue@3.2.39:
-    resolution: {integrity: sha512-hkvxpl99xiziDV7qAMtuzTZt5oHn6sOpdUuSlT27KhB/jVSpPrrIUKD1L/0JhLw8gCQoHGxmWalc3P7AYuzkoA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/head/-/head-0.7.10.tgz}
-    id: registry.npmmirror.com/@vueuse/head/0.7.10
+  registry.npmmirror.com/@vueuse/head/0.7.11_vue@3.2.39:
+    resolution: {integrity: sha512-qW2VbJnQ7c1nHqt1wWQYtPf6pMKghcBsCGQd76zFSzKZXncjOYV1I5dZcmAdj3E30JP0WKWCItVbV/cgSAPipA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/head/-/head-0.7.11.tgz}
+    id: registry.npmmirror.com/@vueuse/head/0.7.11
     name: '@vueuse/head'
-    version: 0.7.10
+    version: 0.7.11
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
+      '@zhead/schema-vue': registry.npmmirror.com/@zhead/schema-vue/0.7.1_vue@3.2.39
       vue: registry.npmmirror.com/vue/3.2.39
     dev: false
 
@@ -1312,6 +1313,24 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: false
+
+  registry.npmmirror.com/@zhead/schema-vue/0.7.1_vue@3.2.39:
+    resolution: {integrity: sha512-puEmNJOjfC5IRJqc5p0GEemWP1B25YYRMZ2RM10UrJXGjR+cGOZ+PYQHoBIl9Nf5kJVzhokg1H99HE6Wnyx+qA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@zhead/schema-vue/-/schema-vue-0.7.1.tgz}
+    id: registry.npmmirror.com/@zhead/schema-vue/0.7.1
+    name: '@zhead/schema-vue'
+    version: 0.7.1
+    peerDependencies:
+      vue: '>=2.7 || >=3'
+    dependencies:
+      '@zhead/schema': registry.npmmirror.com/@zhead/schema/0.7.1
+      vue: registry.npmmirror.com/vue/3.2.39
+    dev: false
+
+  registry.npmmirror.com/@zhead/schema/0.7.1:
+    resolution: {integrity: sha512-3FjTUj8YBN45PCW4YSosV9LjBu6HnKetk0aYtaZ7HffgpSlAIl/eCaem8T34KJZ7/lRsvoGPcDDkaAzyvGqi0g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@zhead/schema/-/schema-0.7.1.tgz}
+    name: '@zhead/schema'
+    version: 0.7.1
     dev: false
 
   registry.npmmirror.com/acorn-jsx/5.3.2_acorn@8.8.0:
