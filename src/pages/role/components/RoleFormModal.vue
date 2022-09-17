@@ -71,11 +71,11 @@ function handleCheckedAllOptionsOrNot() {
 
 watch(() => formModel.menuIdList, handleCheckedAllOptionsOrNot)
 
-watch(() => hasCheckedAll, (val) => {
-  formModel.menuIdList = val
+function handleCheckAll() {
+  formModel.menuIdList = hasCheckedAll
     ? allMenuOptionsKeys
     : []
-})
+}
 
 /**
  * 表单赋值
@@ -167,7 +167,7 @@ function onCloseModal() {
       <n-form-item label="菜单权限" path="menuIdList">
         <div flex="~ col">
           <div flex justify-start ml-12px my-5px>
-            <n-switch v-model:value="hasCheckedAll" size="large">
+            <n-switch v-model:value="hasCheckedAll" size="large" @click="handleCheckAll">
               <template #icon>
                 🤔
               </template>
