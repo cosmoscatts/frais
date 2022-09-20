@@ -12,6 +12,10 @@ body,
   overflow: hidden;
 }
 
+html.dark {
+  background-color: #101014;
+}
+
 /** 重置 `tailwind` 预设 */
 img, video {
   max-width: none !important;
