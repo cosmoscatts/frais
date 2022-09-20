@@ -15,7 +15,7 @@
     "@unocss/reset": "^0.45.21",
     "@vueuse/components": "^9.2.0",
     "@vueuse/core": "^9.2.0",
-    "@vueuse/head": "^0.7.11",
+    "@vueuse/head": "^0.7.12",
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
     "colord": "^2.9.3",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.3",
-    "@iconify/json": "^2.1.107",
+    "@iconify/json": "^2.1.108",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/node": "^18.7.18",
     "@types/nprogress": "^0.2.0",
@@ -51,7 +51,7 @@
     "unplugin-vue-components": "^0.22.7",
     "unplugin-vue-define-options": "^0.11.2",
     "vfonts": "^0.0.3",
-    "vite": "^3.1.1",
+    "vite": "^3.1.2",
     "vite-plugin-vue-markdown": "^0.22.1",
     "vue-tsc": "^0.40.13"
   }
