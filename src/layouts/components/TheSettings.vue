@@ -33,8 +33,8 @@ function saveCurrentSettings() {
   const { message } = useGlobalNaiveApi()
   const LOADING_INTERVAL = 1000
   message.loading('正在更新配置')
-  updateSettingsFromStageData()
   useTimeoutFn(() => {
+    updateSettingsFromStageData()
     message.destroyAll()
     message.success('应用成功')
     showSettingsDrawer = false
