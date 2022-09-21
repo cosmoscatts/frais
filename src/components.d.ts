@@ -52,6 +52,7 @@ declare module '@vue/runtime-core' {
     NText: typeof import('naive-ui')['NText']
     NTooltip: typeof import('naive-ui')['NTooltip']
     NTree: typeof import('naive-ui')['NTree']
+    PreLoaded: typeof import('./components/PreLoaded.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScrollWrapper: typeof import('./components/ScrollWrapper.vue')['default']

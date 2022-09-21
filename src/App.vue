@@ -16,7 +16,7 @@ const { loading: appLoading, endLoading } = useLoading(true)
 
 // 定义 `loading` 整体时间和内层动画持续时间
 const LOADING_INTERVAL = 2500
-const LOADING_INNER_INTERVAL = 1800
+const BEFORE_LEAVING_MS = 1800
 useTimeoutFn(endLoading, LOADING_INTERVAL)
 </script>
 
@@ -28,7 +28,7 @@ useTimeoutFn(endLoading, LOADING_INTERVAL)
     :date-locale="dateZhCN"
   >
     <n-loading-bar-provider>
-      <AppLoading v-if="appLoading" :inner-loading="LOADING_INNER_INTERVAL" />
+      <PreLoaded v-if="appLoading" :before-leaving-ms="BEFORE_LEAVING_MS" />
       <RouterView v-else />
     </n-loading-bar-provider>
   </n-config-provider>
