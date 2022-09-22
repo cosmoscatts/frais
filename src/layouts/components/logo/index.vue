@@ -6,7 +6,7 @@ const { title } = appMeta
 const { navHeight } = appLayoutParams
 
 const appstore = useAppStore()
-const { menuCollapsed, baseSettings } = storeToRefs(appstore)
+const { menuCollapsed, baseSettings, isMobile } = storeToRefs(appstore)
 const { setMenuUnCollapsed } = appstore
 
 watchEffect(() => {
@@ -32,7 +32,10 @@ const hiddenTitle = breakpoints.smaller('lg')
       alt="Logo" :style="{ width: `${navHeight * 0.65}px !important`, height: `${navHeight * 0.65}px !important` }"
     > -->
     <div i-ri-vip-crown-2-fill text="primary 24px" />
-    <span v-if="!menuCollapsed && (!hiddenTitle || !isHorizontalLayout)" font="bold sans" pl-16px text-16px>
+    <span
+      v-if="!menuCollapsed && (!hiddenTitle || !isHorizontalLayout || isMobile)"
+      font="bold sans" pl-16px text-16px
+    >
       {{ title }}
     </span>
   </div>
