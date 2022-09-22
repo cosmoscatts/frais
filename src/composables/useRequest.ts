@@ -37,13 +37,11 @@ function handleUrlParams(params?: AnyObject | AnyObject[]) {
  */
 function handleRequestError(fn: Fn) {
   const router = useRouter()
-  const { message } = useGlobalNaiveApi()
 
   return fn?.().then(
     data => data,
     (error) => {
       console.error(error)
-      message.error('服务器异常')
       router.push(ERROR_PAGE)
       return undefined
     },
