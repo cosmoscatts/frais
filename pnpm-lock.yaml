@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.27.0
   '@better-scroll/core': ^2.4.2
-  '@iconify/json': ^2.1.110
+  '@iconify/json': ^2.1.111
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/node': ^18.7.18
   '@types/nprogress': ^0.2.0
@@ -63,7 +63,7 @@ dependencies:
 
 devDependencies:
   '@antfu/eslint-config': registry.npmmirror.com/@antfu/eslint-config/0.27.0_irgkl5vooow2ydyo6aokmferha
-  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.110
+  '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.111
   '@types/markdown-it-link-attributes': registry.npmmirror.com/@types/markdown-it-link-attributes/3.0.1
   '@types/node': registry.npmmirror.com/@types/node/18.7.18
   '@types/nprogress': registry.npmmirror.com/@types/nprogress/0.2.0
@@ -367,19 +367,13 @@ packages:
     version: 1.2.1
     dev: true
 
-  registry.npmmirror.com/@iconify/json/2.1.110:
-    resolution: {integrity: sha512-y+C2w8jbt0Vnk0RC9tjB0ZnT9apMaxYMv2rzAOMeWfx4SlHbZAyy7UKqbSqih9mHmDJuhs6fk5CZP2+dggIHww==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.110.tgz}
+  registry.npmmirror.com/@iconify/json/2.1.111:
+    resolution: {integrity: sha512-5kOi5EbBEDf6vPjAlsQuBPtiC453eblVuOeds4cP2jNR9wPzTKQW3evNY9z7L2Lxv3akHV9teb4F7rL6+f0qbw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/json/-/json-2.1.111.tgz}
     name: '@iconify/json'
-    version: 2.1.110
+    version: 2.1.111
     dependencies:
-      '@iconify/types': registry.npmmirror.com/@iconify/types/1.1.0
-      pathe: registry.npmmirror.com/pathe/0.3.5
-    dev: true
-
-  registry.npmmirror.com/@iconify/types/1.1.0:
-    resolution: {integrity: sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/types/-/types-1.1.0.tgz}
-    name: '@iconify/types'
-    version: 1.1.0
+      '@iconify/types': registry.npmmirror.com/@iconify/types/2.0.0
+      pathe: registry.npmmirror.com/pathe/0.3.8
     dev: true
 
   registry.npmmirror.com/@iconify/types/2.0.0:
@@ -4167,12 +4161,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  registry.npmmirror.com/pathe/0.3.5:
-    resolution: {integrity: sha512-grU/QeYP0ChuE5kjU2/k8VtAeODzbernHlue0gTa27+ayGIu3wqYBIPGfP9r5xSqgCgDd4nWrjKXEfxMillByg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pathe/-/pathe-0.3.5.tgz}
-    name: pathe
-    version: 0.3.5
-    dev: true
-
   registry.npmmirror.com/pathe/0.3.8:
     resolution: {integrity: sha512-c71n61F1skhj/jzZe+fWE9XDoTYjWbUwIKVwFftZ5IOgiX44BVkTkD+/803YDgR50tqeO4eXWxLyVHBLWQAD1g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pathe/-/pathe-0.3.8.tgz}
     name: pathe
@@ -4851,7 +4839,7 @@ packages:
       local-pkg: registry.npmmirror.com/local-pkg/0.4.2
       magic-string: registry.npmmirror.com/magic-string/0.26.3
       mlly: registry.npmmirror.com/mlly/0.5.7
-      pathe: registry.npmmirror.com/pathe/0.3.5
+      pathe: registry.npmmirror.com/pathe/0.3.8
       scule: registry.npmmirror.com/scule/0.3.2
       strip-literal: registry.npmmirror.com/strip-literal/0.4.0
       unplugin: registry.npmmirror.com/unplugin/0.9.5_vite@3.1.3
