@@ -9,11 +9,16 @@ import defaultAvatar from '~/assets/default-avatar.jpg'
 
 const router = useRouter()
 const { user } = storeToRefs(useUserStore())
-const { isMobile } = storeToRefs(useAppStore())
+const { isMobile, baseSettings } = storeToRefs(useAppStore())
 const { notification } = useGlobalNaiveApi()
 
 const avatar = computed(() => {
   return user.value?.avatar ?? defaultAvatar
+})
+
+// 判断是否为垂直布局
+const isVerticalLayout = computed(() => {
+  return baseSettings.value?.layout === 'vertical'
 })
 
 // 渲染图标组件
@@ -67,7 +72,7 @@ const options = [
         :src="avatar"
         fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
       />
-      <n-ellipsis v-if="!isMobile" style="max-width: 100px" ml-3>
+      <n-ellipsis v-if="!isVerticalLayout || !isMobile" style="max-width: 100px" ml-3>
         机器人 bot
       </n-ellipsis>
     </div>
