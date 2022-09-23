@@ -79,9 +79,7 @@ function fetchTableData(searchParams: SearchParmas) {
     // 处理异常
   }
   finally {
-    useTimeoutFn(() => {
-      endLoading()
-    }, 1000)
+    useTimeoutFn(endLoading, 1000)
   }
 }
 
