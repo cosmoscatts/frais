@@ -7,6 +7,7 @@ import {
   NavBreadcrumb,
   NavCollapsedToggle,
   NavFullScreen,
+  NavResponsivePanel,
 } from './nav'
 
 const { isMobile, baseSettings } = storeToRefs(useAppStore())
@@ -22,9 +23,9 @@ const isVerticalLayout = computed(() => {
     <Logo v-if="!isVerticalLayout" />
     <NavCollapsedToggle v-if="isVerticalLayout && isMobile" ml-4 />
     <NavBreadcrumb v-if="isVerticalLayout" mx-4 />
-    <Menu v-if="!isVerticalLayout" mx-4 />
+    <Menu v-if="!isVerticalLayout && !isMobile" mx-4 />
     <div flex-auto />
-    <div flex-y-center>
+    <div v-if="isVerticalLayout || !isMobile" flex-y-center>
       <a
         icon-btn text-lg i-carbon-logo-github mx-4
         href="https://github.com/dud9/petite"
@@ -35,5 +36,6 @@ const isVerticalLayout = computed(() => {
       <DarkToggle mr-4 />
       <NavAvatar />
     </div>
+    <NavResponsivePanel v-if="!isVerticalLayout && isMobile" />
   </div>
 </template>

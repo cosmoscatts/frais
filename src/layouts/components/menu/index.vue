@@ -7,6 +7,12 @@ import type { Menu } from '~/types'
 import { appLayoutParams } from '~/config'
 
 const {
+  mode,
+} = defineProps< {
+  mode?: 'horizontal' | 'vertical'
+}>()
+
+const {
   sideCollapsedWidth,
   sideCollapsedIconSize,
 } = appLayoutParams
@@ -71,7 +77,7 @@ const defaultSelectedMenuOptionKey = computed(() => {
 
 <template>
   <n-menu
-    :mode="baseSettings.layout"
+    :mode="mode ?? baseSettings.layout"
     :default-value="defaultSelectedMenuOptionKey"
     :inverted="baseSettings.invertMenu"
     :collapsed="menuCollapsed"
