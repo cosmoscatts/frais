@@ -6,7 +6,7 @@ import {
   NavBell,
   NavFullScreen,
 } from './'
-import { appLayoutParams } from '~/config'
+import { appLayoutParams, appMeta } from '~/config'
 
 const themeVars = useThemeVars()
 
@@ -44,7 +44,7 @@ function toggle() {
         <div flex-auto />
         <a
           icon-btn text-lg i-carbon-logo-github mx-4
-          href="https://github.com/dud9/petite"
+          :href="appMeta.github"
           target="_blank" title="GitHub"
         />
         <NavBell mr-4 />

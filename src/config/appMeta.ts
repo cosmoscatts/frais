@@ -3,10 +3,10 @@
  */
 export const appMeta = {
   name: 'Petite',
-  title: 'Petite 管理系统',
+  title: 'Petite管理系统',
   description: '漂亮清新的 Vue3 后台模板',
   author: 'duende',
-  github: 'https://github.com/dud9/petite',
-  doc: 'https://github.com/dud9/petite',
-  footCopyRight: 'Petite 1.0 - Made by duende',
+  github: 'https://github.com/cosmoscatts/petite',
+  doc: 'https://github.com/cosmoscatts/petite',
+  footCopyRight: 'Petite 1.0 - Made by Cosmoscatts',
 }
