@@ -20,11 +20,13 @@ export const cacheAppSettings = true
  *  - 'light': 亮色
  *  - 'auto': 跟随系统
  *
- * @default: 'auto'
+ * @default 'auto'
  */
 export const defaultThemeMode = 'auto'
 /**
- * 菜单来源: 'front' | 'end'
+ * 菜单来源
+ *  - 'front'
+ *  - 'end'
  *
  * @default 'front'
  */
@@ -50,7 +52,7 @@ export interface ConfigSettingObject {
 
 export const configSettings: ConfigSettingObject = {
   /**
-   * 布局
+   * 布局模式
    *  - 'vertical': '垂直布局'
    *  - 'horizontal': '水平布局'
    *
@@ -90,11 +92,13 @@ export const configSettings: ConfigSettingObject = {
   /**
    * 主题主要色调
    *
-   * @default: '#0d9488'
+   * @default '#0d9488'
    */
   themePrimaryColor: '#0d9488',
   /**
-   * 页面切换动画类型 - 'fade-slide' | 'fade' | 'fade-bottom' | 'fade-scale' | 'zoom-fade' | 'zoom-out'
+   * 页面切换动画类型
+   *  - 'fade-slide' | 'fade' | 'fade-bottom' |
+   *  - 'fade-scale' | 'zoom-fade' | 'zoom-out'
    *
    * @default 'fade-slide'
    */
