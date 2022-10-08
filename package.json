@@ -15,9 +15,9 @@
     "@unocss/reset": "^0.45.26",
     "@vueuse/components": "^9.3.0",
     "@vueuse/core": "^9.3.0",
-    "@vueuse/head": "^0.9.6",
+    "@vueuse/head": "^0.9.7",
     "animate.css": "^4.1.1",
-    "axios": "^1.1.0",
+    "axios": "^1.1.2",
     "colord": "^2.9.3",
     "critters": "^0.0.16",
     "dayjs": "^1.11.5",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
-    "@iconify/json": "^2.1.118",
+    "@iconify/json": "^2.1.119",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/node": "^18.8.3",
     "@types/nprogress": "^0.2.0",
@@ -41,7 +41,7 @@
     "@vicons/ionicons4": "^0.12.0",
     "@vicons/ionicons5": "^0.12.0",
     "@vitejs/plugin-vue": "^3.1.2",
-    "eslint": "^8.24.0",
+    "eslint": "^8.25.0",
     "markdown-it-link-attributes": "^4.0.1",
     "markdown-it-shiki": "^0.5.1",
     "naive-ui": "^2.33.4",
@@ -53,6 +53,6 @@
     "vfonts": "^0.0.3",
     "vite": "^3.1.6",
     "vite-plugin-vue-markdown": "^0.22.1",
-    "vue-tsc": "^0.40.13"
+    "vue-tsc": "^1.0.0"
   }
 }
