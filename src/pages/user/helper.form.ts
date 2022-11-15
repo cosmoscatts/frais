@@ -64,7 +64,7 @@ export function handleSaveUser({
   data = {},
   tableData = [],
 }: {
-  type: UserModalActionType
+  type?: UserModalActionType
   data?: User
   tableData?: User[]
 }) {
