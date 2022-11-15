@@ -9,7 +9,7 @@ interface BreadcrumbItem {
 }
 
 // `breadcrumb` 数据
-let metadata = $ref<BreadcrumbItem[]>()
+let metadata = $ref<BreadcrumbItem[]>([])
 
 const route = useRoute()
 

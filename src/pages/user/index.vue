@@ -148,7 +148,7 @@ function onRemoveUser(user: User) {
 }
 
 // 角色选择框数据
-let roleOptions = $ref<SelectOption[]>()
+let roleOptions = $ref<SelectOption[]>([])
 function fetchRoleOptions() {
   roleOptions = createRoleOptionsData().map(({ id, name }: Role) => {
     return {
