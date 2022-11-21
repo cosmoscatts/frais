@@ -18,7 +18,7 @@ import { appMeta } from '~/config'
       bg="[var(--primary-color)]"
       lt-md:hidden
     >
-      <div absolute top-20px left-20px i-ri-vip-crown-2-fill text-20px />
+      <div absolute top-20px left-20px i-carbon-rocket text-20px />
 
       <div flex="col center" mb-100px>
         <div text-32px font-bold flex-center>

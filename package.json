@@ -22,6 +22,7 @@
     "critters": "^0.0.16",
     "dayjs": "^1.11.6",
     "echarts": "^5.4.0",
+    "lottie-web": "^5.9.6",
     "pinia": "^2.0.23",
     "pinia-plugin-persist-uni": "^1.1.5",
     "seemly": "^0.3.6",
