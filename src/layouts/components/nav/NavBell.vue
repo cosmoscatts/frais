@@ -5,6 +5,6 @@
 <template>
   <button
     icon-btn text-lg
-    i-fa-solid-bell
+    i-carbon-notification
   />
 </template>

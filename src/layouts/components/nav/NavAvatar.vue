@@ -73,7 +73,7 @@ const options = [
         fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
       />
       <n-ellipsis v-if="!isVerticalLayout || !isMobile" style="max-width: 100px" ml-3>
-        机器人 bot
+        admin
       </n-ellipsis>
     </div>
   </n-dropdown>

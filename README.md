@@ -24,18 +24,7 @@
 [在线预览](https://petite.netlify.app/)
 
 ## 参考
-- [Vitesse](https://github.com/antfu/vitesse/)
 - [soybean-admin](https://github.com/honghuangdc/soybean-admin/)
-
-## 技术栈
-- 🤙🏻 Vue3 <setup>
-- ⚡️ Vite2
-- 🦾 TypeScript
-- 🍍 Pinia
-- 🔥 Vue-Router
-- 🎨 Unocss
-- 📥 unplugin-auto-import
-- 🗒 unplugin-vue-components
 
 ## 功能点
 * [x] 垂直、水平布局

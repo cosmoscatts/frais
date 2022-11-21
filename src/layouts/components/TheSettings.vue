@@ -46,14 +46,14 @@ function saveCurrentSettings() {
   <div fixed :style="{ right: `${settingsDrawerRight}px`, bottom: `${settingsDrawerBottom}px` }" z-1000>
     <n-button
       v-if="!showSettingsDrawer" v-element-hover="onHover"
-      size="large" type="primary" text-color="white"
+      size="large" type="primary" text-color="white" secondary
       :circle="!isButtonHovered" :round="isButtonHovered"
       @click="onClick()"
     >
       <template #icon>
         <n-icon :size="24" :component="ColorPaletteOutline" />
       </template>
-      <span v-if="isButtonHovered" ml-3 font-bold>主题配置</span>
+      <span v-if="isButtonHovered" font-bold>主题配置</span>
     </n-button>
   </div>
 

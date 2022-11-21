@@ -1,8 +1,8 @@
 import {
   BookOutline as BookIcon,
-  StatsChart as ChartIcon,
-  DesktopOutline as DeskTopIcon,
-  LogoMarkdown as MarkdownIcon,
+  StatsChartOutline as ChartIcon,
+  BoatOutline as DeskTopIcon,
+  DocumentTextOutline as MarkdownIcon,
   PersonOutline as PersonIcon,
 } from '@vicons/ionicons5'
 import type { Component } from 'vue'

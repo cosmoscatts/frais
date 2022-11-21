@@ -31,7 +31,7 @@ const hiddenTitle = breakpoints.smaller('lg')
       src="https://www.naiveui.com/assets/naivelogo.93278402.svg"
       alt="Logo" :style="{ width: `${navHeight * 0.65}px !important`, height: `${navHeight * 0.65}px !important` }"
     > -->
-    <div i-ri-vip-crown-2-fill text="primary 24px" />
+    <div i-carbon-rocket text="primary 24px" />
     <span
       v-if="!menuCollapsed && (!hiddenTitle || !isHorizontalLayout || isMobile)"
       font="bold sans" pl-16px text-16px

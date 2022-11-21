@@ -32,7 +32,7 @@ useTimeoutFn(endLoading, beforeLeavingMs)
           <div class="cube cube9" />
         </div>
         <div class="flex-y-center animate__animated animate__fadeInUpBig animate__faster">
-          <div i-ri-vip-crown-2-fill text="primary 40px" />
+          <div i-carbon-rocket text="primary 40px" />
           <div ml-20px>
             <n-gradient-text
               :gradient="`linear-gradient(90deg, ${themeVars.successColor} 0%, ${themeVars.warningColor} 33%, ${themeVars.infoColor} 66%, ${themeVars.errorColor} 100%)`"

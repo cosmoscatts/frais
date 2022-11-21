@@ -92,9 +92,9 @@ export const configSettings: ConfigSettingObject = {
   /**
    * 主题主要色调
    *
-   * @default '#0d9488'
+   * @default '#377BB5'
    */
-  themePrimaryColor: '#0d9488',
+  themePrimaryColor: '#377BB5',
   /**
    * 页面切换动画类型
    *  - 'fade-slide' | 'fade' | 'fade-bottom' |
