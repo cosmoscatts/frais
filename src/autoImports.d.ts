@@ -199,6 +199,7 @@ declare global {
   const useLoading: typeof import('./composables/useLoading')['useLoading']
   const useLocalStorage: typeof import('@vueuse/core')['useLocalStorage']
   const useLogout: typeof import('./composables/useTools')['useLogout']
+  const useLottie: typeof import('./composables/usePlugins')['useLottie']
   const useMagicKeys: typeof import('@vueuse/core')['useMagicKeys']
   const useManualRefHistory: typeof import('@vueuse/core')['useManualRefHistory']
   const useMediaControls: typeof import('@vueuse/core')['useMediaControls']
@@ -504,6 +505,7 @@ declare module 'vue' {
     readonly useLoading: UnwrapRef<typeof import('./composables/useLoading')['useLoading']>
     readonly useLocalStorage: UnwrapRef<typeof import('@vueuse/core')['useLocalStorage']>
     readonly useLogout: UnwrapRef<typeof import('./composables/useTools')['useLogout']>
+    readonly useLottie: UnwrapRef<typeof import('./composables/usePlugins')['useLottie']>
     readonly useMagicKeys: UnwrapRef<typeof import('@vueuse/core')['useMagicKeys']>
     readonly useManualRefHistory: UnwrapRef<typeof import('@vueuse/core')['useManualRefHistory']>
     readonly useMediaControls: UnwrapRef<typeof import('@vueuse/core')['useMediaControls']>

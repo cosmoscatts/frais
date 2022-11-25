@@ -66,7 +66,7 @@ export function handleSaveRole({
   data = {},
   tableData = [],
 }: {
-  type: RoleModalActionType
+  type?: RoleModalActionType
   data?: Role
   tableData?: Role[]
 }) {

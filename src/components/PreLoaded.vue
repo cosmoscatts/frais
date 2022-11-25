@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import lottie from 'lottie-web'
 import { useThemeVars } from 'naive-ui'
 import { appMeta } from '~/config'
 
@@ -16,11 +15,9 @@ const { loading, endLoading } = useLoading(true)
 useTimeoutFn(endLoading, beforeLeavingMs)
 
 onMounted(() => {
-  lottie.loadAnimation({
+  useLottie({
     container: document.querySelector('#lottie-container')!,
     path: 'https://assets2.lottiefiles.com/packages/lf20_13mYuqdmso.json',
-    loop: true,
-    renderer: 'svg',
   })
 })
 </script>

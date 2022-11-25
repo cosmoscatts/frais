@@ -18,5 +18,4 @@ const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
 document.head.appendChild(meta)
 
-const app = createApp(App)
-init(app)
+init(createApp(App))

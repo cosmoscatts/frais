@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import lottie from 'lottie-web'
 import { appLayoutParams } from '~/config'
 
 const { navHeight, tabHeight, footHeight, contentPadding } = appLayoutParams
@@ -27,11 +26,9 @@ const getEmoji = (): string =>
   emojiArray[Math.floor(Math.random() * emojiArray.length)]
 
 onMounted(() => {
-  lottie.loadAnimation({
+  useLottie({
     container: document.querySelector('#lottie-cat')!,
     path: 'https://assets2.lottiefiles.com/packages/lf20_D0HSc9DlfZ.json',
-    loop: true,
-    renderer: 'svg',
   })
 })
 </script>
