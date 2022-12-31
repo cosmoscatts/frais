@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LoginWrapper from './components/LoginWrapper.vue'
 import BgBanner from '~/assets/bg-banner.png'
-import { appMeta } from '~/config'
+import { APP_META } from '~/config'
 </script>
 
 <template>
@@ -22,16 +22,16 @@ import { appMeta } from '~/config'
 
       <div flex="col center" mb-100px>
         <div text-32px font-bold flex-center>
-          欢迎使用 {{ appMeta.name }}
+          欢迎使用 {{ APP_META.name }}
         </div>
-        <p v-if="appMeta.description" text-16px>
-          {{ appMeta.description }}
+        <p v-if="APP_META.description" text-16px>
+          {{ APP_META.description }}
         </p>
         <img :src="BgBanner" w-300px mt-30px>
       </div>
 
-      <p v-if="appMeta.author" absolute bottom-20px left="[1/2]" text-24px mt-50px>
-        {{ appMeta.author }} 🧑🏻‍💻
+      <p v-if="APP_META.author" absolute bottom-20px left="[1/2]" text-24px mt-50px>
+        {{ APP_META.author }} 🧑🏻‍💻
       </p>
     </div>
     <div

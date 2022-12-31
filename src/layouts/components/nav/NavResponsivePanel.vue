@@ -6,7 +6,7 @@ import {
   NavBell,
   NavFullScreen,
 } from './'
-import { appLayoutParams, appMeta } from '~/config'
+import { APP_LAYOUT_PARAMS, APP_META } from '~/config'
 
 const themeVars = useThemeVars()
 
@@ -29,7 +29,7 @@ function toggle() {
     :style="{
       backgroundColor: themeVars.cardColor,
     }"
-    :width="appLayoutParams.sideWidth"
+    :width="APP_LAYOUT_PARAMS.sideWidth"
     :auto-focus="false"
     :show="showNavPanel"
     placement="right"
@@ -44,7 +44,7 @@ function toggle() {
         <div flex-auto />
         <a
           icon-btn text-lg i-carbon-logo-github mx-4
-          :href="appMeta.github"
+          :href="APP_META.github"
           target="_blank" title="GitHub"
         />
         <NavBell mr-4 />

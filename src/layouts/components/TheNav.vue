@@ -9,7 +9,7 @@ import {
   NavFullScreen,
   NavResponsivePanel,
 } from './nav'
-import { appMeta } from '~/config'
+import { APP_META } from '~/config'
 
 const { isMobile, baseSettings } = storeToRefs(useAppStore())
 
@@ -29,7 +29,7 @@ const isVerticalLayout = computed(() => {
     <div v-if="isVerticalLayout || !isMobile" flex-y-center>
       <a
         icon-btn text-lg i-carbon-logo-github mx-4
-        :href="appMeta.github"
+        :href="APP_META.github"
         target="_blank" title="GitHub"
       />
       <NavBell mr-4 />

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { appMeta } from '~/config'
+import { APP_META } from '~/config'
 
-const { footCopyRight } = appMeta
+const { footCopyRight } = APP_META
 </script>
 
 <template>

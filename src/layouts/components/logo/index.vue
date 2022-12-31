@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from '@vueuse/core'
-import { appLayoutParams, appMeta } from '~/config'
+import { APP_LAYOUT_PARAMS, APP_META } from '~/config'
 
-const { title } = appMeta
-const { navHeight } = appLayoutParams
+const { title } = APP_META
+const { navHeight } = APP_LAYOUT_PARAMS
 
 const appstore = useAppStore()
 const { menuCollapsed, baseSettings, isMobile } = storeToRefs(appstore)

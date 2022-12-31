@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useThemeVars } from 'naive-ui'
-import { appMeta } from '~/config'
+import { APP_META } from '~/config'
 
 const {
   beforeLeavingMs = 1500,
@@ -35,7 +35,7 @@ onMounted(() => {
               :gradient="`linear-gradient(90deg, ${themeVars.successColor} 0%, ${themeVars.warningColor} 33%, ${themeVars.infoColor} 66%, ${themeVars.errorColor} 100%)`"
               :size="36" style="font-weight: bold;"
             >
-              {{ appMeta.title }}
+              {{ APP_META.title }}
             </n-gradient-text>
           </div>
         </div>

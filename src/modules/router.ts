@@ -5,4 +5,3 @@ export const install: UserModule = ({ use }) => {
   createRouterGuard(router)
   use(router)
 }
-

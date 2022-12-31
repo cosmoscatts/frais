@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { appLayoutParams } from '~/config'
+import { APP_LAYOUT_PARAMS } from '~/config'
 
-const { navHeight, tabHeight, footHeight, contentPadding } = appLayoutParams
+const { navHeight, tabHeight, footHeight, contentPadding } = APP_LAYOUT_PARAMS
 const appStore = useAppStore()
 
 const diffHeight = computed(() => {

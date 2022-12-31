@@ -4,7 +4,7 @@ import { NEllipsis, NIcon } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import type { Menu } from '~/types'
-import { appLayoutParams } from '~/config'
+import { APP_LAYOUT_PARAMS } from '~/config'
 
 const {
   mode,
@@ -15,7 +15,7 @@ const {
 const {
   sideCollapsedWidth,
   sideCollapsedIconSize,
-} = appLayoutParams
+} = APP_LAYOUT_PARAMS
 
 const appStore = useAppStore()
 const { menuCollapsed, baseSettings } = storeToRefs(appStore)

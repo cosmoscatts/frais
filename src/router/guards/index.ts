@@ -1,6 +1,6 @@
 import type { Router } from 'vue-router'
 import createPermissionGuard from './createPermissionGuard'
-import { appMeta } from '~/config'
+import { APP_META } from '~/config'
 
 export default function createRouterGuard(router: Router) {
   // `Loading Bar`
@@ -14,7 +14,7 @@ export default function createRouterGuard(router: Router) {
 
   router.afterEach((to) => {
     // 设置 `document title`
-    const title = to.meta?.title as string ?? appMeta.name
+    const title = to.meta?.title as string ?? APP_META.name
     useTitle(title)
     // 结束 loadingBar
     loadingBar.finish()

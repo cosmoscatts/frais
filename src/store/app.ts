@@ -1,7 +1,7 @@
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { breakpointsTailwind } from '@vueuse/core'
 import type { ConfigSettingObject } from '~/config'
-import { cacheAppSettings, configSettings } from '~/config'
+import { cacheAPP_SETTINGS, configSettings } from '~/config'
 import {
   cacheSettingsOnStorage,
   clearTabStorage,
@@ -90,7 +90,7 @@ export const useAppStore = defineStore(
       else
         clearTabStorage()
 
-      if (cacheAppSettings)
+      if (cacheAPP_SETTINGS)
         cacheSettingsOnStorage({ ...baseSettings.value })
     }
 

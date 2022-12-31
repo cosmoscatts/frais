@@ -8,7 +8,7 @@ import {
   TheSide,
   TheTabs,
 } from '../components'
-import { appLayoutParams, showAppSettings } from '~/config'
+import { APP_LAYOUT_PARAMS, showAPP_SETTINGS } from '~/config'
 
 const appStore = useAppStore()
 const { isMobile, menuCollapsed, baseSettings } = storeToRefs(appStore)
@@ -24,7 +24,7 @@ const {
   backTopRight,
   backTopBottom,
   backTopvisibilityHeight,
-} = appLayoutParams
+} = APP_LAYOUT_PARAMS
 
 // 计算内容区域需要减去的高度值
 const diffHeight = computed(() => {
@@ -139,6 +139,6 @@ const themeVars = useThemeVars()
         :visibility-height="backTopvisibilityHeight"
       />
     </n-layout>
-    <TheSettings v-if="showAppSettings" />
+    <TheSettings v-if="showAPP_SETTINGS" />
   </n-layout>
 </template>

@@ -2,13 +2,13 @@
 import { vElementHover } from '@vueuse/components'
 import { ColorPaletteOutline } from '@vicons/ionicons5'
 import SettingsDrawer from './settings/SettingsDrawer.vue'
-import { appLayoutParams } from '~/config'
+import { APP_LAYOUT_PARAMS } from '~/config'
 
 const {
   settingsDrawerRight,
   settingsDrawerBottom,
   settingsDrawerWidth,
-} = appLayoutParams
+} = APP_LAYOUT_PARAMS
 
 const {
   updateSettingsFromStageData,

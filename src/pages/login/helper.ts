@@ -1,4 +1,4 @@
-import { appMeta } from '~/config'
+import { APP_META } from '~/config'
 
 /** 校验手机号 */
 export const REGEXP_PHONE
@@ -11,7 +11,7 @@ export function getSmsCode() {
   const { notification } = useGlobalNaiveApi()
   useTimeoutFn(() => {
     notification.info({
-      content: `【${appMeta.name}】验证码：123456，有效期10分钟。如非本人操作，请忽略。`,
+      content: `【${APP_META.name}】验证码：123456，有效期10分钟。如非本人操作，请忽略。`,
       duration: 30 * 1000,
     })
   }, 5000)

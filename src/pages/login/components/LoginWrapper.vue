@@ -2,7 +2,7 @@
 import type { Ref } from 'vue'
 import AccountForm from './AccountForm.vue'
 import PhoneForm from './PhoneForm.vue'
-import { appMeta } from '~/config'
+import { APP_META } from '~/config'
 
 const refAccountForm = ref()
 const refPhoneForm = ref()
@@ -34,7 +34,7 @@ watch(currentTabValue, () => {
       <div flex-center h-36px w-36px bg="[var(--primary-color)]" rounded-1 mr-3>
         <div i-carbon-rocket text="20px white" />
       </div>
-      <span font-bold text-36px>{{ appMeta.name }}</span>
+      <span font-bold text-36px>{{ APP_META.name }}</span>
     </div>
 
     <n-tabs

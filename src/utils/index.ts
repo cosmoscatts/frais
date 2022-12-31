@@ -1,5 +1,5 @@
 export * from './createAxios'
-export * from './cacheAppSettings'
+export * from './cacheAPP_SETTINGS'
 export * from './cacheTabs'
 export * from './createColor'
 export * from './createPermission'
