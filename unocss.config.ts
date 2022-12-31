@@ -7,8 +7,6 @@ import {
   presetWind,
 } from 'unocss'
 
-// https://github.com/antfu/unocss
-// see unocss.config.ts for config
 export default defineConfig({
   shortcuts: {
     'hw-full': 'h-full w-full',

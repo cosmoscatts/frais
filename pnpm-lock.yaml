@@ -4,7 +4,6 @@ specifiers:
   '@antfu/eslint-config': ^0.34.0
   '@better-scroll/core': ^2.5.0
   '@iconify/json': ^2.1.159
-  '@types/markdown-it-link-attributes': ^3.0.1
   '@types/node': 18.11.18
   '@types/nprogress': ^0.2.0
   '@unocss/preset-icons': ^0.48.0
@@ -17,7 +16,6 @@ specifiers:
   '@vitejs/plugin-vue': ^4.0.0
   '@vueuse/components': ^9.9.0
   '@vueuse/core': ^9.9.0
-  '@vueuse/head': ^1.0.22
   animate.css: ^4.1.1
   axios: ^1.2.2
   colord: ^2.9.3
@@ -26,8 +24,6 @@ specifiers:
   echarts: ^5.4.1
   eslint: ^8.30.0
   lottie-web: ^5.10.1
-  markdown-it-link-attributes: ^4.0.1
-  markdown-it-shiki: ^0.7.2
   naive-ui: ^2.34.3
   pinia: ^2.0.28
   pinia-plugin-persist-uni: ^1.2.0
@@ -39,7 +35,6 @@ specifiers:
   unplugin-vue-define-options: ^1.1.1
   vfonts: ^0.0.3
   vite: ^4.0.3
-  vite-plugin-vue-markdown: ^0.22.2
   vue: ^3.2.45
   vue-router: '4'
   vue-tsc: ^1.0.18
@@ -49,7 +44,6 @@ dependencies:
   '@unocss/reset': registry.npmmirror.com/@unocss/reset/0.48.0
   '@vueuse/components': registry.npmmirror.com/@vueuse/components/9.9.0_vue@3.2.45
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/9.9.0_vue@3.2.45
-  '@vueuse/head': registry.npmmirror.com/@vueuse/head/1.0.22_vue@3.2.45
   animate.css: registry.npmmirror.com/animate.css/4.1.1
   axios: registry.npmmirror.com/axios/1.2.2
   colord: registry.npmmirror.com/colord/2.9.3
@@ -66,7 +60,6 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': registry.npmmirror.com/@antfu/eslint-config/0.34.0_lzzuuodtsqwxnvqeq4g4likcqa
   '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.159
-  '@types/markdown-it-link-attributes': registry.npmmirror.com/@types/markdown-it-link-attributes/3.0.1
   '@types/node': registry.npmmirror.com/@types/node/18.11.18
   '@types/nprogress': registry.npmmirror.com/@types/nprogress/0.2.0
   '@unocss/preset-icons': registry.npmmirror.com/@unocss/preset-icons/0.48.0
@@ -77,8 +70,6 @@ devDependencies:
   '@vicons/ionicons5': registry.npmmirror.com/@vicons/ionicons5/0.12.0
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/4.0.0_vite@4.0.3+vue@3.2.45
   eslint: registry.npmmirror.com/eslint/8.30.0
-  markdown-it-link-attributes: registry.npmmirror.com/markdown-it-link-attributes/4.0.1
-  markdown-it-shiki: registry.npmmirror.com/markdown-it-shiki/0.7.2
   naive-ui: registry.npmmirror.com/naive-ui/2.34.3_vue@3.2.45
   typescript: registry.npmmirror.com/typescript/4.9.4
   unocss: registry.npmmirror.com/unocss/0.48.0_vite@4.0.3
@@ -87,7 +78,6 @@ devDependencies:
   unplugin-vue-define-options: registry.npmmirror.com/unplugin-vue-define-options/1.1.1_vue@3.2.45
   vfonts: registry.npmmirror.com/vfonts/0.0.3
   vite: registry.npmmirror.com/vite/4.0.3_@types+node@18.11.18
-  vite-plugin-vue-markdown: registry.npmmirror.com/vite-plugin-vue-markdown/0.22.2_vite@4.0.3
   vue-tsc: registry.npmmirror.com/vue-tsc/1.0.18_typescript@4.9.4
 
 packages:
@@ -692,32 +682,6 @@ packages:
     version: 3.3.1
     dev: true
 
-  registry.npmmirror.com/@mdit-vue/plugin-component/0.11.2:
-    resolution: {integrity: sha512-ucFiEULCkLcCG1Tf1MfG5u5PS4BIXWIeKGHRGsXxz1ix2GbZWKFVgWEdNEckBu8s75Fv1WJLIOiAYZyri2f1nw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@mdit-vue/plugin-component/-/plugin-component-0.11.2.tgz}
-    name: '@mdit-vue/plugin-component'
-    version: 0.11.2
-    dependencies:
-      '@types/markdown-it': registry.npmmirror.com/@types/markdown-it/12.2.3
-      markdown-it: registry.npmmirror.com/markdown-it/13.0.1
-    dev: true
-
-  registry.npmmirror.com/@mdit-vue/plugin-frontmatter/0.11.1:
-    resolution: {integrity: sha512-AdZJInjD1pTJXlfhuoBS5ycuIQ3ewBfY0R/XHM3TRDEaDHQJHxouUCpCyijZmpdljTU45lFetIowaKtAi7GBog==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@mdit-vue/plugin-frontmatter/-/plugin-frontmatter-0.11.1.tgz}
-    name: '@mdit-vue/plugin-frontmatter'
-    version: 0.11.1
-    dependencies:
-      '@mdit-vue/types': registry.npmmirror.com/@mdit-vue/types/0.11.0
-      '@types/markdown-it': registry.npmmirror.com/@types/markdown-it/12.2.3
-      gray-matter: registry.npmmirror.com/gray-matter/4.0.3
-      markdown-it: registry.npmmirror.com/markdown-it/13.0.1
-    dev: true
-
-  registry.npmmirror.com/@mdit-vue/types/0.11.0:
-    resolution: {integrity: sha512-ygCGP7vFpqS02hpZwEe1uz8cfImWX06+zRs08J+tCZRKb6k+easIaIHFtY9ZSxt7j9L/gAPLDo/5RmOT6z0DPQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@mdit-vue/types/-/types-0.11.0.tgz}
-    name: '@mdit-vue/types'
-    version: 0.11.0
-    dev: true
-
   registry.npmmirror.com/@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz}
     name: '@nodelib/fs.scandir'
@@ -743,20 +707,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': registry.npmmirror.com/@nodelib/fs.scandir/2.1.5
       fastq: registry.npmmirror.com/fastq/1.13.0
-    dev: true
-
-  registry.npmmirror.com/@pkgr/utils/2.3.1:
-    resolution: {integrity: sha512-wfzX8kc1PMyUILA+1Z/EqoE4UCXGy0iRGMhPwdfae1+f0OXlLqCk+By+aMzgJBzR9AzS4CDizioG6Ss1gvAFJw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@pkgr/utils/-/utils-2.3.1.tgz}
-    name: '@pkgr/utils'
-    version: 2.3.1
-    engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
-    dependencies:
-      cross-spawn: registry.npmmirror.com/cross-spawn/7.0.3
-      is-glob: registry.npmmirror.com/is-glob/4.0.3
-      open: registry.npmmirror.com/open/8.4.0
-      picocolors: registry.npmmirror.com/picocolors/1.0.0
-      tiny-glob: registry.npmmirror.com/tiny-glob/0.2.9
-      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/@polka/url/1.0.0-next.21:
@@ -805,12 +755,6 @@ packages:
     version: 0.14.0
     dev: true
 
-  registry.npmmirror.com/@types/linkify-it/3.0.2:
-    resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/linkify-it/-/linkify-it-3.0.2.tgz}
-    name: '@types/linkify-it'
-    version: 3.0.2
-    dev: true
-
   registry.npmmirror.com/@types/lodash-es/4.17.6:
     resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash-es/-/lodash-es-4.17.6.tgz}
     name: '@types/lodash-es'
@@ -825,35 +769,12 @@ packages:
     version: 4.14.182
     dev: true
 
-  registry.npmmirror.com/@types/markdown-it-link-attributes/3.0.1:
-    resolution: {integrity: sha512-K8RnNb1q8j7rDOJbMF7AnlhCC/45BjrQ8z3WZWOrvkBIl8u9RXvmBdG/hfpnmK1JhhEZcmFEKWt+ilW1Mly+2Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/markdown-it-link-attributes/-/markdown-it-link-attributes-3.0.1.tgz}
-    name: '@types/markdown-it-link-attributes'
-    version: 3.0.1
-    dependencies:
-      '@types/markdown-it': registry.npmmirror.com/@types/markdown-it/12.2.3
-    dev: true
-
-  registry.npmmirror.com/@types/markdown-it/12.2.3:
-    resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/markdown-it/-/markdown-it-12.2.3.tgz}
-    name: '@types/markdown-it'
-    version: 12.2.3
-    dependencies:
-      '@types/linkify-it': registry.npmmirror.com/@types/linkify-it/3.0.2
-      '@types/mdurl': registry.npmmirror.com/@types/mdurl/1.0.2
-    dev: true
-
   registry.npmmirror.com/@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/mdast/-/mdast-3.0.10.tgz}
     name: '@types/mdast'
     version: 3.0.10
     dependencies:
       '@types/unist': registry.npmmirror.com/@types/unist/2.0.6
-    dev: true
-
-  registry.npmmirror.com/@types/mdurl/1.0.2:
-    resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/mdurl/-/mdurl-1.0.2.tgz}
-    name: '@types/mdurl'
-    version: 1.0.2
     dev: true
 
   registry.npmmirror.com/@types/node/17.0.45:
@@ -1046,44 +967,6 @@ packages:
       '@typescript-eslint/types': registry.npmmirror.com/@typescript-eslint/types/5.46.1
       eslint-visitor-keys: registry.npmmirror.com/eslint-visitor-keys/3.3.0
     dev: true
-
-  registry.npmmirror.com/@unhead/dom/1.0.13:
-    resolution: {integrity: sha512-ErfhK3Nwk3kpxnPEOrkruKAdS3/TrNlKs0nYtKgFJ1ywJYg+uNwRFDe82v4JdUMhnfmbgL/qcO3PTx3Dv09IEQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unhead/dom/-/dom-1.0.13.tgz}
-    name: '@unhead/dom'
-    version: 1.0.13
-    dependencies:
-      '@unhead/schema': registry.npmmirror.com/@unhead/schema/1.0.13
-    dev: false
-
-  registry.npmmirror.com/@unhead/schema/1.0.13:
-    resolution: {integrity: sha512-K8SiAEkM8G7GaF1QvsKlthLmRqGB8R9SvZXMCucZqb2VQ6bU4IFSs/4q6dKxmV0fXb5AHdKUL9+rX/4rQ6FsZg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unhead/schema/-/schema-1.0.13.tgz}
-    name: '@unhead/schema'
-    version: 1.0.13
-    dependencies:
-      '@zhead/schema': registry.npmmirror.com/@zhead/schema/1.0.7
-      hookable: registry.npmmirror.com/hookable/5.4.2
-    dev: false
-
-  registry.npmmirror.com/@unhead/ssr/1.0.13:
-    resolution: {integrity: sha512-pach3THVx8LU54M6aQ4qZeQdcLjXVnPlpHe7pQjHGvD6iBJC5bZc8TL+CHdTRxeiq2DqMA5uyfoor7VJJTi5AQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unhead/ssr/-/ssr-1.0.13.tgz}
-    name: '@unhead/ssr'
-    version: 1.0.13
-    dependencies:
-      '@unhead/schema': registry.npmmirror.com/@unhead/schema/1.0.13
-    dev: false
-
-  registry.npmmirror.com/@unhead/vue/1.0.13_vue@3.2.45:
-    resolution: {integrity: sha512-sGl640UQqN8HUYTKXOh6gErk/vw8byPdx1+ECqX4ec7UZYktsWgfyIReYBu09Qm3O6pIYfX8HlZbDipX+wQAOQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unhead/vue/-/vue-1.0.13.tgz}
-    id: registry.npmmirror.com/@unhead/vue/1.0.13
-    name: '@unhead/vue'
-    version: 1.0.13
-    peerDependencies:
-      vue: '>=2.7 || >=3'
-    dependencies:
-      '@unhead/schema': registry.npmmirror.com/@unhead/schema/1.0.13
-      hookable: registry.npmmirror.com/hookable/5.4.2
-      vue: registry.npmmirror.com/vue/3.2.45
-    dev: false
 
   registry.npmmirror.com/@unocss/astro/0.48.0_vite@4.0.3:
     resolution: {integrity: sha512-MoINkgukO6YxVVEmEsY0oLWqU+Fv/dzPtUQhfsfek1mqtUbnwQ3n1xuOJ2S0eJSYmbprSuhvW/yTFVn1twsM1A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/astro/-/astro-0.48.0.tgz}
@@ -1528,21 +1411,6 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  registry.npmmirror.com/@vueuse/head/1.0.22_vue@3.2.45:
-    resolution: {integrity: sha512-YmUdbzNdCnhmrAFxGnJS+Rixj+swE+TQC9OEaYDHIro6gE7W11jugcdwVP00HrA4WRQhg+TOQ4YcY2oL/PP1hw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/head/-/head-1.0.22.tgz}
-    id: registry.npmmirror.com/@vueuse/head/1.0.22
-    name: '@vueuse/head'
-    version: 1.0.22
-    peerDependencies:
-      vue: '>=2.7 || >=3'
-    dependencies:
-      '@unhead/dom': registry.npmmirror.com/@unhead/dom/1.0.13
-      '@unhead/schema': registry.npmmirror.com/@unhead/schema/1.0.13
-      '@unhead/ssr': registry.npmmirror.com/@unhead/ssr/1.0.13
-      '@unhead/vue': registry.npmmirror.com/@unhead/vue/1.0.13_vue@3.2.45
-      vue: registry.npmmirror.com/vue/3.2.45
-    dev: false
-
   registry.npmmirror.com/@vueuse/metadata/9.9.0:
     resolution: {integrity: sha512-pgxsUJv/d7IjKpLeB6TthggEsaBwM3ffc5jPrr5TmxAm/fup0mGR5VTzrdA/PSx85tpb+CIvP92D+55qBNc8ag==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vueuse/metadata/-/metadata-9.9.0.tgz}
     name: '@vueuse/metadata'
@@ -1558,12 +1426,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-
-  registry.npmmirror.com/@zhead/schema/1.0.7:
-    resolution: {integrity: sha512-jN2ipkz39YrHd8uulgw/Y7x8iOxvR/cTkin/E9zRQVP5JBIrrJMiGyFFj6JBW4Q029xJ5dKtpwy/3RZWpz+dkQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@zhead/schema/-/schema-1.0.7.tgz}
-    name: '@zhead/schema'
-    version: 1.0.7
-    dev: false
 
   registry.npmmirror.com/acorn-jsx/5.3.2_acorn@8.8.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz}
@@ -1633,14 +1495,6 @@ packages:
     dependencies:
       normalize-path: registry.npmmirror.com/normalize-path/3.0.0
       picomatch: registry.npmmirror.com/picomatch/2.3.1
-    dev: true
-
-  registry.npmmirror.com/argparse/1.0.10:
-    resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/argparse/-/argparse-1.0.10.tgz}
-    name: argparse
-    version: 1.0.10
-    dependencies:
-      sprintf-js: registry.npmmirror.com/sprintf-js/1.0.3
     dev: true
 
   registry.npmmirror.com/argparse/2.0.1:
@@ -2095,13 +1949,6 @@ packages:
     version: 0.1.4
     dev: true
 
-  registry.npmmirror.com/define-lazy-prop/2.0.0:
-    resolution: {integrity: sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz}
-    name: define-lazy-prop
-    version: 2.0.0
-    engines: {node: '>=8'}
-    dev: true
-
   registry.npmmirror.com/define-properties/1.1.4:
     resolution: {integrity: sha512-uckOqKcfaVvtBdsVkdPv3XjveQJsNQqmhXgRi8uhvWWuPYZCNlzT8qAyblUgNoXdHdjMTzAqeGjAoli8f+bzPA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/define-properties/-/define-properties-1.1.4.tgz}
     name: define-properties
@@ -2241,13 +2088,6 @@ packages:
     name: entities
     version: 2.2.0
     dev: false
-
-  registry.npmmirror.com/entities/3.0.1:
-    resolution: {integrity: sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/entities/-/entities-3.0.1.tgz}
-    name: entities
-    version: 3.0.1
-    engines: {node: '>=0.12'}
-    dev: true
 
   registry.npmmirror.com/entities/4.3.1:
     resolution: {integrity: sha512-o4q/dYJlmyjP2zfnaWDUC6A3BQFmVTX+tZPezK7k0GLSU9QYCauscf5Y+qcEPzKL+EixVouYDgLQK5H9GrLpkg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/entities/-/entities-4.3.1.tgz}
@@ -2750,14 +2590,6 @@ packages:
       eslint-visitor-keys: registry.npmmirror.com/eslint-visitor-keys/3.3.0
     dev: true
 
-  registry.npmmirror.com/esprima/4.0.1:
-    resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/esprima/-/esprima-4.0.1.tgz}
-    name: esprima
-    version: 4.0.1
-    engines: {node: '>=4'}
-    hasBin: true
-    dev: true
-
   registry.npmmirror.com/esquery/1.4.0:
     resolution: {integrity: sha512-cCDispWt5vHHtwMY2YrAQ4ibFkAL8RbH5YGBnZBc90MolvvfkkQcJro/aZiAQUlQ3qgrYS6D6v8Gc5G5CQsc9w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/esquery/-/esquery-1.4.0.tgz}
     name: esquery
@@ -2823,15 +2655,6 @@ packages:
       onetime: registry.npmmirror.com/onetime/5.1.2
       signal-exit: registry.npmmirror.com/signal-exit/3.0.7
       strip-final-newline: registry.npmmirror.com/strip-final-newline/2.0.0
-    dev: true
-
-  registry.npmmirror.com/extend-shallow/2.0.1:
-    resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/extend-shallow/-/extend-shallow-2.0.1.tgz}
-    name: extend-shallow
-    version: 2.0.1
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      is-extendable: registry.npmmirror.com/is-extendable/0.1.1
     dev: true
 
   registry.npmmirror.com/fast-deep-equal/3.1.3:
@@ -3066,12 +2889,6 @@ packages:
       type-fest: registry.npmmirror.com/type-fest/0.20.2
     dev: true
 
-  registry.npmmirror.com/globalyzer/0.1.0:
-    resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/globalyzer/-/globalyzer-0.1.0.tgz}
-    name: globalyzer
-    version: 0.1.0
-    dev: true
-
   registry.npmmirror.com/globby/11.1.0:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/globby/-/globby-11.1.0.tgz}
     name: globby
@@ -3086,28 +2903,10 @@ packages:
       slash: registry.npmmirror.com/slash/3.0.0
     dev: true
 
-  registry.npmmirror.com/globrex/0.1.2:
-    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/globrex/-/globrex-0.1.2.tgz}
-    name: globrex
-    version: 0.1.2
-    dev: true
-
   registry.npmmirror.com/grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz}
     name: grapheme-splitter
     version: 1.0.4
-    dev: true
-
-  registry.npmmirror.com/gray-matter/4.0.3:
-    resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/gray-matter/-/gray-matter-4.0.3.tgz}
-    name: gray-matter
-    version: 4.0.3
-    engines: {node: '>=6.0'}
-    dependencies:
-      js-yaml: registry.npmmirror.com/js-yaml/3.14.1
-      kind-of: registry.npmmirror.com/kind-of/6.0.3
-      section-matter: registry.npmmirror.com/section-matter/1.0.0
-      strip-bom-string: registry.npmmirror.com/strip-bom-string/1.0.0
     dev: true
 
   registry.npmmirror.com/gzip-size/6.0.0:
@@ -3184,12 +2983,6 @@ packages:
     version: 11.6.0
     engines: {node: '>=12.0.0'}
     dev: true
-
-  registry.npmmirror.com/hookable/5.4.2:
-    resolution: {integrity: sha512-6rOvaUiNKy9lET1X0ECnyZ5O5kSV0PJbtA5yZUgdEF7fGJEVwSLSislltyt7nFwVVALYHQJtfGeAR2Y0A0uJkg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hookable/-/hookable-5.4.2.tgz}
-    name: hookable
-    version: 5.4.2
-    dev: false
 
   registry.npmmirror.com/hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz}
@@ -3359,21 +3152,6 @@ packages:
     version: 1.0.4
     dev: true
 
-  registry.npmmirror.com/is-docker/2.2.1:
-    resolution: {integrity: sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-docker/-/is-docker-2.2.1.tgz}
-    name: is-docker
-    version: 2.2.1
-    engines: {node: '>=8'}
-    hasBin: true
-    dev: true
-
-  registry.npmmirror.com/is-extendable/0.1.1:
-    resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-extendable/-/is-extendable-0.1.1.tgz}
-    name: is-extendable
-    version: 0.1.1
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   registry.npmmirror.com/is-extglob/2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-extglob/-/is-extglob-2.1.1.tgz}
     name: is-extglob
@@ -3477,15 +3255,6 @@ packages:
       call-bind: registry.npmmirror.com/call-bind/1.0.2
     dev: true
 
-  registry.npmmirror.com/is-wsl/2.2.0:
-    resolution: {integrity: sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-wsl/-/is-wsl-2.2.0.tgz}
-    name: is-wsl
-    version: 2.2.0
-    engines: {node: '>=8'}
-    dependencies:
-      is-docker: registry.npmmirror.com/is-docker/2.2.1
-    dev: true
-
   registry.npmmirror.com/isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/isexe/-/isexe-2.0.0.tgz}
     name: isexe
@@ -3509,16 +3278,6 @@ packages:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-tokens/-/js-tokens-4.0.0.tgz}
     name: js-tokens
     version: 4.0.0
-    dev: true
-
-  registry.npmmirror.com/js-yaml/3.14.1:
-    resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/js-yaml/-/js-yaml-3.14.1.tgz}
-    name: js-yaml
-    version: 3.14.1
-    hasBin: true
-    dependencies:
-      argparse: registry.npmmirror.com/argparse/1.0.10
-      esprima: registry.npmmirror.com/esprima/4.0.1
     dev: true
 
   registry.npmmirror.com/js-yaml/4.1.0:
@@ -3590,13 +3349,6 @@ packages:
     version: 3.2.0
     dev: true
 
-  registry.npmmirror.com/kind-of/6.0.3:
-    resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/kind-of/-/kind-of-6.0.3.tgz}
-    name: kind-of
-    version: 6.0.3
-    engines: {node: '>=0.10.0'}
-    dev: true
-
   registry.npmmirror.com/kolorist/1.6.0:
     resolution: {integrity: sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/kolorist/-/kolorist-1.6.0.tgz}
     name: kolorist
@@ -3617,14 +3369,6 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz}
     name: lines-and-columns
     version: 1.2.4
-    dev: true
-
-  registry.npmmirror.com/linkify-it/4.0.1:
-    resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/linkify-it/-/linkify-it-4.0.1.tgz}
-    name: linkify-it
-    version: 4.0.1
-    dependencies:
-      uc.micro: registry.npmmirror.com/uc.micro/1.0.6
     dev: true
 
   registry.npmmirror.com/local-pkg/0.4.2:
@@ -3711,34 +3455,6 @@ packages:
       '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec/1.4.14
     dev: true
 
-  registry.npmmirror.com/markdown-it-link-attributes/4.0.1:
-    resolution: {integrity: sha512-pg5OK0jPLg62H4k7M9mRJLT61gUp9nvG0XveKYHMOOluASo9OEF13WlXrpAp2aj35LbedAy3QOCgQCw0tkLKAQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-link-attributes/-/markdown-it-link-attributes-4.0.1.tgz}
-    name: markdown-it-link-attributes
-    version: 4.0.1
-    dev: true
-
-  registry.npmmirror.com/markdown-it-shiki/0.7.2:
-    resolution: {integrity: sha512-CJucoEMqDg3RJ4R+Oep20Rfsa1MYUebEDxppYyXy4wLmHDktqDd5+7qt51xMnyJkwtIJfmEETjsU7GqBXi5z0g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it-shiki/-/markdown-it-shiki-0.7.2.tgz}
-    name: markdown-it-shiki
-    version: 0.7.2
-    dependencies:
-      shiki: registry.npmmirror.com/shiki/0.11.1
-      synckit: registry.npmmirror.com/synckit/0.8.4
-    dev: true
-
-  registry.npmmirror.com/markdown-it/13.0.1:
-    resolution: {integrity: sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/markdown-it/-/markdown-it-13.0.1.tgz}
-    name: markdown-it
-    version: 13.0.1
-    hasBin: true
-    dependencies:
-      argparse: registry.npmmirror.com/argparse/2.0.1
-      entities: registry.npmmirror.com/entities/3.0.1
-      linkify-it: registry.npmmirror.com/linkify-it/4.0.1
-      mdurl: registry.npmmirror.com/mdurl/1.0.1
-      uc.micro: registry.npmmirror.com/uc.micro/1.0.6
-    dev: true
-
   registry.npmmirror.com/mdast-util-from-markdown/0.8.5:
     resolution: {integrity: sha512-2hkTXtYYnr+NubD/g6KGBS/0mFmBcifAsI0yIWRiRo0PjVs6SSOSOdtzbp6kSGnShDN6G5aWZpKQ2lWRy27mWQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mdast-util-from-markdown/-/mdast-util-from-markdown-0.8.5.tgz}
     name: mdast-util-from-markdown
@@ -3763,12 +3479,6 @@ packages:
     resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mdn-data/-/mdn-data-2.0.30.tgz}
     name: mdn-data
     version: 2.0.30
-    dev: true
-
-  registry.npmmirror.com/mdurl/1.0.1:
-    resolution: {integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mdurl/-/mdurl-1.0.1.tgz}
-    name: mdurl
-    version: 1.0.1
     dev: true
 
   registry.npmmirror.com/merge-stream/2.0.0:
@@ -4050,17 +3760,6 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       mimic-fn: registry.npmmirror.com/mimic-fn/2.1.0
-    dev: true
-
-  registry.npmmirror.com/open/8.4.0:
-    resolution: {integrity: sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/open/-/open-8.4.0.tgz}
-    name: open
-    version: 8.4.0
-    engines: {node: '>=12'}
-    dependencies:
-      define-lazy-prop: registry.npmmirror.com/define-lazy-prop/2.0.0
-      is-docker: registry.npmmirror.com/is-docker/2.2.1
-      is-wsl: registry.npmmirror.com/is-wsl/2.2.0
     dev: true
 
   registry.npmmirror.com/optionator/0.9.1:
@@ -4516,16 +4215,6 @@ packages:
     version: 1.0.0
     dev: true
 
-  registry.npmmirror.com/section-matter/1.0.0:
-    resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/section-matter/-/section-matter-1.0.0.tgz}
-    name: section-matter
-    version: 1.0.0
-    engines: {node: '>=4'}
-    dependencies:
-      extend-shallow: registry.npmmirror.com/extend-shallow/2.0.1
-      kind-of: registry.npmmirror.com/kind-of/6.0.3
-    dev: true
-
   registry.npmmirror.com/seemly/0.3.6:
     resolution: {integrity: sha512-lEV5VB8BUKTo/AfktXJcy+JeXns26ylbMkIUco8CYREsQijuz4mrXres2Q+vMLdwkuLxJdIPQ8IlCIxLYm71Yw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/seemly/-/seemly-0.3.6.tgz}
     name: seemly
@@ -4562,16 +4251,6 @@ packages:
     name: shebang-regex
     version: 3.0.0
     engines: {node: '>=8'}
-    dev: true
-
-  registry.npmmirror.com/shiki/0.11.1:
-    resolution: {integrity: sha512-EugY9VASFuDqOexOgXR18ZV+TbFrQHeCpEYaXamO+SZlsnT/2LxuLBX25GGtIrwaEVFXUAbUQ601SWE2rMwWHA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/shiki/-/shiki-0.11.1.tgz}
-    name: shiki
-    version: 0.11.1
-    dependencies:
-      jsonc-parser: registry.npmmirror.com/jsonc-parser/3.2.0
-      vscode-oniguruma: registry.npmmirror.com/vscode-oniguruma/1.6.2
-      vscode-textmate: registry.npmmirror.com/vscode-textmate/6.0.0
     dev: true
 
   registry.npmmirror.com/side-channel/1.0.4:
@@ -4656,12 +4335,6 @@ packages:
     version: 3.0.11
     dev: true
 
-  registry.npmmirror.com/sprintf-js/1.0.3:
-    resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sprintf-js/-/sprintf-js-1.0.3.tgz}
-    name: sprintf-js
-    version: 1.0.3
-    dev: true
-
   registry.npmmirror.com/streamsearch/1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/streamsearch/-/streamsearch-1.1.0.tgz}
     name: streamsearch
@@ -4696,13 +4369,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       ansi-regex: registry.npmmirror.com/ansi-regex/5.0.1
-    dev: true
-
-  registry.npmmirror.com/strip-bom-string/1.0.0:
-    resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/strip-bom-string/-/strip-bom-string-1.0.0.tgz}
-    name: strip-bom-string
-    version: 1.0.0
-    engines: {node: '>=0.10.0'}
     dev: true
 
   registry.npmmirror.com/strip-bom/3.0.0:
@@ -4767,29 +4433,10 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  registry.npmmirror.com/synckit/0.8.4:
-    resolution: {integrity: sha512-Dn2ZkzMdSX827QbowGbU/4yjWuvNaCoScLLoMo/yKbu+P4GBR6cRGKZH27k6a9bRzdqcyd1DE96pQtQ6uNkmyw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/synckit/-/synckit-0.8.4.tgz}
-    name: synckit
-    version: 0.8.4
-    engines: {node: ^14.18.0 || >=16.0.0}
-    dependencies:
-      '@pkgr/utils': registry.npmmirror.com/@pkgr/utils/2.3.1
-      tslib: registry.npmmirror.com/tslib/2.4.0
-    dev: true
-
   registry.npmmirror.com/text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/text-table/-/text-table-0.2.0.tgz}
     name: text-table
     version: 0.2.0
-    dev: true
-
-  registry.npmmirror.com/tiny-glob/0.2.9:
-    resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tiny-glob/-/tiny-glob-0.2.9.tgz}
-    name: tiny-glob
-    version: 0.2.9
-    dependencies:
-      globalyzer: registry.npmmirror.com/globalyzer/0.1.0
-      globrex: registry.npmmirror.com/globrex/0.1.2
     dev: true
 
   registry.npmmirror.com/to-fast-properties/2.0.0:
@@ -4843,12 +4490,6 @@ packages:
     version: 2.3.0
     dev: false
 
-  registry.npmmirror.com/tslib/2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz}
-    name: tslib
-    version: 2.4.0
-    dev: true
-
   registry.npmmirror.com/tsutils/3.21.0_typescript@4.9.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tsutils/-/tsutils-3.21.0.tgz}
     id: registry.npmmirror.com/tsutils/3.21.0
@@ -4898,12 +4539,6 @@ packages:
     version: 4.9.4
     engines: {node: '>=4.2.0'}
     hasBin: true
-
-  registry.npmmirror.com/uc.micro/1.0.6:
-    resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uc.micro/-/uc.micro-1.0.6.tgz}
-    name: uc.micro
-    version: 1.0.6
-    dev: true
 
   registry.npmmirror.com/ufo/0.8.6:
     resolution: {integrity: sha512-fk6CmUgwKCfX79EzcDQQpSCMxrHstvbLswFChHS0Vump+kFkw7nJBfTZoC1j0bOGoY9I7R3n2DGek5ajbcYnOw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ufo/-/ufo-0.8.6.tgz}
@@ -5130,26 +4765,6 @@ packages:
     version: 0.0.3
     dev: true
 
-  registry.npmmirror.com/vite-plugin-vue-markdown/0.22.2_vite@4.0.3:
-    resolution: {integrity: sha512-MJ2cpEcI1ehfcQbpAMPA6ezhK2nrajL4q8999SXPbPMbRHB+gKoJvqrwei6QIdhCLkgwR1ZDEwigphtuoQAbbw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite-plugin-vue-markdown/-/vite-plugin-vue-markdown-0.22.2.tgz}
-    id: registry.npmmirror.com/vite-plugin-vue-markdown/0.22.2
-    name: vite-plugin-vue-markdown
-    version: 0.22.2
-    peerDependencies:
-      vite: ^2.0.0 || ^3.0.0-0 || ^4.0.0
-    dependencies:
-      '@antfu/utils': registry.npmmirror.com/@antfu/utils/0.7.2
-      '@mdit-vue/plugin-component': registry.npmmirror.com/@mdit-vue/plugin-component/0.11.2
-      '@mdit-vue/plugin-frontmatter': registry.npmmirror.com/@mdit-vue/plugin-frontmatter/0.11.1
-      '@mdit-vue/types': registry.npmmirror.com/@mdit-vue/types/0.11.0
-      '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/5.0.2
-      '@types/markdown-it': registry.npmmirror.com/@types/markdown-it/12.2.3
-      markdown-it: registry.npmmirror.com/markdown-it/13.0.1
-      vite: registry.npmmirror.com/vite/4.0.3_@types+node@18.11.18
-    transitivePeerDependencies:
-      - rollup
-    dev: true
-
   registry.npmmirror.com/vite/4.0.3_@types+node@18.11.18:
     resolution: {integrity: sha512-HvuNv1RdE7deIfQb8mPk51UKjqptO/4RXZ5yXSAvurd5xOckwS/gg8h9Tky3uSbnjYTgUm0hVCet1cyhKd73ZA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vite/-/vite-4.0.3.tgz}
     id: registry.npmmirror.com/vite/4.0.3
@@ -5197,18 +4812,6 @@ packages:
     dependencies:
       evtd: registry.npmmirror.com/evtd/0.2.4
       vue: registry.npmmirror.com/vue/3.2.45
-    dev: true
-
-  registry.npmmirror.com/vscode-oniguruma/1.6.2:
-    resolution: {integrity: sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-oniguruma/-/vscode-oniguruma-1.6.2.tgz}
-    name: vscode-oniguruma
-    version: 1.6.2
-    dev: true
-
-  registry.npmmirror.com/vscode-textmate/6.0.0:
-    resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vscode-textmate/-/vscode-textmate-6.0.0.tgz}
-    name: vscode-textmate
-    version: 6.0.0
     dev: true
 
   registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.45:
