@@ -1,6 +1,6 @@
 import type { Menu, User } from '~/types'
 import { APP_MENU } from '~/config'
-import defaultAvatar from '~/assets/user/default-avatar.jpg'
+import defaultAvatar from '~/assets/default-avatar.jpg'
 
 export const useAuthStore = defineStore(
   'authStore',
@@ -9,35 +9,44 @@ export const useAuthStore = defineStore(
     const hasLogin = ref(false)
     const menus = ref<Menu[]>([])
 
-    const fetchMenus = async () => {
+    const fetchUser = () => {}
+    const updateUser = (data: User) => {
+      if (!data.avatar) data.avatar = defaultAvatar
+      user.value = data
+    }
+    const removeUser = () => user.value = undefined
+
+    const fetchMenus = () => {
       menus.value = APP_MENU.source === 'front'
         ? [...APP_MENU.defaultMenus]
         : []
     }
+    const removeMenus = () => menus.value = []
 
     return {
+      user,
+      fetchUser,
+      updateUser,
+      removeUser,
       hasLogin,
-      user: {
-        get: () => user.value,
-        fetch: () => {},
-        update: (_user: User) => {
-          if (!_user.avatar) _user.avatar = defaultAvatar
-          user.value = _user
-        },
-        remove: () => user.value = undefined,
-      },
-      menu: {
-        get: () => menus.value,
-        fetch: () => fetchMenus(),
-        remove: () => menus.value = [],
-      },
-      login() {
-        hasLogin.value = true
-        ;[this.user, this.menu].forEach(i => i.fetch())
+      menus,
+      fetchMenus,
+      removeMenus,
+      login(data: User) {
+        return new Promise((resolve) => {
+          hasLogin.value = true
+          updateUser(data)
+          ;[fetchUser, fetchMenus].forEach(fn => fn())
+          resolve(user)
+        })
       },
       logout() {
-        hasLogin.value = false
-        ;[this.user, this.menu].forEach(i => i.remove())
+        return new Promise((resolve) => {
+          hasLogin.value = false
+          const tabStore = useTabStore()
+          ;[removeUser, removeMenus, tabStore.removeAllTabs].forEach(fn => fn())
+          resolve(menus)
+        })
       },
     }
   },
