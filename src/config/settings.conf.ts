@@ -1,6 +1,6 @@
 interface ExtraSettings {
-  showAPP_SETTINGS: boolean
-  cacheAPP_SETTINGS: boolean
+  showAppSettings: boolean
+  cacheAppSettings: boolean
   defaultThemeMode: 'auto' | 'light' | 'dark'
 }
 
@@ -28,8 +28,8 @@ export type Settings = ConfigSettings & ExtraSettings
 export const APP_SETTINGS: Settings = {
   // ----- EXTRA SETTINGS -----
 
-  showAPP_SETTINGS: true, // 是否显示【页面设置】按钮
-  cacheAPP_SETTINGS: true, // 是否缓存【页面设置】
+  showAppSettings: true, // 是否显示【页面设置】按钮
+  cacheAppSettings: true, // 是否缓存【页面设置】
   defaultThemeMode: 'auto', // 页面主题的亮暗模式
 
   // ----- CONFIG SETTINGS -----

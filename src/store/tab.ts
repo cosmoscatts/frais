@@ -1,130 +1,97 @@
 import type { Tab } from '~/types'
-import { readTabsFromStorageIfCached, writeTabsIntoStorageIfCached } from '~/utils'
+import { Token, applyCachedTabs, cacheTabs } from '~/utils'
 
 export const useTabStore = defineStore(
   'tabStore',
   () => {
-    // 记录访问过的页面
-    const visitedTabs = ref<Tab[]>([])
-    // 记录访问过的缓存页面
-    const cachedTabNames = computed<string[]>(() => {
-      const names = visitedTabs.value.filter(i => !!i.cached && !!i.name)
-        .map(j => j.name) || []
-      // `Set` 去重
-      return [
-        ...new Set([...names]).values(),
-      ]
+    const tabs = ref<Tab[]>([])
+    const cachedTabNames = computed<string[]>(() => { // 记录访问过的缓存页面
+      const names = tabs.value
+        .filter(i => !!i.cached && !!i.name)
+        .map(j => j.name)
+      return [...new Set(names).values()]
     })
 
-    /**
-     * 初始化 `tabs`，如果开启了多页签缓存，需要从缓存中读取历史数据
-     */
-    function initTabs(userId?: number) {
-      if (!userId)
-        return
-      visitedTabs.value = readTabsFromStorageIfCached(userId)
-    }
-
-    /**
-     * 添加 `tab`
-     */
-    function addOneTab(_tab: Tab) {
-      // 已经添加的 `tab-path` 集合
-      const existPathList = visitedTabs.value.map(i => i.path)
-      // 判断是否已经存在
-      if (!_tab.path || existPathList.includes(_tab.path))
-        return
-
-      visitedTabs.value.push(_tab)
-
-      // 如果开启多页签缓存，则需要写入缓存
-      writeTabsIntoStorageIfCached([...visitedTabs.value])
-    }
-
-    /**
-     * 删除一个 `tab`
-     */
-    function removeOneTab(_tab: Tab) {
-      return new Promise((resolve) => {
-        for (const [idx, item] of visitedTabs.value.entries()) {
-          if (item.path !== _tab.path)
-            continue
-          visitedTabs.value.splice(idx, 1)
+    const createTabs = () => {
+      const uiStore = useUiStore()
+      if (uiStore.settings.cacheTabs) {
+        tabs.value = applyCachedTabs()
+      } else {
+        if (!Token.get()) {
+          tabs.value = []
         }
+      }
+    }
 
-        // 如果开启多页签缓存，则需要写入缓存
-        writeTabsIntoStorageIfCached([...visitedTabs.value])
+    const cacheIfNeed = () => { // 开启 tab 缓存，则需要写入缓存
+      const uiStore = useUiStore()
+      if (uiStore.settings.cacheTabs) {
+        cacheTabs(G.clone(tabs.value))
+      }
+    }
 
-        resolve({
-          visitedTabs,
-        })
+    const addTab = (tab: Tab) => {
+      return new Promise((resolve) => {
+        if (tab.path && !tabs.value.map(i => i.path).includes(tab.path)) {
+          tabs.value.push(G.clone(tab))
+          cacheIfNeed()
+        }
+        resolve({ tabs })
       })
     }
 
-    /**
-     * 删除除了当前 `tab` 之外的所有
-     */
-    function removerOtherTabs(_tab: Tab) {
+    const removeOneTab = (tab: Tab) => {
       return new Promise((resolve) => {
-        visitedTabs.value = [_tab]
-
-        // 如果开启多页签缓存，则需要写入缓存
-        writeTabsIntoStorageIfCached([...visitedTabs.value])
-
-        resolve({
-          visitedTabs,
-        })
+        const index = tabs.value.findIndex(i => i.path === tab.path)
+        if (~index) {
+          tabs.value.splice(index, 1)
+          cacheIfNeed()
+        }
+        resolve({ tabs })
       })
     }
 
-    /**
-     * 删除 `tab` 集合
-     */
-    function removeTabsByList(tabList: Tab[]) {
+    const removeOtherTabs = (tab: Tab) => {
       return new Promise((resolve) => {
-        const pathList = tabList.map(i => i.path) || []
-        const restTabs = visitedTabs.value.filter(i => !pathList.includes(i.path))
-        visitedTabs.value = [...restTabs]
-
-        // 如果开启多页签缓存，则需要写入缓存
-        writeTabsIntoStorageIfCached([...visitedTabs.value])
-
-        resolve({
-          visitedTabs,
-        })
+        tabs.value = [tab]
+        cacheIfNeed()
+        resolve({ tabs })
       })
     }
 
-    /**
-     * 删除所有 `tab`
-     */
-    function removeAllTabs() {
+    const removeListTabs = (list: Tab[]) => {
       return new Promise((resolve) => {
-        visitedTabs.value = []
+        const pathList = list.map(i => i.path) || []
+        if (pathList.length) {
+          tabs.value = [...tabs.value.filter(i => !pathList.includes(i.path))]
+          cacheIfNeed()
+        }
+        resolve({ tabs })
+      })
+    }
 
-        // 如果开启多页签缓存，则需要写入缓存
-        writeTabsIntoStorageIfCached([])
-
-        resolve({
-          visitedTabs,
-        })
+    const removeAllTabs = () => {
+      return new Promise((resolve) => {
+        tabs.value = []
+        cacheIfNeed()
+        resolve({ tabs })
       })
     }
 
     return {
-      visitedTabs,
+      tabs,
       cachedTabNames,
-      initTabs,
-      addOneTab,
+      createTabs,
+      addTab,
       removeOneTab,
-      removerOtherTabs,
-      removeTabsByList,
+      removeOtherTabs,
+      removeListTabs,
       removeAllTabs,
     }
   },
-  {
-    persist: {
-      enabled: true,
-    },
-  },
+  { persist: { enabled: true } },
 )
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useTabStore, import.meta.hot))
+}
