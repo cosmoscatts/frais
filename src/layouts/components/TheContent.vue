@@ -10,7 +10,7 @@ const animationMode = computed(() => {
 
 <template>
   <div>
-    <PageHeader mb10px />
+    <slot />
     <RouterView v-slot="{ Component, route }">
       <Transition :name="animationMode" mode="out-in" appear>
         <KeepAlive :include="tabStore.cachedTabNames" :max="10">

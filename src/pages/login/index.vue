@@ -7,12 +7,12 @@ import { APP_META } from '~/config'
 <template>
   <div
     flex
-    hw-screen
+    hscreen wscreen
     of="x-hidden y-auto" lt-sm="!of-hidden"
   >
     <div
       relative
-      flex-center
+      flex-c
       h-full min-h-650px
       w="35/100" max-w-600px
       bg="[var(--primary-color)]"
@@ -20,8 +20,8 @@ import { APP_META } from '~/config'
     >
       <div absolute top-20px left-20px i-carbon-rocket text-20px />
 
-      <div flex="col center" mb-100px>
-        <div text-32px font-bold flex-center>
+      <div flex-col-c mb-100px>
+        <div text-32px font-bold flex-c>
           欢迎使用 {{ APP_META.name }}
         </div>
         <p v-if="APP_META.description" text-16px>
@@ -36,10 +36,10 @@ import { APP_META } from '~/config'
     </div>
     <div
       relative
-      flex="1 center"
-      h-full min-h-650px
+      flex="1 c"
+      hfull min-h-650px
       bg="[#F5F5F5] dark:[#121212]"
-      lt-sm:w-full
+      lt-sm:wfull
       lt-sm:bg="!white dark:![#2a2a2b]"
     >
       <LoginWrapper
@@ -48,7 +48,7 @@ import { APP_META } from '~/config'
         dark="border-1 border-neutral-600 !shadow-none"
         lt-sm="!shadow-none !border-none"
       />
-      <div flex-center absolute left="[1/2]" bottom-20px>
+      <div flex-c absolute left="[1/2]" bottom-20px>
         <DarkToggle />
       </div>
     </div>

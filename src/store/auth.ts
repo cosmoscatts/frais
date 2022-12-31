@@ -1,6 +1,7 @@
 import type { Menu, User } from '~/types'
 import { APP_MENU } from '~/config'
 import defaultAvatar from '~/assets/default-avatar.jpg'
+import { Token } from '~/utils'
 
 export const useAuthStore = defineStore(
   'authStore',
@@ -36,6 +37,7 @@ export const useAuthStore = defineStore(
         return new Promise((resolve) => {
           hasLogin.value = true
           updateUser(data)
+          Token.set(Nanoid.nanoid(16))
           ;[fetchUser, fetchMenus].forEach(fn => fn())
           resolve(user)
         })

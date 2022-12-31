@@ -8,7 +8,7 @@ function goBack() {
 </script>
 
 <template>
-  <div hw-screen flex-center of-hidden>
+  <div hscreen wscreen  flex-c of-hidden>
     <n-result
       status="500"
       title="500 服务器错误"

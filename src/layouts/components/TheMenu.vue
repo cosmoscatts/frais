@@ -43,7 +43,7 @@ function formatMenuOption(item: Menu): MenuOption {
     children: children?.map((child: Menu) => formatMenuOption(child)),
   }
 }
-const options = computed<MenuOption[]>(() => authStore.menu.get().map(i => formatMenuOption(i)))
+const options = computed<MenuOption[]>(() => authStore.menus.map(i => formatMenuOption(i)))
 
 const route = useRoute()
 const selectedValues = computed(() => {

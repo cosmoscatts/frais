@@ -21,7 +21,7 @@ const showTraditionalColors = $ref(false)
 <template>
   <div>
     <n-grid :cols="8" :x-gap="8" :y-gap="12">
-      <n-grid-item v-for="color in COMMON_COLORS" :key="color" flex-x-center>
+      <n-grid-item v-for="color in COMMON_COLORS" :key="color" flex-x-c>
         <ColorCheckbox :color="color" :checked="color === modelValue" @click="onUpdateValue(color)" />
       </n-grid-item>
     </n-grid>

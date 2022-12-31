@@ -1,14 +1,15 @@
 <script  setup lang="ts">
 import {
+  TheContent,
   TheFoot,
-  TheMain,
   TheNav,
-  TheSettings,
   TheTabs,
 } from '../components'
-import { APP_LAYOUT_PARAMS, showAPP_SETTINGS } from '~/config'
+import { APP_LAYOUT_PARAMS } from '~/config'
 
-const { baseSettings } = storeToRefs(useAppStore())
+const uiStore = useUiStore()
+const refMainWrapper = ref()
+const refContentWrapper = ref()
 
 const {
   navHeight,
@@ -20,38 +21,27 @@ const {
   backTopvisibilityHeight,
 } = APP_LAYOUT_PARAMS
 
-// 计算内容区域需要减去的高度值
 const diffHeight = computed(() => {
   let height = navHeight
-  if (baseSettings.value.showTabs)
-    height += tabHeight
-  // `border` 边框的高度也需要考虑
+  if (uiStore.settings.showTabs) height += tabHeight
   return height + 1
 })
-
-// 设置 `backTop` 的监听目标
-// `fixNav = true` 即固定页头时，`target` 为 `refContentWrapper`
-// 否则为 `refMainWrapper`
-const refMainWrapper = ref()
-const refContentWrapper = ref()
-// 是否为暗色模式
-const isDarkMode = isDark
 </script>
 
 <template>
-  <n-layout ref="refMainWrapper" hw-screen of-hidden :native-scrollbar="false">
-    <n-layout-header bordered :position="baseSettings.fixNav ? 'absolute' : 'static'">
-      <TheNav w-full :class="baseSettings.invertMenu && !isDarkMode ? 'bg-[#001428] text-neutral' : 'bg-transparent'" :style="{ height: `${navHeight}px` }" />
-      <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
+  <n-layout ref="refMainWrapper" hscreen wscreen of-hidden :native-scrollbar="false">
+    <n-layout-header bordered :position="uiStore.settings.fixNav ? 'absolute' : 'static'">
+      <TheNav w-full :class="uiStore.settings.invertMenu && !isDark ? 'bg-[#001428] text-neutral' : 'bg-transparent'" :style="{ height: `${navHeight}px` }" />
+      <TheTabs v-show="uiStore.settings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
     </n-layout-header>
     <n-layout
       ref="refContentWrapper" ha
-      :position="baseSettings.fixNav ? 'absolute' : 'static'"
+      :position="uiStore.settings.fixNav ? 'absolute' : 'static'"
       :style="{
         marginTop: `${
-          !baseSettings.fixNav
+          !uiStore.settings.fixNav
             ? 0
-            : baseSettings.showTabs
+            : uiStore.settings.showTabs
               ? navHeight + tabHeight + 1
               : navHeight + 1
         }px`,
@@ -60,10 +50,12 @@ const isDarkMode = isDark
       :native-scrollbar="false"
     >
       <n-layout-content>
-        <TheMain ha :style="{ padding: `${contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
+        <TheContent ha :style="{ padding: `${contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }">
+          <PageHeader mb10px />
+        </TheContent>
       </n-layout-content>
-      <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
-        <TheFoot hw-full />
+      <n-layout-footer v-if="uiStore.settings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
+        <TheFoot h-full w-full />
       </n-layout-footer>
       <n-back-top
         :listen-to="refContentWrapper"
@@ -78,6 +70,5 @@ const isDarkMode = isDark
       :bottom="backTopBottom"
       :visibility-height="backTopvisibilityHeight"
     />
-    <TheSettings v-if="showAPP_SETTINGS" />
   </n-layout>
 </template>

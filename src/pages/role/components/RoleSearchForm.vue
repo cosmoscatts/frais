@@ -130,7 +130,7 @@ defineExpose({
       <n-gi :span="4">
         <n-grid :x-gap="12" :y-gap="12" cols="1 l:2 xxl:3" responsive="screen">
           <n-gi span="0 s:1" offset="0 xxl:1">
-            <div flex-y-center justify-end>
+            <div flex-y-c justify-end>
               <n-button type="primary" text-color="white" @click="searchTableData">
                 <template #icon>
                   <n-icon :component="SearchIcon" color="white" />
@@ -140,7 +140,7 @@ defineExpose({
             </div>
           </n-gi>
           <n-gi span="0 s:1">
-            <div flex-y-center justify-end>
+            <div flex-y-c justify-end>
               <n-button secondary @click="resetSearchModel">
                 <template #icon>
                   <n-icon :component="RefreshIcon" />

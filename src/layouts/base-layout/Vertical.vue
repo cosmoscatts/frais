@@ -42,7 +42,7 @@ const mainWrapperLeft = computed(() => {
 </script>
 
 <template>
-  <n-layout has-sider hw-screen of-hidden>
+  <n-layout has-sider hscreen wscreen of-hidden>
     <n-layout-sider
       v-if="!isMobile"
       bordered position="absolute"
@@ -92,7 +92,7 @@ const mainWrapperLeft = computed(() => {
           <TheContent ha :style="{ padding: `${contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
         </n-layout-content>
         <n-layout-footer v-if="uiStore.settings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
-          <TheFoot hw-full />
+          <TheFoot hfull wfull />
         </n-layout-footer>
         <n-back-top
           :listen-to="refContentWrapper"

@@ -41,7 +41,7 @@ const layoutElWidth = computed(() => {
 </script>
 
 <template>
-  <div flex-y-center justify-between h-100px>
+  <div flex-y-c justify-between h-100px>
     <div
       v-for="{ label, value }, idx in options" :key="idx"
       border-2px rounded-6px cursor-pointer hover:border-primary

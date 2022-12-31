@@ -1,6 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { LOGIN, NO_PERMISSION, WHITE_LIST } from '~/router/constants'
-import { checkRoutePermission, findFirstRouteInPermission } from '~/utils'
+import { Token, checkRoutePermission, findFirstRouteInPermission } from '~/utils'
 
 export default function createPermissionGuard(
   to: RouteLocationNormalized,
@@ -8,7 +8,7 @@ export default function createPermissionGuard(
   next: NavigationGuardNext,
 ) {
   const authStore = useAuthStore()
-  const hasLogin = authStore.hasLogin
+  const hasLogin = authStore.hasLogin && !!Token.get()
   const needLogin = Boolean(to.meta?.requiresAuth) && !WHITE_LIST.includes(to.name as string)
   // 需要克隆 menus, checkRoutePermission 会操作传递的数组对象
   const hasPermission = checkRoutePermission(G.clone(authStore.menus), to)

@@ -1,37 +1,21 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
 import AccountForm from './AccountForm.vue'
 import PhoneForm from './PhoneForm.vue'
+import type { TabValue } from './interfaces'
 import { APP_META } from '~/config'
 
 const refAccountForm = ref()
 const refPhoneForm = ref()
-
-type TabValue = 'account' | 'phone'
 const currentTabValue = ref<TabValue>('account')
-
-/**
- * 实现 `form` 显示时，`input` 自动 `focus`
- */
-function inputAutoFocus() {
-  const refMap: Record<TabValue, Ref> = {
-    account: refAccountForm,
-    phone: refPhoneForm,
-  }
-  refMap[currentTabValue.value]?.value?.focusFirstInput()
-}
-
+const inputAutoFocus = () => [refAccountForm, refPhoneForm][Number(currentTabValue.value === 'phone')].value?.focusFirstInput()
 onMounted(inputAutoFocus)
-watch(currentTabValue, () => {
-  // 等待 `form` 挂载完成
-  useTimeoutFn(inputAutoFocus, 200)
-})
+watch(currentTabValue, () => useTimeoutFn(inputAutoFocus, 200))
 </script>
 
 <template>
   <div flex="center col" p-10 rounded-1>
-    <div text="32px center" font-bold flex-y-center>
-      <div flex-center h-36px w-36px bg="[var(--primary-color)]" rounded-1 mr-3>
+    <div text="32px center" font-bold flex-y-c>
+      <div flex-c h-36px w-36px bg="[var(--primary-color)]" rounded-1 mr-3>
         <div i-carbon-rocket text="20px white" />
       </div>
       <span font-bold text-36px>{{ APP_META.name }}</span>
@@ -55,7 +39,7 @@ watch(currentTabValue, () => {
       <n-divider>
         其他登录方式
       </n-divider>
-      <div w-full flex-center gap-x-5>
+      <div w-full flex-c gap-x-5>
         <n-tooltip placement="bottom">
           <template #trigger>
             <n-button color="#44006F" circle>

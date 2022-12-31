@@ -119,7 +119,7 @@ function onSubmit(e: MouseEvent) {
       </n-input>
     </n-form-item>
 
-    <div flex-center>
+    <div flex-c>
       <n-button
         type="primary" :loading="loading" text-color="white"
         :style="{ marginRight: '15px' }" @click="onSubmit"

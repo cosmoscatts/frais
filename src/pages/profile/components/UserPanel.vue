@@ -91,7 +91,7 @@ function onChange({
   <n-card>
     <n-grid x-gap="12" :cols="4" responsive="screen" item-responsive>
       <n-gi span="4 m:1">
-        <div flex-center w-full>
+        <div flex-c w-full>
           <n-upload
             :file-list="avatar"
             :default-upload="false"
@@ -105,7 +105,7 @@ function onChange({
       </n-gi>
 
       <n-gi span="4 m:3">
-        <div flex-y-center hw-full>
+        <div flex-y-c hfull wfull >
           <n-descriptions label-placement="left" w-full lt-md:m="t-5 x-5">
             <n-descriptions-item>
               <template #label>

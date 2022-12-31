@@ -26,7 +26,7 @@ const uiStore = useUiStore()
     text="stone-600 dark:light-600/80"
     :class="{ 'z-10': active, 'z-9': hover, 'text-primary': active }"
   >
-    <div absolute left-0 bottom-0 hw-full of-hidden>
+    <div absolute left-0 bottom-0 hfull wfull  of-hidden>
       <TabChromeShape
         v-bind="{
           hover,

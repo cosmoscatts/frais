@@ -8,25 +8,15 @@ import type {
 import {
   TrashBinOutline as TrashBinOutlineIcon,
 } from '@vicons/ionicons5'
-import { REGEXP_PHONE, countSendingSmsCode, getSmsCode } from '../helper'
-import { debug } from '~/config'
-import { findFirstPermissionRoute, loginCallback } from '~/utils'
-
-/**
- * 定义表单数据结构
- */
-interface ModelType {
-  phone?: string
-  code?: string
-}
+import { REGEXP_PHONE, countSendingSmsCode, getSmsCode } from './sms-code'
+import type { PhoneForm } from './interfaces'
+import { findFirstRouteInPermission } from '~/utils'
 
 const router = useRouter()
-const { message, notification } = useGlobalNaiveApi()
-
+const authStore = useAuthStore()
 const refForm = ref<FormInst | null>(null)
 
-// 表单基础数据
-const baseFormModel = debug
+const baseFormModel = isDevelopment
   ? {
       phone: '13650223322',
       code: '123456',
@@ -35,20 +25,13 @@ const baseFormModel = debug
       phone: '',
       code: '',
     }
-
-// 表单数据
-const formModel = reactive<ModelType>({
+const formModel = reactive<PhoneForm>({
   ...baseFormModel,
 })
 
-/**
- * 校验手机号
- */
 function validatePhone(value: string) {
   return REGEXP_PHONE.test(value)
 }
-
-// 表单校验规则
 const rules: FormRules = {
   phone: [
     {
@@ -72,21 +55,16 @@ const rules: FormRules = {
 }
 
 const { loading, startLoading, endLoading } = useLoading()
-
-/**
- * 登录
- */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
-  refForm.value?.validate(async (errors?: FormValidationError[]) => {
-    if (errors)
-      return
+  refForm.value?.validate((errors?: FormValidationError[]) => {
+    if (errors) return
     if (formModel.code !== '123456') {
-      message.error('验证码错误')
+      $message.error('验证码错误')
       return
     }
     startLoading()
-    await loginCallback({
+    const data = {
       id: 1,
       username: 'admin',
       name: 'admin',
@@ -94,57 +72,47 @@ function onSubmit(e: MouseEvent) {
       phone: '6666666666',
       email: 'dasb@qq.com',
       createTime: new Date(),
-    })
-    const path = findFirstPermissionRoute() ?? '/'
-    useTimeoutFn(() => {
-      endLoading()
-      router.push(path)
-      notification.success({
-        title: '登录成功',
-        content: '欢迎使用~',
-        duration: 3000,
-      })
-    }, 1000)
+    }
+    authStore
+      .login(data)
+      .then(() => useTimeoutFn(() => {
+        router.push(findFirstRouteInPermission())
+        $notification.success({
+          title: '登录成功',
+          content: '欢迎使用~',
+          duration: 3000,
+        })
+      }, 500))
+      .finally(() => useTimeoutFn(endLoading, 1000))
   })
 }
 
-// 实现聚焦功能
 const refInputPhone = ref()
-function focusFirstInput() {
-  refInputPhone.value?.focus()
-}
+const focusFirstInput = () => refInputPhone.value?.focus()
 
-// 禁用验证码及发送按钮
-const codeInputDisabled = computed(() => (!formModel.phone || !validatePhone(formModel.phone)))
+const codeInputDisabled = computed(() => !formModel.phone || !validatePhone(formModel.phone))
 
 const {
   loading: smsLoading,
   startLoading: startSmsLoading,
   endLoading: endSmsLoading,
 } = useLoading(false)
-
 const {
   isCounting,
   sendCodeBtnLabel,
   startCounting,
 } = countSendingSmsCode()
-
-/**
- * 处理发送验证码
- */
 function handleSmsCode() {
   startSmsLoading()
   useTimeoutFn(() => {
-    message.success('验证码发送成功')
+    $message.success('验证码发送成功')
     endSmsLoading()
     startCounting()
     getSmsCode()
   }, 1000)
 }
 
-defineExpose({
-  focusFirstInput,
-})
+defineExpose({ focusFirstInput })
 </script>
 
 <template>
@@ -169,7 +137,7 @@ defineExpose({
       </n-input>
     </n-form-item>
     <n-form-item path="code" label="验证码">
-      <div class="flex-y-center w-full">
+      <div class="flex-y-c w-full">
         <n-input
           v-model:value="formModel.code"
           :disabled="codeInputDisabled"

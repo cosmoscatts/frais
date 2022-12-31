@@ -4,7 +4,7 @@ import { TheContent } from '../components'
 
 <template>
   <n-layout
-    hw-screen of-hidden
+    hscreen wscreen of-hidden
     :native-scrollbar="false"
   >
     <TheContent />

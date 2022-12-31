@@ -8,7 +8,7 @@ defineEmits(['update:model-value'])
 </script>
 
 <template>
-  <div flex-y-center justify-between my-3>
+  <div flex-y-c justify-between my-3>
     <span>
       {{ name }}
     </span>

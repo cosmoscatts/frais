@@ -10,24 +10,14 @@ import {
   GlassesOutline as GlassesOutlineIcon,
   TrashBinOutline as TrashBinOutlineIcon,
 } from '@vicons/ionicons5'
-import { debug } from '~/config'
-import { findFirstPermissionRoute, loginCallback } from '~/utils'
-
-/**
- * 定义表单数据结构
- */
-interface ModelType {
-  username?: string
-  password?: string
-}
+import type { AccountForm } from './interfaces'
+import { findFirstRouteInPermission } from '~/utils'
 
 const router = useRouter()
-const { message, notification } = useGlobalNaiveApi()
-
+const authStore = useAuthStore()
 const refForm = ref<FormInst | null>(null)
 
-// 表单基础数据
-const baseFormModel = debug
+const baseFormModel = isDevelopment
   ? {
       username: 'admin',
       password: '123456',
@@ -36,13 +26,10 @@ const baseFormModel = debug
       username: '',
       password: '',
     }
-
-// 表单数据
-const formModel = reactive<ModelType>({
+const formModel = reactive<AccountForm>({
   ...baseFormModel,
 })
 
-// 表单校验规则
 const rules: FormRules = {
   username: [
     {
@@ -65,22 +52,20 @@ const rules: FormRules = {
   ],
 }
 
-const { loading, startLoading, endLoading } = useLoading()
+const refInputUserName = ref()
+const focusFirstInput = () => refInputUserName.value?.focus()
 
-/**
- * 登录
- */
+const { loading, startLoading, endLoading } = useLoading()
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
-  refForm.value?.validate(async (errors?: FormValidationError[]) => {
-    if (errors)
-      return
+  refForm.value?.validate((errors?: FormValidationError[]) => {
+    if (errors) return
     if (formModel.password !== '123456') {
-      message.error('账号或密码错误')
+      $message.error('账号或密码错误')
       return
     }
     startLoading()
-    await loginCallback({
+    const data = {
       id: 1,
       username: 'admin',
       name: 'admin',
@@ -88,29 +73,22 @@ function onSubmit(e: MouseEvent) {
       phone: '6666666666',
       email: 'dasb@qq.com',
       createTime: new Date(),
-    })
-    const path = findFirstPermissionRoute() ?? '/'
-    useTimeoutFn(() => {
-      endLoading()
-      router.push(path)
-      notification.success({
-        title: '登录成功',
-        content: '欢迎使用~',
-        duration: 3000,
-      })
-    }, 1000)
+    }
+    authStore
+      .login(data)
+      .then(() => useTimeoutFn(() => {
+        router.push(findFirstRouteInPermission())
+        $notification.success({
+          title: '登录成功',
+          content: '欢迎使用~',
+          duration: 3000,
+        })
+      }, 500))
+      .finally(() => useTimeoutFn(endLoading, 1000))
   })
 }
 
-// 实现聚焦功能
-const refInputUserName = ref()
-function focusFirstInput() {
-  refInputUserName.value?.focus()
-}
-
-defineExpose({
-  focusFirstInput,
-})
+defineExpose({ focusFirstInput })
 </script>
 
 <template>
@@ -156,4 +134,3 @@ defineExpose({
     </n-button>
   </n-form>
 </template>
-

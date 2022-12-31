@@ -8,7 +8,7 @@ function goBack() {
 </script>
 
 <template>
-  <div hw-screen flex-center of-hidden>
+  <div hscreen wscreen flex-c of-hidden>
     <n-result status="404" title="404 资源不存在" description="生活总归带点荒谬">
       <template #icon>
         <img :src="ImageNotFound" h-400px>

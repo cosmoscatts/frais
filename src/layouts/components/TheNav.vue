@@ -21,10 +21,9 @@ const isVertical = computed(() => uiStore.settings.layout === 'vertical')
     <div flex-auto />
     <div v-if="!isMobile" flex-y-c>
       <a
-        icon-btn text-lg i-carbon-logo-github mx-4
+        icon-btn text-lg i-ri-github-line mr4
         :href="APP_META.github"
-        target="_blank"
-        title="GitHub"
+        target="_blank" title="GitHub"
       />
       <Bell mr4 />
       <FullScreen mr4 />

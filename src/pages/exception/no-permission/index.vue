@@ -8,7 +8,7 @@ function goBack() {
 </script>
 
 <template>
-  <div hw-screen flex-center of-hidden>
+  <div hscreen wscreen flex-c of-hidden>
     <n-result
       status="403"
       title="403 禁止访问"
