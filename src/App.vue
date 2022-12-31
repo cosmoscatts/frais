@@ -7,8 +7,6 @@ const theme = computed(() => {
     : null
 })
 
-// `useHead` 创建 `head` 数据
-useHeadMeta()
 // 主题覆盖
 const { themeOverrides } = storeToRefs(useAppStore())
 // 初始化 `loading`
@@ -33,4 +31,3 @@ useTimeoutFn(endLoading, LOADING_INTERVAL)
     </n-loading-bar-provider>
   </n-config-provider>
 </template>
-

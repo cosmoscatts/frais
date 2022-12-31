@@ -1,10 +1,9 @@
 import type { RemovableRef } from '@vueuse/core'
 import { wrapStorageKey } from './wrapStorageKey'
 import type { Tab } from '~/types'
-import { appStorageKeyEnum } from '~/enum'
 
 /** `tab` 缓存在 `storage` 中的 `key` */
-const TABS_KEY = wrapStorageKey(appStorageKeyEnum.tabs)
+const TABS_KEY = wrapStorageKey('TABS')
 const tabStorage: RemovableRef<{ [key: string]: Tab[] }> = useStorage(TABS_KEY, {}, localStorage)
 
 /**

@@ -1,8 +1,7 @@
 import { defaultThemeMode } from '~/config'
 import { wrapStorageKey } from '~/utils'
-import { appStorageKeyEnum } from '~/enum'
 
-const THEME_MODE_KEY = wrapStorageKey(appStorageKeyEnum.themeMode)
+const THEME_MODE_KEY = wrapStorageKey('THEME_MODE')
 
 /**
  * 初始化主题的亮、暗模式
@@ -34,4 +33,3 @@ function initThemeDarkMode() {
 
 export const isDark = initThemeDarkMode()
 export const useToggleDark = useToggle(isDark)
-

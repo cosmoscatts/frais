@@ -1,10 +1,9 @@
 import type { RemovableRef } from '@vueuse/core'
 import { wrapStorageKey } from './wrapStorageKey'
-import { appStorageKeyEnum } from '~/enum'
 import type { ConfigSettingObject } from '~/config'
 
 /** `app-settings` 缓存在 `storage` 中的 `key` */
-const APP_SETTINGS_KEY = wrapStorageKey(appStorageKeyEnum.appSettings)
+const APP_SETTINGS_KEY = wrapStorageKey('APP_SETTINGS')
 const appSettingsStorage: RemovableRef<ConfigSettingObject | Object> = useStorage(APP_SETTINGS_KEY, {}, localStorage)
 
 /**
