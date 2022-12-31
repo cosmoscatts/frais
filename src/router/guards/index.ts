@@ -1,22 +1,14 @@
 import type { Router } from 'vue-router'
-import createPermissionGuard from './createPermissionGuard'
+import createPermissionGuard from './permission-guard'
 import { APP_META } from '~/config'
 
 export default function createRouterGuard(router: Router) {
-  // `Loading Bar`
-  const { loadingBar } = useGlobalNaiveApi()
   router.beforeEach((to, from, next) => {
-    // 开始 loadingBar
-    loadingBar.start()
-    // 页面跳转权限处理
+    $loadingBar.start()
     createPermissionGuard(to, from, next)
   })
-
   router.afterEach((to) => {
-    // 设置 `document title`
-    const title = to.meta?.title as string ?? APP_META.name
-    useTitle(title)
-    // 结束 loadingBar
-    loadingBar.finish()
+    useTitle(to.meta?.title as string ?? APP_META.name)
+    $loadingBar.finish()
   })
 }

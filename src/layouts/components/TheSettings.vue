@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { vElementHover } from '@vueuse/components'
 import { ColorPaletteOutline } from '@vicons/ionicons5'
-import SettingsDrawer from './settings/SettingsDrawer.vue'
+import SettingsDrawer from './settings-drawer/index.vue'
 import { APP_LAYOUT_PARAMS } from '~/config'
 
 const {
@@ -9,51 +8,41 @@ const {
   settingsDrawerBottom,
   settingsDrawerWidth,
 } = APP_LAYOUT_PARAMS
+const LOADING_INTERVAL = 1000
 
-const {
-  updateSettingsFromStageData,
-  resetStageData,
-} = useAppStore()
-
-// 是否显示 `app` 设置抽屉
+const uiStore = useUiStore()
 let showSettingsDrawer = $ref(false)
 
-let isButtonHovered = $ref(false)
-function onHover(state: boolean) {
-  isButtonHovered = state
-}
-
-function onClick() {
-  isButtonHovered = false
-  showSettingsDrawer = true
-}
-
-// 应用当前配置
 function saveCurrentSettings() {
-  const { message } = useGlobalNaiveApi()
-  const LOADING_INTERVAL = 1000
-  message.loading('正在更新配置')
+  $message.loading('正在更新配置')
   useTimeoutFn(() => {
-    updateSettingsFromStageData()
-    message.destroyAll()
-    message.success('应用成功')
+    uiStore.applyCopySettings()
+    $message.destroyAll()
+    $message.success('应用成功')
     showSettingsDrawer = false
   }, LOADING_INTERVAL)
 }
 </script>
 
 <template>
-  <div fixed :style="{ right: `${settingsDrawerRight}px`, bottom: `${settingsDrawerBottom}px` }" z-1000>
+  <div
+    fixed z-1000
+    :style="{
+      right: `${settingsDrawerRight}px`,
+      bottom: `${settingsDrawerBottom}px`,
+    }"
+  >
     <n-button
-      v-if="!showSettingsDrawer" v-element-hover="onHover"
-      size="large" type="primary" text-color="white" secondary
-      :circle="!isButtonHovered" :round="isButtonHovered"
-      @click="onClick()"
+      ref="refButton"
+      size="large"
+      type="primary"
+      text-color="white"
+      secondary
+      @click="showSettingsDrawer = true"
     >
       <template #icon>
         <n-icon :size="24" :component="ColorPaletteOutline" />
       </template>
-      <span v-if="isButtonHovered" font-bold>主题配置</span>
     </n-button>
   </div>
 
@@ -70,7 +59,7 @@ function saveCurrentSettings() {
           <n-button type="primary" block @click="saveCurrentSettings">
             <span text="dark dark:white" font-bold>应用当前配置</span>
           </n-button>
-          <n-button type="warning" block @click="resetStageData">
+          <n-button type="warning" block @click="uiStore.resetCopySettings">
             <span text="dark dark:white" font-bold>重置当前配置</span>
           </n-button>
         </n-space>

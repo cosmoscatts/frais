@@ -1,33 +1,25 @@
 <script setup lang="ts">
-import { TabItem } from './tab'
+import TabItem from './tab-item/index.vue'
 import type { Tab } from '~/types'
 
 const route = useRoute()
 const router = useRouter()
-const { message } = useGlobalNaiveApi()
-
+const uiStore = useUiStore()
 const tabStore = useTabStore()
-const { addOneTab, removeOneTab } = tabStore
-const { baseSettings } = storeToRefs(useAppStore())
 
-// 多页签风格是否为谷歌风格
-const isChromeTabShapeStyle = computed(() => {
-  return baseSettings.value.tabShapeStyle === 'chrome'
-})
+const chrome = computed(() => uiStore.settings.tabShapeStyle === 'chrome')
+const tabs = $computed(() => tabStore.tabs)
 
-// 多页签集合
-const tabs = $computed(() => {
-  return tabStore.visitedTabs || []
-})
+const isActive = (path?: string) => { // 判断是否为当前页面
+  if (!path) return false
+  if (route.path.startsWith('/redirect')) path = `/redirect${path}`
+  return path === route.path
+}
 
-/**
- * 添加 `tab`
- */
 function addTab() {
   const { name, path, meta: { title, cached } } = route
-  if ([title, path].some(i => !i))
-    return
-  addOneTab({
+  if ([title, path].some(i => !i)) return
+  tabStore.addTab({
     path,
     name,
     title,
@@ -37,91 +29,63 @@ function addTab() {
 addTab()
 watch(() => route.path, addTab)
 
-/**
- * 判断是否为当前路由，即当前页面
- */
-function isActive(path?: string) {
-  if (!path)
-    return false
-  if (route.path.startsWith('/redirect'))
-    return `/redirect${path}` === route.path
-  return path === route.path
-}
-
-/**
- * 关闭选中的 `tab`
- */
-function handleCloseTab(idx: number) {
+function handleCloseTab(index: number) { // 关闭 Tab
   if (tabs.length === 1) {
-    message.warning('已经是最后一个标签了')
+    $message.warning('已经是最后一个标签了')
     return
   }
-
-  const currentTab = tabs[idx]
-  if (!currentTab)
-    return
-  removeOneTab(currentTab).then(() => {
-    // 当关闭的是当前路由，需要跳转到 `tabs` 的最后一个
-    if (currentTab.path === route.path) {
-      // 找到最后一个
-      const latest = tabs.slice(-1)[0]
-      const path = latest
-        ? latest.path
-        : '/'
-      router.push(path)
-    }
-  })
+  const currentTab = tabs[index]
+  if (!currentTab) return
+  tabStore
+    .removeOneTab(currentTab)
+    .then(() => {
+      // 当关闭的是当前路由
+      // 需要跳转到 `tabs` 的最后一个
+      if (currentTab.path === route.path) {
+        const latest = tabs.slice(-1)[0] // 找到最后一个
+        router.push(latest?.path ?? '/')
+      }
+    })
 }
 
 const refTab = ref()
 const refContainer = ref()
 const refScrollWrapper = ref()
 
-const { width: refContainerWidth, left: refContainerLeft } = useElementBounding(refContainer)
-
-// 当前显示的 `tab` 索引
 const activeTabIndex = computed(() => {
   const redirectPrefix = '/redirect'
   const activePath = route.path.startsWith(redirectPrefix)
     ? route.path.substring(redirectPrefix.length)
     : route.path
-  return tabs.findIndex(i => i.path === activePath) || -1
+  return tabs.findIndex(i => i.path === activePath)
 })
 
-async function getActiveTabClientX() {
-  await nextTick()
-  if (refTab.value && refTab.value?.children?.length && refTab.value.children[activeTabIndex.value]) {
-    const activeTabEl = refTab.value.children[activeTabIndex.value]
-    const { x, width } = activeTabEl.getBoundingClientRect()
-    const clientX = x + width / 2
-    useTimeoutFn(() => {
-      handleScroll(clientX)
-    }, 50)
-  }
+function getActiveTabClientX() {
+  nextTick()
+    .then(() => {
+      if (refTab.value?.children?.length
+      && refTab.value.children[activeTabIndex.value]) {
+        const activeTabEl = refTab.value.children[activeTabIndex.value]
+        const { x, width } = activeTabEl.getBoundingClientRect()
+        const clientX = x + width / 2
+        useTimeoutFn(() => {
+          handleScroll(clientX)
+        }, 50)
+      }
+    })
 }
 
-/**
- * 处理多页签滚动
- */
-function handleScroll(clientX: number) {
+const { width: refContainerWidth, left: refContainerLeft } = useElementBounding(refContainer)
+function handleScroll(clientX: number) { // 处理多页签滚动
+  if (!refScrollWrapper.value) return
   const currentX = clientX - refContainerLeft.value
   const deltaX = currentX - refContainerWidth.value / 2
-  if (refScrollWrapper.value) {
-    const { maxScrollX, x: leftX } = refScrollWrapper.value.instance
-    const rightX = maxScrollX - leftX
-    const update = deltaX > 0 ? Math.max(-deltaX, rightX) : Math.min(-deltaX, -leftX)
-    refScrollWrapper.value?.instance.scrollBy(update, 0, 300)
-  }
+  const { maxScrollX, x: leftX } = refScrollWrapper.value.instance
+  const rightX = maxScrollX - leftX
+  const update = deltaX > 0 ? Math.max(-deltaX, rightX) : Math.min(-deltaX, -leftX)
+  refScrollWrapper.value?.instance.scrollBy(update, 0, 300)
 }
-watch(
-  activeTabIndex,
-  () => {
-    getActiveTabClientX()
-  },
-  {
-    immediate: true,
-  },
-)
+watch(activeTabIndex, getActiveTabClientX, { immediate: true })
 </script>
 
 <template>
@@ -130,28 +94,33 @@ watch(
     of-hidden mx="[0.5rem]"
     :style="{ width: 'calc(100% - 1rem)' }"
   >
-    <ScrollWrapper ref="refScrollWrapper" :options="{ scrollX: true, scrollY: false, click: true }">
+    <ScrollWrapper
+      ref="refScrollWrapper"
+      :options="{ scrollX: true, scrollY: false, click: true }"
+    >
       <div
         ref="refTab" h-full
         :class="[
-          isChromeTabShapeStyle
+          chrome
             ? 'flex items-end pr-7'
             : 'flex !items-center gap-x-2 mt-1px',
         ]"
       >
         <div
-          v-for="{ title, path }, idx in tabs" :key="idx"
+          v-for="{ title, path }, index in tabs" :key="index"
           flex-inline items-center
           h-26px lh-26px wa cursor-pointer
-          :class="{ 'ha max-h-full': isChromeTabShapeStyle }"
+          :class="{ 'ha max-h-full': chrome }"
         >
           <TabItem
-            :idx="idx"
-            :title="title"
-            :path="path"
-            :tabs-length="tabs.length"
-            :is-active="isActive(path)"
-            :is-chrome-tab-shape-style="isChromeTabShapeStyle"
+            v-bind="{
+              index,
+              title,
+              path,
+              length: tabs.length,
+              active: isActive(path),
+              chrome,
+            }"
             @close-tab="handleCloseTab"
           />
         </div>

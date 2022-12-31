@@ -2,8 +2,6 @@
 import BScroll from '@better-scroll/core'
 import type { Options } from '@better-scroll/core'
 
-// better-scroll
-// https://better-scroll.github.io/docs/zh-CN/guide/base-scroll-options.html
 const {
   options = {},
 } = defineProps<{
@@ -12,42 +10,38 @@ const {
 
 const instance = ref<BScroll>()
 
-const refScrollWrapper = ref<HTMLElement>()
-const refScrollContent = ref<HTMLElement>()
+const refWrapper = ref<HTMLElement>()
+const refContent = ref<HTMLElement>()
 
 const isScrollY = computed(() => Boolean(options.scrollY))
 
-function initBetterScroll() {
-  if (!refScrollWrapper.value)
-    return
-  instance.value = new BScroll(refScrollWrapper.value, options)
+const create = () => {
+  if (!refWrapper.value) return
+  instance.value = new BScroll(refWrapper.value, options)
 }
 
-const { width, height } = useElementSize(refScrollContent)
-const { width: wrapperWidth } = useElementSize(refScrollWrapper)
-
+const { width, height } = useElementSize(refContent)
+const { width: wrapperWidth } = useElementSize(refWrapper)
 watch(
   [
-    () => width.value,
-    () => height.value,
-    () => wrapperWidth.value,
+    width,
+    height,
+    wrapperWidth,
   ],
-  () => {
-    if (instance.value)
-      instance.value.refresh()
-  },
+  () => instance.value?.refresh(),
 )
-
-onMounted(() => {
-  initBetterScroll()
-})
+onMounted(create)
 
 defineExpose({ instance })
 </script>
 
 <template>
-  <div ref="refScrollWrapper" h-full text-left>
-    <div ref="refScrollContent" inline-block :class="{ 'h-full': !isScrollY }">
+  <div ref="refWrapper" h-full text-left>
+    <div
+      ref="refContent"
+      inline-block
+      :class="{ 'h-full': !isScrollY }"
+    >
       <slot />
     </div>
   </div>

@@ -1,4 +1,7 @@
-const BaseLayout = () => import('./base-layout/index.vue')
-const BlankLayout = () => import('./blank-layout/index.vue')
+import BaseLayout from './base-layout/index.vue'
+import BlankLayout from './blank-layout/index.vue'
 
-export { BaseLayout, BlankLayout }
+export {
+  BaseLayout,
+  BlankLayout,
+}

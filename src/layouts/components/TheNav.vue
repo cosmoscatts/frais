@@ -1,42 +1,37 @@
 <script setup lang="ts">
-import { Logo } from './logo'
-import { Menu } from './menu'
+import TheLogo from './TheLogo.vue'
+import TheMenu from './TheMenu.vue'
+import TheSettings from './TheSettings.vue'
 import {
-  NavAvatar,
-  NavBell,
-  NavBreadcrumb,
-  NavCollapsedToggle,
-  NavFullScreen,
-  NavResponsivePanel,
-} from './nav'
+  Avatar,
+  Bell,
+  FullScreen,
+  ResponsivePanel,
+} from './nav-items'
 import { APP_META } from '~/config'
 
-const { isMobile, baseSettings } = storeToRefs(useAppStore())
-
-// 判断是否为垂直布局
-const isVerticalLayout = computed(() => {
-  return baseSettings.value?.layout === 'vertical'
-})
+const uiStore = useUiStore()
+const isVertical = computed(() => uiStore.settings.layout === 'vertical')
 </script>
 
 <template>
-  <div flex-center pr-5 border-b="1px solid [var(--n-border-color)]">
-    <Logo v-if="!isVerticalLayout" />
-    <NavCollapsedToggle v-if="isVerticalLayout && isMobile" ml-4 />
-    <NavBreadcrumb v-if="isVerticalLayout" mx-4 />
-    <Menu v-if="!isVerticalLayout && !isMobile" mx-4 />
+  <div flex-c pr5 border-b="1px solid [var(--n-border-color)]">
+    <TheLogo v-if="!isVertical || isMobile" />
+    <TheMenu v-if="!isVertical && !isMobile" mx4 />
     <div flex-auto />
-    <div v-if="isVerticalLayout || !isMobile" flex-y-center>
+    <div v-if="!isMobile" flex-y-c>
       <a
         icon-btn text-lg i-carbon-logo-github mx-4
         :href="APP_META.github"
-        target="_blank" title="GitHub"
+        target="_blank"
+        title="GitHub"
       />
-      <NavBell mr-4 />
-      <NavFullScreen mr-4 />
-      <DarkToggle mr-4 />
-      <NavAvatar />
+      <Bell mr4 />
+      <FullScreen mr4 />
+      <DarkToggle mr4 />
+      <TheSettings v-if="uiStore.settings.showAppSettings" mr4 />
+      <Avatar />
     </div>
-    <NavResponsivePanel v-if="!isVerticalLayout && isMobile" />
+    <ResponsivePanel v-else />
   </div>
 </template>

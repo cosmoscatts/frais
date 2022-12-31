@@ -1,13 +1,17 @@
+import TheContent from './TheContent.vue'
 import TheFoot from './TheFoot.vue'
-import TheMain from './TheMain.vue'
+import TheLogo from './TheLogo.vue'
+import TheMenu from './TheMenu.vue'
 import TheNav from './TheNav.vue'
 import TheSettings from './TheSettings.vue'
 import TheSide from './TheSide.vue'
 import TheTabs from './TheTabs.vue'
 
 export {
+  TheContent,
   TheFoot,
-  TheMain,
+  TheLogo,
+  TheMenu,
   TheNav,
   TheSettings,
   TheSide,

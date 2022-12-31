@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Logo } from './logo'
-import { Menu } from './menu'
+import TheMenu from './TheMenu.vue'
+import TheLogo from './TheLogo.vue'
 </script>
 
 <template>
-  <div flex="x-center col" of-hidden>
-    <Logo />
-    <Menu />
+  <div flex="x-c col" of-hidden>
+    <TheLogo />
+    <TheMenu />
   </div>
 </template>

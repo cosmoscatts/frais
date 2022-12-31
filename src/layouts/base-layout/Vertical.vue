@@ -1,18 +1,12 @@
-<script  setup lang="ts">
-import { useThemeVars } from 'naive-ui'
+<script setup lang="ts">
 import {
+  TheContent,
   TheFoot,
-  TheMain,
   TheNav,
-  TheSettings,
   TheSide,
   TheTabs,
 } from '../components'
-import { APP_LAYOUT_PARAMS, showAPP_SETTINGS } from '~/config'
-
-const appStore = useAppStore()
-const { isMobile, menuCollapsed, baseSettings } = storeToRefs(appStore)
-const { setMenuCollapsed, setMenuUnCollapsed } = appStore
+import { APP_LAYOUT_PARAMS } from '~/config'
 
 const {
   navHeight,
@@ -26,36 +20,25 @@ const {
   backTopvisibilityHeight,
 } = APP_LAYOUT_PARAMS
 
-// 计算内容区域需要减去的高度值
-const diffHeight = computed(() => {
-  let height = navHeight
-  if (baseSettings.value.showTabs)
-    height += tabHeight
-  // `border` 边框的高度也需要考虑
-  return height + 1
-})
-
-// 设置 `backTop` 的监听目标
-// `fixNav = true` 即固定页头时，`target` 为 `refContentWrapper`
-// 否则为 `refMainWrapper`
+const uiStore = useUiStore()
 const refMainWrapper = ref()
 const refContentWrapper = ref()
 
-// 计算 `MainWrapper` 宽度
+const diffHeight = computed(() => {
+  let height = navHeight
+  if (uiStore.settings.showTabs) height += tabHeight
+  return height + 1
+})
 const mainWrapperWidth = computed(() => {
   return isMobile.value
     ? '100%'
-    : `calc(100% - ${menuCollapsed.value ? sideCollapsedWidth : sideWidth}px)`
+    : `calc(100% - ${uiStore.collaspeSide.get() ? sideCollapsedWidth : sideWidth}px)`
 })
-
-// 计算 `MainWrapper` `left` 偏移
 const mainWrapperLeft = computed(() => {
   return isMobile.value
     ? '0px'
-    : `${menuCollapsed.value ? sideCollapsedWidth : sideWidth}px`
+    : `${uiStore.collaspeSide.get() ? sideCollapsedWidth : sideWidth}px`
 })
-
-const themeVars = useThemeVars()
 </script>
 
 <template>
@@ -63,32 +46,18 @@ const themeVars = useThemeVars()
     <n-layout-sider
       v-if="!isMobile"
       bordered position="absolute"
-      :inverted="baseSettings.invertMenu"
-      :show-trigger="baseSettings.sideCollapsedTriggerStyle"
+      :inverted="uiStore.settings.invertMenu"
+      :show-trigger="uiStore.settings.sideCollapsedTriggerStyle"
       collapse-mode="width"
-      :collapsed="menuCollapsed"
+      :collapsed="uiStore.collaspeSide.get()"
       :width="sideWidth"
       :collapsed-width="sideCollapsedWidth"
       :native-scrollbar="false"
-      @collapse="setMenuCollapsed"
-      @expand="setMenuUnCollapsed"
+      @collapse="uiStore.collaspeSide.collapse"
+      @expand="uiStore.collaspeSide.unCollapse"
     >
       <TheSide />
     </n-layout-sider>
-    <n-drawer
-      v-else
-      :style="{
-        backgroundColor: themeVars.cardColor,
-      }"
-      :width="sideWidth"
-      :auto-focus="false"
-      :show="!menuCollapsed"
-      placement="left"
-      display-directive="show"
-      @mask-click="setMenuCollapsed"
-    >
-      <TheSide />
-    </n-drawer>
 
     <n-layout
       ref="refMainWrapper"
@@ -100,18 +69,18 @@ const themeVars = useThemeVars()
       }"
       :native-scrollbar="false"
     >
-      <n-layout-header bordered :position="baseSettings.fixNav ? 'absolute' : 'static'">
+      <n-layout-header bordered :position="uiStore.settings.fixNav ? 'absolute' : 'static'">
         <TheNav w-full bg-transparent :style="{ height: `${navHeight}px` }" />
-        <TheTabs v-show="baseSettings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
+        <TheTabs v-show="uiStore.settings.showTabs" w-full bg-transparent :style="{ height: `${tabHeight}px` }" />
       </n-layout-header>
       <n-layout
         ref="refContentWrapper" ha
-        :position="baseSettings.fixNav ? 'absolute' : 'static'"
+        :position="uiStore.settings.fixNav ? 'absolute' : 'static'"
         :style="{
           marginTop: `${
-            !baseSettings.fixNav
+            !uiStore.settings.fixNav
               ? 0
-              : baseSettings.showTabs
+              : uiStore.settings.showTabs
                 ? navHeight + tabHeight + 1
                 : navHeight + 1
           }px`,
@@ -120,9 +89,9 @@ const themeVars = useThemeVars()
         :native-scrollbar="false"
       >
         <n-layout-content>
-          <TheMain ha :style="{ padding: `${contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
+          <TheContent ha :style="{ padding: `${contentPadding}px`, minHeight: `calc(100vh - ${diffHeight + footHeight + 1}px)` }" />
         </n-layout-content>
-        <n-layout-footer v-if="baseSettings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
+        <n-layout-footer v-if="uiStore.settings.showFoot" :style="{ height: `${footHeight}px` }" bordered>
           <TheFoot hw-full />
         </n-layout-footer>
         <n-back-top
@@ -139,6 +108,5 @@ const themeVars = useThemeVars()
         :visibility-height="backTopvisibilityHeight"
       />
     </n-layout>
-    <TheSettings v-if="showAPP_SETTINGS" />
   </n-layout>
 </template>
