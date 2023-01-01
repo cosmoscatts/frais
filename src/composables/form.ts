@@ -8,20 +8,28 @@ type K = 'add' | 'edit'
  */
 export function useFormModal<T extends object, S extends object>(
   baseFormData: T,
-  submit: () => void,
+  refForm: Ref<any>,
+  emits: any,
+  emitName = 'saveData',
+  preSubmit?: () => void,
 ): {
-    refForm: Ref<any>
-    handleOk: () => void
+    formData: UnwrapNestedRefs<T>
+    type: Ref<K>
+    visible: Ref<boolean | undefined>
+    selectedItem: Ref<S | undefined>
+    loading: Ref<boolean>
+    props: UnwrapNestedRefs<{
+      type: Ref<K> | K
+      visible: Ref<boolean | undefined> | boolean | undefined
+      selectedItem: Ref<S | undefined> | S | undefined
+      loading: Ref<boolean> | boolean
+    }>
+    endLoading: () => void
+    handleOk: (e: MouseEvent) => void
     handleCancel: () => void
-    formEl: {
-      formData: UnwrapNestedRefs<T>
-      loading: Ref<boolean>
-      endLoading: () => void
-      openModal: (type: K, data?: S) => void
-      closeModal: () => void
-    }
+    openModal: (type: K, data?: S) => void
+    closeModal: () => void
   } {
-  const refForm = ref()
   const formData = reactive<T>({ ...baseFormData })
   const type = ref<K>('add')
   const visible = ref(false)
@@ -34,42 +42,50 @@ export function useFormModal<T extends object, S extends object>(
   const setSelectedItem = (data?: S) => selectedItem.value = data
 
   const assign = () => { // 赋值
-    const source = [baseFormData, selectedItem][Number(type.value === 'edit')]
+    const source = [baseFormData, selectedItem.value ?? {}][Number(type.value === 'edit')]
     G.assignObj(source, formData)
   }
 
   watch(visible, (val) => {
     if (val) assign()
     endLoading()
-    refForm.value?.clearValidate()
+    refForm.value?.restoreValidation()
   })
 
-  const handleOk = () => {
+  const handleOk = (e: MouseEvent) => {
+    e.preventDefault()
     refForm.value.validate((errors: any) => {
       if (errors) return
       startLoading()
-      submit?.()
+      preSubmit?.()
+      emits?.(emitName, G.clone(formData))
     })
   }
 
   const handleCancel = () => setVisible(false)
 
   return {
-    refForm,
+    formData,
+    type,
+    visible,
+    selectedItem,
+    loading,
+    props: reactive({
+      type,
+      visible,
+      selectedItem,
+      loading,
+    }),
+    endLoading,
     handleOk,
     handleCancel,
-    formEl: {
-      formData,
-      loading,
-      endLoading,
-      openModal(type: K, data?: S) {
-        setType(type)
-        setVisible(true)
-        setSelectedItem(data)
-      },
-      closeModal() {
-        setVisible(false)
-      },
+    openModal(type: K, data?: S) {
+      setType(type)
+      setVisible(true)
+      setSelectedItem(data)
+    },
+    closeModal() {
+      setVisible(false)
     },
   }
 }

@@ -6,76 +6,42 @@ import {
   TrashBinOutline as TrashBinOutlineIcon,
   TrendingUpSharp as TrendingUpSharpIcon,
 } from '@vicons/ionicons5'
-import type { SearchModel } from '../helper.table'
+import type { SearchModel } from '../table'
 
 const {
   showSearchForm = true,
 } = defineProps<{
-  /** 是否显示搜索栏 */
   showSearchForm?: boolean
 }>()
-
 const emits = defineEmits(['fetchTableData'])
 
-// 是否隐藏 `form-label`
-const labelHidden = useResponsiveFormLabelHidden
-
-// 定义日期选择器值的格式
 const datePickerValueFormatter = 'yyyy-MM-dd'
-
 const baseSearchModel: SearchModel = {
   name: '',
   createTime: null,
   updateTime: null,
 }
-
-// 搜索表单数据
 const searchModel = ref<SearchModel>({ ...baseSearchModel })
 
-/**
- * 禁用未来时间
- */
-function disablePreviousDate(ts: number) {
-  return ts > Date.now()
-}
-
-/**
- * 处理搜索表单的数据，同时这个方法会暴露给父级
- */
-function getSearchParams() {
-  const { value: model } = searchModel
-  const cloneParams: SearchModel = JSON.parse(JSON.stringify(model))
-
+const disablePreviousDate = (ts: number) => ts > Date.now()
+const getSearchParams = () => {
+  const clone: SearchModel = G.clone(searchModel.value)
   type K = keyof Pick<SearchModel, 'createTime' | 'updateTime'>
   const checkFields = ['createTime', 'updateTime']
-  for (const [key, value] of Object.entries(cloneParams)) {
-    if (!checkFields.includes(key) || (value?.length ?? 0) !== 2)
-      continue
-    const [start, end] = value
-    if (start === end)
-      cloneParams[key as K] = [`${start} 00:00:00`, `${end} 23:59:59`]
-  }
-  return cloneParams
+  Object.entries(clone).forEach(([key, value]) => {
+    if (checkFields.includes(key) && value?.length === 2) {
+      const [start, end] = value
+      if (start === end) {
+        clone[key as K] = [`${start} 00:00:00`, `${end} 23:59:59`]
+      }
+    }
+  })
+  return clone
 }
-
-/**
- * 根据筛选条件，搜索表格数据
- */
-function searchTableData() {
-  emits('fetchTableData', getSearchParams())
-}
+const searchTableData = () => emits('fetchTableData', getSearchParams())
+const resetSearchModel = () => searchModel.value = { ...baseSearchModel }
 searchTableData()
-
-/**
- * 重置搜索表单
- */
-function resetSearchModel() {
-  searchModel.value = { ...baseSearchModel }
-}
-
-defineExpose({
-  getSearchParams,
-})
+defineExpose({ getSearchParams })
 </script>
 
 <template>

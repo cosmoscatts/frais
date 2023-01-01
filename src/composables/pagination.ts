@@ -13,6 +13,7 @@ interface Pagination {
 type ReturnType = Omit<Required<Pagination>, 'onUpdatePageCb' | 'onUpdatePageSizeCb'> & {
   onUpdatePage: (page: number) => void
   onUpdatePageSize: (pageSize: number) => void
+  createRowNumber: (rowIndex: number) => number
 }
 
 export function usePagination({
@@ -38,6 +39,10 @@ export function usePagination({
       pagination.pageSize = pageSize
       pagination.page = 1
       onUpdatePageSizeCb?.()
+    },
+    createRowNumber: (rowIndex: number) => {
+      const { page, pageSize } = pagination
+      return (page - 1) * pageSize + rowIndex + 1
     },
   })
   return pagination

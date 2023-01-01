@@ -3,19 +3,17 @@ import type { DataTableColumns } from 'naive-ui'
 import type { FormattedValue } from 'naive-ui/es/date-picker/src/interface'
 import type { Role } from '~/types'
 
-/** 定义搜索表单结构 */
 export interface SearchModel {
-  /** 角色名称 */
   name?: string
-  /** 创建时间 */
   createTime: FormattedValue | null
-  /** 更新时间 */
   updateTime: FormattedValue | null
 }
 
-/**
- * 生成表格的列
- */
+export interface SearchParmas extends SearchModel {
+  page?: number
+  pageSize?: number
+}
+
 export function createTableColumns({
   createRowNumber,
   onUpdateRole,
@@ -30,9 +28,7 @@ export function createTableColumns({
       key: 'id',
       title: '序号',
       align: 'center',
-      render(_row, rowIndex) {
-        return createRowNumber?.(rowIndex)
-      },
+      render: (_row, rowIndex) => createRowNumber?.(rowIndex),
     },
     {
       key: 'name',
@@ -60,17 +56,13 @@ export function createTableColumns({
       key: 'createTime',
       title: '创建时间',
       align: 'center',
-      render({ createTime }) {
-        return formatDate(createTime)
-      },
+      render: ({ createTime }) => formatDate(createTime),
     },
     {
       key: 'updateTime',
       title: '更新时间',
       align: 'center',
-      render({ updateTime }) {
-        return formatDate(updateTime)
-      },
+      render: ({ updateTime }) => formatDate(updateTime),
     },
     {
       key: 'actions',
@@ -110,9 +102,6 @@ export function createTableColumns({
   ]
 }
 
-/**
- * 生成表格数据
- */
 export function createTableData() {
   return {
     data: {
@@ -145,11 +134,4 @@ export function createTableData() {
       ],
     },
   }
-}
-
-/**
- * 格式化时间
- */
-function formatDate(date?: Date) {
-  return dayJs(date).format('YYYY-MM-DD HH:mm:ss') || '-'
 }

@@ -8,4 +8,3 @@ router.replace({ path: `/${path}`, query })
 <template>
   <div />
 </template>
-
