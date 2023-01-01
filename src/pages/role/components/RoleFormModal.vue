@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { TreeOption } from 'naive-ui'
 import { TrashBinOutline as TrashBinOutlineIcon } from '@vicons/ionicons5'
-import { has } from 'lodash'
 import { renderTreeLabel, renderTreePrefix, rules } from '../form'
 import type { Role } from '~/types'
 
