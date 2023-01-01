@@ -96,10 +96,10 @@ const columns = createTableColumns({ // 创建表格列信息
 
 const defaultMenuTreeData = computed(() => {
   return APP_MENU.defaultMenus.map(i => ({
-    value: i.id,
+    key: i.id,
     label: i.label,
     children: i.children?.map(j => ({
-      value: j.id,
+      key: j.id,
       label: j.label,
     })),
   }))

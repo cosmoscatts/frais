@@ -23,6 +23,8 @@ const baseFormModel: FormModel = {
 const refForm = ref()
 const form = useFormModal<FormModel, Role>(baseFormModel, refForm, emits)
 
+watch(form.visible, form.openModalCb)
+
 let hasCheckedAll = $ref(false) // 是否全选
 const allMenuOptionsKeys = $computed(() => {
   const keys: number[] = []
@@ -42,6 +44,8 @@ const handleCheckAll = () => {
     ? allMenuOptionsKeys
     : []
 }
+
+watch(() => form.formData.menuIdList, checkAllOrNot)
 
 defineExpose({ form })
 </script>
@@ -119,7 +123,6 @@ defineExpose({ form })
             :render-label="renderTreeLabel"
             :render-prefix="renderTreePrefix"
             :data="menuTreeData"
-            :on-update:checked-keys="checkAllOrNot"
           />
         </div>
       </n-form-item>

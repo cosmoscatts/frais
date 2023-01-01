@@ -28,6 +28,7 @@ export function useFormModal<T extends object, S extends object>(
     handleOk: (e: MouseEvent) => void
     handleCancel: () => void
     openModal: (type: K, data?: S) => void
+    openModalCb: (val?: boolean) => void
     closeModal: () => void
   } {
   const formData = reactive<T>({ ...baseFormData })
@@ -45,12 +46,6 @@ export function useFormModal<T extends object, S extends object>(
     const source = [baseFormData, selectedItem.value ?? {}][Number(type.value === 'edit')]
     G.assignObj(source, formData)
   }
-
-  watch(visible, (val) => {
-    if (val) assign()
-    endLoading()
-    refForm.value?.restoreValidation()
-  })
 
   const handleOk = (e: MouseEvent) => {
     e.preventDefault()
@@ -83,6 +78,11 @@ export function useFormModal<T extends object, S extends object>(
       setType(type)
       setVisible(true)
       setSelectedItem(data)
+    },
+    openModalCb(val?: boolean) {
+      if (val) assign()
+      endLoading()
+      refForm.value?.restoreValidation()
     },
     closeModal() {
       setVisible(false)
