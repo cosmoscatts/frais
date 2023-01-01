@@ -46,14 +46,10 @@ function fetchTableData(searchParams: SearchParmas) {
   const { page, pageSize } = pagination
   searchParams = { page, pageSize, ...searchParams }
   try {
-    const { data: { records, total } } = createTableData()
+    const { data: { records = [], total = 0 } } = createTableData()
     tableData = records
     pagination.itemCount = total
-  }
-  catch (err) {
-    // 处理异常
-  }
-  finally {
+  } finally {
     useTimeoutFn(endLoading, 1000)
   }
 }
