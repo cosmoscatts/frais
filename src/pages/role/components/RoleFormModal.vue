@@ -132,7 +132,7 @@ defineExpose({ form })
         <n-button type="primary" :loading="form.props.loading" text-color="white" @click="form.handleOk">
           <span font-bold>保存</span>
         </n-button>
-        <n-button type="error" text-color="white" @click="form.handleCancel">
+        <n-button type="error" text-color="white" @click="form.closeModal">
           <span font-bold>取消</span>
         </n-button>
       </div>

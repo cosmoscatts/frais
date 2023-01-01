@@ -22,7 +22,6 @@ const baseSearchModel: SearchModel = {
   updateTime: null,
 }
 const searchModel = ref<SearchModel>({ ...baseSearchModel })
-
 const disablePreviousDate = (ts: number) => ts > Date.now()
 const getSearchParams = () => {
   const clone: SearchModel = G.clone(searchModel.value)

@@ -26,7 +26,6 @@ export function useFormModal<T extends object, S extends object>(
     }>
     endLoading: () => void
     handleOk: (e: MouseEvent) => void
-    handleCancel: () => void
     openModal: (type: K, data?: S) => void
     openModalCb: (val?: boolean) => void
     closeModal: () => void
@@ -57,8 +56,6 @@ export function useFormModal<T extends object, S extends object>(
     })
   }
 
-  const handleCancel = () => setVisible(false)
-
   return {
     formData,
     type,
@@ -73,7 +70,6 @@ export function useFormModal<T extends object, S extends object>(
     }),
     endLoading,
     handleOk,
-    handleCancel,
     openModal(type: K, data?: S) {
       setType(type)
       setVisible(true)
