@@ -1,45 +1,36 @@
 <script setup lang="ts">
-import type { FormInst, FormItemInst, FormItemRule, FormRules } from 'naive-ui'
+import type {
+  FormInst,
+  FormItemInst,
+  FormItemRule,
+  FormRules,
+} from 'naive-ui'
 import {
   Glasses as GlassesIcon,
   GlassesOutline as GlassesOutlineIcon,
   TrashBinOutline as TrashBinOutlineIcon,
 } from '@vicons/ionicons5'
+import type { User } from '~/types'
+
+interface FormModel {
+  id?: number
+  password?: string
+  newPassword?: string
+  reenteredNewPassword?: string
+}
 
 const {
   currentTab = 1,
 } = defineProps<{
-  /** 当前 `tab` */
   currentTab?: number
 }>()
 
 const router = useRouter()
-
-// `form` 表单元素
+const authStore = useAuthStore()
 const refForm = ref<FormInst | null>(null)
 
-/** 定义表单数据结构 */
-interface FormModel {
-  /** id */
-  id?: number
-  /** 原密码 */
-  password?: string
-  /** 新密码 */
-  newPassword?: string
-  /** 重复密码 */
-  reenteredNewPassword?: string
-}
-
-const { user } = storeToRefs(useUserStore())
-
-const { message } = useGlobalNaiveApi()
-
-/**
- * 获取表单数据
- */
-function getBaseFormModel(): FormModel {
-  const { value: _user } = user
-  const { id } = JSON.parse(JSON.stringify(_user))
+const getBaseFormModel = () => {
+  const { id } = G.clone<User>(authStore.user!)
   return {
     id,
     password: '',
@@ -50,73 +41,47 @@ function getBaseFormModel(): FormModel {
 
 let formModel = $ref<FormModel>(getBaseFormModel())
 
-/**
- * 重置表单数据及校验状态
- */
-function resetFormModel() {
+const resetFormModel = () => {
   formModel = getBaseFormModel()
   refForm.value?.restoreValidation()
 }
-
-// 当 `tab` 改变，重置表单及校验
 watch(() => currentTab, resetFormModel)
 
 const { loading, startLoading, endLoading } = useLoading()
 
-/**
- * 保存修改内容
- */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
   refForm.value?.validate((errors) => {
-    if (errors)
-      return
+    if (errors) return
     startLoading()
     useTimeoutFn(() => {
       endLoading()
-      message.success('修改成功')
-      useTimeoutFn(() => {
-        router.push('/login')
-        useLogout()
-        message.warning('请重新登录')
-      }, 1000)
-    }, 1500)
+      $message.success('修改成功')
+      authStore
+        .logout()
+        .then(() => useTimeoutFn(() => {
+          $message.warning('请重新登录')
+          router.push('/login')
+        }, 500))
+    }, 1000)
   })
 }
 
-// 重复密码框元素
 const refRNewPasswordFormItem = ref<FormItemInst | null>(null)
-
-/**
- * 处理密码框的输入，当输入密码时，触发重复密码框的校验
- */
-function handlePasswordInput() {
-  if (formModel.reenteredNewPassword)
+const handlePasswordInput = () => {
+  if (formModel.reenteredNewPassword) {
     refRNewPasswordFormItem.value?.validate({ trigger: 'password-input' })
+  }
 }
-
-/**
- * 校验重复密码是否以输入的密码为开头
- */
-function validatePasswordStartWith(
+const validatePasswordStartWith = (
   _rule: FormItemRule,
   value: string,
-): boolean {
-  return (
-    !!formModel.newPassword
+) => (
+  !!formModel.newPassword
     && formModel.newPassword.startsWith(value)
     && formModel.newPassword.length >= value.length
-  )
-}
-
-/**
- * 校验两次输入的密码是否一致
- */
-function validatePasswordSame(_rule: FormItemRule, value: string): boolean {
-  return value === formModel.newPassword
-}
-
-// 表单校验规则
+)
+const validatePasswordSame = (_rule: FormItemRule, value: string) => value === formModel.newPassword
 const rules: FormRules = {
   password: [
     {

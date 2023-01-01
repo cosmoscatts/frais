@@ -1,22 +1,13 @@
 import type { Role } from './role'
 
 export interface User {
-  id: number
-  name?: string // 名称
-  avatar?: string // 头像
-  roleId?: number // 角色 id
-}
-
-export interface UserDetail extends User {
-  username: string // 账号
-  phone?: string
-  email?: string
+  id?: number
+  username?: string
+  name?: string
+  password?: string
+  avatar?: string
+  roleId?: number
+  role?: Role
   createTime?: Date
   updateTime?: Date
-
-  role?: Role
-}
-
-export type UserRegister = Omit<UserDetail, 'role'> & {
-  password?: string
 }

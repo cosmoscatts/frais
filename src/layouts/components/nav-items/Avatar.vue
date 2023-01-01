@@ -34,8 +34,9 @@ const options = [
           duration: 1000,
         })
         useTimeoutFn(() => {
-          router.push('/login')
-          authStore.logout()
+          authStore
+            .logout()
+            .then(() => router.push('/login'))
         }, 1000)
       },
     },
@@ -53,7 +54,7 @@ const options = [
         fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
       />
       <n-ellipsis v-if="!isMobile" style="max-width: 100px" ml-3>
-        admin
+        {{ authStore.user?.name ?? '-' }}
       </n-ellipsis>
     </div>
   </n-dropdown>

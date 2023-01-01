@@ -1,74 +1,35 @@
 <script lang="ts" setup>
 import type { UploadFileInfo } from 'naive-ui'
 
-const { message } = useGlobalNaiveApi()
-
-const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
-const { updateUser } = userStore
-
-/**
- * 将角色 `id` 转换为名称
- */
-function transformRoleName(_roleId?: number) {
-  return '管理员'
+const authStore = useAuthStore()
+let showImagePreview = $ref(false)
+let previewImageUrl = $ref('')
+const avatar = computed<UploadFileInfo[]>(() => authStore.user?.avatar
+  ? [
+      {
+        id: 'avatar',
+        name: 'avatar',
+        url: authStore.user.avatar,
+        status: 'finished',
+      },
+    ]
+  : [])
+const transformRoleName = (_roleId?: number) => '管理员'
+const handlePreview = ({ url }: UploadFileInfo) => {
+  if (!url) return
+  previewImageUrl = url
+  showImagePreview = true
 }
-
-/**
- * 格式化时间
- */
-function formatDate(date?: Date) {
-  return dayJs(date).format('YYYY-MM-DD HH:mm:ss') || '-'
-}
-
-/**
- * 转换图片成 `Base64`
- */
 function getBase64(file: File) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
     let imageAsDateURL = ''
     reader.readAsDataURL(file)
-    reader.onload = (data) => {
-      const res: any = data.target || data.srcElement
-      imageAsDateURL = res.result
-    }
-    reader.onerror = (err) => {
-      reject(err)
-    }
-    reader.onloadend = () => {
-      resolve(imageAsDateURL)
-    }
+    reader.onload = data => imageAsDateURL = data.target!.result as string
+    reader.onerror = err => reject(err)
+    reader.onloadend = () => resolve(imageAsDateURL)
   })
 }
-
-// 是否显示头像预览
-let showImagePreview = $ref(false)
-// 预览头像 `url`
-let previewImageUrl = $ref('')
-
-/**
- * 处理头像预览
- */
-function handlePreview({ url }: UploadFileInfo) {
-  previewImageUrl = url as string
-  showImagePreview = true
-}
-
-const avatar = computed<UploadFileInfo[]>(() => {
-  const { value: _user } = user
-  return _user?.avatar
-    ? [
-        {
-          id: 'avatar',
-          name: 'avatar',
-          url: _user.avatar,
-          status: 'finished',
-        },
-      ]
-    : []
-})
-
 function onChange({
   file: uploadingFileInfo,
 }: {
@@ -76,14 +37,14 @@ function onChange({
   fileList: Array<UploadFileInfo>
   event?: Event
 }) {
-  getBase64(uploadingFileInfo.file!).then(async (imageAsDateURL) => {
-    const { value: _user } = user
-    updateUser({
-      ...JSON.parse(JSON.stringify(_user)),
-      avatar: imageAsDateURL as string,
+  getBase64(uploadingFileInfo.file!)
+    .then(async (imageAsDateURL) => {
+      authStore.updateUser({
+        ...G.clone(authStore.user),
+        avatar: imageAsDateURL as string,
+      })
+      $message.success('上传成功')
     })
-    message.success('上传成功')
-  })
 }
 </script>
 
@@ -105,7 +66,7 @@ function onChange({
       </n-gi>
 
       <n-gi span="4 m:3">
-        <div flex-y-c hfull wfull >
+        <div flex-y-c hfull wfull>
           <n-descriptions label-placement="left" w-full lt-md:m="t-5 x-5">
             <n-descriptions-item>
               <template #label>
@@ -114,7 +75,7 @@ function onChange({
                 </n-h5>
               </template>
               <n-tag type="warning">
-                {{ user?.username || '-' }}
+                {{ authStore.user?.username || '-' }}
               </n-tag>
             </n-descriptions-item>
             <n-descriptions-item>
@@ -124,27 +85,7 @@ function onChange({
                 </n-h5>
               </template>
               <n-tag>
-                {{ user?.name || '-' }}
-              </n-tag>
-            </n-descriptions-item>
-            <n-descriptions-item>
-              <template #label>
-                <n-h5 prefix="bar" align-text style="margin-bottom: 0;" flex-inline>
-                  手机号码
-                </n-h5>
-              </template>
-              <n-tag>
-                {{ user?.phone || '无' }}
-              </n-tag>
-            </n-descriptions-item>
-            <n-descriptions-item>
-              <template #label>
-                <n-h5 prefix="bar" align-text style="margin-bottom: 0;" flex-inline>
-                  邮箱
-                </n-h5>
-              </template>
-              <n-tag>
-                {{ user?.email || '无' }}
+                {{ authStore.user?.name || '-' }}
               </n-tag>
             </n-descriptions-item>
             <n-descriptions-item>
@@ -154,7 +95,7 @@ function onChange({
                 </n-h5>
               </template>
               <n-tag type="info">
-                {{ transformRoleName(user?.roleId) }}
+                {{ transformRoleName(authStore.user?.roleId) }}
               </n-tag>
             </n-descriptions-item>
             <n-descriptions-item>
@@ -164,7 +105,7 @@ function onChange({
                 </n-h5>
               </template>
               <n-tag>
-                {{ formatDate(user?.createTime) ?? '-' }}
+                {{ formatDate(authStore.user?.createTime) ?? '-' }}
               </n-tag>
             </n-descriptions-item>
           </n-descriptions>
@@ -182,4 +123,3 @@ function onChange({
     </n-modal>
   </n-card>
 </template>
-

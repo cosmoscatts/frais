@@ -3,7 +3,6 @@ import UserPanel from './components/UserPanel.vue'
 import BasicInformation from './components/BasicInformation.vue'
 import SecuritySettings from './components/SecuritySettings.vue'
 
-// 当前显示的 `tab` 页
 const currentTab = ref(1)
 </script>
 

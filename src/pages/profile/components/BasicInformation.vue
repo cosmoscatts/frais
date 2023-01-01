@@ -3,52 +3,34 @@ import type { FormInst } from 'naive-ui'
 import { TrashBinOutline as TrashBinOutlineIcon } from '@vicons/ionicons5'
 import type { User } from '~/types'
 
+type FormModel = Pick<User, 'id' | 'name'>
+
 const {
   currentTab = 1,
 } = defineProps<{
-  /** 当前 `tab` */
   currentTab?: number
 }>()
 
-// `form` 表单元素
+const authStore = useAuthStore()
 const refForm = ref<FormInst | null>(null)
 
-type FormModel = Pick<User, 'id' | 'name' | 'phone' | 'email'>
-
-const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
-const { updateUser } = userStore
-
-const { message } = useGlobalNaiveApi()
-
-/**
- * 获取表单数据
- */
-function getBaseFormModel(): FormModel {
-  const { value: _user } = user
-  const { id, name = '', phone = '', email = '' } = JSON.parse(JSON.stringify(_user)) as User
+const getBaseFormModel = () => {
+  const { id, name = '' } = G.clone<User>(authStore.user!)
   return {
     id,
     name,
-    phone,
-    email,
   }
 }
 
 let formModel = $ref<FormModel>(getBaseFormModel())
 
-/**
- * 重置表单数据及校验状态
- */
-function resetFormModel() {
+const resetFormModel = () => {
   formModel = getBaseFormModel()
   refForm.value?.restoreValidation()
 }
 
-// 当 `tab` 改变，重置表单及校验
 watch(() => currentTab, resetFormModel)
 
-// 表单校验规则
 const rules = {
   name: [
     {
@@ -60,24 +42,18 @@ const rules = {
 
 const { loading, startLoading, endLoading } = useLoading()
 
-/**
- * 保存修改内容
- */
 function onSubmit(e: MouseEvent) {
   e.preventDefault()
   refForm.value?.validate((errors) => {
-    if (errors)
-      return
+    if (errors) return
     startLoading()
-    const { value: _user } = user
-    const cloneUser = JSON.parse(JSON.stringify(_user)) as User
     useTimeoutFn(() => {
-      updateUser({
-        ...cloneUser,
+      authStore.updateUser({
+        ...G.clone(authStore.user),
         ...formModel,
       })
       endLoading()
-      message.success('修改成功')
+      $message.success('修改成功')
     }, 1500)
   })
 }
@@ -99,20 +75,6 @@ function onSubmit(e: MouseEvent) {
   >
     <n-form-item label="用户名称" path="name">
       <n-input v-model:value="formModel.name" placeholder="请输入用户名称" clearable>
-        <template #clear-icon>
-          <n-icon :component="TrashBinOutlineIcon" />
-        </template>
-      </n-input>
-    </n-form-item>
-    <n-form-item label="手机号" path="phone">
-      <n-input v-model:value="formModel.phone" placeholder="请输入手机号" clearable>
-        <template #clear-icon>
-          <n-icon :component="TrashBinOutlineIcon" />
-        </template>
-      </n-input>
-    </n-form-item>
-    <n-form-item label="用户邮箱" path="email">
-      <n-input v-model:value="formModel.email" placeholder="请输入用户邮箱" clearable>
         <template #clear-icon>
           <n-icon :component="TrashBinOutlineIcon" />
         </template>
