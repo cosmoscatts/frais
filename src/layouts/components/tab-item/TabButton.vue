@@ -39,7 +39,7 @@ const tabStyle = computed(() => {
     border="1px #e5e7eb dark:#ffffff3d"
     :style="tabStyle"
     :class="{
-      'text-primary': active,
+      '!text-primary': active,
     }"
   >
     <span v-if="active" i-ri-price-tag-2-fill mr-1 />

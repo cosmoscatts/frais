@@ -35,6 +35,7 @@ function saveCurrentSettings() {
     <n-button
       ref="refButton"
       type="primary"
+      size="large"
       text-color="white"
       @click="showSettingsDrawer = true"
     >
