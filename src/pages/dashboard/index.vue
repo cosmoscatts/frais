@@ -39,13 +39,13 @@ const getEmoji = (): string =>
 
 onMounted(() => useLottie({
   containerId: '#lottie',
-  path: 'https://assets8.lottiefiles.com/packages/lf20_tfl4coms.json',
+  path: 'https://assets2.lottiefiles.com/packages/lf20_zk4EpiO6Hv.json',
 }))
 </script>
 
 <template>
   <n-card :style="{ height: `calc(100vh - ${diffHeight}px)` }" flex-c>
-    <div w70vw mxa flex-col-c>
+    <div w70vw hfull flex-col-c mxa>
       <div id="lottie" w400px h200px />
       <div text-center font-bold>
         <h1 text="2xl" m="t-2 b-2">

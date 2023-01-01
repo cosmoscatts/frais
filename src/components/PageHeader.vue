@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { RouteLocationMatched } from 'vue-router'
+import { ExtensionPuzzleOutline } from '@vicons/ionicons5'
 
 interface BreadcrumbItem {
   title: string
@@ -37,6 +38,7 @@ watch(
         v-for="{ title, path }, idx in data"
         :key="idx" :href="path"
       >
+        <n-icon :component="ExtensionPuzzleOutline" />
         {{ title }}
       </n-breadcrumb-item>
     </n-breadcrumb>

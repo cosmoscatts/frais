@@ -4,8 +4,8 @@ import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 createUi()
 const theme = computed(() => [null, darkTheme][Number(isDark.value)])
 
-const LOADING_INTERVAL = 2500
-const BEFORE_LEAVING_MS = 1800
+const LOADING_INTERVAL = 1800
+const BEFORE_LEAVING_MS = 1200
 const { loading, endLoading } = useLoading(true)
 useTimeoutFn(endLoading, LOADING_INTERVAL)
 </script>

@@ -1,7 +1,7 @@
 import type { Component } from 'vue'
 
 import {
-  StatsChartOutline as ChartIcon,
+  PieChartOutline as ChartIcon,
   BookOutline as HomeIcon,
   BoatOutline as SystemIcon,
   PersonOutline as UserIcon,
