@@ -8,22 +8,26 @@ const refAccountForm = ref()
 const refPhoneForm = ref()
 const currentTabValue = ref<TabValue>('account')
 const inputAutoFocus = () => [refAccountForm, refPhoneForm][Number(currentTabValue.value === 'phone')].value?.focusFirstInput()
-onMounted(inputAutoFocus)
 watch(currentTabValue, () => useTimeoutFn(inputAutoFocus, 200))
+
+onMounted(() => useTimeoutFn(() => {
+  inputAutoFocus()
+  useLottie({
+    containerId: '#lottie',
+    path: 'https://assets2.lottiefiles.com/packages/lf20_iVPQC8jyX2.json',
+  })
+}, 50))
 </script>
 
 <template>
-  <div flex="center col" p-10 rounded-1>
-    <div text="32px center" font-bold flex-y-c>
-      <div flex-c h-36px w-36px bg="[var(--primary-color)]" rounded-1 mr-3>
-        <div i-carbon-rocket text="20px white" />
-      </div>
-      <span font-bold text-36px>{{ APP_META.name }}</span>
+  <div flex-col-c p-10 rounded-1>
+    <div text="28px center" font-bold flex-y-c>
+      {{ APP_META.name }}
     </div>
+    <div id="lottie" h120px />
 
     <n-tabs
       v-model:value="currentTabValue"
-      mt-20px
       size="large"
       animated
     >
@@ -35,11 +39,11 @@ watch(currentTabValue, () => useTimeoutFn(inputAutoFocus, 200))
       </n-tab-pane>
     </n-tabs>
 
-    <div flex="~ col" w-full mt-30px>
+    <div flex="~ col" wfull>
       <n-divider>
         其他登录方式
       </n-divider>
-      <div w-full flex-c gap-x-5>
+      <div wfull flex-c gap-x-5>
         <n-tooltip placement="bottom">
           <template #trigger>
             <n-button color="#44006F" circle>
@@ -80,6 +84,9 @@ watch(currentTabValue, () => useTimeoutFn(inputAutoFocus, 200))
           </template>
           <span> 小破站登录 </span>
         </n-tooltip>
+      </div>
+      <div wfull flex-c mt15px>
+        <DarkToggle />
       </div>
     </div>
   </div>

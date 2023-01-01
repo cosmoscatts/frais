@@ -9,6 +9,7 @@ const tabStore = useTabStore()
 
 const chrome = computed(() => uiStore.settings.tabShapeStyle === 'chrome')
 const tabs = $computed(() => tabStore.tabs)
+tabStore.createTabs()
 
 const isActive = (path?: string) => { // 判断是否为当前页面
   if (!path) return false
