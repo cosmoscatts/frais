@@ -24,9 +24,9 @@ const uiStore = useUiStore()
     flex-inline items-center
     h-34px px-24px m="r-[-18px]" cursor-pointer
     text="stone-600 dark:light-600/80"
-    :class="{ 'z-10': active, 'z-9': hover, 'text-primary': active }"
+    :class="{ 'z-10': active, 'z-9': hover, '!text-primary': active }"
   >
-    <div absolute left-0 bottom-0 hfull wfull  of-hidden>
+    <div absolute left-0 bottom-0 hfull wfull of-hidden>
       <TabChromeShape
         v-bind="{
           hover,
@@ -36,8 +36,8 @@ const uiStore = useUiStore()
       />
     </div>
     <span relative z-2 whitespace-nowrap flex-inline items-center>
-      <div v-if="active" i-carbon-bookmark-filled mr-2 z-2 />
-      <div v-else i-carbon-bookmark mr-2 z-2 />
+      <div v-if="active" i-ri-price-tag-2-fill mr-2 z-2 />
+      <div v-else i-ri-price-tag-2-line mr-2 z-2 />
       {{ title }}
     </span>
     <slot name="close" />

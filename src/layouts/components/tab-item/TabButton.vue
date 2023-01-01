@@ -42,8 +42,8 @@ const tabStyle = computed(() => {
       'text-primary': active,
     }"
   >
-    <span v-if="active" i-ri-price-tag-3-fill mr-1 />
-    <span v-else i-ri-price-tag-3-line mr-1 />
+    <span v-if="active" i-ri-price-tag-2-fill mr-1 />
+    <span v-else i-ri-price-tag-2-line mr-1 />
     {{ title }}
     <slot name="close" />
   </span>

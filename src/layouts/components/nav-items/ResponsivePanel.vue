@@ -30,21 +30,17 @@ const showNavPanel = ref(false)
     display-directive="show"
     @mask-click="showNavPanel = false"
   >
-    <div flex="~ col">
-      <div flex-col h50px>
-        <Avatar />
-      </div>
-      <div h50px flex-y-c>
-        <div flex-auto />
-        <a
-          icon-btn text-lg i-carbon-logo-github mx4
-          :href="APP_META.github"
-          target="_blank" title="GitHub"
-        />
-        <Bell mr4 />
-        <NavFullScreen mr4 />
-        <FullScreen mr4 />
-      </div>
+    <div flex-y-c h50px px4>
+      <Avatar />
+      <div flex-auto />
+      <a
+        icon-btn text-lg i-ri-github-line mx4
+        :href="APP_META.github"
+        target="_blank" title="GitHub"
+      />
+      <Bell mr4 />
+      <FullScreen mr4 />
+      <DarkToggle />
     </div>
     <TheMenu mode="vertical" />
   </n-drawer>

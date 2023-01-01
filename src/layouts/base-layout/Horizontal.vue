@@ -3,6 +3,7 @@ import {
   TheContent,
   TheFoot,
   TheNav,
+  TheSettings,
   TheTabs,
 } from '../components'
 import { APP_LAYOUT_PARAMS } from '~/config'
@@ -70,5 +71,6 @@ const diffHeight = computed(() => {
       :bottom="backTopBottom"
       :visibility-height="backTopvisibilityHeight"
     />
+    <TheSettings v-if="uiStore.settings.showAppSettings" />
   </n-layout>
 </template>

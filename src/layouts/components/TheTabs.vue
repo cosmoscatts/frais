@@ -90,11 +90,7 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
 </script>
 
 <template>
-  <div
-    ref="refContainer"
-    of-hidden mx="[0.5rem]"
-    :style="{ width: 'calc(100% - 1rem)' }"
-  >
+  <div ref="refContainer" of-hidden px4>
     <ScrollWrapper
       ref="refScrollWrapper"
       :options="{ scrollX: true, scrollY: false, click: true }"
@@ -111,7 +107,7 @@ watch(activeTabIndex, getActiveTabClientX, { immediate: true })
           v-for="{ title, path }, index in tabs" :key="index"
           flex-inline items-center
           h-26px lh-26px wa cursor-pointer
-          :class="{ 'ha max-h-full': chrome }"
+          :class="{ 'ha max-h-full': chrome, 'hfull mt10px': !chrome }"
         >
           <TabItem
             v-bind="{

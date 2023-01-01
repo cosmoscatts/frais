@@ -5,7 +5,7 @@ import {
   LogOutOutline as LogoutIcon,
   PersonCircleOutline as UserIcon,
 } from '@vicons/ionicons5'
-import defaultAvatar from '~/assets/user/default-avatar.jpg'
+import defaultAvatar from '~/assets/default-avatar.jpg'
 
 const router = useRouter()
 const authStore = useAuthStore()

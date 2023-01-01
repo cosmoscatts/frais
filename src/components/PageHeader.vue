@@ -31,16 +31,14 @@ watch(
 </script>
 
 <template>
-  <n-page-header>
-    <template #header>
-      <n-breadcrumb>
-        <n-breadcrumb-item
-          v-for="{ title, path }, idx in data"
-          :key="idx" :href="path"
-        >
-          {{ title }}
-        </n-breadcrumb-item>
-      </n-breadcrumb>
-    </template>
+  <n-page-header flex-y-c>
+    <n-breadcrumb>
+      <n-breadcrumb-item
+        v-for="{ title, path }, idx in data"
+        :key="idx" :href="path"
+      >
+        {{ title }}
+      </n-breadcrumb-item>
+    </n-breadcrumb>
   </n-page-header>
 </template>

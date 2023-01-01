@@ -17,7 +17,7 @@ const uiStore = useUiStore()
 const diffHeight = computed(() => {
   let height = navHeight + footHeight + contentPadding * 2 + 1 + 1 + 3
   if (uiStore.settings.showTabs) height += tabHeight
-  if (uiStore.settings.layout === 'horizontal') height += 24
+  if (uiStore.settings.layout === 'horizontal') height += 35.5
   return height
 })
 
@@ -44,7 +44,7 @@ onMounted(() => useLottie({
 </script>
 
 <template>
-  <a-card :style="{ height: `calc(100vh - ${diffHeight}px)` }" flex-c>
+  <n-card :style="{ height: `calc(100vh - ${diffHeight}px)` }" flex-c>
     <div w70vw mxa flex-col-c>
       <div id="lottie" w400px h200px />
       <div text-center font-bold>
@@ -56,5 +56,5 @@ onMounted(() => useLottie({
         </p>
       </div>
     </div>
-  </a-card>
+  </n-card>
 </template>

@@ -34,10 +34,8 @@ function saveCurrentSettings() {
   >
     <n-button
       ref="refButton"
-      size="large"
       type="primary"
       text-color="white"
-      secondary
       @click="showSettingsDrawer = true"
     >
       <template #icon>

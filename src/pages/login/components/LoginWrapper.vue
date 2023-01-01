@@ -20,8 +20,8 @@ onMounted(() => useTimeoutFn(() => {
 </script>
 
 <template>
-  <div flex-col-c p-10 rounded-1>
-    <div text="28px center" font-bold flex-y-c>
+  <n-card flex-col-c rounded-1 bordered>
+    <div flex-c text-28px font-bold>
       {{ APP_META.name }}
     </div>
     <div id="lottie" h120px />
@@ -89,5 +89,5 @@ onMounted(() => useTimeoutFn(() => {
         <DarkToggle />
       </div>
     </div>
-  </div>
+  </n-card>
 </template>

@@ -98,7 +98,7 @@ function handleSelect(key: OptionKeyType) {
     :y="offsetY"
     :options="tabContextMenuOptions"
     :show="showContextMenu"
-    :on-clickoutside="showContextMenu = false"
+    :on-clickoutside="() => showContextMenu = false"
     @select="handleSelect"
   />
 </template>

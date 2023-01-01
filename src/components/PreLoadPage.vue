@@ -10,19 +10,12 @@ const {
 
 const themeVars = useThemeVars()
 const bodyColor = computed(() => ['#FFFFFF', '#121212'][Number(isDark.value)])
-
-// 控制内层动画
 const { loading, endLoading } = useLoading(true)
 useTimeoutFn(endLoading, beforeLeavingMs)
-
-const createLottie = () => useListLottie([{
-  containerId: '#lottie-container',
-  path: 'https://assets7.lottiefiles.com/packages/lf20_UkrzGeRgj9.json',
-}, {
-  containerId: '#lottie-logo',
-  path: 'https://assets3.lottiefiles.com/packages/lf20_stxjvzmw.json',
-}])
-onMounted(createLottie)
+onMounted(() => useLottie({
+  containerId: '#lottie-loading',
+  path: 'https://assets1.lottiefiles.com/packages/lf20_ctopYC.json',
+}))
 </script>
 
 <template>
@@ -30,18 +23,15 @@ onMounted(createLottie)
   <Transition leave-active-class="animate__animated animate__bounceOut">
     <div v-if="loading" class="loading-wrapper">
       <div mb-100px>
-        <div id="lottie-container" w300px h300px />
+        <div id="lottie-loading" w300px h300px />
         <div class="animate__animated animate__fadeInUpBig animate__faster">
           <div flex-c>
-            <div id="lottie-logo" h44px />
-            <div ml-20px>
-              <n-gradient-text
-                :gradient="`linear-gradient(90deg, ${themeVars.successColor} 0%, ${themeVars.warningColor} 33%, ${themeVars.infoColor} 66%, ${themeVars.errorColor} 100%)`"
-                :size="36" style="font-weight: bold;"
-              >
-                {{ APP_META.name }}
-              </n-gradient-text>
-            </div>
+            <n-gradient-text
+              :gradient="`linear-gradient(90deg, ${themeVars.successColor} 0%, ${themeVars.warningColor} 33%, ${themeVars.infoColor} 66%, ${themeVars.errorColor} 100%)`"
+              :size="36" style="font-weight: bold;"
+            >
+              {{ APP_META.name }}
+            </n-gradient-text>
           </div>
 
           <div flex-c mt-20px text-24px>

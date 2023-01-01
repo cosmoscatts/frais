@@ -3,6 +3,7 @@ import {
   TheContent,
   TheFoot,
   TheNav,
+  TheSettings,
   TheSide,
   TheTabs,
 } from '../components'
@@ -107,6 +108,7 @@ const mainWrapperLeft = computed(() => {
         :bottom="backTopBottom"
         :visibility-height="backTopvisibilityHeight"
       />
+      <TheSettings v-if="uiStore.settings.showAppSettings" />
     </n-layout>
   </n-layout>
 </template>
