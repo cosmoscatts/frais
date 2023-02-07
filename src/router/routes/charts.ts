@@ -1,7 +1,7 @@
 import { BASE_LAYOUT } from '~/router/constants'
 
 /**
- * `charts` 示例路由
+ * charts 示例路由
  */
 export default {
   path: '/charts',
