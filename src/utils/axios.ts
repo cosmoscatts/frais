@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
 const AXIOS_TIMEOUT = 5000
 function createAxios(configFn: () => AxiosRequestConfig) {
@@ -11,7 +11,7 @@ function createAxios(configFn: () => AxiosRequestConfig) {
     (config: AxiosRequestConfig) => ({
       ...config,
       ...configFn(),
-    }),
+    } as InternalAxiosRequestConfig<any>),
     (e: any) => Promise.reject(e),
   )
   _axios.interceptors.response.use(
