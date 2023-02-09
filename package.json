@@ -2,7 +2,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vite --port 3333 --open",
+    "dev": "vite --port 3333 --open --host",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -31,11 +31,11 @@
     "vue-router": "4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.1",
-    "@iconify/json": "^2.2.18",
+    "@antfu/eslint-config": "^0.35.2",
+    "@iconify/json": "^2.2.19",
     "@types/crypto-js": "^4.1.1",
     "@types/lodash": "^4.14.191",
-    "@types/node": "18.11.19",
+    "@types/node": "18.13.0",
     "@types/nprogress": "^0.2.0",
     "@unocss/preset-icons": "^0.49.4",
     "@unocss/preset-wind": "^0.49.4",
@@ -48,7 +48,7 @@
     "naive-ui": "^2.34.3",
     "typescript": "^4.9.5",
     "unocss": "^0.49.4",
-    "unplugin-auto-import": "^0.13.0",
+    "unplugin-auto-import": "^0.14.2",
     "unplugin-vue-components": "^0.23.0",
     "unplugin-vue-define-options": "^1.2.1",
     "vfonts": "^0.0.3",
