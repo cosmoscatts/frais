@@ -35,7 +35,7 @@ specifiers:
   seemly: ^0.3.6
   typescript: ^4.9.5
   unocss: ^0.49.4
-  unplugin-auto-import: ^0.14.2
+  unplugin-auto-import: ^0.12.2
   unplugin-vue-components: ^0.23.0
   unplugin-vue-define-options: ^1.2.1
   vfonts: ^0.0.3
@@ -83,7 +83,7 @@ devDependencies:
   naive-ui: registry.npmmirror.com/naive-ui/2.34.3_vue@3.2.47
   typescript: registry.npmmirror.com/typescript/4.9.5
   unocss: registry.npmmirror.com/unocss/0.49.4_vite@4.1.1
-  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.14.2_@vueuse+core@9.12.0
+  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.12.2_@vueuse+core@9.12.0
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.23.0_vue@3.2.47
   unplugin-vue-define-options: registry.npmmirror.com/unplugin-vue-define-options/1.2.1_vue@3.2.47
   vfonts: registry.npmmirror.com/vfonts/0.0.3
@@ -5675,11 +5675,11 @@ packages:
       - vite
     dev: true
 
-  registry.npmmirror.com/unplugin-auto-import/0.14.2_@vueuse+core@9.12.0:
-    resolution: {integrity: sha512-6DptcCD+bKlxwK0yS4ehleZTvtG4Xl9k/XxhKWxc9ii2uE28HvcA3KbYpoHAzTlHDXRBrtcCAohR8vtIRB5bfg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-auto-import/-/unplugin-auto-import-0.14.2.tgz}
-    id: registry.npmmirror.com/unplugin-auto-import/0.14.2
+  registry.npmmirror.com/unplugin-auto-import/0.12.2_@vueuse+core@9.12.0:
+    resolution: {integrity: sha512-hC4w0GZjPjmLtrxV0u10XO350V9eCtQyEyifXr7B9UGD7SvbbIvKuOcHt58Zd4FAqZJXKWoXkpr9mdhBp85Usw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-auto-import/-/unplugin-auto-import-0.12.2.tgz}
+    id: registry.npmmirror.com/unplugin-auto-import/0.12.2
     name: unplugin-auto-import
-    version: 0.14.2
+    version: 0.12.2
     engines: {node: '>=14'}
     peerDependencies:
       '@vueuse/core': '*'
@@ -5688,7 +5688,6 @@ packages:
         optional: true
     dependencies:
       '@antfu/utils': registry.npmmirror.com/@antfu/utils/0.7.2
-      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit/3.1.2
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/5.0.2
       '@vueuse/core': registry.npmmirror.com/@vueuse/core/9.12.0_vue@3.2.47
       local-pkg: registry.npmmirror.com/local-pkg/0.4.3
@@ -5697,7 +5696,6 @@ packages:
       unplugin: registry.npmmirror.com/unplugin/1.0.1
     transitivePeerDependencies:
       - rollup
-      - supports-color
     dev: true
 
   registry.npmmirror.com/unplugin-vue-components/0.23.0_vue@3.2.47:
