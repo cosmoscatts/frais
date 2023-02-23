@@ -35,7 +35,7 @@ specifiers:
   seemly: ^0.3.6
   typescript: ^4.9.5
   unocss: ^0.50.0
-  unplugin-auto-import: ^0.14.4
+  unplugin-auto-import: ^0.12.2
   unplugin-vue-components: ^0.24.0
   unplugin-vue-define-options: ^1.2.3
   vfonts: ^0.0.3
@@ -83,7 +83,7 @@ devDependencies:
   naive-ui: registry.npmmirror.com/naive-ui/2.34.3_vue@3.2.47
   typescript: registry.npmmirror.com/typescript/4.9.5
   unocss: registry.npmmirror.com/unocss/0.50.0_vite@4.1.4
-  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.14.4_@vueuse+core@9.13.0
+  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.12.2_@vueuse+core@9.13.0
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.24.0_vue@3.2.47
   unplugin-vue-define-options: registry.npmmirror.com/unplugin-vue-define-options/1.2.3_vue@3.2.47
   vfonts: registry.npmmirror.com/vfonts/0.0.3
@@ -4325,15 +4325,6 @@ packages:
       brace-expansion: registry.npmmirror.com/brace-expansion/2.0.1
     dev: true
 
-  registry.npmmirror.com/minimatch/7.1.0:
-    resolution: {integrity: sha512-ZRvZsrVXiuB/QDlJx7WPymFyOHQUntQOEH3vFIwCzs/fDnH/siHZQAmI6Zamx1J9u9S66ucgKXU0CnqHfi8Z4g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/minimatch/-/minimatch-7.1.0.tgz}
-    name: minimatch
-    version: 7.1.0
-    engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: registry.npmmirror.com/brace-expansion/2.0.1
-    dev: true
-
   registry.npmmirror.com/minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/minimist/-/minimist-1.2.6.tgz}
     name: minimist
@@ -4372,17 +4363,6 @@ packages:
     version: 1.0.4
     engines: {node: '>=10'}
     hasBin: true
-    dev: true
-
-  registry.npmmirror.com/mlly/1.1.0:
-    resolution: {integrity: sha512-cwzBrBfwGC1gYJyfcy8TcZU1f+dbH/T+TuOhtYP2wLv/Fb51/uV7HJQfBPtEupZ2ORLRU1EKFS/QfS3eo9+kBQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mlly/-/mlly-1.1.0.tgz}
-    name: mlly
-    version: 1.1.0
-    dependencies:
-      acorn: registry.npmmirror.com/acorn/8.8.2
-      pathe: registry.npmmirror.com/pathe/1.1.0
-      pkg-types: registry.npmmirror.com/pkg-types/1.0.2
-      ufo: registry.npmmirror.com/ufo/1.1.0
     dev: true
 
   registry.npmmirror.com/mlly/1.1.1:
@@ -4816,16 +4796,6 @@ packages:
       vue: registry.npmmirror.com/vue/3.2.47
       vue-demi: registry.npmmirror.com/vue-demi/0.13.5_vue@3.2.47
     dev: false
-
-  registry.npmmirror.com/pkg-types/1.0.1:
-    resolution: {integrity: sha512-jHv9HB+Ho7dj6ItwppRDDl0iZRYBD0jsakHXtFgoLr+cHSF6xC+QL54sJmWxyGxOLYSHm0afhXhXcQDQqH9z8g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pkg-types/-/pkg-types-1.0.1.tgz}
-    name: pkg-types
-    version: 1.0.1
-    dependencies:
-      jsonc-parser: registry.npmmirror.com/jsonc-parser/3.2.0
-      mlly: registry.npmmirror.com/mlly/1.1.1
-      pathe: registry.npmmirror.com/pathe/1.1.0
-    dev: true
 
   registry.npmmirror.com/pkg-types/1.0.2:
     resolution: {integrity: sha512-hM58GKXOcj8WTqUXnsQyJYXdeAPbythQgEF3nTcEo+nkD49chjQ9IKm/QJy9xf6JakXptz86h7ecP2024rrLaQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pkg-types/-/pkg-types-1.0.2.tgz}
@@ -5538,9 +5508,9 @@ packages:
       fast-glob: registry.npmmirror.com/fast-glob/3.2.12
       local-pkg: registry.npmmirror.com/local-pkg/0.4.3
       magic-string: registry.npmmirror.com/magic-string/0.27.0
-      mlly: registry.npmmirror.com/mlly/1.1.0
+      mlly: registry.npmmirror.com/mlly/1.1.1
       pathe: registry.npmmirror.com/pathe/1.1.0
-      pkg-types: registry.npmmirror.com/pkg-types/1.0.1
+      pkg-types: registry.npmmirror.com/pkg-types/1.0.2
       scule: registry.npmmirror.com/scule/1.0.0
       strip-literal: registry.npmmirror.com/strip-literal/1.0.0
       unplugin: registry.npmmirror.com/unplugin/1.1.0
@@ -5591,11 +5561,11 @@ packages:
       - vite
     dev: true
 
-  registry.npmmirror.com/unplugin-auto-import/0.14.4_@vueuse+core@9.13.0:
-    resolution: {integrity: sha512-3vlaVhJ2B/Ct31F8X7tAiGpfPIr8bYhX/VVF6FB+1RkOfi61oh1zMmd3NTjwaEwkr6GV+J6BfvQL9NQ193V0sw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-auto-import/-/unplugin-auto-import-0.14.4.tgz}
-    id: registry.npmmirror.com/unplugin-auto-import/0.14.4
+  registry.npmmirror.com/unplugin-auto-import/0.12.2_@vueuse+core@9.13.0:
+    resolution: {integrity: sha512-hC4w0GZjPjmLtrxV0u10XO350V9eCtQyEyifXr7B9UGD7SvbbIvKuOcHt58Zd4FAqZJXKWoXkpr9mdhBp85Usw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-auto-import/-/unplugin-auto-import-0.12.2.tgz}
+    id: registry.npmmirror.com/unplugin-auto-import/0.12.2
     name: unplugin-auto-import
-    version: 0.14.4
+    version: 0.12.2
     engines: {node: '>=14'}
     peerDependencies:
       '@vueuse/core': '*'
@@ -5604,17 +5574,14 @@ packages:
         optional: true
     dependencies:
       '@antfu/utils': registry.npmmirror.com/@antfu/utils/0.7.2
-      '@nuxt/kit': registry.npmmirror.com/@nuxt/kit/3.2.2
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils/5.0.2
       '@vueuse/core': registry.npmmirror.com/@vueuse/core/9.13.0_vue@3.2.47
       local-pkg: registry.npmmirror.com/local-pkg/0.4.3
-      magic-string: registry.npmmirror.com/magic-string/0.29.0
-      minimatch: registry.npmmirror.com/minimatch/7.1.0
+      magic-string: registry.npmmirror.com/magic-string/0.27.0
       unimport: registry.npmmirror.com/unimport/2.2.4
       unplugin: registry.npmmirror.com/unplugin/1.1.0
     transitivePeerDependencies:
       - rollup
-      - supports-color
     dev: true
 
   registry.npmmirror.com/unplugin-vue-components/0.24.0_vue@3.2.47:
