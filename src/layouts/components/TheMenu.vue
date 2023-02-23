@@ -35,9 +35,9 @@ function formatMenuOption(item: Menu): MenuOption {
   const { id, label, icon, path, children } = item
   return {
     key: id,
-    label: renderLabel(label, path),
+    label: renderLabel(label!, path),
     path,
-    icon: icon && iconMap[icon]
+    icon: (icon && iconMap[icon])
       ? renderIcon(iconMap[icon])
       : undefined,
     children: children?.map((child: Menu) => formatMenuOption(child)),
