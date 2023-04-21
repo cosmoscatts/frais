@@ -30,7 +30,7 @@ export const useUiStore = defineStore(
       },
       applyCopySettings() { // 保存暂存的副本设置
         // 如果主题主要色调发生改变，替换主色调
-        if (settings.primaryColor !== settingsCopy.primaryColor) createUi()
+        if (settings.primaryColor !== settingsCopy.primaryColor) createUi(settingsCopy.primaryColor)
 
         G.assignObj(settingsCopy, settings)
 
@@ -53,5 +53,5 @@ export const useUiStore = defineStore(
 )
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useUiStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useUiStore as any, import.meta.hot))
 }

@@ -93,5 +93,5 @@ export const useTabStore = defineStore(
 )
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useTabStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useTabStore as any, import.meta.hot))
 }

@@ -12,17 +12,20 @@ import { APP_SETTINGS } from '~/config'
 export const isDark = createThemeMode(APP_SETTINGS.defaultThemeMode)
 export const toggleDark = useToggle(isDark)
 export const themeOverrides = ref<GlobalThemeOverrides>()
-export function createUi() {
-  const uiStore = useUiStore()
+export function createUi(primaryColor?: string) {
+  if (!primaryColor) {
+    const uiStore = useUiStore()
+    primaryColor = uiStore.settings.primaryColor
+  }
   // 根据主题主色调配置，生成颜色
-  const overrides = createPrimaryColor(uiStore.settings.primaryColor)
+  const overrides = createPrimaryColor(primaryColor)
   themeOverrides.value = {
     common: { ...overrides },
-    LoadingBar: { colorLoading: uiStore.settings.primaryColor },
+    LoadingBar: { colorLoading: primaryColor },
   }
   writeColors2Body(overrides, isDark.value)
 }
-watch(isDark, createUi)
+watch(isDark, () => createUi())
 
 // ----- 响应式 -----
 
