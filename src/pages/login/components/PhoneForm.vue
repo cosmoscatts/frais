@@ -16,15 +16,11 @@ const router = useRouter()
 const authStore = useAuthStore()
 const refForm = ref<FormInst | null>(null)
 
-const baseFormModel = isDevelopment
-  ? {
-      phone: '13650223322',
-      code: '123456',
-    }
-  : {
-      phone: '',
-      code: '',
-    }
+const baseFormModel = {
+  phone: '',
+  code: '',
+}
+
 const formModel = reactive<PhoneForm>({
   ...baseFormModel,
 })
