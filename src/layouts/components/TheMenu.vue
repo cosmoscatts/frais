@@ -17,18 +17,19 @@ const uiStore = useUiStore()
 const authStore = useAuthStore()
 
 const renderIcon = (icon: Component) => () => h(NIcon, null, { default: () => h(icon) })
-const renderLabel = (label: string, path?: string) => (path
-  ? () => h(
-      RouterLink,
-      {
-        to: {
-          path,
+function renderLabel(label: string, path?: string) {
+  return path
+    ? () => h(
+        RouterLink,
+        {
+          to: {
+            path,
+          },
         },
-      },
-      { default: () => label },
-    )
-  : () => h(NEllipsis, null, { default: () => label })
-)
+        { default: () => label },
+      )
+    : () => h(NEllipsis, null, { default: () => label })
+}
 
 function formatMenuOption(item: Menu): MenuOption {
   const { iconMap } = APP_MENU

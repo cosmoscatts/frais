@@ -20,19 +20,21 @@ const defaultExpandedNames = computed(() => {
 
 const uiStore = useUiStore()
 
-const renderComponent = (key: OptionRenderType) => ([
-  OptionLayoutMode,
-  OptionSelect,
-  OptionSwitch,
-  ColorPicker,
-][[
-  'layoutRadio',
-  'select',
-  'switch',
-  'colorPicker',
-].findIndex(i => i === key)])
+function renderComponent(key: OptionRenderType) {
+  return [
+    OptionLayoutMode,
+    OptionSelect,
+    OptionSwitch,
+    ColorPicker,
+  ][[
+    'layoutRadio',
+    'select',
+    'switch',
+    'colorPicker',
+  ].findIndex(i => i === key)]
+}
 
-const isDisabled = ({ dependOn }: Option) => { // 判断关联的设置项是否需要禁止点击
+function isDisabled({ dependOn }: Option) { // 判断关联的设置项是否需要禁止点击
   if (!dependOn) return false
   // 侧边栏折叠触发器样式需要单独判断
   // 只有垂直布局时，才有侧边栏
@@ -42,7 +44,7 @@ const isDisabled = ({ dependOn }: Option) => { // 判断关联的设置项是否
     : !copy[dependOn]
 }
 
-const showDisabledMsg = (data: Option[], disabledMsg?: string) => {
+function showDisabledMsg(data: Option[], disabledMsg?: string) {
   if (!disabledMsg) return false
   return data.some(i => isDisabled(i))
 }

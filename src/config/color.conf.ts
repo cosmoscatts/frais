@@ -39,5 +39,6 @@ export interface TraditionalColor {
 
 export const TRADITIONAL_COLORS = colorJson as TraditionalColor[]
 
-export const isInTraditionalColors = (color: string) =>
-  TRADITIONAL_COLORS.some(i => i.data.some(v => v.color === color))
+export function isInTraditionalColors(color: string) {
+  return TRADITIONAL_COLORS.some(i => i.data.some(v => v.color === color))
+}
