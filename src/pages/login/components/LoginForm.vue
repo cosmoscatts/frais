@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { FormInst, FormItemRule, FormRules } from 'naive-ui'
 import LoginSocialButton from './LoginSocialButton.vue'
+import LoginTips from './LoginTips.vue'
 import { LOGO, APP_META as meta } from '~/constants'
 import { getToRouteAfterLogin } from '~/utils'
 
@@ -149,6 +150,7 @@ onMounted(focusFirstInput)
       </n-button>
     </n-form>
   </n-card>
+  <LoginTips />
 </template>
 
 <style scoped>

@@ -13,7 +13,7 @@ function onClick() {
 <template>
   <button ref="refEl" class="social-button" hover="bg-#EEEEEE dark:bg-#212125" mt10px @click="onClick">
     <slot />
-    <div v-if="isHovered" class="i-carbon-arrow-right animate__animated animate__slideInLeft absolute right-10px" />
+    <div v-if="isHovered" i-carbon-arrow-right absolute right-10px />
   </button>
 </template>
 

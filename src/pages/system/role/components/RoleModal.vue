@@ -118,7 +118,7 @@ defineExpose({ endLoading })
           </div>
           <n-tree
             v-model:checked-keys="formModel.menuIdList"
-            cascade checkable check-on-click block-line default-expand-all
+            default-expand-all cascade checkable check-on-click block-line
             :selectable="false"
             :data="treeData"
           />
