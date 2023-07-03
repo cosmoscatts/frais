@@ -1,14 +1,14 @@
 import type { Router } from 'vue-router'
-import createPermissionGuard from './permission-guard'
-import { APP_META } from '~/config'
+import createPermissionGuard from './permission'
+import { APP_META } from '~/constants'
 
 export default function createRouterGuard(router: Router) {
   router.beforeEach((to, from, next) => {
-    $loadingBar.start()
+    window.$loadingBar?.start()
     createPermissionGuard(to, from, next)
   })
   router.afterEach((to) => {
     useTitle(to.meta?.title as string ?? APP_META.name)
-    $loadingBar.finish()
+    window.$loadingBar?.finish()
   })
 }

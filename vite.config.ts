@@ -1,33 +1,55 @@
-import { resolve } from 'node:path'
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import Layouts from 'vite-plugin-vue-layouts'
+import Unocss from 'unocss/vite'
+
+// @ts-expect-error failed to resolve types
+import VueMacros from 'unplugin-vue-macros/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
-import DefineOptions from 'unplugin-vue-define-options/vite'
-import UnoCSS from 'unocss/vite'
 
 export default defineConfig({
+  base: './',
   resolve: {
     alias: {
-      '~/': `${resolve(__dirname, 'src')}/`,
+      '~/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
   plugins: [
-    Vue({ reactivityTransform: true }),
+    VueMacros({
+      defineModels: true,
+      defineOptions: true,
+      plugins: {
+        vue: Vue({
+          reactivityTransform: true,
+        }),
+      },
+    }),
     AutoImport({
       imports: [
         'vue',
         'vue-router',
         'vue/macros',
+        '@vueuse/head',
         '@vueuse/core',
         'pinia',
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar',
+          ],
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
-        'src/server/api',
-        'src/composables',
-        'src/store',
+        'src/composables/**',
+        'src/stores/**',
+        'src/server/**',
       ],
       vueTemplate: true,
     }),
@@ -35,7 +57,19 @@ export default defineConfig({
       resolvers: [NaiveUiResolver()],
       dts: 'src/components.d.ts',
     }),
-    DefineOptions(),
-    UnoCSS(),
+    Icons({
+      autoInstall: true,
+      scale: 1,
+      defaultClass: 'inline-block',
+    }),
+    Layouts(),
+    Unocss(),
   ],
+  test: {
+    include: ['test/**/*.test.ts'],
+    environment: 'jsdom',
+    deps: {
+      inline: ['@vue', '@vueuse'],
+    },
+  },
 })

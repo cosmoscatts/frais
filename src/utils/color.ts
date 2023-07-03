@@ -13,8 +13,8 @@ export const createPressedColor = (color: string | RGB | RGBA) => composite(colo
 
 export const addColorAlpha = (color: string, alpha: number) => colord(color).alpha(alpha).toHex()
 
-export const useMixinColor = (
-  firstColor: string,
+export function useMixinColor(firstColor: string,
   secondColor: string,
-  ratio: number,
-) => colord(firstColor).mix(secondColor, ratio).toHex()
+  ratio: number) {
+  return colord(firstColor).mix(secondColor, ratio).toHex()
+}

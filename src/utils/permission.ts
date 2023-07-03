@@ -1,47 +1,42 @@
 import type { RouteLocationNormalized } from 'vue-router'
-import type { Menu } from '~/types'
-import { WHITE_LIST } from '~/router'
 
 /**
- * 找到登录用户的拥有的第一个路由：
- *  多页签最后一项（showTabs & cacheTabs）
- *  菜单第一项
+ * 找到所有权限的路由路径
  */
-export function findFirstRouteInPermission(): string {
-  const uiStore = useUiStore()
-  const tabStore = useTabStore()
-  if (uiStore.settings.showTabs
-    && uiStore.settings.cacheTabs
-    && tabStore.tabs.length > 0) {
-    return tabStore.tabs.slice(-1)[0].path
-  }
-  const authStore = useAuthStore()
-  const menus = G.clone(authStore.menus)
-
-  let path = null
-  while (menus.length && !path) {
-    const item = menus.shift() as Menu
-    if (item.path) path = item.path
-    if (item?.children?.length) menus.unshift(...item.children)
-  }
-  return path ?? '/'
+export function getRoutesInPermission(): string[] {
+  return [...getUserFlattenMenuTree()
+    .map(item => item.path)
+    .filter(notNullish), '/profile']
 }
 
 /**
  * 判断用户是否有目标页面的权限
  */
-export function checkRoutePermission(
-  menus: Menu[] = [],
-  { path, name }: RouteLocationNormalized,
-): boolean {
-  if ([!menus.length, path === '', name === ''].some(i => !!i)) return false
-  if (WHITE_LIST.includes(name as string)) return true
+export function checkRoutePermission(route: RouteLocationNormalized): boolean {
+  const authStore = useAuthStore()
+  if (!authStore.hasLogin || !authStore.menus.length || !route.path)
+    return false
+  if (route.meta.isWhite)
+    return true
 
-  let exist = false
-  while (menus.length && !exist) {
-    const element = menus.shift()
-    if (element?.path === path) exist = true
-    if (element?.children) menus.push(...element.children)
-  }
-  return exist
+  const ownPaths = getRoutesInPermission()
+  return ownPaths.includes(route.path)
+}
+
+/**
+ * 找到登录后跳转的路由
+ */
+export function getToRouteAfterLogin() {
+  const uiStore = useUiStore()
+  const tabStore = useTabStore()
+  const ownPaths = getRoutesInPermission()
+  if (!tabStore.tabs.length)
+    tabStore.createTabs()
+  const tabs = tabStore.tabs
+  if (uiStore.settings.showTabs && uiStore.settings.cacheTabs && tabs.length)
+    return tabs[tabs.length - 1].path
+
+  if (!ownPaths.length)
+    return null
+  return ownPaths[0]
 }

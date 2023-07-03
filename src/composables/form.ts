@@ -1,87 +1,57 @@
-import type { Ref, UnwrapNestedRefs } from 'vue'
+import type { UnwrapRef } from 'vue'
 
-type K = 'add' | 'edit'
-
-/**
- * @param baseFormData T 为 form 类型，S 为原对象类型
- * @param submit 向父级提交保存数据
- */
-export function useFormModal<T extends object, S extends object>(
-  baseFormData: T,
-  refForm: Ref<any>,
-  emits: any,
-  emitName = 'saveData',
-  preSubmit?: () => void,
-): {
-    formData: UnwrapNestedRefs<T>
-    type: Ref<K>
-    visible: Ref<boolean | undefined>
-    selectedItem: Ref<S | undefined>
-    loading: Ref<boolean>
-    props: UnwrapNestedRefs<{
-      type: Ref<K> | K
-      visible: Ref<boolean | undefined> | boolean | undefined
-      selectedItem: Ref<S | undefined> | S | undefined
-      loading: Ref<boolean> | boolean
-    }>
-    endLoading: () => void
-    handleOk: (e: MouseEvent) => void
-    openModal: (type: K, data?: S) => void
-    openModalCb: (val?: boolean) => void
-    closeModal: () => void
-  } {
-  const formData = reactive<T>({ ...baseFormData })
-  const type = ref<K>('add')
-  const visible = ref(false)
-  const selectedItem = ref<S>()
-
+export function useFormModel<T extends object, K extends object = any>({
+  getBase,
+  refForm,
+}: {
+  getBase: () => K
+  refForm: Ref<any>
+}) {
+  const formModel = reactive<K>(getBase())
   const { loading, startLoading, endLoading } = useLoading()
 
-  const setType = (value: K) => type.value = value
-  const setVisible = (value: boolean) => visible.value = value
-  const setSelectedItem = (data?: S) => selectedItem.value = data
-
-  const assign = () => { // 赋值
-    const source = [baseFormData, selectedItem.value ?? {}][Number(type.value === 'edit')]
-    G.assignObj(source, formData)
+  const assign = (data: T | K) => {
+    assignObj(data, formModel)
   }
 
-  const handleOk = (e: MouseEvent) => {
-    e.preventDefault()
-    refForm.value.validate((errors: any) => {
-      if (errors) return
+  const ok = (fn: () => void) => {
+    const [last, now] = [useTimestamp().value, useTimestamp()]
+    refForm.value?.validate((errors: any) => {
+      if (errors)
+        return
       startLoading()
-      preSubmit?.()
-      emits?.(emitName, G.clone(formData))
+      fn?.()
     })
+    const needClose = computed(() => (now.value - last) > 5000)
+    watchOnce(needClose, endLoading)
+  }
+
+  const reset = () => {
+    assignObj(getBase(), formModel)
+    refForm.value?.restoreValidation()
   }
 
   return {
-    formData,
-    type,
-    visible,
-    selectedItem,
+    formModel,
     loading,
-    props: reactive({
-      type,
-      visible,
-      selectedItem,
-      loading,
-    }),
+    startLoading,
     endLoading,
-    handleOk,
-    openModal(type: K, data?: S) {
-      setType(type)
-      setVisible(true)
-      setSelectedItem(data)
-    },
-    openModalCb(val?: boolean) {
-      if (val) assign()
-      endLoading()
-      refForm.value?.restoreValidation()
-    },
-    closeModal() {
-      setVisible(false)
-    },
+    assign,
+    ok,
+    reset,
+  }
+}
+
+export function useSearchForm<T = any>(getBase: () => T) {
+  const formModel = ref<T>(getBase())
+  const reset = () => formModel.value = getBase() as UnwrapRef<T>
+  const getSearchFormParams = () => {
+    return clone(formModel.value)
+  }
+
+  return {
+    formModel,
+    reset,
+    getSearchFormParams,
   }
 }

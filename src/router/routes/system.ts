@@ -1,35 +1,24 @@
-import { BASE_LAYOUT } from '~/router/constants'
-
-/**
- * 系统管理路由
- */
-export default {
-  path: '/system',
-  redirect: '/system/user',
-  component: BASE_LAYOUT,
-  meta: {
-    title: '系统管理',
+export default [
+  {
+    path: '/system/user',
+    name: 'User',
+    component: () => import('~/pages/system/user/index.vue'),
+    meta: {
+      title: '用户管理',
+      requiresAuth: true,
+      cached: false,
+      layout: 'default',
+    },
   },
-  children: [
-    {
-      path: 'user',
-      name: 'User',
-      component: () => import('~/pages/user/index.vue'),
-      meta: {
-        title: '用户管理',
-        requiresAuth: true,
-        cached: false,
-      },
+  {
+    path: '/system/role',
+    name: 'Role',
+    component: () => import('~/pages/system/role/index.vue'),
+    meta: {
+      title: '角色管理',
+      requiresAuth: true,
+      cached: false,
+      layout: 'default',
     },
-    {
-      path: 'role',
-      name: 'Role',
-      component: () => import('~/pages/role/index.vue'),
-      meta: {
-        title: '角色管理',
-        requiresAuth: true,
-        cached: false,
-      },
-    },
-  ],
-}
+  },
+]

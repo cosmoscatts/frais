@@ -10,16 +10,18 @@ export interface LottieParams {
 
 const getElement = (id: string) => document.querySelector(id)!
 
-export const useLottie = ({
+export function useLottie({
   containerId,
   path,
   loop = true,
   renderer = 'svg',
-}: LottieParams) => lottie.loadAnimation({
-  path,
-  loop,
-  renderer,
-  container: getElement(containerId),
-})
+}: LottieParams) {
+  return lottie.loadAnimation({
+    path,
+    loop,
+    renderer,
+    container: getElement(containerId),
+  })
+}
 
 export const useListLottie = (list: LottieParams[]) => list.forEach(item => useLottie(item))
