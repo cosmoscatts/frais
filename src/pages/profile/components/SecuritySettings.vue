@@ -29,7 +29,7 @@ const router = useRouter()
 const authStore = useAuthStore()
 const refForm = ref<FormInst | null>(null)
 
-const getBaseFormModel = () => {
+function getBaseFormModel() {
   const { id } = G.clone<User>(authStore.user!)
   return {
     id,
@@ -41,7 +41,7 @@ const getBaseFormModel = () => {
 
 let formModel = $ref<FormModel>(getBaseFormModel())
 
-const resetFormModel = () => {
+function resetFormModel() {
   formModel = getBaseFormModel()
   refForm.value?.restoreValidation()
 }
@@ -68,19 +68,17 @@ function onSubmit(e: MouseEvent) {
 }
 
 const refRNewPasswordFormItem = ref<FormItemInst | null>(null)
-const handlePasswordInput = () => {
+function handlePasswordInput() {
   if (formModel.reenteredNewPassword) {
     refRNewPasswordFormItem.value?.validate({ trigger: 'password-input' })
   }
 }
-const validatePasswordStartWith = (
-  _rule: FormItemRule,
-  value: string,
-) => (
-  !!formModel.newPassword
+function validatePasswordStartWith(_rule: FormItemRule,
+  value: string) {
+  return !!formModel.newPassword
     && formModel.newPassword.startsWith(value)
     && formModel.newPassword.length >= value.length
-)
+}
 const validatePasswordSame = (_rule: FormItemRule, value: string) => value === formModel.newPassword
 const rules: FormRules = {
   password: [
