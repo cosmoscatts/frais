@@ -26,13 +26,3 @@ export function formatNow(format = DEFAULT_FORMAT) {
     format,
   })
 }
-
-/**
- * 获取近期随机日期时间
- */
-export function getRandomDateStr(format?: string, range = 2): string {
-  const now = dayjs()
-  const millisecond = now.valueOf() - now.subtract(range, 'year').valueOf()
-  const date = now.subtract(getRandomInteger(millisecond), 'millisecond')
-  return formatDate(date, { format })
-}
