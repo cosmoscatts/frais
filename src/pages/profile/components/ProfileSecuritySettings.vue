@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { FormItemInst, FormItemRule, FormRules } from 'naive-ui'
-
 import type { User } from '~/types'
 
 const { currentTab } = defineProps<{ currentTab: number }>()
