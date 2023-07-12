@@ -1,5 +1,5 @@
 export const strategy = {
-  some(fns: [boolean, Function][]) {
+  some(fns: [boolean, () => void][]) {
     fns.some(([f, fn]) => {
       if (f)
         fn()
@@ -7,7 +7,7 @@ export const strategy = {
     })
   },
 
-  someHasReturn<R = any>(fns: [boolean, Function][]): R | null {
+  someHasReturn<R = any>(fns: [boolean, () => R][]): R | null {
     for (const [f, fn] of fns) {
       if (!f)
         continue
@@ -16,7 +16,7 @@ export const strategy = {
     return null
   },
 
-  each(fns: [boolean, Function][]): void {
+  each(fns: [boolean, () => void][]): void {
     fns.forEach(([f, fn]) => {
       if (f)
         fn()
