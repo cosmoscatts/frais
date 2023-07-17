@@ -17,7 +17,7 @@ export default function createPermissionGuard(
     checkRoutePermission(to),
   ]
 
-  const actions: [boolean, Function][] = [
+  const actions: [boolean, () => void][] = [
     // 已登录状态跳转登录页，跳转至第一项菜单
     [hasLogin && to.name === 'Login', () => {
       const path = getToRouteAfterLogin()

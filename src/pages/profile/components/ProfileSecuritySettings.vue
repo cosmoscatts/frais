@@ -48,8 +48,7 @@ function handlePasswordInput() {
   if (formModel.reenteredNewPassword)
     refRNewPasswordFormItem.value?.validate({ trigger: 'password-input' })
 }
-function validatePasswordStartWith(_rule: FormItemRule,
-  value: string) {
+function validatePasswordStartWith(_rule: FormItemRule, value: string) {
   return !!formModel.newPassword
     && formModel.newPassword.startsWith(value)
     && formModel.newPassword.length >= value.length

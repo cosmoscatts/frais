@@ -8,7 +8,7 @@ defineOptions({
 const { rules = [], style = {} } = defineProps<{
   model: any
   rules?: FormRules
-  style?: {}
+  style?: object
 }>()
 
 const refForm = ref<FormInst>()

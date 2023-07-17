@@ -10,7 +10,7 @@ const {
   show?: boolean
   loading?: boolean
   title?: string
-  style?: {}
+  style?: object
   handleOk?: () => void
   onClose?: () => void
 }>()

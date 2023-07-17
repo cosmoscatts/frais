@@ -4,7 +4,7 @@ import type { Settings } from '~/configs'
 import type { Tab } from '~/types'
 
 const tabStorage: RemovableRef<{ [key: string]: Tab[] }> = useStorage(TABS_STORAGE_KEY, {}, localStorage)
-const settingsStorage: RemovableRef<Settings | Object> = useStorage(SETTINGS_STORAGE_KEY, {}, localStorage)
+const settingsStorage: RemovableRef<Settings | object> = useStorage(SETTINGS_STORAGE_KEY, {}, localStorage)
 
 /**
  * 将 settings 写入 storage

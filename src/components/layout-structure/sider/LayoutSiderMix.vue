@@ -42,8 +42,8 @@ function handleMixMenu(id: number, path: string | undefined, hasChildren: boolea
     openDrawer()
 
   else
-  if (path)
-    router.push(path)
+    if (path)
+      router.push(path)
 }
 
 function resetFirstDegreeMenus() {
