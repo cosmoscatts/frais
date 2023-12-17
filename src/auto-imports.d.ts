@@ -89,6 +89,7 @@ declare global {
   const h: typeof import('vue')['h']
   const ignorableWatch: typeof import('@vueuse/core')['ignorableWatch']
   const inject: typeof import('vue')['inject']
+  const injectLocal: typeof import('@vueuse/core')['injectLocal']
   const invoke: typeof import('./composables/common/function')['invoke']
   const isArray: typeof import('./composables/common/is')['isArray']
   const isBoolean: typeof import('./composables/common/is')['isBoolean']
@@ -153,6 +154,7 @@ declare global {
   const p: typeof import('./composables/common/p')['p']
   const pausableWatch: typeof import('@vueuse/core')['pausableWatch']
   const provide: typeof import('vue')['provide']
+  const provideLocal: typeof import('@vueuse/core')['provideLocal']
   const reactify: typeof import('@vueuse/core')['reactify']
   const reactifyObject: typeof import('@vueuse/core')['reactifyObject']
   const reactive: typeof import('vue')['reactive']
@@ -493,6 +495,7 @@ declare module 'vue' {
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
+    readonly injectLocal: UnwrapRef<typeof import('@vueuse/core')['injectLocal']>
     readonly invoke: UnwrapRef<typeof import('./composables/common/function')['invoke']>
     readonly isArray: UnwrapRef<typeof import('./composables/common/is')['isArray']>
     readonly isBoolean: UnwrapRef<typeof import('./composables/common/is')['isBoolean']>
@@ -556,6 +559,7 @@ declare module 'vue' {
     readonly p: UnwrapRef<typeof import('./composables/common/p')['p']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
+    readonly provideLocal: UnwrapRef<typeof import('@vueuse/core')['provideLocal']>
     readonly reactify: UnwrapRef<typeof import('@vueuse/core')['reactify']>
     readonly reactifyObject: UnwrapRef<typeof import('@vueuse/core')['reactifyObject']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
@@ -887,6 +891,7 @@ declare module '@vue/runtime-core' {
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly ignorableWatch: UnwrapRef<typeof import('@vueuse/core')['ignorableWatch']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
+    readonly injectLocal: UnwrapRef<typeof import('@vueuse/core')['injectLocal']>
     readonly invoke: UnwrapRef<typeof import('./composables/common/function')['invoke']>
     readonly isArray: UnwrapRef<typeof import('./composables/common/is')['isArray']>
     readonly isBoolean: UnwrapRef<typeof import('./composables/common/is')['isBoolean']>
@@ -950,6 +955,7 @@ declare module '@vue/runtime-core' {
     readonly p: UnwrapRef<typeof import('./composables/common/p')['p']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
+    readonly provideLocal: UnwrapRef<typeof import('@vueuse/core')['provideLocal']>
     readonly reactify: UnwrapRef<typeof import('@vueuse/core')['reactify']>
     readonly reactifyObject: UnwrapRef<typeof import('@vueuse/core')['reactifyObject']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
